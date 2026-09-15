@@ -153,6 +153,16 @@ def main() -> int:
     results.append(run([py, f"{S}/generate_gitignore.py", "--self-test"]))
     # 第十三个：发布前的密钥 / 本机路径扫描。凭据一旦推上去无法收回。
     results.append(run([py, f"{S}/scan_secrets.py"]))
+    # 第十六个：**"什么算会被发布"只能有一份实现。**
+    # 起因：审计发现同一段遍历+过滤逻辑被抄了三份
+    # （print_project_stats / scan_secrets / verify_no_answer_leak），
+    # 而**每一份的 docstring 都写着「不另写一份过滤逻辑」**。
+    # 三份实测报出 698 / 697 / 698 —— 已经漂移了。
+    # 这段逻辑决定"哪些内容会被查泄露、哪些会被查凭据"，是**安全边界**：
+    # 它自己第一版漏排除 `.git/`，把 615 个 git 对象算成发布内容（1308 vs 真实 693）。
+    results.append(run([py, f"{S}/publishable_files.py", "--self-test"]))
+    # 三个消费方现在必须报同一数量（`scan_secrets` 少 1 个是因为它排掉自己 —— 已说明）
+    results.append(run([py, f"{S}/check_publishable_agree.py"]))
     # 第十四个：**内容级**答案泄露审计。
     # 上面那些验的是"仓库状态"与"上传集"，但**"答案会不会藏在代码/文档里"**
     # 此前从未被验过 —— 而这是最容易被忽略的一条路：`.py` 里的自测夹具、

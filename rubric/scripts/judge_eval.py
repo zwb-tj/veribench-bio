@@ -57,10 +57,6 @@ def load_items(path: Path) -> dict[str, dict]:
     return out
 
 
-def round_mean(x: float) -> int:
-    return int(x + 0.5) if x >= 0 else -int(-x + 0.5)
-
-
 def build_gold(
     a: dict, b: dict, arb: dict | None
 ) -> tuple[dict, dict]:

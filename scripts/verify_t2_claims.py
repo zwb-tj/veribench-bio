@@ -226,22 +226,6 @@ def check_hf_upload_state() -> None:
             f"根 README {'已如实写『尚未上传』' if says_unuploaded else '**未写『尚未上传』**'}")
     return
 
-def _parse_size(s: str) -> int:
-    """把 `hf` 的 '0 B' / '100.3 MB' 之类转成字节数（解析不了返回 -1）。
-
-    （保留：`hf repos list --format json` 的 storage 是字符串，
-      别处若再用到 CLI 的列表输出会需要它。）
-    """
-    import re as _re
-
-    m = _re.fullmatch(r"\s*([\d.]+)\s*([KMGT]?i?B)\s*", str(s), _re.I)
-    if not m:
-        return -1
-    n = float(m.group(1))
-    unit = m.group(2).upper().replace("I", "")
-    mult = {"B": 1, "KB": 1000, "MB": 10**6, "GB": 10**9, "TB": 10**12}.get(unit, 0)
-    return int(n * mult) if mult else -1
-
 
 def main(argv: list[str] | None = None) -> int:
     for s in (sys.stdout, sys.stderr):

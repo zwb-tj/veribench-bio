@@ -53,41 +53,15 @@ rot_labels_cache: dict[str, str] = {}
 
 
 def _publishable() -> list[Path]:
-    """复用 `not_published.json` —— **不另写一份过滤逻辑**（本项目的老毛病）。"""
-    man = json.loads((HERE / "not_published.json").read_text(encoding="utf-8"))
-    dirs = set(man.get("dirs") or {})
-    suf = set(man.get("suffixes") or [])
-    nms = set(man.get("names") or {})
-    out = []
-    for p in ROOT.rglob("*"):
-        if not p.is_file():
-            continue
-        rel = p.relative_to(ROOT).as_posix()
-        if ".git" in p.parts or any(x in nms for x in p.parts) or p.suffix in suf:
-            continue
-        if any(rel == d or rel.startswith(d + "/") for d in dirs):
-            continue
-        out.append(p)
-    return sorted(out)
+    """**委托给唯一实现**（`publishable_files.py`）。
 
-
-def _ids_and_labels(path: Path) -> dict[str, str]:
-    """读一个 jsonl，返回 {item_id: assertion}。非 jsonl / 解析不了则返回 {}。"""
-    out: dict[str, str] = {}
-    if not path.is_file():
-        return out
-    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
-        line = line.strip()
-        if not line:
-            continue
-        try:
-            d = json.loads(line)
-        except ValueError:
-            continue
-        i = d.get("item_id")
-        if i:
-            out[i] = d.get("assertion_normalized") or d.get("assertion") or ""
-    return out
+    ⚠️ 这里原本自己抄了一份遍历+过滤逻辑，而 docstring 还写着
+    「复用 not_published.json —— **不另写一份过滤逻辑**」。实测三份副本
+    已经报出 698 / 697 / 698 个文件 —— **没有任何东西保证它们继续一致**。
+    这段逻辑决定"哪些内容会被查泄露"，是安全边界，不能有第二份。
+    """
+    from publishable_files import publishable as _pub
+    return _pub()
 
 
 def load_rotation() -> tuple[set[str], dict[str, str]]:

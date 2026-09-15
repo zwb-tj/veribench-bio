@@ -37,29 +37,18 @@ SKIP_PARTS = {".git", "__pycache__", "_artifacts", "_scratch", "_fixtures",
 
 
 def publishable() -> list[tuple[str, int]]:
-    """复用 not_published.json —— 不另写一份过滤逻辑（本项目的老毛病）。"""
-    man = json.loads((HERE / "not_published.json").read_text(encoding="utf-8"))
-    dirs = set(man.get("dirs") or {})
-    sfx = set(man.get("suffixes") or [])
-    nms = set(man.get("names") or {})
-    out = []
-    for p in ROOT.rglob("*"):
-        if not p.is_file():
-            continue
-        # ⚠️ **必须显式排除 `.git/`。** 第一版漏了这一条，于是它把 615 个
-        #    git 对象文件也当成"发布内容"，报出 **1308 文件 / 79.3 MB** ——
-        #    而真实是 **692 / 65.2 MB**，差了将近一倍。
-        #    这类错误极容易被漏过，因为它**看起来像个正常数字**：
-        #    若不是另有一份核对脚本给出 692，没人会发现。
-        if ".git" in p.parts or "__pycache__" in p.parts:
-            continue
-        rel = p.relative_to(ROOT).as_posix()
-        if any(x in nms for x in p.parts) or p.suffix in sfx:
-            continue
-        if any(rel == d or rel.startswith(d + "/") for d in dirs):
-            continue
-        out.append((rel, p.stat().st_size))
-    return sorted(out)
+    """**委托给唯一实现**（`publishable_files.py`），返回值加上字节数。
+
+    ⚠️ 这里原本自己抄了一份遍历+过滤逻辑。它第一版**漏排除 `.git/`**，
+    把 615 个 git 对象文件算成发布内容，报出 1308 文件 / 79.3 MB
+    （真实 693 / 65.2 MB）—— 而那个错数字**看起来完全正常**，
+    要不是另有一份核对脚本给出 693，根本不会发现。
+
+    那正是"同一段逻辑抄三份"的必然结果：三份会漂移，而漂移不报警。
+    现在过滤只有一份，**统计与安全检查看到的是同一个文件集合**。
+    """
+    from publishable_files import publishable as _pub
+    return [(p.relative_to(ROOT).as_posix(), p.stat().st_size) for p in _pub()]
 
 
 def count_self_tests() -> tuple[int, int]:

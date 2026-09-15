@@ -82,28 +82,18 @@ ALLOWED_EMAIL_DOMAINS = (
 
 
 def publishable() -> list[Path]:
-    """复用 `not_published.json` —— **不另写一份过滤逻辑**（本项目的老毛病）。"""
-    man = json.loads((HERE / "not_published.json").read_text(encoding="utf-8"))
-    dirs = set(man.get("dirs") or {})
-    suffixes = set(man.get("suffixes") or [])
-    names = set(man.get("names") or [])
-    out = []
-    for p in ROOT.rglob("*"):
-        if not p.is_file():
-            continue
-        rel = p.relative_to(ROOT).as_posix()
-        if any(part in names for part in p.parts):
-            continue
-        if p.suffix in suffixes:
-            continue
-        if any(rel == d or rel.startswith(d + "/") for d in dirs):
-            continue
-        if ".git" in p.parts:
-            continue
-        if p.relative_to(ROOT).as_posix() in SELF_SKIP:
-            continue
-        out.append(p)
-    return sorted(out)
+    """**委托给唯一实现**（`publishable_files.py`），只额外排掉本文件。
+
+    ⚠️ 这里原本自己抄了一份遍历+过滤逻辑，而 docstring 还写着
+    「复用 not_published.json —— **不另写一份过滤逻辑**」。实测三份副本
+    已经报出 698 / 697 / 698 个文件。这段逻辑决定"哪些内容会被查凭据"，
+    是安全边界，不能有第二份。
+
+    `SELF_SKIP` 是**唯一合法的差异**（本文件内嵌了自检用的假凭据样本），
+    所以用 `extra_skip` 参数表达，而不是再抄一遍函数体。
+    """
+    from publishable_files import publishable as _pub
+    return _pub(extra_skip=set(SELF_SKIP))
 
 
 def _scan_text(text: str, rel: str) -> list[str]:
