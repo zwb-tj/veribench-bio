@@ -1,11 +1,17 @@
 # VeriBench-Bio
 
+[![checks](https://github.com/zwb-tj/veribench-bio/actions/workflows/checks.yml/badge.svg)](https://github.com/zwb-tj/veribench-bio/actions/workflows/checks.yml)
+
 > 一个**许可干净、可公开分发、30 分钟内 CPU-only 跑完**的生命科学 / 生信实操评测集，
 > 外加一套 **"LLM 裁判到底可不可信"** 的元评测（双标注 + Cohen's κ + 公开失效案例）。
 
 **设计文档见 [`SPEC.md`](SPEC.md)。** 想知道**哪些能信、哪些不能**，直接看
 [`docs/DATACARD.md`](docs/DATACARD.md) 的 §4（已知限制）与 §5（已验证事实）——
 那两节就是本项目的全部立场。
+
+> **那个徽章不是装饰。** 它跑的就是你自己 clone 下来能跑的那套检查
+> （CI 里**不装任何第三方包、不用 Docker**，所以它检验的正是"第三方能不能复现"）。
+> 想自己看一遍：`python run_all_checks.py`（零第三方依赖）。
 
 ---
 
