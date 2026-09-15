@@ -154,6 +154,18 @@ def self_test() -> int:
     """
     st = collect()
     ok = True
+
+    # ⚠️ **依赖生成物的断言必须按"有没有"分别处理。**
+    #    第一版把 T1/T2 的具体数字（六次实跑 / 0.84655 / 4726 条）当**无条件**断言，
+    #    于是在全新 clone（`_runs*` 与 `data/items.jsonl` 都是生成物、被 gitignore）
+    #    里 `--self-test` 直接失败 —— **CI 会红，而仓库本身没问题**。
+    #    这与 `check_publishable_agree.py` 刚修的是同一类错误：
+    #    **把"这里没有这个产物"误报成"检查失败"**，
+    #    而人会因此把检查关掉（这项目已经吃过两次教训）。
+    #
+    #    正确的区分：
+    #      · 只依赖**已提交**文件（发布集、检查步数、台账、rubric）→ 无条件断言
+    #      · 依赖**生成物**（T1 的 _runs*、T2 的 items.jsonl）→ 有才断言，没有就明说 SKIP
     checks = [
         ("published_files > 0", st["published_files"] > 0, st["published_files"]),
         ("check_steps > 0", st["check_steps"] > 0, st["check_steps"]),
@@ -161,14 +173,27 @@ def self_test() -> int:
         ("ledger_entries >= 30", st["ledger_entries"] >= 30, st["ledger_entries"]),
         ("rubric 24 题", st["rubric_items"] == 24, st["rubric_items"]),
         ("rubric 101 条", st["rubric_criteria"] == 101, st["rubric_criteria"]),
-        ("T1 六次实跑", st["t1_runs"] == 6, st["t1_runs"]),
-        ("T1 得分唯一 0.84655", st["t1_scores"] == ["0.84655"], st["t1_scores"]),
-        ("T1 变异数唯一 12254", st["t1_variants"] == ["12254"], st["t1_variants"]),
-        ("T2 4726 条", st["t2_items"] == 4726, st["t2_items"]),
-        ("T2 金丝雀 1181", st["t2_canary"] == 1181, st["t2_canary"]),
     ]
+
+    #: 生成物在不在？（clone 里通常不在）
+    skipped: list[str] = []
+    if st["t1_runs"] == 0:
+        skipped.append("T1 实跑（_runs* 是生成物）")
+    else:
+        checks += [
+            ("T1 实跑次数", st["t1_runs"] == 6, st["t1_runs"]),
+            ("T1 得分唯一", st["t1_scores"] == ["0.84655"], st["t1_scores"]),
+            ("T1 变异数唯一", st["t1_variants"] == ["12254"], st["t1_variants"]),
+        ]
+    if not st.get("t2_items"):
+        skipped.append("T2 题量（data/items.jsonl 是生成物）")
+    else:
+        checks += [
+            ("T2 4726 条", st["t2_items"] == 4726, st["t2_items"]),
+            ("T2 金丝雀 1181", st["t2_canary"] == 1181, st["t2_canary"]),
+        ]
     # 公开 + 轮换 == 全量（不重不漏）—— 只有产物都在时才能验
-    if st.get("t2_public") and st.get("t2_rotation"):
+    if st.get("t2_public") and st.get("t2_rotation") and st.get("t2_items"):
         s = st["t2_public"] + st["t2_rotation"]
         checks.append(("公开 + 轮换 == 全量", s == st["t2_items"], f"{s} vs {st['t2_items']}"))
 
@@ -176,6 +201,9 @@ def self_test() -> int:
         if not cond:
             ok = False
         print(f"  {'✅' if cond else '❌'} {label}  → {val}")
+
+    for s in skipped:
+        print(f"  ⏭ SKIP：{s} —— 本机没有该生成物，**不算通过也不算失败**")
 
     # ⚠️ **关键负向测试**：发布集里绝不能出现 `.git/` 或运行期目录。
     #    这条来自一个真实 bug —— 第一版漏了排除 `.git`，
