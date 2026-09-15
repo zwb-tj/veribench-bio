@@ -96,6 +96,16 @@ def build_input_files(task: str) -> tuple[list[Path], list[str]]:
     """返回 (存在的构建输入, 缺席的生成型输入)。
 
     缺席的**非生成型**输入会在 check() 里被判为失败（源码结构变了）。
+
+    ⚠️ 排序必须**跨平台稳定**：按 POSIX 相对路径的**码点**排序，
+    不要依赖 `Path` 的默认比较，也不要用 `sorted(路径对象)` ——
+    Windows 的路径比较是**大小写不敏感**的，Linux 是敏感的。
+    实测（2026-09）：同一个仓库，Windows 得到
+        [data/check_no_leakage.py, data/items.jsonl, Dockerfile, grade.py, run.sh]
+    而 Linux 得到
+        [Dockerfile, data/check_no_leakage.py, data/items.jsonl, grade.py, run.sh]
+    —— 文件相同、顺序不同，于是 `source_sha256` 不同，
+    **同一条 pin 记录在 Windows 报 ✅、在 Linux 报 ❌**。
     """
     spec = TASKS[task]
     base = ROOT / spec["dir"]
@@ -116,7 +126,12 @@ def build_input_files(task: str) -> tuple[list[Path], list[str]]:
         for p in base.glob(pat):
             if p.is_file():
                 out.add(p)
-    return sorted(out), sorted(missing_generated)
+
+    #: 用 POSIX 相对路径做**跨平台稳定**的排序键（见上面的实测记录）
+    def key(p: Path) -> str:
+        return p.relative_to(base).as_posix()
+
+    return sorted(out, key=key), sorted(missing_generated)
 
 
 def source_sha256(task: str) -> tuple[str, list[str]]:
@@ -135,6 +150,9 @@ def source_sha256(task: str) -> tuple[str, list[str]]:
             "无法计算可比的 source_sha256")
     h = hashlib.sha256()
     names: list[str] = []
+    # ⚠️ 顺序由 build_input_files 保证**跨平台稳定**（按 POSIX 路径码点排序）。
+    #    哈希是顺序敏感的，所以"同一组文件、不同顺序"会得到不同的哈希 ——
+    #    这正是 Windows/Linux 上 pin 结论相反的原因。见 build_input_files 的注释。
     for p in paths:
         rel = p.relative_to(base).as_posix()
         names.append(rel)
@@ -250,6 +268,27 @@ def self_test() -> int:
         (t / "run2.sh").write_text("echo hi\n", encoding="utf-8")
         TASKS["TX"] = {"dir": "tasks/TX", "files": ["Dockerfile", "run2.sh"], "globs": []}
         report("只改文件名（内容不变）→ 失败（防改名绕过）", False)
+
+        # ⑥ **跨平台顺序稳定性**：同样的文件集合，枚举顺序不同 → 哈希必须相同。
+        #    这条来自实测：Windows 和 Linux 的路径排序规则不同
+        #    （Windows 大小写不敏感），导致同一仓库算出不同的 source_sha256，
+        #    于是**同一条 pin 记录在两个平台上结论相反**。
+        #    修法是按 POSIX 相对路径的码点排序 —— 这条用例把它钉住。
+        (t / "Aaa.py").write_text("x=1\n", encoding="utf-8")
+        (t / "zzz.py").write_text("y=2\n", encoding="utf-8")
+        # 故意用不同的声明顺序（大小写交错），看排序是否稳定
+        TASKS["TX"] = {"dir": "tasks/TX",
+                       "files": ["zzz.py", "Dockerfile", "Aaa.py"], "globs": []}
+        h_a, n_a = source_sha256("TX")
+        TASKS["TX"] = {"dir": "tasks/TX",
+                       "files": ["Aaa.py", "zzz.py", "Dockerfile"], "globs": []}
+        h_b, n_b = source_sha256("TX")
+        # 期望：两种声明顺序得到**相同的名字序列**与**相同的哈希**
+        stable = (h_a == h_b) and (n_a == n_b)
+        ok = ok and stable
+        print(f"  {'✅' if stable else '❌'} 声明顺序不同 → 哈希与清单一致"
+              f"（{'顺序已归一化' if stable else '顺序泄漏进哈希！'}）")
+        print(f"       顺序 = {n_a}")
     finally:
         ROOT = real_root
         TASKS.pop("TX", None)

@@ -2,15 +2,15 @@
   "_comment": "镜像 digest 与构建源码的对应凭据。由 scripts/record_image_digest.py 写入，由 verify_*_claims.py / run_all_checks.py 核对。改动任何构建输入都必须重建镜像、重跑、再重记。",
   "task": "T2",
   "image_id": "sha256:c3adbedce2efc59a63d1b373775abbe43185c110379a13886ef5c64011dfa526",
-  "source_sha256": "8a579c13bf4201e4db9802efcb3f04826c0eaa60eed1d2ab705c49e30f5b5cf7",
+  "source_sha256": "400fe72042d18a5c7b1fb5ba81c5171b11c40b04095f2833ab02cfcd0d4ff6c5",
   "files": [
+    "Dockerfile",
     "data/check_no_leakage.py",
     "data/items.jsonl",
-    "Dockerfile",
     "grade.py",
     "run.sh"
   ],
-  "recorded_at": "2026-09-15T05:39:50+00:00",
+  "recorded_at": "2026-09-15T10:31:56+00:00",
   "run_evidence": {
     "score": "1.0",
     "variants": null
