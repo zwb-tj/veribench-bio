@@ -1,0 +1,103 @@
+name: checks
+
+# 只在 push / PR 时跑。**不跑 docker**：GitHub 的 ubuntu runner 上没有本项目
+# 需要的镜像，而所有依赖镜像的检查在缺镜像时都会 SKIP（已有守卫）。
+# 这样 CI 与"第三方 clone 下来"看到的是同一组结论。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 项目声称"零第三方 Python 依赖"，所以多版本一起验是有意义的
+        python-version: ["3.10", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # ⚠️ 刻意**不**装 jsonschema：仓库自称零第三方依赖。
+      #    装了它会让"零依赖"这条声明失去被检验的机会。
+      #    validate_schemas.py 在缺它时会**明说本次未做 schema 校验**，
+      #    而不是静默通过 —— 那正是我们想展示的行为。
+
+      - name: 换行符必须是 LF（跨平台可复现性）
+        run: |
+          # 2026-09 实测过：core.autocrlf 曾让同一 commit 在 Windows/Linux
+          # 产出不同字节，于是 source_sha256 在两边不相等。
+          # 现在由 .gitattributes 强制 LF —— 这一步确认它真的生效。
+          bad=$(git ls-files -z | xargs -0 -I{} sh -c \
+            'case "{}" in *.py|*.sh|*.md|*.json|*.jsonl|*.yml|*.txt|*.csv) \
+               if grep -qU $'\r' "{}" 2>/dev/null; then echo "{}"; fi;; esac' || true)
+          if [ -n "$bad" ]; then
+            echo "❌ 以下文件含 CRLF（应为 LF）："
+            echo "$bad"
+            exit 1
+          fi
+          echo "✅ 全部文本文件为 LF"
+
+      - name: 镜像 pin 与源码对应（跨平台哈希一致）
+        run: python scripts/record_image_digest.py --check-all
+
+      - name: 每个检查器的自检（证明它们真的会失败）
+        run: |
+          set -e
+          python scripts/record_image_digest.py --self-test
+          python scripts/verify_readme.py --self-test
+          python scripts/verify_t1_region.py --self-test
+          python scripts/check_t1_scripts_agree.py --self-test
+          python scripts/verify_notice.py --self-test
+          python scripts/verify_json_files.py --self-test
+          python scripts/verify_no_answer_leak.py --self-test
+          python scripts/scan_secrets.py --self-test
+          python scripts/generate_gitignore.py --self-test
+          python scripts/verify_upload_preflight.py --self-test
+          python scripts/verify_t2_rotation_isolation.py --self-test
+          python scripts/audit_licenses.py --self-test
+
+      - name: 发布前的安全门禁（答案泄露 / 凭据）
+        run: |
+          set -e
+          python scripts/verify_no_answer_leak.py
+          python scripts/scan_secrets.py
+          python scripts/generate_gitignore.py --check
+
+      - name: 文档与数据一致性
+        run: |
+          set -e
+          python scripts/verify_doc_links.py
+          python scripts/verify_datacard.py
+          python scripts/verify_readme.py
+          python scripts/verify_json_files.py
+          python scripts/verify_notice.py
+          python scripts/check_t1_scripts_agree.py
+          python scripts/verify_t2_rotation_isolation.py
+          python scripts/verify_upload_preflight.py --dir tasks/T2/data/public
+          python scripts/validate_schemas.py
+          python scripts/check_argparse_pct.py
+          python scripts/check_env_deps.py
+
+      - name: 台账重建 + 许可审计
+        run: |
+          set -e
+          python scripts/build_master_ledger.py
+          python scripts/audit_licenses.py ledger/items.jsonl
+          # 重建后不得有未提交的改动（否则说明台账不是从脚本生成的）
+          git diff --exit-code ledger/items.jsonl \
+            || { echo "❌ ledger/items.jsonl 与生成器不一致"; exit 1; }
+
+      - name: 全仓脚本冒烟测试（每个 .py 都能 --help）
+        run: python scripts/smoke_test_scripts.py
+
+      - name: 项目级检查总入口
+        run: python run_all_checks.py

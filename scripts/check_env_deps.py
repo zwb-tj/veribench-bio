@@ -162,11 +162,40 @@ def main(argv: list[str] | None = None) -> int:
 
     print()
     print("=" * 70)
-    if missing:
-        print(f"❌ 当前环境缺 {len(missing)} 个第三方依赖：{missing}")
-        print("   装法：pip install " + " ".join(missing))
+    # ⚠️ 本脚本是**诊断**，不是门禁 —— 所以缺可选依赖时**不应报失败**。
+    #
+    # 起因（2026-09，在模拟 GitHub runner 时发现）：
+    #   仓库对外的声明是「**零第三方 Python 依赖**」，而 `jsonschema`
+    #   是**可选**的（只有 `validate_schemas.py` 用它，且缺它会明确
+    #   「本次未做 schema 校验」而不是静默通过）。
+    #   但旧代码把"缺 jsonschema"当成失败返回 1 ——
+    #   于是任何**没装 jsonschema 的干净环境**（= 大多数 CI runner）
+    #   都会红。**这等于让"零依赖"这个卖点本身把 CI 判失败。**
+    #
+    # 正确做法：区分"必需"与"可选"。
+    #   · 可选依赖缺失 → 打印提示，**返回 0**
+    #   · 必需依赖缺失 → 返回 1
+    #: 已知可选依赖（缺了不影响"零依赖"这条声明成立）
+    OPTIONAL = {"jsonschema"}
+
+    hard_missing = [m for m in missing if m not in OPTIONAL]
+    soft_missing = [m for m in missing if m in OPTIONAL]
+
+    if soft_missing:
+        print(f"ℹ️  可选依赖未安装：{soft_missing}")
+        print("   装法：pip install " + " ".join(soft_missing))
+        print("   影响：`validate_schemas.py` 会**明说本次未做 schema 校验**"
+              "（不是静默通过）。")
+        print("   ⚠️ **这不影响『零第三方依赖』的声明成立** —— "
+              "本体只用标准库，这个包是可选的。")
+    if hard_missing:
+        print(f"❌ 当前环境缺 {len(hard_missing)} 个**必需**第三方依赖：{hard_missing}")
+        print("   装法：pip install " + " ".join(hard_missing))
         return 1
-    print("✅ 当前环境满足代码里实际出现的全部第三方依赖")
+    if not missing:
+        print("✅ 当前环境满足代码里实际出现的全部第三方依赖")
+    else:
+        print("✅ 没有缺任何**必需**依赖（缺的只有可选的那些，见上）")
     print()
     print("⚠️ 两点必须说清：")
     print("  1. 这只覆盖 **import 得到的**依赖。Docker、上游网络可达性、磁盘空间")
