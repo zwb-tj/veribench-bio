@@ -81,6 +81,7 @@
 | 三个脚本在**没有 docker** 的环境里直接 traceback | `subprocess.run(["docker", ...])` 在工具不存在时抛 `FileNotFoundError`，不是返回非零码。`verify_oracle`/`inspect_image` 崩掉、`verify_t2_claims` 崩溃；**"脚本崩了"会被读成"仓库坏了"** | 无 docker 的 Linux 容器里逐个跑。修：先 `shutil.which` 判存在性并 SKIP；`sh()` 捕获 `FileNotFoundError` 转成 (127, 消息) |
 | `check_env_deps` 因缺 `jsonschema` 返回 1 | 卖点是「**零第三方 Python 依赖**」，而 `jsonschema` 是**可选**的（缺它会明说"本次未做 schema 校验"，不静默通过）。旧逻辑把可选当必需 → **"零依赖"这个卖点本身让干净 CI 判失败** | 模拟 GitHub runner（无 jsonschema）时发现。修：区分必需/可选，并做负向测试证明**真缺必需依赖时仍返回 1** |
 | `verify_upload_preflight --self-test` 在 clone 里失败 | 它的自检拿**真实**的 `tasks/T2/data/public` 与 `tasks/T2/data` 当夹具，而这两处是生成物、刻意不发布 → 全新 clone / CI 里"应当通过"的用例反而报一堆问题。**依赖生成状态的自检不是自检** | 逐条复刻 CI 步骤时发现。修：自检改用**临时目录里的合成夹具**，与仓库状态无关 |
+| **标注表把答案档位写进了 id，盲评根本没盲** | 标注表给三份回答的编号是 `BLIND-weak` / `BLIND-medium` / `BLIND-strong`，而 `README_FOR_ANNOTATOR.md` 写着「**编号本身不告诉你哪份好**」—— **那句话是假的**：`weak`/`strong` 就是质量标签。而且实测三档长度严格递增（175/207/360 字符），**与同页「不要被长度影响」这条核心规则直接冲突**。后果不是不优雅：标注者照标签走 → 两人一致率虚高 → **κ 假性偏高** → 人类天花板虚高 → judge 的「相对上限」被压低 → **结论可能反过来**，而所有数字看起来都正常 | 准备发标注时人工读表发现。判官侧**一直是对的**（随机 12 位十六进制 + `judge_blind/_mapping.json` 独立映射），人类侧没有对齐。修：`load_answers` 改用随机盲 id、每题**打乱展示顺序**、生成 `_blind_mapping.json`；新增 `check_annotation_blinding.py`（只查 `answer_id` 不查 `model` —— 源文件的 `model` 是合法元数据，一起查会**误报**，而误报会让人把检查关掉，比漏报更糟） |
 
 → **推论**：任何"检查通过"的结论，都必须说明**检查的是文本还是行为、样本量是多少**。
    "没报错"不等于"是对的"。
