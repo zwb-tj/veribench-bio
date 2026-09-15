@@ -196,7 +196,22 @@ def generate(items: list[dict], outdir: Path, annotator: str,
                         "note": "",
                     }, ensure_ascii=False) + "\n")
 
-    # 人读的表
+    # 人读的表。
+    #
+    # ⚠️ 2026-09 重构：原来是「每份回答后面都把 c1–c4 的三档锚点重抄一遍」，
+    #    6 题 × 3 回答 × 4 标准 = **同一套标准被抄了 18 遍**，
+    #    整份表 24,899 字符里绝大部分是重复 ——
+    #    标注者（湿实验背景，非生物统计专业）看完第一题就劝退了。
+    #
+    #    改成：**每题开头列一次标准与三档锚点**，然后**三份回答并排**，
+    #    每份回答下只留一行「c1=__ c2=__ c3=__ c4=__」待填。
+    #    · 阅读量降到几分之一（不用反复重读同一套标准）
+    #    · 判断更一致（标准只读一次，减少"这次读到的是哪版"的漂移）
+    #    · 信息一点没少（锚点仍在，只是不再重复）
+    #
+    #    ⚠️ 必须保留 `### 回答 \`{answer_id}\`` 这个标记的行 ——
+    #    `test_annotation_chain.py` 用 `sheet.count("### 回答")` 断言
+    #    "表里确实有 N 段待评回答"。改格式时漏掉它，那条检查就会误报。
     md = outdir / f"ann_{annotator}_sheet.md"
     lines = [
         f"# 标注表 · 标注者 {annotator}",
@@ -209,6 +224,15 @@ def generate(items: list[dict], outdir: Path, annotator: str,
         f"共 {len(items)} 题（每题的作答见各节）= **{n_units} 个评分点**。",
         f"填好后把分数写进 `ann_{annotator}.jsonl` 的 `score` 字段。",
         "",
+        "**本表怎么读**（每题的结构固定）：",
+        "",
+        "1. 先读该题开头的【标准与档位】—— 这一题的所有标准与 0/1/2 定义只在**这里出现一次**；",
+        "2. 再逐份读下面的回答；",
+        "3. 每份回答末尾有一行 `c1=__ c2=__ …`，把分数填在那里。",
+        "",
+        "> 这样排版是为了让你**只读一遍标准**。原来每份回答都重抄一遍标准，",
+        "> 既浪费时间，又容易读到后面忘了前面。",
+        "",
         "---",
         "",
     ]
@@ -217,19 +241,29 @@ def generate(items: list[dict], outdir: Path, annotator: str,
         lines.append("")
         lines.append(f"**问题**：{it.get('question','')}")
         lines.append("")
+        lines.append("### 本题的标准与档位（**只在此处出现一次**）")
+        lines.append("")
+        for c in it.get("criteria") or []:
+            a = c.get("anchors") or {}
+            lines.append(f"**{c['criterion_id']}** — {c.get('text','')}")
+            lines.append(f"- `0` {a.get('0','')}")
+            lines.append(f"- `1` {a.get('1','')}")
+            lines.append(f"- `2` {a.get('2','')}")
+            lines.append("")
+        lines.append("---")
+        lines.append("")
         for ans in answers.get(it["item_id"], []):
             lines.append(f"### 回答 `{ans['answer_id']}`")
             lines.append("")
             lines.append(f"> {ans['text']}")
             lines.append("")
-            for c in it.get("criteria") or []:
-                a = c.get("anchors") or {}
-                lines.append(f"**{c['criterion_id']}** — {c.get('text','')}")
-                lines.append(f"- `0` {a.get('0','')}")
-                lines.append(f"- `1` {a.get('1','')}")
-                lines.append(f"- `2` {a.get('2','')}")
-                lines.append(f"- 分数：______  备注：")
-                lines.append("")
+            # 只留一行待填，标准定义不再重抄
+            boxes = "  ".join(f"`{c['criterion_id']}=____`"
+                              for c in it.get("criteria") or [])
+            lines.append(f"**打分**：{boxes}")
+            lines.append("")
+            lines.append("备注（0 分和 1 分最好写一句依据）：")
+            lines.append("")
         lines.append("---")
         lines.append("")
     md.write_text("\n".join(lines), encoding="utf-8")
