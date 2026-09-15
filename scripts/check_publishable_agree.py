@@ -85,24 +85,42 @@ def check_delegation() -> list[str]:
 
 
 def count_published(rel: str) -> int | None:
-    """B. 行为检查：问每个消费方它实际数出多少文件。"""
+    """B. 行为检查：数出每个消费方**实际会扫的文件数**。
+
+    ⚠️ **不能靠抓 stdout。** 第一版解析脚本输出里的 "NNN 个" ——
+    在全新 clone 里 `verify_no_answer_leak.py` 会因缺轮换池数据而 **SKIP**，
+    于是它不打印任何计数，我的检查器就报「数不出文件数（输出格式变了？）」，
+    **把一个正常的 SKIP 误报成漂移**。
+
+    那时 CI 会红，而人会怎么办？**把检查关掉。**
+    本项目已经吃过"误报会让人把检查关掉，比漏报更糟"的亏
+    （见 check_annotation_blinding.py 的同一教训）。
+
+    正确做法：**直接导入那个模块，调它自己的 publishable 函数** ——
+    判据是"它们是否真的共用同一实现"，而不是"它们的日志长得像不像"。
+    """
+    import importlib.util
+
     p = ROOT / rel
-    if rel.endswith("print_project_stats.py"):
-        r = subprocess.run([sys.executable, str(p), "--json"], capture_output=True,
-                           text=True, encoding="utf-8", errors="replace", cwd=str(ROOT))
-        try:
-            return int(json.loads(r.stdout)["published_files"])
-        except (ValueError, KeyError, TypeError):
+    if not p.is_file():
+        return None
+    # 让模块能 import 同目录的 publishable_files
+    if str(ROOT / "scripts") not in sys.path:
+        sys.path.insert(0, str(ROOT / "scripts"))
+    try:
+        spec = importlib.util.spec_from_file_location(
+            "consumer_" + p.stem, p)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        fn = getattr(mod, "publishable", None) or getattr(mod, "_publishable", None)
+        if fn is None:
             return None
-    r = subprocess.run([sys.executable, str(p)], capture_output=True, text=True,
-                       encoding="utf-8", errors="replace", cwd=str(ROOT))
-    # 从输出里抓"NNN 个"（两个脚本的措辞不同，抓第一个独立数字即可）
-    out = (r.stdout or "") + (r.stderr or "")
-    for line in out.splitlines():
-        m = re.search(r"(\d[\d,]*)\s*个", line)
-        if m and ("扫描" in line or "内容级" in line or "发布" in line):
-            return int(m.group(1).replace(",", ""))
-    return None
+        out = fn()
+        return len(out)
+    except Exception:  # noqa: BLE001
+        # 导入失败（依赖缺失等）→ 交给调用方按"数不出"处理，
+        # 但**不**把它当成漂移（那是别的检查该管的事）
+        return None
 
 
 def self_test() -> int:
