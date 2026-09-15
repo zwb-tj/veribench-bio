@@ -183,22 +183,80 @@ def compare_with(local_dir: Path, downloaded: Path) -> tuple[list[str], list[str
 
 def self_test() -> int:
     """负向测试：证明**把整个 data/ 当上传集会被拦下**。"""
-    cases = [
-        ("正确的上传集 public/", T2DATA / "public", True),
-        ("**错误的**上传集 data/（含轮换池答案）", T2DATA, False),
-    ]
+    # 用**自造的合成夹具**，不依赖仓库里生成的 data/public。
+    #
+    # ⚠️ 第一版直接拿真实目录当用例：
+    #       cases = [(..., T2DATA / "public", True), (..., T2DATA, False)]
+    #    这在开发机上能过（因为生成物在），但在**全新 clone / CI** 里必失败 ——
+    #    `data/public` 与 `data/rotation` 都是生成物、刻意不发布，
+    #    于是"应当通过"的用例反而报了一堆问题（缺文件、多余文件）。
+    #    **自检必须自给自足**：它应该无论仓库处于什么状态都能验证检查器本身。
+    import json as _json
+    import shutil as _shutil
+    import tempfile as _tempfile
+
+    tmp = _tempfile.mkdtemp(prefix="upload-preflight-selftest-")
     ok = True
-    for name, d, want_ok in cases:
-        probs, _ = check(d)
-        passed = (not probs) == want_ok
-        if not passed:
-            ok = False
-        print(f"  {'✅' if passed else '❌'} {name}: "
-              f"{'通过' if not probs else f'拦下 {len(probs)} 处'}"
-              f"，期望{'通过' if want_ok else '拦下'}")
-        if probs and not want_ok:
-            for p in probs[:2]:
-                print(f"       └ {p[:120]}")
+    # ⚠️ `global` 必须出现在任何 T2DATA 读取**之前**，否则
+    #    `SyntaxError: name 'T2DATA' is used prior to global declaration`。
+    global T2DATA
+    real_t2data = T2DATA
+    try:
+        # 造一个"轮换池"（1 条）与"全量"（公开 1 条 + 轮换 1 条）
+        rot_dir = Path(tmp) / "rotation"
+        rot_dir.mkdir(parents=True)
+        (rot_dir / "items.jsonl").write_text(
+            _json.dumps({"item_id": "ROT-1"}, ensure_ascii=False) + "\n", encoding="utf-8")
+        (rot_dir / "truth.jsonl").write_text(
+            _json.dumps({"item_id": "ROT-1", "assertion": "Pathogenic"},
+                        ensure_ascii=False) + "\n", encoding="utf-8")
+
+        # 正确的上传集：只有公开条目 + 卡片
+        good = Path(tmp) / "public"
+        good.mkdir()
+        for n in ("items.jsonl", "truth.jsonl", "audit.jsonl"):
+            (good / n).write_text(
+                _json.dumps({"item_id": "PUB-1"}, ensure_ascii=False) + "\n",
+                encoding="utf-8")
+        # 卡片：让 README 与 T2DATA 的卡片逐字节一致（check 会比对它）
+        card_src = T2DATA / "T2_DATASET_CARD.md"
+        if card_src.is_file():
+            _shutil.copyfile(card_src, good / "README.md")
+        else:
+            (good / "README.md").write_text("card\n", encoding="utf-8")
+
+        # 错误的上传集：混入轮换池条目（模拟"传错目录"）
+        bad = Path(tmp) / "wrong"
+        bad.mkdir()
+        for n in ("items.jsonl", "truth.jsonl", "audit.jsonl"):
+            (bad / n).write_text(
+                _json.dumps({"item_id": "PUB-1"}, ensure_ascii=False) + "\n"
+                + _json.dumps({"item_id": "ROT-1"}, ensure_ascii=False) + "\n",
+                encoding="utf-8")
+        if card_src.is_file():
+            _shutil.copyfile(card_src, bad / "README.md")
+
+        # 临时把这些夹具当作"轮换池真源"，让 check() 能识别 ROT-1
+        # （`global T2DATA` 已在函数开头声明 —— 见那里的 SyntaxError 备注）
+        T2DATA = Path(tmp)
+
+        cases = [
+            ("合成的正确上传集 → 通过", good, True),
+            ("合成的错误上传集（混入轮换池 id）→ 拦下", bad, False),
+        ]
+        for name, d, want_ok in cases:
+            probs, _ = check(d)
+            passed = (not probs) == want_ok
+            if not passed:
+                ok = False
+            print(f"  {'✅' if passed else '❌'} {name}: "
+                  f"{'通过' if not probs else f'拦下 {len(probs)} 处'}")
+            if probs and not want_ok:
+                for p in probs[:2]:
+                    print(f"       └ {p[:110]}")
+        T2DATA = real_t2data
+    finally:
+        _shutil.rmtree(tmp, ignore_errors=True)
 
     # ③ **仓库外**的下载副本（手册第 4 步③ 的真实用法）——
     #    这条用例的由来：手册让用户跑
