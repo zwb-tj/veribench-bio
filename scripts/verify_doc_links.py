@@ -89,10 +89,25 @@ TOKEN_RE = re.compile(r"`([^`\n]+)`|\[[^\]]*\]\(([^)\n]+)\)")
 SKIP_PREFIX = ("http://", "https://", "#", "pip ", "python", "bash", "docker", "hf ",
                "git ", "cd ", "export ", "$", "~", "-", "*", "|")
 
+#: **占位符 / 省略号**，不是真实路径。
+#:
+#: ⚠️ 这个 bug 只在 Linux 上暴露，Windows 上一切正常 —— 所以必须显式排除，
+#:    不能靠"文件系统说它存在"来判断：
+#:      · Windows 会把路径尾部的点去掉，于是 `rubric/...` 解析成 `rubric`，
+#:        `Path("rubric/...").exists()` 返回 **True**；
+#:      · Linux 上 `rubric/...` 是一个叫 `...` 的真实条目，不存在 → False。
+#:    结果同一个仓库在 Windows 上"文档链接全对"、在 Linux（= GitHub CI）上"有死链"。
+#:    **同一个检查在不同平台上给出不同结论，比它报错更危险** ——
+#:    因为你会信任本机那个绿。
+PLACEHOLDER_RE = re.compile(r"\.\.\.|<[^>]*>|\{[^}]*\}|^\s*[.]+/?$|[…]")
+
 
 def looks_like_path(t: str) -> bool:
     t = t.strip()
     if not t or " " in t or "\n" in t or t.startswith(SKIP_PREFIX):
+        return False
+    # 占位符（`rubric/...`、`<用户名>/...`、`{repo}`）不是路径
+    if PLACEHOLDER_RE.search(t):
         return False
     if re.fullmatch(r"[\w./\-*]+/", t):
         return True
@@ -100,6 +115,51 @@ def looks_like_path(t: str) -> bool:
                     t):
         return True
     return "/" in t and bool(re.fullmatch(r"[\w./\-]+", t))
+
+
+def self_test() -> int:
+    """负向测试 + **跨平台一致性**测试。
+
+    这里最关键的一组用例是"占位符" —— 因为那个 bug 只在 Linux 上暴露：
+    Windows 会把 `rubric/...` 解析成 `rubric`（尾部点被去掉），`exists()` 返回 True；
+    Linux 上不存在。于是**同一个仓库在两平台上结论相反**。
+    所以判据必须是"语法上像不像路径"，而不是"文件系统说它存不存在"。
+    """
+    MUST_NOT_BE_PATH = [
+        "rubric/...",                     # ← 真实踩到的那个
+        "tasks/T2/data/public/...",
+        "<用户名>/biobench-lite-t1-hg002-chr20",   # 占位符
+        "{repo}/items.jsonl",
+        "…",
+        "docs/DATACARD.md",               # 这些是**真路径**，见下一组
+    ]
+    MUST_BE_PATH = [
+        "docs/DATACARD.md",
+        "scripts/verify_doc_links.py",
+        "tasks/T2/data/public/",
+        "README.md",
+        "rubric/items/items_v1.2.jsonl",
+    ]
+    ok = True
+    for t in MUST_NOT_BE_PATH:
+        if t in MUST_BE_PATH:
+            continue
+        got = looks_like_path(t)
+        good = not got
+        ok = ok and good
+        print(f"  {'✅' if good else '❌'} 不当作路径：{t!r}")
+    for t in MUST_BE_PATH:
+        got = looks_like_path(t)
+        ok = ok and got
+        print(f"  {'✅' if got else '❌'} 当作路径：  {t!r}")
+
+    # 跨平台：`rubric/...` 在 Windows 上 exists()=True，绝不能被当成"存在即合法"
+    import pathlib
+    p = pathlib.Path("rubric/...")
+    print(f"  ℹ️  本机 Path('rubric/...').exists() = {p.exists()}"
+          f"  （Windows=True / Linux=False —— 正因如此，判据不能依赖它）")
+    print("跨平台自检 " + ("全部通过" if ok else "**有失败**"))
+    return 0 if ok else 1
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -112,7 +172,11 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="文档路径引用检查")
     ap.add_argument("--include-research", action="store_true",
                     help="连 ../research/ 一起扫（那里是调研记录，引用更随意）")
+    ap.add_argument("--self-test", action="store_true", help="跨平台负向测试")
     args = ap.parse_args(argv)
+
+    if args.self_test:
+        return self_test()
 
     ALLOW = _allow_missing()
     #: 只有**目录项**（以 "/" 结尾）才做前缀匹配，见下面的说明。

@@ -31,7 +31,15 @@ def add(claim: str, ok: bool | None, ev: str) -> None:
 
 
 def sh(cmd: list[str]) -> tuple[int, str]:
-    p = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    # ⚠️ 工具不存在时 `subprocess.run` 抛 `FileNotFoundError`，不是返回非零码。
+    #    本脚本要调用 `docker`，而 CI / 第三方机器上**可能没有 docker** ——
+    #    实测在 Linux 无 docker 环境下这里直接 traceback。
+    #    **崩掉 ≠ 跳过**：前者会被读成"仓库坏了"。这里显式转成 (127, 消息)。
+    try:
+        p = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8",
+                           errors="replace")
+    except FileNotFoundError:
+        return 127, f"(工具不存在：{cmd[0]})"
     return p.returncode, ((p.stdout or "") + (p.stderr or "")).strip()
 
 

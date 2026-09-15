@@ -1,8 +1,8 @@
 {
   "_comment": "镜像 digest 与构建源码的对应凭据。由 scripts/record_image_digest.py 写入，由 verify_*_claims.py / run_all_checks.py 核对。改动任何构建输入都必须重建镜像、重跑、再重记。",
   "task": "T1",
-  "image_id": "sha256:985cbe81c000a5b3b771e2d30ba20bf94cd35af5efcb672201659740774b3abf",
-  "source_sha256": "12a7cb4819fffe2e3ceeacc2114eb877568adff47972565154960925b8f3fb9f",
+  "image_id": "sha256:6b655f64852b78ca768d836040cf87ce8b2bd28332a02ced9d2359db77849db8",
+  "source_sha256": "e04c4c3d990993ff96fe12ef7474a21183cc5e5ec289c0ce04ecf714b749f71b",
   "files": [
     "Dockerfile",
     "grade.py",
@@ -15,7 +15,7 @@
     "scripts/check_no_gsl.sh",
     "scripts/patch_rtg_launcher.sh"
   ],
-  "recorded_at": "2026-09-15T05:39:49+00:00",
+  "recorded_at": "2026-09-15T10:13:58+00:00",
   "note": "2026-09 修正：此前 result.json pin 的 sha256:c33862bb… 是「剥离 rtg 捆绑 JRE 之前」的旧镜像（469 MB，含 jre/lib/amd64），与当前 Dockerfile（第 99 行 rm -rf jre，产物 356 MB）**对不上**。本文件记录的才是当前源码构建出的镜像。",
   "run_evidence": {
     "score": "0.84655",

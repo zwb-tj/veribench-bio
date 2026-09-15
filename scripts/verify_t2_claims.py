@@ -73,6 +73,16 @@ def check_image_matches_source(image: str) -> list[str] | None:
     def sha(b: bytes) -> str:
         return hashlib.sha256(b).hexdigest()
 
+    # ⚠️ `docker` 不存在时必须 **SKIP**，不能崩。
+    #    实测：在 Linux CI 环境（没有 docker）里，旧代码直接抛
+    #    `FileNotFoundError: [Errno 2] No such file or directory: 'docker'` ——
+    #    整个脚本 traceback 退出，**报告的是"脚本崩了"而不是"跳过了"**。
+    #    脚本崩掉比检查失败更糟：看日志的人会以为是仓库坏了。
+    #    兄弟脚本 `verify_oracle.py` 一直是先 `docker image inspect` 判存在性，
+    #    这里对齐同样的做法。
+    if shutil.which("docker") is None:
+        return None
+
     cid = subprocess.run(["docker", "create", image], capture_output=True, text=True)
     if cid.returncode != 0:
         return None

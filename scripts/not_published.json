@@ -12,6 +12,7 @@
     "tasks/T1/_runs_repro2": "复现运行产物（digest sha256:1f5c665b…）。`verify_t1_claims.py` 会扫全部 `_runs_repro*` 找与 pin 一致的那一次。",
     "tasks/T1/_runs_repro3": "复现运行产物（digest sha256:e75867d5…，含四道检查的 GSL 门禁），同样不发布",
     "tasks/T1/_runs_repro4": "复现运行产物（改名 veribench-bio 后重建镜像 digest sha256:985cbe81…，走默认路径实跑复现 0.84655 / 12,254）。⚠️ 目录名必须沿用 `_runs_reproN` 约定 —— `verify_t1_claims.py` 用 `_runs_repro*` 通配找「与 pin 一致的那次实跑」；我一开始命名 `_runs_namecheck`，导致该检查报『没有与该镜像一致的实跑证据』。**约定不是形式，它是被代码依赖的接口。**",
+    "tasks/T1/_runs_repro5": "复现运行产物（换行符统一为 LF 之后重建镜像 digest sha256:6b655f64…，实跑复现 0.84655 / 12,254）。",
     "tasks/T2/data/_cache": "ClinVar 原始 VCF（~184 MB），由取数脚本重新下载",
     "tasks/T2/data/_work": "运行期中间产物",
     "tasks/T2/_runs": "T2 运行产物（判分结果、日志）。与 T1 的 _runs 同理：**不随仓库发布**。此前漏登记（和 T1 一样的漏法 —— 证明「枚举式登记」这个做法本身不可靠，已加检查把漏登记变成失败）。",

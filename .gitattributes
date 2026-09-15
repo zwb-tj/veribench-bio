@@ -1,0 +1,66 @@
+# ==============================================================================
+# 换行符规范化 —— **这是可复现性的一部分，不是编辑器偏好**
+# ==============================================================================
+#
+# 为什么必须有这个文件
+# --------------------
+# 2026-09 实测发现：本机（Windows）工作区里的 `tasks/T2/grade.py` 是 **LF**，
+# 而从 GitHub 重新 clone 出来的是 **CRLF** —— 因为 git 的 `core.autocrlf=true`
+# 且仓库里**没有** `.gitattributes`，于是"入库 LF、检出转 CRLF"。
+#
+# 后果不是"看起来不一样"，而是**同一份源码在不同机器上算出不同的哈希**：
+#   · `record_image_digest.py` 的 `source_sha256`（绑定镜像 digest 的那个）
+#     在 Windows 与 Linux 上**不相等** → 同一条记录，一台报 ✅ 一台报 ❌
+#   · `verify_t1_claims.py` / `verify_t2_claims.py` 里所有 sha256 比对同样受影响
+#   · 而 GitHub CI 跑在 **Linux** 上，本地开发在 **Windows** 上 ——
+#     正好是最容易撞上的组合
+#
+# 这就是"可复现性"的反面：**别人 clone 下来，字节和你的不一样。**
+# 对一个卖点是"每一步都能被你自己验一遍"的项目，这是硬伤。
+#
+# 所以这里**强制所有文本文件一律 LF**（`eol=lf`），二进制显式标为 binary。
+# 这样 Windows / Linux / macOS 上检出的字节**完全一致**。
+# ==============================================================================
+
+# --- 默认：一律 LF -----------------------------------------------------------
+* text=auto eol=lf
+
+# --- 明确按文本处理、强制 LF（这些是构建输入，哈希被 pin 住）-----------------
+*.py      text eol=lf
+*.sh      text eol=lf
+*.md      text eol=lf
+*.json    text eol=lf
+*.jsonl   text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.toml    text eol=lf
+*.cfg     text eol=lf
+*.txt     text eol=lf
+*.csv     text eol=lf
+*.tsv     text eol=lf
+*.html    text eol=lf
+*.ps1     text eol=lf
+Dockerfile        text eol=lf
+*.dockerignore    text eol=lf
+.gitignore        text eol=lf
+.gitattributes    text eol=lf
+LICENSE   text eol=lf
+NOTICE    text eol=lf
+
+# --- 二进制：不要碰 -----------------------------------------------------------
+*.gz      binary
+*.bam     binary
+*.bai     binary
+*.tbi     binary
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.webp    binary
+*.gif     binary
+*.zip     binary
+*.so      binary
+*.jar     binary
+
+# --- Git 在 diff / 语言统计上的行为 -------------------------------------------
+*.jsonl   -diff
+*.csv     -diff

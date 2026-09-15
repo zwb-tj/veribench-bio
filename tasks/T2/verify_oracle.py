@@ -97,7 +97,14 @@ def main(argv: list[str] | None = None) -> int:
         print(f"SKIP: 缺 {truth}（T2 数据未生成）")
         return 0
 
-    # Docker 不可用就 SKIP，不假装通过
+    # Docker 不可用就 SKIP，不假装通过。
+    # ⚠️ 必须先 `shutil.which` 判存在性：`subprocess.run(["docker", ...])`
+    #    在 docker **不存在**时抛 `FileNotFoundError`，而不是返回非零码。
+    #    （实测：Linux CI 里本脚本直接 traceback 退出 —— 报告成"脚本崩了"，
+    #      而不是"跳过了"。**崩掉比失败更糟**，看日志的人会以为仓库坏了。）
+    if shutil.which("docker") is None:
+        print(f"SKIP: 本机没有 docker —— 无法实跑 {IMAGE}（**不算通过**）")
+        return 0
     if subprocess.run(["docker", "image", "inspect", IMAGE, "--format", "{{.Id}}"],
                       capture_output=True).returncode != 0:
         print(f"SKIP: 镜像 {IMAGE} 不存在或无 Docker（先构建）")
