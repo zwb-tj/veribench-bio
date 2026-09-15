@@ -87,6 +87,7 @@ derivation  review_status  created_at
 |---|---|---|---|---|
 | **T1** 变异检出 | authoritative | GIAB / NIST v5.0q（HG002） | **低** | — |
 | **T2** 变异解读 | authoritative | ClinVar **3★ reviewed by expert panel**（判据集取 ClinGen EREPO） | **极高** | 三层：结构去标识 + 时间切分 + 25% 金丝雀 |
+| **T3** 蛋白结构 | authoritative | **RCSB PDB mmCIF 原文**（CC0-1.0），由 `_atom_site` **确定性重算** | **低–中** | 程序化固定题池（不挑"好看的"）；但见下方**能力声明限制** |
 | **rubric** 审稿式开放题 | consensus | 双标注 + 仲裁确立的共识 | 中 | **尚未取得**真实双标注（§6） |
 
 **T2 的三层防污染（具体做法）**：
@@ -105,6 +106,12 @@ derivation  review_status  created_at
   参照实现必须唯一锁定 —— `kallisto ≠ salmon`，两者输出数值不可互换。
 - **T1 是刻意的范围收缩**：只考 chr20:10–12 Mb（约 2 Mb）且**预置已比对好的 BAM**，
   不考比对。这是为了守住"全集 CPU <30 分钟"，不是能力缺失。
+- **T3 不得用来声称"模型理解蛋白结构"。** 两个理由，都不是谦虚：
+  1. **常见条目可能已在训练集中。** 题池含 1CRN（Crambin）、4HHB（血红蛋白）
+     这类教科书级条目；我们**无法核实**训练集内容，所以不猜测、也不声称。
+  2. **真值可由原文重算** —— "知道答案"与"会算"在这里几乎等价。
+  → 因此 T3 主张的是**能否按规范确定性地重算**与**过程是否可复现**，
+  **不是**能力。这一条同时写在 `tasks/T3/README.md` §2。
 
 ### 4.2 评测层面
 - **rubric 支柱缺少人类天花板。** 核心方法论主张是"**人类之间的一致率是裁判可靠性的上限**"，
@@ -161,6 +168,20 @@ derivation  review_status  created_at
 | **镜像 pin** | `sha256:f1bcfdea1ae5…`，绑定 `Dockerfile`/`run.sh`/`grade.py`/`items.jsonl`/`check_no_leakage.py` 5 个构建输入 | `tasks/T2/IMAGE_DIGEST.json`（2026-09 补：此前 T2 **连 pin 都没有**） |
 | **镜像内容与源码逐字节一致** | `/work` 下 4 个文件与仓库源码 sha256 全等；**镜像内不含 `truth.jsonl`** | `docker cp` 取出比对（`verify_t2_claims.py` 自动跑） |
 | **重数过的条数** | 4,726 = 公开 3,789 + 轮换 937（不重不漏）；金丝雀 1,181 | 2026-09 独立重数（非读文档） |
+
+### T3
+| 项 | 值 | 证据 |
+|---|---|---|
+| 题量 | **20 条**（PDB 条目），mmCIF 合计 **3.9 MB**（69 KB – 1.0 MB/条） | `tasks/T3/data/` |
+| 真值来源 | **RCSB PDB mmCIF 原文**，由 `_atom_site` 重算；**无任何手工填写的数值** | 构建期门禁 D 重解析并与 `truth.jsonl` 逐字段比对 |
+| 许可 | **CC0-1.0**（wwPDB 官方 usage-policies 原文，一手核实）——可再分发、可进镜像、**无需署名** | `research/T3_SOURCES.md` §1 |
+| 容器端到端 | oracle 得分 **1.0**，量命中 **120/120**，**1.4 秒** | `docker run veribench-bio/t3:dev` |
+| **确定性** | 连跑 **5 次**，`result.json` **逐字节相同**（同一 sha256） | 5 次容器实跑 |
+| 计数独立复核 | **20/20 一致**（Linux 容器里用 `grep` 数原子行，与解析器不共享代码） | 2026-09 跨 OS 交叉核对 |
+| 变异测试 | 注入 **5 个**已知错误，**全部被抓** | bool 冒充 int / 距离恒真 / 未作答算满分 / 交叉核对恒真 / 提前 break |
+| 镜像 | 128 MB，**构建期即执行泄漏门禁**；**镜像内不含 `truth.jsonl`** | 构建日志 + `find` 实测 |
+| **镜像 pin** | `sha256:50200a2f1684…`，绑定 **26 个**构建输入（含 20 个 mmCIF） | `tasks/T3/IMAGE_DIGEST.json` |
+| **计数口径** | **统计全部 model**（NMR 结构会把所有 model 的原子都列出）。`model_count` 作为判分量显式报告，口径不再隐藏 | 审查 F3 修复；题池中 `1L2Y` 为 38 model |
 
 ### 容器（T1）
 | 项 | 值 |
