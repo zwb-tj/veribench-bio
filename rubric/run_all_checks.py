@@ -115,6 +115,13 @@ def main() -> int:
              f"{F}/sample_items.jsonl", "--check-only"], expect_zero=True),
         run([py, f"{S}/make_annotation_sheets.py", "--validate",
              f"{F}/fixture_ann_A.jsonl"]),
+        # ⚠️ **盲评必须真的是盲的。** 2026-09 发现：标注表把三份回答标成
+        #    `BLIND-weak`/`BLIND-medium`/`BLIND-strong` —— `weak`/`strong`
+        #    本身就是质量标签，而说明书写着「编号本身不告诉你哪份好」，**那句话是假的**。
+        #    后果不是"不够优雅"：标注者照标签走 → κ 假性偏高 → 人类天花板虚高 →
+        #    judge 的"相对上限"被压低 → **结论反了**，而数据看起来完全正常。
+        run([py, f"{S}/check_annotation_blinding.py", "--self-test"]),
+        run([py, f"{S}/check_annotation_blinding.py"]),
     ]
 
     print("\n=== 2b) 人工标注链路端到端演练 ===")

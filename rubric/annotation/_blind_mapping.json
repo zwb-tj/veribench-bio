@@ -1,0 +1,362 @@
+[
+  {
+    "item_id": "R-0001",
+    "level": "medium",
+    "blind_id": "707b89aee799"
+  },
+  {
+    "item_id": "R-0001",
+    "level": "strong",
+    "blind_id": "bd83a376e832"
+  },
+  {
+    "item_id": "R-0001",
+    "level": "weak",
+    "blind_id": "e61afdc04a56"
+  },
+  {
+    "item_id": "R-0002",
+    "level": "medium",
+    "blind_id": "601385cc7cab"
+  },
+  {
+    "item_id": "R-0002",
+    "level": "strong",
+    "blind_id": "61a74ea694c6"
+  },
+  {
+    "item_id": "R-0002",
+    "level": "weak",
+    "blind_id": "6ba5d4f9706e"
+  },
+  {
+    "item_id": "R-0003",
+    "level": "medium",
+    "blind_id": "dd428f402baa"
+  },
+  {
+    "item_id": "R-0003",
+    "level": "strong",
+    "blind_id": "ba9eb4853bfe"
+  },
+  {
+    "item_id": "R-0003",
+    "level": "weak",
+    "blind_id": "668a3e728f95"
+  },
+  {
+    "item_id": "R-0004",
+    "level": "medium",
+    "blind_id": "afe8b3db19a6"
+  },
+  {
+    "item_id": "R-0004",
+    "level": "strong",
+    "blind_id": "0fbe1e74fb71"
+  },
+  {
+    "item_id": "R-0004",
+    "level": "weak",
+    "blind_id": "37d1fd346e0c"
+  },
+  {
+    "item_id": "R-0005",
+    "level": "medium",
+    "blind_id": "743812c9e7b2"
+  },
+  {
+    "item_id": "R-0005",
+    "level": "strong",
+    "blind_id": "6096d0f1fa38"
+  },
+  {
+    "item_id": "R-0005",
+    "level": "weak",
+    "blind_id": "9704bb0bbdb6"
+  },
+  {
+    "item_id": "R-0006",
+    "level": "medium",
+    "blind_id": "dc644182f0dc"
+  },
+  {
+    "item_id": "R-0006",
+    "level": "strong",
+    "blind_id": "de0e6518c737"
+  },
+  {
+    "item_id": "R-0006",
+    "level": "weak",
+    "blind_id": "c40703e601ee"
+  },
+  {
+    "item_id": "R-0007",
+    "level": "medium",
+    "blind_id": "b95b276b8d59"
+  },
+  {
+    "item_id": "R-0007",
+    "level": "strong",
+    "blind_id": "33a70fa6063d"
+  },
+  {
+    "item_id": "R-0007",
+    "level": "weak",
+    "blind_id": "4b17abe6d06e"
+  },
+  {
+    "item_id": "R-0008",
+    "level": "medium",
+    "blind_id": "030ef495ad28"
+  },
+  {
+    "item_id": "R-0008",
+    "level": "strong",
+    "blind_id": "31eddf0aef0f"
+  },
+  {
+    "item_id": "R-0008",
+    "level": "weak",
+    "blind_id": "95f6e8c41e3c"
+  },
+  {
+    "item_id": "R-0009",
+    "level": "medium",
+    "blind_id": "361db3b00fa4"
+  },
+  {
+    "item_id": "R-0009",
+    "level": "strong",
+    "blind_id": "6a4888d0f7ec"
+  },
+  {
+    "item_id": "R-0009",
+    "level": "weak",
+    "blind_id": "44b2161b76e2"
+  },
+  {
+    "item_id": "R-0010",
+    "level": "medium",
+    "blind_id": "0999e375eeb7"
+  },
+  {
+    "item_id": "R-0010",
+    "level": "strong",
+    "blind_id": "ec15fdfa3ace"
+  },
+  {
+    "item_id": "R-0010",
+    "level": "weak",
+    "blind_id": "15d1dc8eb76a"
+  },
+  {
+    "item_id": "R-0011",
+    "level": "medium",
+    "blind_id": "e35bd34cfde0"
+  },
+  {
+    "item_id": "R-0011",
+    "level": "strong",
+    "blind_id": "56744ae2ed03"
+  },
+  {
+    "item_id": "R-0011",
+    "level": "weak",
+    "blind_id": "4d290174d534"
+  },
+  {
+    "item_id": "R-0012",
+    "level": "medium",
+    "blind_id": "d765697fb1cf"
+  },
+  {
+    "item_id": "R-0012",
+    "level": "strong",
+    "blind_id": "30f643085d50"
+  },
+  {
+    "item_id": "R-0012",
+    "level": "weak",
+    "blind_id": "82c3efdda13f"
+  },
+  {
+    "item_id": "R-0013",
+    "level": "medium",
+    "blind_id": "36aa9a37b466"
+  },
+  {
+    "item_id": "R-0013",
+    "level": "strong",
+    "blind_id": "f75a3e954425"
+  },
+  {
+    "item_id": "R-0013",
+    "level": "weak",
+    "blind_id": "8920c1b5ac2d"
+  },
+  {
+    "item_id": "R-0014",
+    "level": "medium",
+    "blind_id": "752c20efa100"
+  },
+  {
+    "item_id": "R-0014",
+    "level": "strong",
+    "blind_id": "0531acd8ab16"
+  },
+  {
+    "item_id": "R-0014",
+    "level": "weak",
+    "blind_id": "ca82179e2248"
+  },
+  {
+    "item_id": "R-0015",
+    "level": "medium",
+    "blind_id": "45a898896af2"
+  },
+  {
+    "item_id": "R-0015",
+    "level": "strong",
+    "blind_id": "35425392b333"
+  },
+  {
+    "item_id": "R-0015",
+    "level": "weak",
+    "blind_id": "8a3cc38af93e"
+  },
+  {
+    "item_id": "R-0016",
+    "level": "medium",
+    "blind_id": "d1a6748666fe"
+  },
+  {
+    "item_id": "R-0016",
+    "level": "strong",
+    "blind_id": "e81ae7fdd9e0"
+  },
+  {
+    "item_id": "R-0016",
+    "level": "weak",
+    "blind_id": "da813a59ef11"
+  },
+  {
+    "item_id": "R-0017",
+    "level": "medium",
+    "blind_id": "c5e849a0d01d"
+  },
+  {
+    "item_id": "R-0017",
+    "level": "strong",
+    "blind_id": "1d7725b95d3e"
+  },
+  {
+    "item_id": "R-0017",
+    "level": "weak",
+    "blind_id": "df85f2889ea8"
+  },
+  {
+    "item_id": "R-0018",
+    "level": "medium",
+    "blind_id": "a53032c2292a"
+  },
+  {
+    "item_id": "R-0018",
+    "level": "strong",
+    "blind_id": "b24ed63bf5a2"
+  },
+  {
+    "item_id": "R-0018",
+    "level": "weak",
+    "blind_id": "5924a2008901"
+  },
+  {
+    "item_id": "R-0019",
+    "level": "medium",
+    "blind_id": "624e0d67bdec"
+  },
+  {
+    "item_id": "R-0019",
+    "level": "strong",
+    "blind_id": "bd602943edc5"
+  },
+  {
+    "item_id": "R-0019",
+    "level": "weak",
+    "blind_id": "e8e18b7eb278"
+  },
+  {
+    "item_id": "R-0020",
+    "level": "medium",
+    "blind_id": "92b838799d47"
+  },
+  {
+    "item_id": "R-0020",
+    "level": "strong",
+    "blind_id": "da9c0b6336ae"
+  },
+  {
+    "item_id": "R-0020",
+    "level": "weak",
+    "blind_id": "b2ed6898fd44"
+  },
+  {
+    "item_id": "R-0021",
+    "level": "medium",
+    "blind_id": "2a43534a97d8"
+  },
+  {
+    "item_id": "R-0021",
+    "level": "strong",
+    "blind_id": "36da56306942"
+  },
+  {
+    "item_id": "R-0021",
+    "level": "weak",
+    "blind_id": "304599642673"
+  },
+  {
+    "item_id": "R-0022",
+    "level": "medium",
+    "blind_id": "520fea51b4cf"
+  },
+  {
+    "item_id": "R-0022",
+    "level": "strong",
+    "blind_id": "ec2238cda8dc"
+  },
+  {
+    "item_id": "R-0022",
+    "level": "weak",
+    "blind_id": "956ec7befe8a"
+  },
+  {
+    "item_id": "R-0023",
+    "level": "medium",
+    "blind_id": "3b76dcba48f3"
+  },
+  {
+    "item_id": "R-0023",
+    "level": "strong",
+    "blind_id": "f93e55b633e1"
+  },
+  {
+    "item_id": "R-0023",
+    "level": "weak",
+    "blind_id": "73d93d86c225"
+  },
+  {
+    "item_id": "R-0024",
+    "level": "medium",
+    "blind_id": "dc9a12559bf0"
+  },
+  {
+    "item_id": "R-0024",
+    "level": "strong",
+    "blind_id": "ff4af4d1fe9f"
+  },
+  {
+    "item_id": "R-0024",
+    "level": "weak",
+    "blind_id": "8a4d0035e3ad"
+  }
+]

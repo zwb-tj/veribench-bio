@@ -115,6 +115,20 @@ def load_answers(path: Path) -> dict[str, list[dict]]:
 
     这个缺陷一直没暴露，是因为人工标注这一步**从来没有真正跑过**；
     而它又是整个第三支柱声明的硬阻塞。**工具与声明的流程对不上，没人发现。**
+
+    ⚠️ **盲评（2026-09 修复）**：原版直接把 `model` 字段当 `answer_id`，
+    于是标注表里出现 `BLIND-weak` / `BLIND-medium` / `BLIND-strong` ——
+    `weak`/`strong` **本身就是质量标签**，与说明书里那句
+    「编号本身不告诉你哪份好」**直接矛盾**，也与
+    「不要被长度影响」这条核心规则冲突（实测三档长度严格递增 175/207/360 字符）。
+
+    后果不是"不够优雅"，而是**结论会反过来**：标注者照着标签走 → κ 假性偏高 →
+    人类天花板虚高 → judge 的"相对上限"被压低。**而数据看起来完全正常。**
+
+    现在改成用**随机盲 id**，与判官侧完全一致
+    （`fixtures/answers/judge_blind/_mapping.json` 一直是对的：
+    随机 12 位十六进制 + 独立映射表）。判定顺序也**打乱**，
+    避免"第一个总是最差"这种位置泄露。
     """
     by_item: dict[str, list[dict]] = {}
     for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -129,12 +143,42 @@ def load_answers(path: Path) -> dict[str, list[dict]]:
         model = str(r.get("model") or "model")
         run = r.get("run")
         aid = model if (run in (None, 1)) else f"{model}#{run}"
-        by_item.setdefault(iid, []).append({"answer_id": aid, "text": text})
+        #: 档位（weak/medium/strong）—— **只用于事后分析，绝不进标注表**
+        level = model.split("-")[-1] if model.startswith("BLIND-") else None
+        by_item.setdefault(iid, []).append(
+            {"answer_id": aid, "text": text, "_level": level})
     for iid, lst in by_item.items():
         ids = [x["answer_id"] for x in lst]
         if len(set(ids)) != len(ids):
             raise SystemExit(f"[错误] {iid}: answer_id 重复 {ids} —— 无法区分是几份回答")
+
+    # ---- 换成随机盲 id（并打乱顺序）----------------------------------------
+    # 用确定性的种子（题号 + 答案内容），这样**同一个仓库重新生成会得到同样的 id**，
+    # 便于复现；但 id 本身与档位无关，无法从 id 反推质量。
+    import hashlib as _hashlib
+    import random as _random
+
+    for iid, lst in by_item.items():
+        for idx, a in enumerate(lst):
+            seed_src = f"{iid}\0{idx}\0{a['text'][:200]}".encode("utf-8")
+            h = _hashlib.sha256(seed_src).hexdigest()[:12]
+            a["answer_id"] = h
+        # 打乱展示顺序，避免"位置即档位"
+        _random.Random(iid).shuffle(lst)
+        #: 映射表（谁来都能核对，但**不进标注表**）
+        by_item[iid] = lst
     return by_item
+
+
+def blind_map_for(answers: dict[str, list[dict]]) -> dict[tuple[str, str], str]:
+    """返回 {(item_id, level): blind_id} —— 事后分析用（**不给标注者**）。"""
+    out: dict[tuple[str, str], str] = {}
+    for iid, lst in answers.items():
+        for a in lst:
+            lvl = a.get("_level")
+            if lvl:
+                out[(iid, lvl)] = a["answer_id"]
+    return out
 
 
 def generate(items: list[dict], outdir: Path, annotator: str,
@@ -195,6 +239,20 @@ def generate(items: list[dict], outdir: Path, annotator: str,
                         "annotator": annotator,
                         "note": "",
                     }, ensure_ascii=False) + "\n")
+
+    # 盲 id → 档位 的映射表。**绝不能给标注者看**，但必须留下 ——
+    # 否则事后无法把"哪份是哪档"对回来，试点就白做了。
+    #
+    # ⚠️ 这份映射与判官侧 `fixtures/answers/judge_blind/_mapping.json` 是同一思路：
+    #    随机 id + 独立映射表。**盲评靠的就是这两者分离。**
+    bmap = blind_map_for(answers)
+    if bmap:
+        map_p = outdir / "_blind_mapping.json"
+        rows_out = [{"item_id": iid, "level": lvl, "blind_id": bid}
+                    for (iid, lvl), bid in sorted(bmap.items())]
+        map_p.write_text(json.dumps(rows_out, ensure_ascii=False, indent=2) + "\n",
+                         encoding="utf-8")
+        print(f"  盲 id 映射 → {map_p}（**不要给标注者看**）")
 
     # 人读的表。
     #

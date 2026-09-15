@@ -1,0 +1,92 @@
+[
+  {
+    "item_id": "R-0001",
+    "level": "medium",
+    "blind_id": "707b89aee799"
+  },
+  {
+    "item_id": "R-0001",
+    "level": "strong",
+    "blind_id": "bd83a376e832"
+  },
+  {
+    "item_id": "R-0001",
+    "level": "weak",
+    "blind_id": "e61afdc04a56"
+  },
+  {
+    "item_id": "R-0002",
+    "level": "medium",
+    "blind_id": "601385cc7cab"
+  },
+  {
+    "item_id": "R-0002",
+    "level": "strong",
+    "blind_id": "61a74ea694c6"
+  },
+  {
+    "item_id": "R-0002",
+    "level": "weak",
+    "blind_id": "6ba5d4f9706e"
+  },
+  {
+    "item_id": "R-0003",
+    "level": "medium",
+    "blind_id": "dd428f402baa"
+  },
+  {
+    "item_id": "R-0003",
+    "level": "strong",
+    "blind_id": "ba9eb4853bfe"
+  },
+  {
+    "item_id": "R-0003",
+    "level": "weak",
+    "blind_id": "668a3e728f95"
+  },
+  {
+    "item_id": "R-0004",
+    "level": "medium",
+    "blind_id": "afe8b3db19a6"
+  },
+  {
+    "item_id": "R-0004",
+    "level": "strong",
+    "blind_id": "0fbe1e74fb71"
+  },
+  {
+    "item_id": "R-0004",
+    "level": "weak",
+    "blind_id": "37d1fd346e0c"
+  },
+  {
+    "item_id": "R-0005",
+    "level": "medium",
+    "blind_id": "743812c9e7b2"
+  },
+  {
+    "item_id": "R-0005",
+    "level": "strong",
+    "blind_id": "6096d0f1fa38"
+  },
+  {
+    "item_id": "R-0005",
+    "level": "weak",
+    "blind_id": "9704bb0bbdb6"
+  },
+  {
+    "item_id": "R-0006",
+    "level": "medium",
+    "blind_id": "dc644182f0dc"
+  },
+  {
+    "item_id": "R-0006",
+    "level": "strong",
+    "blind_id": "de0e6518c737"
+  },
+  {
+    "item_id": "R-0006",
+    "level": "weak",
+    "blind_id": "c40703e601ee"
+  }
+]

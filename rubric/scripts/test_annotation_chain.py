@@ -83,7 +83,7 @@ def main(argv: list[str] | None = None) -> int:
         print("SKIP: 缺裁判产出（judge_blind/_mapping.json 或 judge_out/），无法取底分")
         return 0
     bmap = json.loads(blind_map_p.read_text(encoding="utf-8"))
-    # level 名 → 作答文件里的 model 名（answers_flat 用的是 BLIND-weak 这种）
+    #: (题, 档位) → 判官侧的随机盲 id（用来取那一份的裁判分数）
     bid = {(m["item_id"], m["level"]): m["blind_id"] for m in bmap}
 
     def judge_scores(iid: str, level: str) -> dict[str, int]:
@@ -119,13 +119,36 @@ def main(argv: list[str] | None = None) -> int:
               f"（作答文件里有 {len(answers)} 份）")
         ok = ok and has_answers
 
+        # ⚠️ 2026-09：标注表现在用的是**随机盲 id**（不再是 `BLIND-weak`），
+        #    所以不能再用 `answer_id.split("-")[-1]` 反推档位 —— 那是旧格式的假设。
+        #    必须查生成时留下的 `_blind_mapping.json`。
+        #    （这正是盲评的代价与意义：id 与档位之间**没有可推导的关系**。
+        #      测试也必须照这个真实约束走，而不是绕过它。）
+        ann_map_p = tmp / "_blind_mapping.json"
+        if not ann_map_p.is_file():
+            print("  ❌ 生成器没写出 _blind_mapping.json —— 事后无法把 id 对回档位")
+            return 1
+        ann_map = json.loads(ann_map_p.read_text(encoding="utf-8"))
+        id_to_level = {(m["item_id"], m["blind_id"]): m["level"] for m in ann_map}
+        print(f"  ✅ 盲 id 映射 {len(ann_map)} 条（ann_* ↔ 档位）")
+
+        # 盲评必须真的是盲的：id 里不许出现档位词
+        leaked = [m for m in ann_map
+                  if any(w in m["blind_id"].lower()
+                         for w in ("weak", "medium", "strong"))]
+        print(f"  {'✅' if not leaked else '❌'} 盲 id 不含档位词"
+              f"（检查了 {len(ann_map)} 条）")
+        ok = ok and not leaked
+
         print("\n=== 2) 合成两位标注者（A=裁判第一轮分数；B=A 扰动 15%）===")
         rng = random.Random(args.seed)
         rows_a = [json.loads(l) for l in a_p.read_text(encoding="utf-8").splitlines() if l.strip()]
         n_filled = 0
         for r in rows_a:
-            # answers_flat 里的 model 是 BLIND-weak 这种；映射回 level
-            lvl = str(r["answer_id"]).split("-")[-1]
+            # 通过 `_blind_mapping.json` 把随机盲 id 查回档位（**不能从 id 推导**）
+            lvl = id_to_level.get((r["item_id"], str(r["answer_id"])))
+            if lvl is None:
+                continue
             sc = judge_scores(r["item_id"], lvl)
             v = sc.get(r["criterion_id"])
             if v is None:
