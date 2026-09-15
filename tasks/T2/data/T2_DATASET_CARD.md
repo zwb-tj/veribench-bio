@@ -143,17 +143,19 @@ score = 0.6 × classification_credit + 0.4 × criteria_f1     ← 权重是声�
 
 ## 怎么用
 
-> ### ⚠️ 状态：本数据集**尚未上传**（2026-09 实测）
+> ### ✅ 状态：已上传（2026-09）
 >
-> HF 仓库 `zwb-tj/biobench-lite-t2-acmg-variant-interpretation` **已创建，但存储为 0 B** ——
-> 一个文件都没传（`hf repo list --format json` 实测 `storage = "0 B"`）。
-> 所以下面那条 `hf download` **现在下下来是空的**。
+> 仓库 `zwb-tj/biobench-lite-t2-acmg-variant-interpretation`，
+> **5 个文件 / 4.9 MB**（3,789 条 + HF 自建的 `.gitattributes`）。
+> 上传后从 HF 重新下载并**逐字节 sha256 比对通过**。
 >
-> 待上传的是 `tasks/T2/data/public/` 里的 3,789 条（`items.jsonl` + `truth.jsonl` + `audit.jsonl`）。
-> **`tasks/T2/data/{items,truth,audit}.jsonl`（全量 4,726 条）不得上传** ——
+> 包含：`items.jsonl`（题面）+ `truth.jsonl`（真值）+ `audit.jsonl`（溯源）+ 本卡。
+>
+> ⚠️ **`tasks/T2/data/{items,truth,audit}.jsonl`（全量 4,726 条）刻意不上传** ——
 > 它们含轮换池 937 条的题面与答案，而轮换池的设计目标就是「**永不公开**」
-> （见 `split_public_rotation.py` 与 `docs/DATACARD.md` §7.3）。
-> 这条约束由 `scripts/verify_t2_rotation_isolation.py` 检查。
+> （见 `split_public_rotation.py` 与上游 `docs/DATACARD.md` §7.3）。
+> 这条约束由上游 `scripts/verify_t2_rotation_isolation.py` 与
+> `scripts/verify_upload_preflight.py` 两道检查守着。
 
 ```bash
 # 取数据（**上传完成后**才有内容）

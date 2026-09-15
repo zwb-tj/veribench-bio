@@ -156,7 +156,7 @@ derivation  review_status  created_at
 | 泄漏检查 | **0 泄漏**，覆盖 40,170 个字符串字段 | 构建期门禁 |
 | 容器端到端 | oracle 得分 **1.0** | 实跑 |
 | 基线 | oracle 1.0000 / all_vus 0.4245 / all_pathogenic 0.3478 | 实跑 |
-| HF 数据集 | **尚未上传**（HF 仓库 `zwb-tj/biobench-lite-t2-acmg-variant-interpretation` 已创建但**存储为 0 B**）。待上传的是 `tasks/T2/data/public/` 的 3,789 条；**轮换池 937 条永不发布** | 2026-09 用 `hf repo list` 实测：storage = 0 B |
+| HF 数据集 | ✅ **已上传**：`zwb-tj/biobench-lite-t2-acmg-variant-interpretation`，**3,789 条 / 5 文件 / 4.9 MB**（含 HF 自建的 `.gitattributes`）。重新下载后**逐字节 sha256 比对通过**；**轮换池 937 条从未发布** | 2026-09 用带认证的 HF API（`?blobs=true`）实测文件清单与字节数 |
 | 镜像 | 123 MB，**构建期即执行泄漏门禁** | 构建日志 |
 | **镜像 pin** | `sha256:f1bcfdea1ae5…`，绑定 `Dockerfile`/`run.sh`/`grade.py`/`items.jsonl`/`check_no_leakage.py` 5 个构建输入 | `tasks/T2/IMAGE_DIGEST.json`（2026-09 补：此前 T2 **连 pin 都没有**） |
 | **镜像内容与源码逐字节一致** | `/work` 下 4 个文件与仓库源码 sha256 全等；**镜像内不含 `truth.jsonl`** | `docker cp` 取出比对（`verify_t2_claims.py` 自动跑） |
@@ -485,7 +485,7 @@ T1 修好"digest 绑定构建源码"之后，T2 漏着。这属于同一个缺�
 实测确认发生过（在三个历史清室目录里都找到了 `truth.jsonl`）。
 
 > ⚠️ **必须说清楚**：这三个文件**当时并没有真的对外发布** ——
-> T2 尚未上传 HuggingFace（`tasks/T2/README.md` 的未闭合项里还挂着这一条），
+> 当时 T2 还没上传 HuggingFace（2026-09 已上传，见 §5 T2 表），
 > 仓库也不是 git repo。所以这是**潜在泄露，不是已发生的泄露**。
 > **但"未被发现"和"没有问题"是两件事**：一旦按原样打包发布，声明立刻变成假话。
 

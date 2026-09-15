@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -169,59 +170,68 @@ def check_hf_upload_state() -> None:
     if not shutil.which("hf"):
         add("T2 的 HF 上传状态与文档一致", None, "本机没有 hf CLI，无法核对（需联网）")
         return
+
+    # ⚠️ 2026-09 两处修正，都来自 T2 上传后的实测：
+    #
+    # ① **仓库名匹配写错了**：原代码找 `"veribench-bio-t2"`，但 HF 仓库名
+    #    按决定**保持不变**（`biobench-lite-t2-…`）。于是这条检查永远
+    #    匹配不到仓库、永远报"列表里没有 T2 仓库，跳过" ——
+    #    一个**静默失效**的检查（本项目最典型的那类缺陷）。
+    #
+    # ② **`hf repos list` 的 STORAGE 列会滞后**：T2 上传成功后
+    #    `hf download` 能取回 5 个文件且逐字节一致，但 `hf repos list`
+    #    仍显示 `0 B`（缓存延迟）。**两个信号矛盾时要用更权威的来源** ——
+    #    所以改成问 API 要 `?blobs=true` 的文件清单与字节数。
+    REPO = "zwb-tj/biobench-lite-t2-acmg-variant-interpretation"
     try:
-        p = subprocess.run(["hf", "repo", "list", "--repo-type", "dataset",
-                            "--format", "json"],
-                           capture_output=True, text=True, encoding="utf-8",
-                           errors="replace", timeout=90)
-    except (OSError, subprocess.TimeoutExpired):
-        add("T2 的 HF 上传状态与文档一致", None, "hf CLI 调用失败/超时，无法核对")
-        return
-    if p.returncode != 0:
+        # 读 HF token（不打印内容）
+        tok = ""
+        for cand in (Path(os.environ.get("HF_HOME", "")) / "token",
+                     Path.home() / ".cache" / "huggingface" / "token",
+                     Path.home() / ".huggingface" / "token"):
+            try:
+                if cand.is_file():
+                    tok = cand.read_text(encoding="utf-8").strip()
+                    break
+            except OSError:
+                continue
+        import urllib.request
+
+        req = urllib.request.Request(
+            f"https://huggingface.co/api/datasets/{REPO}?blobs=true",
+            headers={"Authorization": f"Bearer {tok}"} if tok else {})
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            info = json.load(resp)
+    except Exception as exc:  # noqa: BLE001
         add("T2 的 HF 上传状态与文档一致", None,
-            f"hf repo list 退出码 {p.returncode}（可能未登录）；跳过")
-        return
-    try:
-        repos = json.loads(p.stdout)
-    except ValueError:
-        add("T2 的 HF 上传状态与文档一致", None, "hf 输出不是 JSON，跳过")
+            f"HF API 不可达（{type(exc).__name__}）—— 需联网才能核对")
         return
 
-    t2 = None
-    for r in repos if isinstance(repos, list) else []:
-        rid = r.get("id") or r.get("repoId") or ""
-        if "veribench-bio-t2" in rid:
-            t2 = r
-            break
-    if t2 is None:
-        add("T2 的 HF 上传状态与文档一致", None, "列表里没有 T2 仓库，跳过")
-        return
+    sib = info.get("siblings") or []
+    total = sum((s.get("size") or 0) for s in sib)
+    files = sorted(s.get("rfilename", "") for s in sib)
+    data_files = [f for f in files if f.endswith(".jsonl")]
+    uploaded = total > 0 and len(data_files) >= 3
 
-    # ⚠️ `hf repo list --format json` 给的是**字符串**字段 `storage`（如 "0 B" / "100.3 MB"），
-    #    不是字节数。第一版去找 `usedStorage`（那是 API 的字段名，不是 CLI 的），
-    #    结果永远拿不到值、永远报"无法验证" —— **一个总是 SKIP 的检查等于没有检查**。
-    raw = t2.get("storage")
-    if raw is None:
-        add("T2 的 HF 上传状态与文档一致", None,
-            f"hf 输出里没有 storage 字段（实际键：{sorted(t2)}）")
-        return
-    used = _parse_size(raw)
-
-    # 文档现在应当说"尚未上传"
-    says_uploaded = "HF 上公开" in (
-        (ROOT / "README.md").read_text(encoding="utf-8"))
-    if used == 0:
-        add("T2 的 HF 上传状态与文档一致（实测 0 B，文档须说『未上传』）",
-            not says_uploaded,
-            f"HF storage = {raw!r}（仓库已建、内容为空）；"
-            f"根 README {'仍写着『HF 上公开』**与事实不符**' if says_uploaded else '已如实写『尚未上传』'}")
+    says_unuploaded = "尚未上传" in (ROOT / "README.md").read_text(encoding="utf-8")
+    if uploaded:
+        add("T2 的 HF 上传状态与文档一致（实测已上传）",
+            not says_unuploaded,
+            f"API：{len(sib)} 个文件、{total / 1e6:.1f} MB（{', '.join(data_files)}）；"
+            f"根 README {'仍写着『尚未上传』**与事实不符**' if says_unuploaded else '已如实写『已上传』'}")
     else:
-        add("T2 的 HF 上传状态与文档一致（实测已有内容）", True,
-            f"HF storage = {raw!r}")
-
+        add("T2 的 HF 上传状态与文档一致（实测为空）",
+            says_unuploaded,
+            f"API：{len(sib)} 个文件、{total} B；"
+            f"根 README {'已如实写『尚未上传』' if says_unuploaded else '**未写『尚未上传』**'}")
+    return
 
 def _parse_size(s: str) -> int:
-    """把 `hf` 的 '0 B' / '100.3 MB' 之类转成字节数（解析不了返回 -1）。"""
+    """把 `hf` 的 '0 B' / '100.3 MB' 之类转成字节数（解析不了返回 -1）。
+
+    （保留：`hf repos list --format json` 的 storage 是字符串，
+      别处若再用到 CLI 的列表输出会需要它。）
+    """
     import re as _re
 
     m = _re.fullmatch(r"\s*([\d.]+)\s*([KMGT]?i?B)\s*", str(s), _re.I)

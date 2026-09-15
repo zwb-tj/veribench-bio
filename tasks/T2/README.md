@@ -181,12 +181,14 @@ ClinVar 是公开数据库，大模型很可能**已经把大量「变异 → �
 ## 未闭合项（不得假装已完成）
 
 - [ ] **没有真实模型作答过 T2**（当前只有合成基线；oracle/all_vus/all_pathogenic）
-- [ ] 数据集**尚未上传 HuggingFace**（T1 已上传并校验；T2 待上传）
-      → 手册：`../../docs/HF_UPLOAD_T2.md`。
-      **上传前必须先跑预检**（`scripts/verify_upload_preflight.py --dir tasks/T2/data/public`）——
-      发布集有个致命的不对称：`tasks/T2/data/public/`（3,789 条，要传）
-      vs `tasks/T2/data/`（4,726 条，
-      **含轮换池 937 条答案**），两个路径只差一段。传错不可撤销
+- [x] ~~数据集**尚未上传 HuggingFace**~~ → **已上传并逐字节校验**：
+      仓库 `zwb-tj/biobench-lite-t2-acmg-variant-interpretation`（**当前 Private**），
+      **5 文件 / 4.9 MB**（3,789 条 + HF 自建的 `.gitattributes`）。
+      上传前跑了预检；上传后从 HF 重新下载**逐字节 sha256 比对通过**。
+      手册：`../../docs/HF_UPLOAD_T2.md`
+      （⚠️ 发布集有个致命的不对称：`tasks/T2/data/public/` 是要传的 3,789 条，
+      而 `tasks/T2/data/` 是全量 4,726 条、**含轮换池 937 条答案** ——
+      两个路径只差一段，传错不可撤销）
 - [ ] 36 条真值的判据 token 无法规范化（构建日志已计数），这些 token 被丢弃
 - [ ] `criteria_not_met` 目前只入库未参与评分（可用于惩罚"错误声称成立"）
 - [ ] 未做外部复现（D9）
