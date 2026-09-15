@@ -20,6 +20,7 @@ README 第 1 条原则"没有台账条目的题目不得进集"**从来没有任
 
 from __future__ import annotations
 
+import json
 import os
 import shutil
 import subprocess
@@ -286,6 +287,60 @@ def main() -> int:
     t2g = ROOT / "tasks" / "T2" / "grade.py"
     if t2g.is_file():
         results.append(run([py, str(t2g), "--self-test"]))
+
+    print("\n=== 6h) T3（蛋白结构）解析器与判分器 ===")
+    # T3 的确定性声明建立在"按 loop_ 语义解析 mmCIF"上。实测过：
+    # 按 `#` 切块会让 4HHB/6LU7/2LZM 报 **0 个原子**（真实 4,384/2,387/1,309）——
+    # 而 0 看起来像"这个结构没有原子"，不会自己喊出来。
+    # 所以解析器的自检里有一条**交叉核对**用例（喂少一行的列表 → 必须抛）。
+    t3parse = ROOT / "tasks" / "T3" / "data" / "mmcif_parse.py"
+    if t3parse.is_file():
+        results.append(run([py, str(t3parse), "--self-test"]))
+    else:
+        print("  ⏭ 尚无 tasks/T3/data/mmcif_parse.py")
+
+    t3g = ROOT / "tasks" / "T3" / "grade.py"
+    if t3g.is_file():
+        # 判分器的自检含浮点陷阱的负向用例（epsilon 设在噪声量级上会误判）
+        results.append(run([py, str(t3g), "--self-test"]))
+    else:
+        print("  ⏭ 尚无 tasks/T3/grade.py")
+
+    # T3 端到端（需 docker + 已构建镜像 + 生成物）。
+    # ⚠️ 生成物（items/truth）不发布 → 新 clone 里没有 → 必须 SKIP 而非失败。
+    t3data = ROOT / "tasks" / "T3" / "data"
+    if not (t3data / "truth.jsonl").is_file() or not (t3data / "items.jsonl").is_file():
+        print("  ⏭ T3 数据未生成（跑 fetch_mmcif.py）—— 跳过端到端，**不算通过**")
+    elif shutil.which("docker") is None:
+        print("  ⏭ 无 docker，跳过 T3 端到端（**不算通过**）")
+    elif subprocess.run(["docker", "image", "inspect", "veribench-bio/t3:dev"],
+                        capture_output=True).returncode != 0:
+        print("  ⏭ 镜像 veribench-bio/t3:dev 不存在，跳过（先构建）")
+    else:
+        # oracle 作答由真值直出 → 必须得 1.0。这验的是"判分器与数据自洽"。
+        oracle = ROOT / "tasks" / "T3" / "_runs" / "answers_oracle.jsonl"
+        if not oracle.is_file():
+            print("  ⏭ 缺 _runs/answers_oracle.jsonl（先跑 oracle 生成）")
+        else:
+            import tempfile as _tf
+            with _tf.TemporaryDirectory(prefix="t3-e2e-") as td:
+                shutil.copyfile(oracle, Path(td) / "answers.jsonl")
+                p = subprocess.run(
+                    ["docker", "run", "--rm",
+                     "-v", f"{t3data / 'truth.jsonl'}:/data/truth.jsonl:ro",
+                     "-v", f"{td}:/out", "veribench-bio/t3:dev"],
+                    capture_output=True, text=True, encoding="utf-8", errors="replace")
+                rj = Path(td) / "result.json"
+                got = None
+                if rj.is_file():
+                    try:
+                        got = json.loads(rj.read_text(encoding="utf-8"))["score"]
+                    except (ValueError, KeyError):
+                        got = None
+                ok = p.returncode == 0 and got == 1.0
+                print(f"  {'✅' if ok else '❌'} T3 容器内端到端（oracle）"
+                      f" → score={got} exit={p.returncode}")
+                results.append(ok)
 
 
     if args.clean_room:

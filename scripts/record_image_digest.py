@@ -89,6 +89,22 @@ TASKS: dict[str, dict] = {
         #    这时必须 SKIP 并说清楚，而不是报"镜像已脱节"（那是假警报）。
         "generated": ["data/items.jsonl"],
     },
+    "T3": {
+        "dir": "tasks/T3",
+        "files": [
+            "Dockerfile", "run.sh", "grade.py",
+            "data/items.jsonl", "data/mmcif_parse.py", "data/fetch_mmcif.py",
+        ],
+        # mmcif 原文是 COPY 进镜像的**题面素材**（CC0，可再分发）。
+        # 按 glob 收，这样加/换条目会自动进入哈希 —— 不用手改这份清单
+        # （手改清单必然漂移，这是本项目反复踩的坑）。
+        "globs": ["data/mmcif/*.cif"],
+        # items.jsonl 与 truth.jsonl 都是**生成物且不发布**：
+        # 新 clone 里跑 `fetch_mmcif.py` 才有。缺席时 SKIP，不报假警报。
+        # （truth.jsonl 不进构建输入 —— 它不 COPY 进镜像；
+        #   但它缺席与否不该影响 source_sha256，所以不列在 files 里。）
+        "generated": ["data/items.jsonl", "data/truth.jsonl"],
+    },
 }
 
 

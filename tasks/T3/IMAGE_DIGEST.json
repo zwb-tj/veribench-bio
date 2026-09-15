@@ -1,0 +1,39 @@
+{
+  "_comment": "镜像 digest 与构建源码的对应凭据。由 scripts/record_image_digest.py 写入，由 verify_*_claims.py / run_all_checks.py 核对。改动任何构建输入都必须重建镜像、重跑、再重记。",
+  "task": "T3",
+  "image_id": "sha256:d92cdd3b6550ca47ed8bab545897f9f68b6c4c909461b1543a127d8873429cc7",
+  "source_sha256": "02d78b6b2b28d8d0fcad35c4d75c19fc228345eefd1474674ff0096e18761e74",
+  "files": [
+    "Dockerfile",
+    "data/fetch_mmcif.py",
+    "data/items.jsonl",
+    "data/mmcif/1ATP.cif",
+    "data/mmcif/1BPI.cif",
+    "data/mmcif/1CRN.cif",
+    "data/mmcif/1CTF.cif",
+    "data/mmcif/1FNA.cif",
+    "data/mmcif/1HZ6.cif",
+    "data/mmcif/1IGD.cif",
+    "data/mmcif/1L2Y.cif",
+    "data/mmcif/1LMB.cif",
+    "data/mmcif/1PGB.cif",
+    "data/mmcif/1SHG.cif",
+    "data/mmcif/1STP.cif",
+    "data/mmcif/1TEN.cif",
+    "data/mmcif/1UBQ.cif",
+    "data/mmcif/1VII.cif",
+    "data/mmcif/2CI2.cif",
+    "data/mmcif/2GB1.cif",
+    "data/mmcif/2LZM.cif",
+    "data/mmcif/3AID.cif",
+    "data/mmcif/5CYT.cif",
+    "data/mmcif_parse.py",
+    "grade.py",
+    "run.sh"
+  ],
+  "recorded_at": "2026-09-15T17:29:28+00:00",
+  "run_evidence": {
+    "score": "1.0",
+    "variants": null
+  }
+}
