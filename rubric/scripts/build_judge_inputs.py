@@ -32,16 +32,16 @@ def load_jsonl(path: Path) -> list[dict]:
 
 
 def criterion_block(criteria: list[dict]) -> str:
-    parts = []
-    for c in criteria:
-        a = c.get("anchors") or {}
-        parts.append(
-            f"{c['criterion_id']}. {c.get('text','')}\n"
-            f"  0 分 = {a.get('0','')}\n"
-            f"  1 分 = {a.get('1','')}\n"
-            f"  2 分 = {a.get('2','')}"
-        )
-    return "\n\n".join(parts)
+    """**已移到 `judge_prompt.py`**（唯一实现）。此处保留为转发，避免外部引用断掉。
+
+    ⚠️ 原来这里和 `build_manip_inputs.py` 各有一份**逐字节相同**的实现，
+    且 prompt 正文那 10 行也是逐字重复。那条链的注释写着
+    「改一处必须改两处」—— **那句注释就是缺陷本身**：
+    操纵检验若与判分用不同的 prompt，它测的就是另一个 prompt 的行为，
+    而它的结论会被用来为真实判分背书。现在由 `judge_prompt.py` 保证可比性。
+    """
+    from judge_prompt import criterion_block as _cb
+    return _cb(criteria)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -81,16 +81,8 @@ def main(argv: list[str] | None = None) -> int:
             missing_answer += 1
             continue
         crits = it.get("criteria") or []
-        body = (
-            "【问题】\n"
-            f"{it.get('question','')}\n\n"
-            "【待评的回答】\n"
-            f"{ans}\n\n"
-            "【评分标准】\n"
-            f"{criterion_block(crits)}\n\n"
-            f"【输出要求】只输出 JSON，item_id 必须是 {iid}，"
-            f"criteria 必须且只能包含 {[c['criterion_id'] for c in crits]}"
-        )
+        from judge_prompt import build_prompt as _bp
+        body = _bp(it.get("question", ""), ans, crits, iid)
         (outdir / f"{iid}.txt").write_text(body, encoding="utf-8")
         index.append({
             "item_id": iid,

@@ -35,17 +35,15 @@ def load_jsonl(p: Path) -> list[dict]:
 
 
 def criterion_block(criteria: list[dict]) -> str:
-    # ⚠️ 与 build_judge_inputs.criterion_block 保持一致（改一处必须改两处）
-    parts = []
-    for c in criteria:
-        a = c.get("anchors") or {}
-        parts.append(
-            f"{c['criterion_id']}. {c.get('text','')}\n"
-            f"  0 分 = {a.get('0','')}\n"
-            f"  1 分 = {a.get('1','')}\n"
-            f"  2 分 = {a.get('2','')}"
-        )
-    return "\n\n".join(parts)
+    """**已移到 `judge_prompt.py`**（唯一实现）。此处保留为转发。
+
+    原来这里写着「⚠️ 与 build_judge_inputs.criterion_block 保持一致
+    （**改一处必须改两处**）」—— 那句提醒本身就是缺陷：
+    可比性不该依赖人记得。现在两条链共用 `judge_prompt.py`，
+    漂移会被 `check_prompt_agree.py` 抓住。
+    """
+    from judge_prompt import criterion_block as _cb
+    return _cb(criteria)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -99,16 +97,8 @@ def main(argv: list[str] | None = None) -> int:
                 continue
             # 文件名不含档位含义之外的线索；档位名是必要的，因为它就是被检验的变量
             fname = f"{iid}_{cid}_{tag}.txt"
-            body = (
-                "【问题】\n"
-                f"{it.get('question','')}\n\n"
-                "【待评的回答】\n"
-                f"{ans}\n\n"
-                "【评分标准】\n"
-                f"{criterion_block(crits)}\n\n"
-                f"【输出要求】只输出 JSON，item_id 必须是 {iid}，"
-                f"criteria 必须且只能包含 {[c['criterion_id'] for c in crits]}"
-            )
+            from judge_prompt import build_prompt as _bp
+            body = _bp(it.get("question", ""), ans, crits, iid)
             (outdir / fname).write_text(body, encoding="utf-8")
             index.append({
                 "item_id": iid, "criterion_id": cid, "variant": tag,

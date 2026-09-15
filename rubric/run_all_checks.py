@@ -122,6 +122,15 @@ def main() -> int:
         #    judge 的"相对上限"被压低 → **结论反了**，而数据看起来完全正常。
         run([py, f"{S}/check_annotation_blinding.py", "--self-test"]),
         run([py, f"{S}/check_annotation_blinding.py"]),
+        # ⚠️ **判分链与操纵检验链必须用同一份 prompt 拼装。**
+        #    2026-09 审计发现两处各抄了一份 `criterion_block()`（逐字节相同），
+        #    prompt 正文那 10 行也逐字重复，而 build_manip_inputs 的注释写着
+        #    「⚠️ 与 build_judge_inputs 保持一致（**改一处必须改两处**）」——
+        #    **那句注释就是缺陷本身**：可比性依赖人记得，就迟早会漂移。
+        #    漂移的后果特别隐蔽：操纵检验测的会是**另一个 prompt 的行为**，
+        #    而它的结论会被用来为真实判分背书。
+        run([py, f"{S}/check_prompt_agree.py", "--self-test"]),
+        run([py, f"{S}/check_prompt_agree.py"]),
     ]
 
     print("\n=== 2b) 人工标注链路端到端演练 ===")
