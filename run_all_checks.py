@@ -169,6 +169,14 @@ def main() -> int:
     # **一个不能失败的检查比没有更坏** —— 所以每类 pattern 都钉一个已知阳性。
     results.append(run([py, str(ROOT / "tasks" / "T2" / "data" / "check_no_leakage.py"),
                         "--self-test"]))
+    # 第十五个：**项目规模数字必须能复算**。
+    # 起因：README/DATACARD/简历里反复出现"发布文件数 / 检查步数 / 实跑次数"这类数字，
+    # 而同一个数字写在多处必然漂移（本项目已抓到过 40,110 vs 40,170、区间夸 5 倍等）。
+    # 这个脚本把它们集中实测一次，供所有文档引用。
+    # 它自己的自检还钉住了一条真实 bug：第一版漏排除 `.git/`，
+    # 把 615 个 git 对象算进"发布内容"（1308 vs 真实 692）——
+    # **而且那个错数字看起来完全正常**。
+    results.append(run([py, f"{S}/print_project_stats.py", "--self-test"]))
 
     print("\n=== 3b) LICENSE 正文是否与官方源一致 ===")
     # 手抄错的许可证正文比没有更糟：它看起来权威但条款可能被改动。
