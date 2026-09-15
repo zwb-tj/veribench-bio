@@ -31,6 +31,10 @@ class MmcifError(ValueError):
 WANTED = (
     "group_PDB", "type_symbol", "label_atom_id", "label_comp_id",
     "label_asym_id", "label_seq_id", "Cartn_x", "Cartn_y", "Cartn_z",
+    #: ⚠️ 必须有它才能报告 model 数。NMR 结构会把**所有 model** 的原子都列出来，
+    #:    没有这一列就无法说明"我们数了几个 model"（审查 F3 的由来：
+    #:    1L2Y 有 38 个 model，我们报 11,552，RCSB 只算一个 model 报 154）。
+    "pdbx_PDB_model_num",
 )
 
 
@@ -133,6 +137,10 @@ def compute_metrics(atoms: list[dict]) -> dict:
         "hetatm_count": len(het_rows),
         "chain_count": len(chains),
         "element_histogram": dict(sorted(elems.items())),
+        #: ⚠️ model 数**必须报告**：NMR 结构的 atom_count 是**全部 model 之和**，
+        #:    若不说明，作答者按"一个 model"理解会被判错却无从知悉（审查 F3）。
+        #:    报告它，口径就从"隐藏约定"变成"可见事实"。
+        "model_count": len({a["pdbx_PDB_model_num"] for a in atoms}),
         "ca_distance": ca_distance,
     }
 
@@ -172,17 +180,42 @@ def self_test() -> int:
         "_atom_site.Cartn_x\n"
         "_atom_site.Cartn_y\n"
         "_atom_site.Cartn_z\n"
-        "ATOM C CA GLY A 1 0.000 0.000 0.000\n"
-        "ATOM C CA GLY A 2 3.000 4.000 0.000\n"
-        "HETATM O O HOH B 1 1.000 1.000 1.000\n"
+        "_atom_site.pdbx_PDB_model_num\n"
+        "ATOM C CA GLY A 1 0.000 0.000 0.000 1\n"
+        "ATOM C CA GLY A 2 3.000 4.000 0.000 1\n"
+        "HETATM O O HOH B 1 1.000 1.000 1.000 1\n"
         "#\n"
     )
     m = metrics_from_cif(good)
     check("合法输入：atom_count=2", m["atom_count"] == 2, str(m["atom_count"]))
     check("合法输入：hetatm_count=1", m["hetatm_count"] == 1, str(m["hetatm_count"]))
     check("合法输入：chain_count=1", m["chain_count"] == 1, str(m["chain_count"]))
+    check("合法输入：model_count=1", m["model_count"] == 1, str(m["model_count"]))
     # (0,0,0) 与 (3,4,0) 的距离 = 5.0 —— 教科书 3-4-5
     check("合法输入：CA 距离=5.0", m["ca_distance"] == 5.0, str(m["ca_distance"]))
+
+    # ①b **多 model**（NMR 情形）：2 个 model 各 1 个 ATOM。
+    #     这条直接对应审查 F3 —— 必须让"数了几个 model"是**可观察**的，
+    #     否则按"一个 model"理解的作答者会被判错却无从知悉。
+    multi = (
+        "data_MULTI\n"
+        "loop_\n"
+        "_atom_site.group_PDB\n"
+        "_atom_site.type_symbol\n"
+        "_atom_site.label_atom_id\n"
+        "_atom_site.label_comp_id\n"
+        "_atom_site.label_asym_id\n"
+        "_atom_site.label_seq_id\n"
+        "_atom_site.Cartn_x\n"
+        "_atom_site.Cartn_y\n"
+        "_atom_site.Cartn_z\n"
+        "_atom_site.pdbx_PDB_model_num\n"
+        "ATOM C CA GLY A 1 0.000 0.000 0.000 1\n"
+        "ATOM C CA GLY A 1 0.000 0.000 0.100 2\n"
+    )
+    mm = metrics_from_cif(multi)
+    check("多 model：atom_count=2（全部 model 之和）", mm["atom_count"] == 2, str(mm["atom_count"]))
+    check("多 model：model_count=2", mm["model_count"] == 2, str(mm["model_count"]))
 
     # ② 负向：没有 _atom_site → 必须抛，不能返回空
     try:
@@ -205,9 +238,10 @@ def self_test() -> int:
         "_atom_site.Cartn_x\n"
         "_atom_site.Cartn_y\n"
         "_atom_site.Cartn_z\n"
-        "ATOM C CA GLY A 1 0.0 0.0 0.0\n"
-        "ATOM C CA GLY A 2 3.0 4.0 0.0\n"
-        "HETATM O O HOH B 1 1.0 1.0 1.0\n"
+        "_atom_site.pdbx_PDB_model_num\n"
+        "ATOM C CA GLY A 1 0.0 0.0 0.0 1\n"
+        "ATOM C CA GLY A 2 3.0 4.0 0.0 1\n"
+        "HETATM O O HOH B 1 1.0 1.0 1.0 1\n"
     )
     m2 = metrics_from_cif(tricky)
     check("无结尾 `#` 也能解析", m2["atom_count"] == 2, str(m2["atom_count"]))

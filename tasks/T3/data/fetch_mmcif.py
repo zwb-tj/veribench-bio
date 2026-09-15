@@ -130,10 +130,23 @@ def main(argv: list[str] | None = None) -> int:
             "mmcif_file": f"mmcif/{pid}.cif",
             "mmcif_sha256": sha256(raw),
             "mmcif_bytes": len(raw),
+            # ⚠️ **必须写明"全部 model"。**
+            #    起因（审查 F3）：NMR 结构的 `_atom_site` 会列出**所有 model** 的原子，
+            #    用 `_atom_site.pdbx_PDB_model_num` 区分。旧题面只说"ATOM 行数"，
+            #    **没规定算几个 model** —— 而 RCSB 的 `deposited_atom_count` 只算一个 model。
+            #    实测 1L2Y 有 **38 个 model**：我们报 11,552，RCSB 报 154。
+            #    按常规理解（只算一个 model）作答的人**必然答错**，
+            #    而且**无从知道**我们对齐的是哪种口径 —— 判定权在我们，他没得辩。
+            #
+            #    修法：把口径**写进题面**，并同时报告 `model_count` 让口径可见。
+            #    这样"多 model"从一个隐藏陷阱变成一个**明说的约定**。
             "question": (
                 f"读取 {pid} 的 mmCIF 原文，报告："
                 "ATOM 行数、HETATM 行数、链数（label_asym_id 去重）、"
-                "ATOM 行的元素直方图、以及第一条链上前两个 CA 原子间的欧氏距离（Å，3 位小数）。"
+                "ATOM 行的元素直方图、`pdbx_PDB_model_num` 的去重个数（即 model 数）、"
+                "以及第一条链上前两个 CA 原子间的欧氏距离（Å，3 位小数）。"
+                f"⚠️ 计数口径：**统计文件中出现的全部 model**（{pid} 的 model 数见你的作答）。"
+                "若该条目只有一个 model，则计数不受影响。"
             ),
         })
         truths.append({"item_id": f"T3-{pid}", "pdb_id": pid, **m})

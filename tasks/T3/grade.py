@@ -33,7 +33,13 @@ import sys
 from pathlib import Path
 
 #: 计数类量：必须精确相等
-COUNT_METRICS = ("atom_count", "hetatm_count", "chain_count")
+#: ⚠️ `model_count` 是审查 F3 之后新增的：NMR 结构的 `atom_count` 是**全部 model 之和**，
+#:    若不把 model 数作为判分量报告出来，"算几个 model"就成了隐藏约定 ——
+#:    按常规理解（一个 model）作答的人会被判错却无从知悉。现在它变成可见事实。
+COUNT_METRICS = ("atom_count", "hetatm_count", "chain_count", "model_count")
+#: 每题的量数 = 计数类 + element_histogram + ca_distance。
+#: **由常量推导**，不要写字面量 —— 见 run() 里的说明。
+N_METRICS_PER_ITEM = len(COUNT_METRICS) + 2
 #: 距离的**小数位数**（契约：作答按 3 位小数提交）
 DIST_DECIMALS = 3
 
@@ -116,8 +122,12 @@ def run(items: list[dict], truth: list[dict], answers: list[dict]) -> dict:
             all_problems.append(f"{iid}: 题面在，真值缺失")
             continue
         score, probs = grade_one(t, amap.get(iid))
-        n_metric += 5
-        n_hit_metric += round(score * 5)
+        # ⚠️ **不要硬编码"每题几个量"**。原来是 `n_metric += 5` ——
+        #    加一个判分量（如 model_count）就会静默算错总数，
+        #    而错的总数看起来仍然像个正常数字（本项目反复踩的坑）。
+        #    改为由 grade_one 自己报告量数。
+        n_metric += N_METRICS_PER_ITEM
+        n_hit_metric += round(score * N_METRICS_PER_ITEM)
         per_item.append({"item_id": iid, "pdb_id": it.get("pdb_id"),
                          "score": round(score, 4), "problems": probs})
         all_problems += [f"{iid}: {p}" for p in probs]
@@ -152,7 +162,7 @@ def self_test() -> int:
         print(f"  {'✅' if cond else '❌'} {label}" + (f"  {detail}" if detail else ""))
 
     truth = [{"item_id": "T3-XXXX", "pdb_id": "XXXX", "atom_count": 10,
-              "hetatm_count": 2, "chain_count": 1,
+              "hetatm_count": 2, "chain_count": 1, "model_count": 1,
               "element_histogram": {"C": 6, "N": 2, "O": 2}, "ca_distance": 3.8}]
     items = [{"item_id": "T3-XXXX", "pdb_id": "XXXX"}]
 
@@ -160,7 +170,8 @@ def self_test() -> int:
 
     # ① 完美作答 → 1.0
     exact = {"item_id": "T3-XXXX", "atom_count": 10, "hetatm_count": 2,
-             "chain_count": 1, "element_histogram": {"C": 6, "N": 2, "O": 2},
+             "chain_count": 1, "model_count": 1,
+             "element_histogram": {"C": 6, "N": 2, "O": 2},
              "ca_distance": 3.8}
     r = run(items, truth, [exact])
     check("完美作答 → 1.0", r["score"] == 1.0, str(r["score"]))
