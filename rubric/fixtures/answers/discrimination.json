@@ -1,0 +1,1468 @@
+{
+  "n_items": 24,
+  "n_criteria_total": 101,
+  "overall_mean": {
+    "weak": 0.7854,
+    "medium": 1.3729,
+    "strong": 1.7729
+  },
+  "overall_normalized": {
+    "weak": 0.3927,
+    "medium": 0.6865,
+    "strong": 0.8865
+  },
+  "gap_strong_minus_weak": 0.9875,
+  "strict_monotonic_rate": 0.8333,
+  "weak_lt_strong_rate": 0.9583,
+  "criterion_verdict_counts": {
+    "weak_signal": 66,
+    "healthy": 11,
+    "saturated": 11,
+    "inverted": 13
+  },
+  "criteria": [
+    {
+      "item_id": "R-0001",
+      "criterion_id": "c1",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0001",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0001",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0001",
+      "criterion_id": "c4",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c1",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 0,
+      "strong": 0,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c3",
+      "weak": 2,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0003",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0003",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0003",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0003",
+      "criterion_id": "c4",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0004",
+      "criterion_id": "c1",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0004",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0004",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0004",
+      "criterion_id": "c4",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0005",
+      "criterion_id": "c1",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0005",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0005",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0005",
+      "criterion_id": "c4",
+      "weak": 2,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0006",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0006",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0006",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0006",
+      "criterion_id": "c4",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0007",
+      "criterion_id": "c1",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0007",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0007",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0007",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0007",
+      "criterion_id": "c5",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0008",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0008",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0008",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0008",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0008",
+      "criterion_id": "c5",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0009",
+      "criterion_id": "c1",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0009",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0009",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0009",
+      "criterion_id": "c4",
+      "weak": 0,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0009",
+      "criterion_id": "c5",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0010",
+      "criterion_id": "c1",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0010",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0010",
+      "criterion_id": "c3",
+      "weak": 2,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0010",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c5",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c4",
+      "weak": 2,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c5",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0013",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0013",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0013",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0013",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0014",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0014",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0014",
+      "criterion_id": "c3",
+      "weak": 2,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0014",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0015",
+      "criterion_id": "c1",
+      "weak": 2,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0015",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0015",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0015",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c2",
+      "weak": 2,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 0,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0017",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0017",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0017",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0017",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0018",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0018",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 0,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0018",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0018",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0019",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0019",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0019",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0019",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c2",
+      "weak": 2,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 0,
+      "strong": 0,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0021",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0021",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0021",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0021",
+      "criterion_id": "c4",
+      "weak": 2,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0022",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0022",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0022",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0022",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c1",
+      "weak": 0,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "healthy"
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0024",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0024",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "weak_signal"
+    },
+    {
+      "item_id": "R-0024",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0024",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "weak_signal"
+    }
+  ],
+  "needs_revision": [
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c2",
+      "weak": 0,
+      "medium": 0,
+      "strong": 0,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c3",
+      "weak": 2,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0006",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0008",
+      "criterion_id": "c2",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0009",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0010",
+      "criterion_id": "c3",
+      "weak": 2,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0015",
+      "criterion_id": "c1",
+      "weak": 2,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0017",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c2",
+      "weak": 2,
+      "medium": 2,
+      "strong": 2,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c3",
+      "weak": 0,
+      "medium": 0,
+      "strong": 0,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0024",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 1,
+      "verdict": "saturated"
+    },
+    {
+      "item_id": "R-0003",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0005",
+      "criterion_id": "c4",
+      "weak": 2,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c4",
+      "weak": 2,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0014",
+      "criterion_id": "c3",
+      "weak": 2,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c1",
+      "weak": 1,
+      "medium": 2,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c2",
+      "weak": 2,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 1,
+      "strong": 0,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0021",
+      "criterion_id": "c4",
+      "weak": 2,
+      "medium": 1,
+      "strong": 2,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c3",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c4",
+      "weak": 1,
+      "medium": 0,
+      "strong": 1,
+      "verdict": "inverted"
+    }
+  ],
+  "items": [
+    {
+      "item_id": "R-0001",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.5,
+        "medium": 1.75,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.25,
+        "medium": 0.875,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 1.5,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0002",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.75,
+        "medium": 1.25,
+        "strong": 1.5
+      },
+      "norm": {
+        "weak": 0.375,
+        "medium": 0.625,
+        "strong": 0.75
+      },
+      "gap_strong_minus_weak": 0.75,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0003",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.5,
+        "medium": 1.0,
+        "strong": 1.75
+      },
+      "norm": {
+        "weak": 0.25,
+        "medium": 0.5,
+        "strong": 0.875
+      },
+      "gap_strong_minus_weak": 1.25,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0004",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.25,
+        "medium": 1.25,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.125,
+        "medium": 0.625,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 1.75,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0005",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.75,
+        "medium": 1.5,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.375,
+        "medium": 0.75,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 1.25,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0006",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.5,
+        "medium": 1.5,
+        "strong": 1.75
+      },
+      "norm": {
+        "weak": 0.25,
+        "medium": 0.75,
+        "strong": 0.875
+      },
+      "gap_strong_minus_weak": 1.25,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0007",
+      "n_criteria": 5,
+      "max_score": 10,
+      "mean": {
+        "weak": 0.6,
+        "medium": 1.4,
+        "strong": 1.8
+      },
+      "norm": {
+        "weak": 0.3,
+        "medium": 0.7,
+        "strong": 0.9
+      },
+      "gap_strong_minus_weak": 1.2,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0008",
+      "n_criteria": 5,
+      "max_score": 10,
+      "mean": {
+        "weak": 0.8,
+        "medium": 1.8,
+        "strong": 1.8
+      },
+      "norm": {
+        "weak": 0.4,
+        "medium": 0.9,
+        "strong": 0.9
+      },
+      "gap_strong_minus_weak": 1.0,
+      "strict_monotonic": false,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0009",
+      "n_criteria": 5,
+      "max_score": 10,
+      "mean": {
+        "weak": 0.6,
+        "medium": 1.2,
+        "strong": 1.6
+      },
+      "norm": {
+        "weak": 0.3,
+        "medium": 0.6,
+        "strong": 0.8
+      },
+      "gap_strong_minus_weak": 1.0,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0010",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.75,
+        "medium": 1.5,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.375,
+        "medium": 0.75,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 1.25,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0011",
+      "n_criteria": 5,
+      "max_score": 10,
+      "mean": {
+        "weak": 1.0,
+        "medium": 1.4,
+        "strong": 1.8
+      },
+      "norm": {
+        "weak": 0.5,
+        "medium": 0.7,
+        "strong": 0.9
+      },
+      "gap_strong_minus_weak": 0.8,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0012",
+      "n_criteria": 5,
+      "max_score": 10,
+      "mean": {
+        "weak": 0.6,
+        "medium": 1.4,
+        "strong": 1.8
+      },
+      "norm": {
+        "weak": 0.3,
+        "medium": 0.7,
+        "strong": 0.9
+      },
+      "gap_strong_minus_weak": 1.2,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0013",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.75,
+        "medium": 1.75,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.375,
+        "medium": 0.875,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 1.25,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0014",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 1.25,
+        "medium": 1.5,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.625,
+        "medium": 0.75,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 0.75,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0015",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 1.0,
+        "medium": 1.75,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.5,
+        "medium": 0.875,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 1.0,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0016",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 1.25,
+        "medium": 1.0,
+        "strong": 1.0
+      },
+      "norm": {
+        "weak": 0.625,
+        "medium": 0.5,
+        "strong": 0.5
+      },
+      "gap_strong_minus_weak": -0.25,
+      "strict_monotonic": false,
+      "weak_lt_strong": false
+    },
+    {
+      "item_id": "R-0017",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 1.0,
+        "medium": 1.75,
+        "strong": 1.75
+      },
+      "norm": {
+        "weak": 0.5,
+        "medium": 0.875,
+        "strong": 0.875
+      },
+      "gap_strong_minus_weak": 0.75,
+      "strict_monotonic": false,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0018",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.75,
+        "medium": 1.25,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.375,
+        "medium": 0.625,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 1.25,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0019",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.75,
+        "medium": 1.5,
+        "strong": 1.75
+      },
+      "norm": {
+        "weak": 0.375,
+        "medium": 0.75,
+        "strong": 0.875
+      },
+      "gap_strong_minus_weak": 1.0,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0020",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 1.0,
+        "medium": 0.75,
+        "strong": 1.25
+      },
+      "norm": {
+        "weak": 0.5,
+        "medium": 0.375,
+        "strong": 0.625
+      },
+      "gap_strong_minus_weak": 0.25,
+      "strict_monotonic": false,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0021",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 1.0,
+        "medium": 1.25,
+        "strong": 1.75
+      },
+      "norm": {
+        "weak": 0.5,
+        "medium": 0.625,
+        "strong": 0.875
+      },
+      "gap_strong_minus_weak": 0.75,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0022",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 1.0,
+        "medium": 1.5,
+        "strong": 2.0
+      },
+      "norm": {
+        "weak": 0.5,
+        "medium": 0.75,
+        "strong": 1.0
+      },
+      "gap_strong_minus_weak": 1.0,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0023",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 0.5,
+        "medium": 0.75,
+        "strong": 1.5
+      },
+      "norm": {
+        "weak": 0.25,
+        "medium": 0.375,
+        "strong": 0.75
+      },
+      "gap_strong_minus_weak": 1.0,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    },
+    {
+      "item_id": "R-0024",
+      "n_criteria": 4,
+      "max_score": 8,
+      "mean": {
+        "weak": 1.0,
+        "medium": 1.25,
+        "strong": 1.75
+      },
+      "norm": {
+        "weak": 0.5,
+        "medium": 0.625,
+        "strong": 0.875
+      },
+      "gap_strong_minus_weak": 0.75,
+      "strict_monotonic": true,
+      "weak_lt_strong": true
+    }
+  ],
+  "limitations": [
+    "答案由模型生成、非真实考生作答：这是区分度证据，不是效度证据",
+    "写答案与当裁判为同一模型家族：存在自我偏好偏差风险，只能证明『能分开』不能证明『分得对』",
+    "**每个 (题, 档) 只有 1 次裁判判定（n=1）**：单条标准的『饱和』可能是单次判定的噪声，不宜直接判为该标准无效。要区分『系统性饱和』与『抽样噪声』，需要对同一批输入做第二次独立裁判，比较两次的稳定性。当前结果应作为**改写候选清单**，不是结论。",
+    "本题集 n=24 题 / 101 条标准，样本量小",
+    "缺失人类标注天花板，无法回答『裁判相对人类天花板表现如何』（见 SPEC §13.2）"
+  ]
+}

@@ -1,0 +1,552 @@
+{
+  "v1.0": {
+    "name": "v1.0",
+    "n_units": 303,
+    "exact": 265,
+    "exact_rate": 0.8746,
+    "gap1_0_to_1": 14,
+    "gap1_1_to_2": 24,
+    "gap2_0_to_2": 0,
+    "mid_hi_share_of_disagreements": 0.6316,
+    "details_mid_hi": [
+      {
+        "item_id": "R-0017",
+        "level": "strong",
+        "criterion_id": "c3",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0024",
+        "level": "strong",
+        "criterion_id": "c1",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0012",
+        "level": "weak",
+        "criterion_id": "c1",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0012",
+        "level": "weak",
+        "criterion_id": "c4",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0003",
+        "level": "medium",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0007",
+        "level": "medium",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0009",
+        "level": "strong",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0009",
+        "level": "strong",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0020",
+        "level": "medium",
+        "criterion_id": "c1",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0019",
+        "level": "strong",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0016",
+        "level": "weak",
+        "criterion_id": "c2",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0015",
+        "level": "weak",
+        "criterion_id": "c1",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0009",
+        "level": "medium",
+        "criterion_id": "c2",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0009",
+        "level": "medium",
+        "criterion_id": "c5",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0016",
+        "level": "medium",
+        "criterion_id": "c1",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0015",
+        "level": "medium",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0022",
+        "level": "strong",
+        "criterion_id": "c2",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0010",
+        "level": "strong",
+        "criterion_id": "c2",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0011",
+        "level": "medium",
+        "criterion_id": "c3",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0011",
+        "level": "strong",
+        "criterion_id": "c1",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0014",
+        "level": "weak",
+        "criterion_id": "c3",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0007",
+        "level": "strong",
+        "criterion_id": "c4",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0001",
+        "level": "strong",
+        "criterion_id": "c3",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0024",
+        "level": "medium",
+        "criterion_id": "c2",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      }
+    ],
+    "details_0_to_1": [
+      {
+        "item_id": "R-0018",
+        "level": "medium",
+        "criterion_id": "c2",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0022",
+        "level": "weak",
+        "criterion_id": "c2",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0021",
+        "level": "weak",
+        "criterion_id": "c3",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0002",
+        "level": "weak",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0015",
+        "level": "weak",
+        "criterion_id": "c2",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0015",
+        "level": "weak",
+        "criterion_id": "c3",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0024",
+        "level": "weak",
+        "criterion_id": "c2",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0024",
+        "level": "weak",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0003",
+        "level": "strong",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0004",
+        "level": "weak",
+        "criterion_id": "c1",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0011",
+        "level": "medium",
+        "criterion_id": "c1",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0023",
+        "level": "medium",
+        "criterion_id": "c4",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0019",
+        "level": "medium",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0001",
+        "level": "medium",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      }
+    ],
+    "details_gap2": []
+  },
+  "v1.1": {
+    "name": "v1.1",
+    "n_units": 303,
+    "exact": 276,
+    "exact_rate": 0.9109,
+    "gap1_0_to_1": 12,
+    "gap1_1_to_2": 15,
+    "gap2_0_to_2": 0,
+    "mid_hi_share_of_disagreements": 0.5556,
+    "details_mid_hi": [
+      {
+        "item_id": "R-0011",
+        "level": "strong",
+        "criterion_id": "c1",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0017",
+        "level": "medium",
+        "criterion_id": "c1",
+        "run1": 2,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0010",
+        "level": "medium",
+        "criterion_id": "c1",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0010",
+        "level": "medium",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0015",
+        "level": "medium",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0020",
+        "level": "medium",
+        "criterion_id": "c2",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0007",
+        "level": "strong",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0018",
+        "level": "strong",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0019",
+        "level": "weak",
+        "criterion_id": "c1",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0012",
+        "level": "weak",
+        "criterion_id": "c1",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0009",
+        "level": "strong",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0013",
+        "level": "medium",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0022",
+        "level": "strong",
+        "criterion_id": "c2",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0022",
+        "level": "strong",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0005",
+        "level": "strong",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 2,
+        "gap": 1
+      }
+    ],
+    "details_0_to_1": [
+      {
+        "item_id": "R-0011",
+        "level": "strong",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0018",
+        "level": "medium",
+        "criterion_id": "c4",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0016",
+        "level": "medium",
+        "criterion_id": "c2",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0016",
+        "level": "medium",
+        "criterion_id": "c4",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0011",
+        "level": "medium",
+        "criterion_id": "c1",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0003",
+        "level": "weak",
+        "criterion_id": "c2",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0023",
+        "level": "weak",
+        "criterion_id": "c1",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0003",
+        "level": "strong",
+        "criterion_id": "c3",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0024",
+        "level": "weak",
+        "criterion_id": "c2",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0024",
+        "level": "weak",
+        "criterion_id": "c4",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0001",
+        "level": "medium",
+        "criterion_id": "c3",
+        "run1": 1,
+        "run2": 0,
+        "gap": 1
+      },
+      {
+        "item_id": "R-0012",
+        "level": "strong",
+        "criterion_id": "c4",
+        "run1": 0,
+        "run2": 1,
+        "gap": 1
+      }
+    ],
+    "details_gap2": []
+  }
+}

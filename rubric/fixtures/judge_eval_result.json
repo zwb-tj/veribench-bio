@@ -1,0 +1,244 @@
+{
+  "task": "rubric_judge_meta_eval",
+  "human_human": {
+    "kappa_unweighted": 0.6749,
+    "kappa_quadratic_weighted": 0.8415,
+    "kappa_quadratic_weighted_ci95": [
+      0.7737,
+      0.8982
+    ],
+    "band": "几乎完全一致（almost perfect）",
+    "exact_agreement": 0.7833,
+    "item_total_exact_agreement": 0.525,
+    "per_criterion": {
+      "c1": {
+        "n": 40,
+        "kappa": 0.6998,
+        "exact_agreement": 0.8,
+        "band": "显著（substantial）",
+        "note": ""
+      },
+      "c2": {
+        "n": 40,
+        "kappa": 0.5728,
+        "exact_agreement": 0.725,
+        "band": "中等（moderate）",
+        "note": ""
+      },
+      "c3": {
+        "n": 40,
+        "kappa": 0.7333,
+        "exact_agreement": 0.825,
+        "band": "显著（substantial）",
+        "note": ""
+      }
+    },
+    "note": "**这就是 judge 的上限。**"
+  },
+  "judge_vs_gold": {
+    "kappa_unweighted": 0.5862,
+    "kappa_quadratic_weighted": 0.7091,
+    "kappa_quadratic_weighted_ci95": [
+      0.5929,
+      0.8141
+    ],
+    "band": "显著（substantial）",
+    "exact_agreement": 0.725,
+    "per_criterion": {
+      "c1": {
+        "n": 40,
+        "kappa": 0.5849,
+        "exact_agreement": 0.725,
+        "band": "中等（moderate）",
+        "note": ""
+      },
+      "c2": {
+        "n": 40,
+        "kappa": 0.5907,
+        "exact_agreement": 0.725,
+        "band": "中等（moderate）",
+        "note": ""
+      },
+      "c3": {
+        "n": 40,
+        "kappa": 0.5745,
+        "exact_agreement": 0.725,
+        "band": "中等（moderate）",
+        "note": ""
+      }
+    },
+    "n_pairs": 120
+  },
+  "relative_to_human_ceiling": 0.8427,
+  "relative_note": "judge 的加权 κ ÷ 人类之间的加权 κ。**只报 judge 的绝对值是假精确。**",
+  "verdict": "接近人类上限",
+  "gold_standard": {
+    "pairs_common": 120,
+    "from_arbitration": 120,
+    "from_agreement": 0,
+    "excluded_disagreement": 0,
+    "arb_missing": 0
+  },
+  "bias": {
+    "n": 120,
+    "mean_diff_judge_minus_gold": 0.2333,
+    "direction": "偏松（给分更高）",
+    "exact_match_rate": 0.725,
+    "off_by_2_rate": 0.0417,
+    "per_criterion_mean_diff": {
+      "c1": {
+        "n": 40,
+        "mean_diff": 0.175
+      },
+      "c2": {
+        "n": 40,
+        "mean_diff": 0.225
+      },
+      "c3": {
+        "n": 40,
+        "mean_diff": 0.3
+      }
+    },
+    "per_gold_score_mean_diff": {
+      "0": {
+        "n": 42,
+        "mean_diff": 0.5476
+      },
+      "1": {
+        "n": 34,
+        "mean_diff": 0.2647
+      },
+      "2": {
+        "n": 44,
+        "mean_diff": -0.0909
+      }
+    }
+  },
+  "failure_cases": {
+    "n": 33,
+    "off_by_1": 28,
+    "off_by_2": 5,
+    "top": [
+      {
+        "item_id": "R-0004",
+        "criterion_id": "c3",
+        "judge_score": 2,
+        "gold_score": 0,
+        "delta": 2,
+        "severity": 2,
+        "criterion_text": "是否给出了可被他人复现的具体做法或参数（针对：蛋白结构预测结果的可靠性评估）",
+        "anchor_at_gold": "未给出任何可操作细节",
+        "anchor_at_judge": "给出的参数与步骤足以被他人复现",
+        "question": "在一项涉及「蛋白结构预测结果的可靠性评估」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0008",
+        "criterion_id": "c1",
+        "judge_score": 2,
+        "gold_score": 0,
+        "delta": 2,
+        "severity": 2,
+        "criterion_text": "是否明确指出了所依据的具体证据类型（而非泛泛而谈）（针对：变异致病性判读中人群频率证据的使用）",
+        "anchor_at_gold": "未提及任何具体证据类型",
+        "anchor_at_judge": "明确指出证据类型并说明其与结论的逻辑关系",
+        "question": "在一项涉及「变异致病性判读中人群频率证据的使用」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0011",
+        "criterion_id": "c2",
+        "judge_score": 2,
+        "gold_score": 0,
+        "delta": 2,
+        "severity": 2,
+        "criterion_text": "是否说明了该方法或结论的适用条件与局限（针对：多组学整合分析中数据一致性的检验）",
+        "anchor_at_gold": "未提及任何适用条件或局限",
+        "anchor_at_judge": "说明局限并解释它对结论强度的影响",
+        "question": "在一项涉及「多组学整合分析中数据一致性的检验」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0028",
+        "criterion_id": "c2",
+        "judge_score": 0,
+        "gold_score": 2,
+        "delta": -2,
+        "severity": 2,
+        "criterion_text": "是否说明了该方法或结论的适用条件与局限（针对：蛋白结构预测结果的可靠性评估）",
+        "anchor_at_gold": "说明局限并解释它对结论强度的影响",
+        "anchor_at_judge": "未提及任何适用条件或局限",
+        "question": "在一项涉及「蛋白结构预测结果的可靠性评估」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0034",
+        "criterion_id": "c1",
+        "judge_score": 0,
+        "gold_score": 2,
+        "delta": -2,
+        "severity": 2,
+        "criterion_text": "是否明确指出了所依据的具体证据类型（而非泛泛而谈）（针对：蛋白结构预测结果的可靠性评估）",
+        "anchor_at_gold": "明确指出证据类型并说明其与结论的逻辑关系",
+        "anchor_at_judge": "未提及任何具体证据类型",
+        "question": "在一项涉及「蛋白结构预测结果的可靠性评估」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0000",
+        "criterion_id": "c1",
+        "judge_score": 2,
+        "gold_score": 1,
+        "delta": 1,
+        "severity": 1,
+        "criterion_text": "是否明确指出了所依据的具体证据类型（而非泛泛而谈）（针对：差异表达分析中批次效应与生物学效应的区分）",
+        "anchor_at_gold": "提到证据类型但未说明它如何支持结论",
+        "anchor_at_judge": "明确指出证据类型并说明其与结论的逻辑关系",
+        "question": "在一项涉及「差异表达分析中批次效应与生物学效应的区分」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0000",
+        "criterion_id": "c3",
+        "judge_score": 2,
+        "gold_score": 1,
+        "delta": 1,
+        "severity": 1,
+        "criterion_text": "是否给出了可被他人复现的具体做法或参数（针对：差异表达分析中批次效应与生物学效应的区分）",
+        "anchor_at_gold": "给出部分参数但不足以复现",
+        "anchor_at_judge": "给出的参数与步骤足以被他人复现",
+        "question": "在一项涉及「差异表达分析中批次效应与生物学效应的区分」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0001",
+        "criterion_id": "c2",
+        "judge_score": 1,
+        "gold_score": 0,
+        "delta": 1,
+        "severity": 1,
+        "criterion_text": "是否说明了该方法或结论的适用条件与局限（针对：单细胞聚类分辨率的选择依据）",
+        "anchor_at_gold": "未提及任何适用条件或局限",
+        "anchor_at_judge": "提到局限但未说明其影响",
+        "question": "在一项涉及「单细胞聚类分辨率的选择依据」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0001",
+        "criterion_id": "c3",
+        "judge_score": 1,
+        "gold_score": 0,
+        "delta": 1,
+        "severity": 1,
+        "criterion_text": "是否给出了可被他人复现的具体做法或参数（针对：单细胞聚类分辨率的选择依据）",
+        "anchor_at_gold": "未给出任何可操作细节",
+        "anchor_at_judge": "给出部分参数但不足以复现",
+        "question": "在一项涉及「单细胞聚类分辨率的选择依据」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      },
+      {
+        "item_id": "R-0002",
+        "criterion_id": "c2",
+        "judge_score": 1,
+        "gold_score": 0,
+        "delta": 1,
+        "severity": 1,
+        "criterion_text": "是否说明了该方法或结论的适用条件与局限（针对：变异致病性判读中人群频率证据的使用）",
+        "anchor_at_gold": "未提及任何适用条件或局限",
+        "anchor_at_judge": "提到局限但未说明其影响",
+        "question": "在一项涉及「变异致病性判读中人群频率证据的使用」的分析中，研究者得到了一个显著结果。请说明你会如何评估这个结果的可信度，并指出需要哪些额外证据。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veribench-bio/schema/t2-truth.schema.json",
+  "title": "T2 真值 —— 绝不进题面、绝不挂载给被测系统",
+  "description": "T2 的答案与判据。真值 100% 来自 ClinVar 3★（reviewed by expert panel）与 ClinGen EREPO 的公开策展字段 —— 我们只装配证据，绝不生成标签。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "item_id",
+    "assertion",
+    "assertion_normalized",
+    "criteria_met",
+    "expert_panel",
+    "clinvar_variation_id",
+    "source_url"
+  ],
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "description": "与题面 t2-item 的 item_id 一一对应。"
+    },
+    "assertion": {
+      "type": "string",
+      "description": "ClinGen EREPO 的 Assertion 原文（分类真值的原始措辞，逐字保留，不得改写）。"
+    },
+    "assertion_normalized": {
+      "type": "string",
+      "enum": ["Pathogenic", "Likely pathogenic", "Uncertain significance", "Likely benign", "Benign"],
+      "description": "归一化到 5 类，用于自动判分。归一化规则必须记录在 DATACARD 中。"
+    },
+    "criteria_met": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^(PVS1|PS[1-4]|PM[1-6]|PP[1-5]|BA1|BS[1-4]|BP[1-7])$"},
+      "description": "专家小组判定**成立**的 ACMG 判据码（来自 EREPO `Applied Evidence Codes (Met)`）。这是 set-F1 的评分依据，也是「真推理 vs 蒙对标签」的判别器。"
+    },
+    "criteria_not_met": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "专家小组判定**不成立**的判据码（来自 EREPO `Applied Evidence Codes (Not Met)`）。用于计算「错误声称成立」的惩罚。"
+    },
+    "expert_panel": {
+      "type": "string",
+      "description": "出具该结论的专家小组（VCEP/GCEP）名称。**这是真值权威性的依据**。"
+    },
+    "clinvar_variation_id": {
+      "type": "integer",
+      "description": "ClinVar VariationID，用于逐题追溯。**不得出现在题面中。**"
+    },
+    "hgvs": {
+      "type": "string",
+      "description": "变异身份（HGVS）。**仅用于审计与追溯，绝不出现在题面中。**"
+    },
+    "disease_mondo_id": {
+      "type": "string",
+      "description": "MONDO 疾病术语 ID，用于与基因-疾病有效性表配对。"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "ClinGen EREPO 的 Evidence Repo Link，可点开核实。"
+    },
+    "approval_date": {
+      "type": "string",
+      "description": "专家小组批准日期（EREPO Approval Date）。用于时间切分的二次核对。"
+    },
+    "canary_pair": {
+      "type": "string",
+      "description": "若为金丝雀，指向配对题 item_id；判分时要求两题的分类方向**发生预期变化**。"
+    },
+    "canary_expected": {
+      "type": "string",
+      "enum": ["flip_more_pathogenic", "flip_more_benign", "unchanged"],
+      "description": "金丝雀配对题的预期方向变化。`unchanged` 用于「改了一个与结论无关的字段」的**阴性对照** —— 用来识别「只要题面一动就改答案」的模型。"
+    }
+  }
+}

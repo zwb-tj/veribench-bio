@@ -1,0 +1,618 @@
+{
+  "rows": [
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c2",
+      "group": "defect",
+      "class": "V3",
+      "pairs": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 87,
+      "criterion_text": "是否指出基因表达结果的统计与报告问题：多个基因被同时比较却未说明是否做多重比较校正，且未报告重复数、批次与效应量，因而这些表达变化的可靠性无法判断"
+    },
+    {
+      "item_id": "R-0003",
+      "criterion_id": "c3",
+      "group": "defect",
+      "class": "T",
+      "pairs": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 95,
+      "criterion_text": "是否指出细胞模型的外推局限：小鼠永生化BV-2细胞系与人原代小胶质细胞的差异，且人源部分只证明了髓鞘被摄取而没有功能终点，不足以支持「人小胶质细胞功能改变」"
+    },
+    {
+      "item_id": "R-0005",
+      "criterion_id": "c4",
+      "group": "defect",
+      "class": "V2",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 73,
+      "criterion_text": "是否指出验证缺口：「候选通路」缺少独立重复与功能验证、样本量对低频变异的功效有限，因而仅是待检验假设（对照虽经祖先匹配，但两组检测流程不同，残差分层仍未被排除）"
+    },
+    {
+      "item_id": "R-0006",
+      "criterion_id": "c3",
+      "group": "defect",
+      "class": "V2",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 106,
+      "criterion_text": "是否指出浓度与体内外推问题：所用浓度与患者血浆中观察到的升高幅度之间的关系未被证明，且缺少剂量-反应、细胞内底物或一氧化氮定量与在体/离体视网膜证据，因此从血浆相关到因果的跳跃未被支持"
+    },
+    {
+      "item_id": "R-0007",
+      "criterion_id": "c3",
+      "group": "defect",
+      "class": "V1",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 50,
+      "criterion_text": "是否指出证据量与统计效能问题（部分试验例数极少、总例数有限、多结局与多亚组比较未做多重性校正，指出其中一项即可），并说明阳性结果可能只是随机波动"
+    },
+    {
+      "item_id": "R-0008",
+      "criterion_id": "c2",
+      "group": "defect",
+      "class": "V2",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 29,
+      "criterion_text": "是否指出组间样本量极不平衡导致的效能不足"
+    },
+    {
+      "item_id": "R-0010",
+      "criterion_id": "c3",
+      "group": "defect",
+      "class": "V2",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 51,
+      "criterion_text": "是否指出阈值在同一数据集内选取与评价带来的乐观偏倚，以及病例数少造成的区间估计过宽"
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c4",
+      "group": "defect",
+      "class": "T",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 81,
+      "criterion_text": "是否指出筛选流程层面的偏倚风险，而不只是「计算会有误差」（注：对接打分、MM-GBSA 与元动力学自由能本身的可靠性问题计入 c1；本条只看构象集合、诱饵集、富集度、已知活性基准等流程层面的问题）"
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c4",
+      "group": "defect",
+      "class": "T",
+      "pairs": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 107,
+      "criterion_text": "是否指出横断面设计对因果方向与结论可外推范围的限制，并说明需要什么设计（注：分组或严重程度度量本身的问题计入 c2，本条只看横断面设计带来的限制）"
+    },
+    {
+      "item_id": "R-0015",
+      "criterion_id": "c1",
+      "group": "defect",
+      "class": "V2",
+      "pairs": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "verdict_runs": [
+        "insensitive",
+        "insensitive"
+      ],
+      "verdict": "insensitive",
+      "len_gap": 71,
+      "criterion_text": "是否指出单例设计无法支持有效性、更无法支持相对有效性的普适结论（注：多种干预同时实施导致的归因困难计入 c2，具体的补做设计计入 c4）"
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c3",
+      "group": "defect",
+      "class": "V1",
+      "pairs": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 86,
+      "criterion_text": "是否指出综述内部证据不一致与其方法学（叙述性而非系统性）的关系"
+    },
+    {
+      "item_id": "R-0017",
+      "criterion_id": "c3",
+      "group": "defect",
+      "class": "V1",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 37,
+      "criterion_text": "是否发现题述内部不一致（定位结论在摘要与结果中相反）并解释其含义"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c3",
+      "group": "defect",
+      "class": "V3",
+      "pairs": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 79,
+      "criterion_text": "是否指出泪液标志物以浓度表示时受采集量与泪液流率影响，采集条件、采集时点与归一化方式（按总蛋白或泪液流率）未报告，可能造成组间浓度差异"
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c4",
+      "group": "defect",
+      "class": "V2",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 65,
+      "criterion_text": "是否指出横断面单时点设计无法区分因果方向（甲状腺自身免疫炎症导致眼表改变，抑或反向路径），并给出可执行的证据方案（注：多重比较、IL-10 方向矛盾与泪液采集问题分别计入 c1–c3，本条只看设计对因果方向的限制）"
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c4",
+      "group": "defect",
+      "class": "V1",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 84,
+      "criterion_text": "是否指出转录本丰度不能直接推及蛋白活性、行为或适合度后果，并给出可执行的功能验证；「只补一项」的选择须与最弱环节对应（注：缺陷识别计入 c1–c3，本条只评所提方案本身的针对性与可执行性）"
+    },
+    {
+      "item_id": "R-0024",
+      "criterion_id": "c1",
+      "group": "defect",
+      "class": "V2",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 96,
+      "criterion_text": "是否指出综述未报告检索策略、纳入排除标准与偏倚评估，却用既定机制式的表述把细胞系与小鼠异种移植结果当作结论，结论强度超出证据等级"
+    },
+    {
+      "item_id": "R-0009",
+      "criterion_id": "c1",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 42,
+      "criterion_text": "是否指出致盲可能失效的具体来源，并说明期望偏倚如何同时影响患者自评与他评"
+    },
+    {
+      "item_id": "R-0006",
+      "criterion_id": "c2",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 42,
+      "criterion_text": "是否指出增殖效应不被L-NAME阻断与「eNOS/一氧化氮是共同机制」的说法不一致，提示至少部分终点经由一氧化氮非依赖途径，需要按终点分别检验所依赖的通路"
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c2",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 41,
+      "criterion_text": "是否指出短时组死亡率高、采样时存活个体已被选择，差异可能来自存活者选择与濒死/饥饿等非特异性应激，而非暴露方式特异反应，并提出配对存活分析或时间序列等检验方式"
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c3",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 49,
+      "criterion_text": "是否指出分布严重偏态而仍使用参数检验，使组间比较不可靠"
+    },
+    {
+      "item_id": "R-0010",
+      "criterion_id": "c1",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 79,
+      "criterion_text": "是否指出参照标准与待评价指标之间存在成分重叠（incorporation bias），并说明它如何使比较不公平"
+    },
+    {
+      "item_id": "R-0004",
+      "criterion_id": "c2",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 29,
+      "criterion_text": "是否指出菌群移植实验缺少「仅抗生素处理」对照，以及抗生素本身与供体菌群定植程度对行为与脑代谢的影响未被排除"
+    },
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c1",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 72,
+      "criterion_text": "是否具体指出「迁移速率提升13.6%」这一数值的算法问题：它由5小时单一时间点的残余划痕面积之差得出，既未校正初始划痕面积的组间差异，也不等同于迁移速率（缺少时间序列或曲线拟合）"
+    },
+    {
+      "item_id": "R-0005",
+      "criterion_id": "c3",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 63,
+      "criterion_text": "是否指出阈值选择与多重检验问题：显著性阈值以目测曼哈顿图确定（存在阈值寻优），严重度分析在71个变异上采用未校正p < 0.05，且缺少QQ图、膨胀因子或FDR校正"
+    },
+    {
+      "item_id": "R-0003",
+      "criterion_id": "c1",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "sensitive"
+      ],
+      "verdict": "sensitive",
+      "len_gap": 54,
+      "criterion_text": "是否指出统计单元与伪重复问题：图像层面的观测（每孔10张图像的吞噬体量化结果）被当作独立样本，使自由度虚增、p值被人为压小，必须改以独立孔/独立生物学重复为分析单元并报告重复数"
+    },
+    {
+      "item_id": "R-0024",
+      "criterion_id": "c4",
+      "group": "control",
+      "class": "healthy",
+      "pairs": [
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "verdict_runs": [
+        "sensitive",
+        "insensitive"
+      ],
+      "verdict": "unstable",
+      "len_gap": 18,
+      "criterion_text": "所提证据方案是否具体到能判定某酶是否为可成药靶点（患者来源或体内模型中的遗传/药物抑制、剂量-反应、正常组织与免疫细胞对照、药效标志物与患者分层、与现有疗法的联合及耐药评估）（注：缺陷识别计入 c1–c3，本条只评所提方案本身的针对性与可执"
+    }
+  ],
+  "by_group": {
+    "defect": {
+      "sensitive": 15,
+      "total": 16,
+      "insensitive": 1,
+      "reverse": 0,
+      "unstable": 0
+    },
+    "control": {
+      "sensitive": 9,
+      "total": 10,
+      "unstable": 1,
+      "insensitive": 0,
+      "reverse": 0
+    }
+  }
+}

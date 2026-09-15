@@ -1,0 +1,43 @@
+{
+  "_comment": "contains_human_data 的逐篇裁决。由 classify_human_data.py 取证据 + 人工读源文定值。candidates.jsonl 原先 27 篇全填 true（含蜜蜂、大鼠、综述），属上游错误。",
+  "_criterion": "contains_human_data=true ⟺ 该来源报告了采集自人类受试者或人类生物样本的数据。二次文献（综述转述他人数据）、动物/植物/昆虫模型、无供者来源的商品化细胞系、纯计算研究，一律 false。",
+  "_limitation": "源文 .txt 有 24/27 篇被截断在 20,000 字符（fetch_source_text.py 的上限）。因此判定**不能只看正文片段**：片段里出现患者数据，可能是引言在引用他人工作。最可靠的证据是文件头部完整的标题与 Subjects 类型字段（Article/Review/Case Report/Correction）。PMC11900006 就是这样判错的——正文片段里是作者既往的患者队列 [5]，而本文自身是商品化人视网膜内皮细胞（HRMECs）体外研究。",
+  "_verification": "全部 27 条已用标题 + Subjects 字段复核一遍；PMC11900006 由 human_subjects_primary 更正为 non_human_only。",
+  "_fulltext_verification": "源文截断修复后（已取全文，24/27 篇由 20,000 字符变为 2.4–5.4 倍），用 scripts/probe_human_data_methods.py 抽取**方法学段落**重新核验 8 个争议条目。方法学证据独立确认了全部裁决：PMC11900006 明写『HRMECs were purchased from Cell Systems (ACBRI 181)』且无 IRB/知情同意 → non_human_only；PMC11900003 明写『Informed consent was obtained from all subjects』+ CEIC 批件 → human_biospecimen；PMC11900007/11900012 明写『IRB Not applicable. Informed Consent Not applicable』→ 二次文献/纯计算；PMC11900013 明写『195 adolescents were enrolled』+ 书面知情同意 → human_subjects_primary；PMC11900026 有瑞典伦理审查批号 → human_subjects_primary。",
+  "_enum": {
+    "human_subjects_primary": "一手人类受试者/患者数据（队列、临床试验、个案）→ true",
+    "human_biospecimen": "人源原代细胞/组织/体液，且有供者来源 → true",
+    "human_secondary_review": "二次文献中转述的人类数据，本研究未采集 → false",
+    "non_human_only": "仅动物/植物/昆虫/无供者细胞系/纯计算 → false",
+    "unknown": "未能判定 → 不得公开"
+  },
+  "adjudication": {
+    "PMC11900000": {"basis": "non_human_only", "value": false, "evidence": "Cdkl5+/- 雌鼠 + 神经母细胞瘤细胞系；人类相关词仅为泛述（patient's quality of life）"},
+    "PMC11900001": {"basis": "non_human_only", "value": false, "evidence": "植物囊泡综述；自称实验为商品化 human chondrocyte 与结肠炎小鼠，无供者来源"},
+    "PMC11900002": {"basis": "non_human_only", "value": false, "evidence": "综述：天然分子用于动物饲料"},
+    "PMC11900003": {"basis": "human_biospecimen", "value": true, "evidence": "human primary cells derived from transdifferentiated circulating monocytes (iMG)，原文明确『bear the genetic background of the donor』"},
+    "PMC11900004": {"basis": "non_human_only", "value": false, "evidence": "DSS 结肠炎小鼠模型"},
+    "PMC11900005": {"basis": "human_subjects_primary", "value": true, "evidence": "五个全外显子测序研究共 1922 例脑瘫患者"},
+    "PMC11900006": {"basis": "non_human_only", "value": false, "evidence": "标题即 Human Retinal Microvascular Endothelial Cells (HRMECs) 体外研究；正文片段中的患者数据是引言引用作者既往工作 [5]，非本文采集。**此条曾被我误判为 human_subjects_primary，由子agent复核指出后更正**"},
+    "PMC11900007": {"basis": "human_secondary_review", "value": false, "evidence": "综述：7 篇文献 303 例，本研究未采集"},
+    "PMC11900008": {"basis": "non_human_only", "value": false, "evidence": "综述：真核 5′UTR 结构调控翻译"},
+    "PMC11900009": {"basis": "non_human_only", "value": false, "evidence": "雌性 C57BL/6J 小鼠酒精性肝病模型"},
+    "PMC11900010": {"basis": "human_subjects_primary", "value": true, "evidence": "210 例首次剖宫产患者，新生儿胎脂取材"},
+    "PMC11900011": {"basis": "human_subjects_primary", "value": true, "evidence": "Siriraj 医院 PCOS 患者队列"},
+    "PMC11900012": {"basis": "non_human_only", "value": false, "evidence": "cross-docking / 虚拟筛选 / 分子动力学 + 体外验证，无人类受试者"},
+    "PMC11900013": {"basis": "human_subjects_primary", "value": true, "evidence": "青少年 MASLD 患者，LSM 为结局指标"},
+    "PMC11900014": {"basis": "non_human_only", "value": false, "evidence": "更正说明：小鼠图片重复（Mouse-1/Mouse-2）"},
+    "PMC11900015": {"basis": "human_subjects_primary", "value": true, "evidence": "401 例 TAVI 队列（单中心回顾）"},
+    "PMC11900016": {"basis": "human_subjects_primary", "value": true, "evidence": "个案报告：胃出口梗阻患者"},
+    "PMC11900017": {"basis": "human_secondary_review", "value": false, "evidence": "叙述性综述：脂肪因子与卵巢癌"},
+    "PMC11900018": {"basis": "non_human_only", "value": false, "evidence": "槭树(Acer) ANS 候选基因克隆与生信分析"},
+    "PMC11900019": {"basis": "non_human_only", "value": false, "evidence": "更正说明（提取条件优化类），全文 3688 字符，无人类/动物标记"},
+    "PMC11900020": {"basis": "non_human_only", "value": false, "evidence": "大鼠异丙肾上腺素心梗模型 + 白葡萄皮渣多酚"},
+    "PMC11900021": {"basis": "human_subjects_primary", "value": true, "evidence": "肝移植肝细胞癌患者队列（MPV 预后）"},
+    "PMC11900022": {"basis": "human_subjects_primary", "value": true, "evidence": "150 名受试者分三组，干眼泪液标志物"},
+    "PMC11900025": {"basis": "human_subjects_primary", "value": true, "evidence": "分娩前孕妇 SFMC/D-二聚体与血栓风险分层"},
+    "PMC11900026": {"basis": "human_subjects_primary", "value": true, "evidence": "质性研究：年轻人心理求助历程访谈"},
+    "PMC11900027": {"basis": "non_human_only", "value": false, "evidence": "蜜蜂(Apis mellifera)急性/慢性农药暴露转录组"},
+    "PMC11900028": {"basis": "human_secondary_review", "value": false, "evidence": "叙述性综述：肿瘤糖代谢重编程"}
+  }
+}

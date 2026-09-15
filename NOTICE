@@ -1,0 +1,153 @@
+VeriBench-Bio
+Copyright 2026 the VeriBench-Bio authors
+
+This product includes software developed by third parties. The list below is
+split into two blocks on purpose:
+
+  [A] VERIFIED  — the upstream LICENSE file was read and the license identified
+                  from its own text.
+  [B] NOT INDIVIDUALLY VERIFIED — the license is taken from the distribution's
+                  package metadata. It is very likely correct, but we did not
+                  open the upstream LICENSE ourselves.
+
+Putting both in one undifferentiated list would overstate what we checked.
+See docs/DATACARD.md §4 for the reasoning, and tasks/T1/licenses/README.md
+for the in-image copy of this notice.
+
+================================================================================
+[A] VERIFIED FROM UPSTREAM LICENSE TEXT
+================================================================================
+
+FreeBayes
+  License: MIT (Expat)
+  Copyright: Erik Garrison, Gabor Marth, and contributors
+  Upstream: https://github.com/freebayes/freebayes
+  Note: upstream LICENSE read in full; MIT text confirmed.
+
+RTG Tools 3.12.1  (only `rtg vcfeval` is used)
+  License: BSD 2-Clause
+  Copyright: Real Time Genomics Ltd.
+  Upstream: https://github.com/RealTimeGenomics/rtg-tools
+  Note: upstream LICENSE.txt read; BSD 2-Clause confirmed.
+  Modification: the bundled amd64 JRE (jre/lib/amd64/*.so) was REMOVED from the
+  container image, and the launcher's architecture check was patched so it does
+  not abort on aarch64. See tasks/T1/scripts/patch_rtg_launcher.sh and
+  licenses/MODIFICATIONS.md. The RTG code itself was not modified.
+
+samtools 1.16.1 / bcftools 1.16 / tabix·htslib 1.16
+  Debian bookworm packages: samtools 1.16.1-1, bcftools 1.16-1,
+  tabix 1.16+ds-3, libhts3 1.16+ds-3
+  License: MIT / Expat  (htslib's cram/ subdirectory is Modified-BSD-3)
+  Copyright: Genome Research Ltd.; Heng Li; Broad Institute; Illumina, Inc.;
+             Peter Cock / The James Hutton Institute (samtools)
+  Upstream texts READ (2026-09), at the exact matching tags:
+    https://github.com/samtools/samtools/blob/1.16.1/LICENSE
+    https://github.com/samtools/bcftools/blob/1.16/LICENSE
+    https://github.com/samtools/htslib/blob/1.16/LICENSE
+  bcftools is dual MIT-or-GPL: its LICENSE states plainly that GSL support is
+  "optional and disabled by default as explained in the INSTALL document".
+
+  ⚠️ THERE IS A REAL TRAP HERE, AND IT IS NOT JUST THEORETICAL.
+  Debian's own /usr/share/doc/bcftools/copyright states:
+
+      "License: MIT or GPL-3.0
+       Comment: Dual-licensing is in effect for the default compilation mode.
+       When linked with the GPL-licensed GNU Scientific Library (as is done for
+       this Debian package), the resulting program must be distributed under
+       the GPL."
+
+  and Debian's debian/rules for bcftools 1.16-1 really does configure with
+      --with-htslib=system --enable-gsl --with-cblas=gslcblas
+
+  Read literally, that says the bcftools in this image is GPL-governed, which
+  would make the "no copyleft in the toolchain" claim false. We therefore
+  MEASURED it instead of trusting either the text or the metadata. Four
+  independent checks, all reproducible inside the image:
+
+    1. Behavior (decisive). Upstream bcftools/Makefile says the GSL dependency
+       comes solely from the `polysomy` command, compiled only with
+       `make USE_GPL=1`. So USE_GPL is exactly the GSL switch, and its
+       observable effect is whether `bcftools polysomy` exists.
+       MEASURED: `bcftools polysomy` → "unrecognized command". No GSL build.
+    2. Byte-level. No `gsl_*` / `libgsl*` / `libcblas*` byte sequences in
+       bcftools, samtools, tabix, freebayes, or any of the 39 bcftools plugins.
+       This also rules out STATIC linkage, which `ldd` alone cannot see.
+    3. Dynamic. No NEEDED entry mentions libgsl/libcblas in any of the above.
+    4. Filesystem. No libgsl*/libcblas* file exists anywhere in the image.
+
+  CONCLUSION: Debian's `--enable-gsl` does not put GSL into this bcftools.
+  The copyright comment above is stale/templated with respect to this build.
+  The claim holds — but only because we tested it, not because the metadata
+  said so.
+
+  This is enforced at build time by scripts/check_no_gsl.sh, which runs all four
+  checks and fails the build. It has been negative-tested (scripts/
+  _negtest_no_gsl.sh): injecting a fake libgsl.so, a bcftools that answers
+  `polysomy`, or `gsl_*` symbol bytes each makes it fail, and it passes again
+  once reverted. Do not "simplify" it back to a bare `ldd | grep libgsl` —
+  that version has three blind spots (static linking, plugins, and behavior).
+
+================================================================================
+[B] NOT INDIVIDUALLY VERIFIED (license from package metadata)
+================================================================================
+
+OpenJDK (default-jre-headless)
+  License: GPL-2.0 WITH Classpath-exception-2.0
+  Source: Debian bookworm package
+  Why this is acceptable: the Classpath exception removes the copyleft effect
+  for the common case. This is an aggregation, not a combined work. See
+  docs/DATACARD.md §1 and SPEC.md §5.6.
+
+Debian base image userland (bash, coreutils, sed, tar, grep, ...)
+  License: GPL-2.0 / GPL-3.0-or-later
+  Why this is acceptable: these are AGGREGATED in the image, not combined into
+  our application, and we do not depend on their core functionality. The literal
+  requirement "no GPL in the image" is IMPOSSIBLE to satisfy — every Debian or
+  Ubuntu image contains GPL binaries. See docs/DATACARD.md §1 for the actual
+  policy we apply, and note that the wording of that policy still needs legal
+  review (SPEC.md §13.5).
+
+================================================================================
+DELIBERATELY NOT INCLUDED
+================================================================================
+
+GATK4
+  License: Apache-2.0 (the toolkit itself)
+  NOT SHIPPED, on purpose. Its official runtime pulls in proprietary Intel
+  oneMKL, GPL R/GSL, and LGPL htsjdk-tribble (which cannot be stripped).
+  Replacing it with FreeBayes removed all three problems at once.
+  We also found that GATK4's own POM describes htsjdk-tribble as MIT while the
+  artifact is LGPL-2.1 — i.e. the metadata is wrong. Do not trust POM license
+  fields; open the artifact.
+  Separately: GATK3 is the non-commercial trap in this family. GATK4 >= 4.2 is
+  Apache-2.0, but GATK3 is not. Do not substitute one for the other.
+
+libgsl / gsl-bin / r-base
+  License: GPL-3.0-or-later / GPL-2.0-or-later
+  Excluded: would make downstream tools GPL-governed. The build gate fails if
+  libgsl appears in the dependency tree.
+
+dbNSFP and derived in-silico predictors (REVEL, CADD, PolyPhen-2, AlphaMissense, ...)
+  License: CC BY-NC-ND 4.0, with a paid commercial tier
+  Excluded from the T2 dataset: the ND clause forbids derivatives, and the NC
+  clause forbids commercial use. Turning a source into a test item IS a
+  derivative, so ND content is unusable here regardless of the NC question.
+
+SpliceAI annotations inside gnomAD releases
+  License: CC BY-NC 4.0
+  Excluded: any gnomAD file containing the SpliceAI column was dropped whole.
+  Note the main gnomAD data is CC0-1.0 — only the SpliceAI column is NC.
+
+OMIM / GeneReviews
+  License: third-party copyright, redistribution restricted.
+  Excluded.
+
+================================================================================
+CORRECTNESS OF THIS FILE
+================================================================================
+
+Run this to check that the claims above still match the repository:
+
+    python scripts/verify_datacard.py
+
+If a claim here is wrong, FIX THIS FILE — do not edit reality to match it.

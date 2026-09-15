@@ -1,0 +1,7 @@
+# 构建上下文排除项 —— 否则 193 MB 的 ClinVar VCF 与中间文件都会进上下文，构建极慢
+# 模式要加 **/ 才能匹配任意深度
+**/_cache
+**/baseline
+**/scripts
+**/research
+**/*.log

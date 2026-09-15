@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veribench-bio/schema/rubric-item.schema.json",
+  "title": "VeriBench-Bio 第二支柱 · rubric 开放题",
+  "description": "一道「审稿式」开放题 + 3–5 条 rubric。开放题没有唯一答案，所以评分靠**逐条 rubric 的分类评分**（0 未满足 / 1 部分满足 / 2 满足），而 rubric 本身的可信度靠**双标注 κ** 来证明。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["item_id", "question", "criteria", "provenance"],
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "pattern": "^R-[0-9]{4,5}$",
+      "description": "题号。**必须不可反查**（不得编码 PMC ID / DOI / 变异名）—— 与 T2 同一个教训。"
+    },
+    "question": {
+      "type": "string",
+      "minLength": 20,
+      "description": "开放题本身。**不得包含结论词**（pathogenic/benign/致病/良性 等）—— 那会把开放题变成暗示题。"
+    },
+    "context": {
+      "type": "string",
+      "description": "可选。题目所依据的摘要/背景材料。若来自论文，**必须是 CC0 或 CC BY**，且在原论文基础上**改写而非复制**（ND 禁衍生）。"
+    },
+    "reference_answer": {
+      "type": "string",
+      "description": "可选。参考答案。开放题**允许没有唯一答案**，但若有，它只是「一个合格回答长什么样」的示例，不是评分的唯一依据。"
+    },
+    "rubric_version": {
+      "type": "string",
+      "description": "可选。评分标准的版本。**改标准必须升版本号**，因为历史 κ 只对当时的版本有效（与 judge prompt 同一个道理）。"
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "description": "3–5 条评分标准。**这是全题的核心**：双标注、κ、judge 元评测都发生在这一层。",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "text", "anchors"],
+        "properties": {
+          "criterion_id": {
+            "type": "string",
+            "pattern": "^c[1-5]$",
+            "description": "题内唯一即可（c1..c5）。统计时以 (item_id, criterion_id) 为配对键。"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 10,
+            "description": "该条要评什么。**必须可判定**：写「论证是否引用具体证据」可以，写「回答好不好」不行。"
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0,
+            "description": "可选权重，默认等权。若设权重，必须在 DATACARD 里说明为什么。"
+          },
+          "revision_note": {
+            "type": "string",
+            "description": "可选。v1.1 起新增：本条相对上一版改了什么、依据哪条改写规则（见 docs/REVISION_RULES_V1.1.md）。**只记录改动，不参与评分。**"
+          },
+          "anchors": {
+            "type": "object",
+            "description": "**锚点**：0/1/2 各档各长什么样。没有锚点的 rubric 会让标注者各按各的理解打分，κ 必然低。",
+            "required": ["0", "1", "2"],
+            "additionalProperties": false,
+            "properties": {
+              "0": {"type": "string", "minLength": 5, "description": "未满足"},
+              "1": {"type": "string", "minLength": 5, "description": "部分满足"},
+              "2": {"type": "string", "minLength": 5, "description": "满足"}
+            }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "溯源。与主台账同源，字段含义见 ledger.schema.json。",
+      "additionalProperties": false,
+      "required": ["source_type", "source_ref", "license_spdx", "redistribution_ok", "visibility"],
+      "properties": {
+        "source_type": {"type": "string", "enum": ["public_dataset", "derived_from_paper", "synthetic"]},
+        "source_ref": {"type": "string", "description": "PMC ID / DOI / 数据集版本"},
+        "source_url": {"type": "string"},
+        "source_license_code": {"type": "string", "description": "平台声明的许可码原文，逐字保留（如 PMC 的 \"CC BY\"）"},
+        "license_spdx": {"type": "string", "description": "白名单：CC0-1.0 / CC-BY-4.0 / CC-BY-3.0 / PUBLIC-DOMAIN；不确定写 unknown"},
+        "license_url": {"type": "string", "description": "从正文 XML 解析出的许可 URL（用于把平台许可码升级到精确版本）"},
+        "retrieval_date": {"type": "string", "format": "date"},
+        "redistribution_ok": {"type": "boolean"},
+        "commercial_ok": {"type": "boolean"},
+        "contains_human_data": {"type": "boolean"},
+        "human_data_basis": {
+          "type": "string",
+          "enum": ["human_subjects_primary", "human_biospecimen", "human_secondary_review", "non_human_only", "unknown"],
+          "description": "contains_human_data 的判定依据。禁止只给布尔值：裸布尔无法审计，正是它让 27 篇被一律标 true 却长期无人发现。human_subjects_primary/human_biospecimen → contains_human_data 必须是 true；human_secondary_review/non_human_only → 必须是 false；unknown 不得公开。"
+        },
+        "contains_restricted_data": {"type": "boolean"},
+        "visibility": {"type": "string", "enum": ["public", "internal"]},
+        "derivation_note": {"type": "string", "description": "相对原文做了哪些加工（必须逐条能说清，因为 ND 禁衍生）"}
+      }
+    },
+    "safety_review": {
+      "type": "string",
+      "enum": ["not-applicable", "passed", "abstraction-applied", "gated", "rejected"],
+      "description": "生物安全审阅结果。开发生物学题尤其要过这一关。"
+    }
+  }
+}

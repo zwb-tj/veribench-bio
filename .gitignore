@@ -1,0 +1,139 @@
+# ==============================================================================
+# ⚠️ 本文件由 scripts/generate_gitignore.py **自动生成**，不要手改。
+#
+# 唯一真源是 scripts/not_published.json（"什么不该对外"）
+# —— `clean_room_check` 与 `verify_doc_links` 也读那一份。
+#
+# 为什么这件事是**安全属性**而不是方便设置：
+#   T2 有一个不可撤销的红线 —— 轮换池 937 条「永不公开」。
+#   而 `git add .` 会抓走 `tasks/T2/data/truth.jsonl`
+#   （4,726 条答案，**含全部 937 条轮换池答案**）。
+#   一旦 push 上去，那句话就永久变成假话。
+#
+# 改完 not_published.json 后请重新生成：
+#     python3 scripts/generate_gitignore.py
+# 核对是否过期：
+#     python3 scripts/generate_gitignore.py --check
+# ==============================================================================
+
+# --- 由 not_published.json 的 dirs 生成（每条都附上了理由）-------------------
+
+# 上游 jar 拆包产物（~1.1 GB），用于许可审计；结论已写进文档，原件不必分发
+/research/_artifacts/
+
+# 调研过程的临时文件
+/research/_scratch/
+
+# 判分产出，可重跑
+/rubric/fixtures/answers/judge_out/
+
+# 判分产出，可重跑
+/rubric/fixtures/answers/judge_out_run2/
+
+# 盲评输入的工作副本（散列前）
+/rubric/fixtures/answers/manip_minus/
+
+# 判分产出，可重跑
+/rubric/fixtures/answers/manip_out_run1/
+
+# 判分产出，可重跑
+/rubric/fixtures/answers/manip_out_run2/
+
+# 盲评输入的工作副本（散列前）
+/rubric/fixtures/answers/manip_plus/
+
+# 判分产出，可重跑
+/rubric/fixtures/answers/v1.1/judge_out_run1/
+
+# 判分产出，可重跑
+/rubric/fixtures/answers/v1.1/judge_out_run2/
+
+# judge I/O 链的夹具产出
+/rubric/fixtures/io/judge_outputs/
+
+# 被淘汰的 22 题并行方案，仅作审计痕迹
+/rubric/items/alternate/
+
+# **别人的论文全文**。公开的是改写后的题目，不是原文。由 fetch_source_text.py 重新取
+/rubric/items/sources/
+
+# 截断版备份，仅供对照，无用例发布
+/rubric/items/sources_trunc20000/
+
+# 运行期数据（参考序列/BAM，~171 MB），由 prepare_data.sh 从上游重新取
+/tasks/T1/_data/
+
+# 运行产物（调用 VCF、vcfeval 中间结果、日志）。**不随仓库发布** —— `verify_t1_claims.py` 的 docstring 一直这么声明，但此前这里漏登记，导致 clean_room_check 把它当成了会发布的文件。补登记以消除两份真源的分歧。
+/tasks/T1/_runs/
+
+# 复现运行产物（2026-09：旧 digest 镜像 + 修好的 run.sh 默认值），同样不发布
+/tasks/T1/_runs_repro/
+
+# 复现运行产物（digest sha256:1f5c665b…）。`verify_t1_claims.py` 会扫全部 `_runs_repro*` 找与 pin 一致的那一次。
+/tasks/T1/_runs_repro2/
+
+# 复现运行产物（digest sha256:e75867d5…，含四道检查的 GSL 门禁），同样不发布
+/tasks/T1/_runs_repro3/
+
+# 复现运行产物（改名 veribench-bio 后重建镜像 digest sha256:985cbe81…，走默认路径实跑复现 0.84655 / 12,254）。⚠️ 目录名必须沿用 `_runs_reproN` 约定 —— `verify_t1_claims.py` 用 `_runs_repro*` 通配找「与 pin 一致的那次实跑」；我一开始命名 `_runs_namecheck`，导致该检查报『没有与该镜像一致的实跑证据』。**约定不是形式，它是被代码依赖的接口。**
+/tasks/T1/_runs_repro4/
+
+# 运行期中间产物
+/tasks/T1/_work/
+
+# 运行期中间产物备份
+/tasks/T1/_work_backup/
+
+# T2 运行产物（判分结果、日志）。与 T1 的 _runs 同理：**不随仓库发布**。此前漏登记（和 T1 一样的漏法 —— 证明「枚举式登记」这个做法本身不可靠，已加检查把漏登记变成失败）。
+/tasks/T2/_runs/
+
+# 由 T2 构建脚本生成的基线结果
+/tasks/T2/baseline/
+
+# ClinVar 原始 VCF（~184 MB），由取数脚本重新下载
+/tasks/T2/data/_cache/
+
+# 运行期中间产物
+/tasks/T2/data/_work/
+
+# T2 全量审计记录（含逐题证据与金丝雀配对），同样覆盖轮换池，不发布。
+/tasks/T2/data/audit.jsonl
+
+# ⚠️ **T2 的全量题面**（4,726 条 = 公开 3,789 + 轮换 937）。与 truth.jsonl 同理：它含轮换池的**题面**。公开的应当是 data/public/items.jsonl。
+/tasks/T2/data/items.jsonl
+
+# 由 T2 构建脚本生成的公开集
+/tasks/T2/data/public/
+
+# 由 T2 构建脚本生成的轮换池（**从未发布过**）
+/tasks/T2/data/rotation/
+
+# ⚠️ **T2 的答案**（4,726 条：分类 + 专家小组的 ACMG 判据码）。**这是全量真值，包含轮换池 937 条的答案** —— 而 split_public_rotation.py 的注释写明轮换池「**永不公开**」。此前它**不在**这个清单里，所以 clean_room_check 一直把它当「会被发布的文件」复制进清室目录（实测已确认发生过）。**一旦随仓库发布，「轮换池 937 条从未发布」这句话就是假的。** 公开的应当是 data/public/。
+/tasks/T2/data/truth.jsonl
+
+# --- 由 not_published.json 的 suffixes / names 生成 -------------------------
+*.pyc
+*.pyo
+.DS_Store/
+.pytest_cache/
+__pycache__/
+
+# --- 本机 / 编辑器噪声（与发布策略无关，纯粹避免误提交）--------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# --- 仓库自身的 git 元数据 ---------------------------------------------------
+.git/

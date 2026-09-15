@@ -1,0 +1,99 @@
+image-digest: sha256:c33862bb7ba588e42f98a52bd8b6a3be0df3a120fc081a9acfcd7e90e6f04e1e
+===== 1/3 build reference SDF =====
+
+Output Data
+SDF-ID             : 0f8558fb-ee06-4fed-84ff-b3b7982cdbae
+Number of sequences: 1
+Total residues     : 64444167
+Minimum length     : 64444167
+Mean length        : 64444167
+Maximum length     : 64444167
+
+===== 2/3 variant calling (freebayes, timed) =====
+[run.sh 07:22:31] 开始变异检出：freebayes（MIT）区域=chr20:10000000-12000000 样本=HG002
+[run.sh 07:23:24] 归一化 + 压缩索引：bcftools（MIT）
+Lines   total/split/realigned/skipped:	11967/267/1040/0
+Writing to /tmp/bcftools.GrVnEo
+Merging 1 temporary files
+Cleaning
+Done
+[run.sh 07:23:26] 警告：输出样本名为 unknown，重命名为 HG002（此步骤会记入日志）
+[run.sh 07:23:26] 完成：12254 个变异，任务耗时 55s
+[run.sh 07:23:26] 完成。下一步：python3 grade.py --calls /out/calls.vcf.gz ...
+
+===== 3/3 grading (vcfeval) =====
+结果写入 /out/result.json
+{
+  "task_id": "T1",
+  "status": "ok",
+  "score": 0.84655,
+  "metric": "macro_f1_snp_indel",
+  "score_note": "score = mean(F1_snp, F1_indel)",
+  "per_type": {
+    "snps": {
+      "tp_baseline": 2512.0,
+      "tp_call": 2512.0,
+      "fp": 353.0,
+      "fn": 152.0,
+      "precision": 0.8768,
+      "sensitivity": 0.9429,
+      "f1": 0.9087
+    },
+    "indels": {
+      "tp_baseline": 431.0,
+      "tp_call": 449.0,
+      "fp": 75.0,
+      "fn": 165.0,
+      "precision": 0.8569,
+      "sensitivity": 0.7232,
+      "f1": 0.7844
+    }
+  },
+  "all_variants": {
+    "tp_baseline": 3086.0,
+    "tp_call": 3028.0,
+    "fp": 473.0,
+    "fn": 168.0,
+    "precision": 0.8649,
+    "sensitivity": 0.9484,
+    "f1": 0.9047
+  },
+  "wall_clock_sec": 55,
+  "grade_sec": 11.4,
+  "wall_clock_note": "wall_clock_sec 仅计任务本身（run.sh），不含数据准备与评分",
+  "peak_rss_mb": 1100.8,
+  "cpu_count": 16,
+  "image_digest": "sha256:c33862bb7ba588e42f98a52bd8b6a3be0df3a120fc081a9acfcd7e90e6f04e1e",
+  "manifest_hash": "fa025875cb2b593810119d04f08588a6467609314279c5a68752a653f804200f",
+  "problems": [],
+  "toolchain": {
+    "caller": "freebayes",
+    "grader": "rtg vcfeval",
+    "splitter": "bcftools"
+  },
+  "log_tail": [
+    "$ bcftools view -v snps -Oz -o /out/vcfeval/HG002_GRCh38_v5.0q_smvar.region.vcf.snps.vcf.gz /data/truth/HG002_GRCh38_v5.0q_smvar.region.vcf.gz",
+    "$ tabix -f -p vcf /out/vcfeval/HG002_GRCh38_v5.0q_smvar.region.vcf.snps.vcf.gz",
+    "$ bcftools view -H /out/vcfeval/HG002_GRCh38_v5.0q_smvar.region.vcf.snps.vcf.gz",
+    "T\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11979404\t.\tG\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11979415\t.\tC\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11979655\t.\tT\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11979693\t.\tC\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11979993\t.\tT\tA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11980045\t.\tG\tA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11980134\t.\tG\tA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11980216\t.\tT\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11980595\t.\tG\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11980732\t.\tC\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11980918\t.\tC\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11981054\t.\tG\tA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11981089\t.\tT\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11981126\t.\tG\tA\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11981133\t.\tA\tG\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11981273\t.\tG\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11981317\t.\tC\tT\t30\t.\tTRF\tGT:AD\t1|0:1,1\nchr20\t11981384\t.\tT\tA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11982001\t.\tT\tG\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11982291\t.\tA\tT\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11982943\t.\tA\tT\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11983410\t.\tT\tC\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11984341\t.\tC\tG\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11984663\t.\tG\tT\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11984707\t.\tT\tC\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11984771\t.\tC\tT\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11985220\t.\tG\tT\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11985598\t.\tA\tG\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11986265\t.\tA\tG\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11986506\t.\tC\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11986695\t.\tG\tA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11986802\t.\tA\tC\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11988230\t.\tC\tG\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11989048\t.\tT\tG\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11990386\t.\tC\tG\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11991027\t.\tA\tG\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11992285\t.\tT\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11992539\t.\tT\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11992579\t.\tG\tC\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11992622\t.\tC\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11992643\t.\tT\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11992872\t.\tC\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11995473\t.\tT\tC\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11996165\t.\tG\tC\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11996947\t.\tG\tA\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11997617\t.\tA\tG\t30\t.\tTRF\tGT:AD\t1|1:0,2\nchr20\t11997882\t.\tT\tA\t30\t.\t.\tGT:AD\t0|1:1,1",
+    "$ bcftools view -v snps -Oz -o /out/vcfeval/calls.vcf.snps.vcf.gz /out/calls.vcf.gz",
+    "$ tabix -f -p vcf /out/vcfeval/calls.vcf.snps.vcf.gz",
+    "$ bcftools view -H /out/vcfeval/calls.vcf.snps.vcf.gz",
+    "EPP=7.35324;EPPR=3.15506;GTI=0;LEN=1;MEANALT=1;MQM=70;MQMR=70;NS=1;NUMALT=1;ODDS=21.9498;PAIRED=1;PAIREDR=0.733333;PAO=0;PQA=0;PQR=0;PRO=0;QA=25;QR=595;RO=15;RPL=2;RPP=7.35324;RPPR=10.1038;RPR=0;RUN=1;SAF=2;SAP=7.35324;SAR=0;SRF=6;SRP=4.31318;SRR=9;TYPE=snp\tGT:DP:AD:RO:QR:AO:QA:GL\t0/0:17:15,2:15:595:2:25:0,-2.74251,-51.5661\nchr20\t11997882\t.\tT\tA\t176.432\t.\tAB=0.4;ABP=4.74748;AC=1;AF=0.5;AN=2;AO=8;CIGAR=1X;DP=20;DPB=20;DPRA=0;EPP=4.09604;EPPR=3.73412;GTI=0;LEN=1;MEANALT=1;MQM=70;MQMR=70;NS=1;NUMALT=1;ODDS=40.625;PAIRED=0.75;PAIREDR=0.916667;PAO=0;PQA=0;PQR=0;PRO=0;QA=312;QR=405;RO=12;RPL=3;RPP=4.09604;RPPR=3.0103;RPR=5;RUN=1;SAF=4;SAP=3.0103;SAR=4;SRF=7;SRP=3.73412;SRR=5;TYPE=snp\tGT:DP:AD:RO:QR:AO:QA:GL\t0/1:20:12,8:12:405:8:312:-22.4468,0,-30.7638\nchr20\t11998063\t.\tT\tG\t5.06856e-13\t.\tAB=0;ABP=0;AC=0;AF=0;AN=2;AO=2;CIGAR=1X;DP=24;DPB=24;DPRA=0;EPP=7.35324;EPPR=4.58955;GTI=0;LEN=1;MEANALT=1;MQM=70;MQMR=70;NS=1;NUMALT=1;ODDS=29.7785;PAIRED=1;PAIREDR=0.954545;PAO=0;PQA=0;PQR=0;PRO=0;QA=24;QR=847;RO=22;RPL=1;RPP=3.0103;RPPR=3.40511;RPR=1;RUN=1;SAF=1;SAP=3.0103;SAR=1;SRF=11;SRP=3.0103;SRR=11;TYPE=snp\tGT:DP:AD:RO:QR:AO:QA:GL\t0/0:24:22,2:22:847:2:24:0,-4.94472,-74.3286\nchr20\t11999266\t.\tC\tT\t5.91482e-14\t.\tAB=0;ABP=0;AC=0;AF=0;AN=2;AO=2;CIGAR=1X;DP=33;DPB=33;DPRA=0;EPP=7.35324;EPPR=8.68415;GTI=0;LEN=1;MEANALT=1;MQM=70;MQMR=70;NS=1;NUMALT=1;ODDS=31.9824;PAIRED=1;PAIREDR=1;PAO=0;PQA=0;PQR=0;PRO=0;QA=68;QR=1135;RO=31;RPL=1;RPP=3.0103;RPPR=3.08035;RPR=1;RUN=1;SAF=1;SAP=3.0103;SAR=1;SRF=15;SRP=3.08035;SRR=16;TYPE=snp\tGT:DP:AD:RO:QR:AO:QA:GL\t0/0:33:31,2:31:1135:2:68:0,-3.47429,-96.048\nchr20\t11999486\t.\tA\tT\t3.19468e-11\t.\tAB=0;ABP=0;AC=0;AF=0;AN=2;AO=2;CIGAR=1X;DP=23;DPB=23;DPRA=0;EPP=3.0103;EPPR=3.1137;GTI=0;LEN=1;MEANALT=1;MQM=70;MQMR=70;NS=1;NUMALT=1;ODDS=25.6356;PAIRED=1;PAIREDR=1;PAO=0;PQA=0;PQR=0;PRO=0;QA=37;QR=779;RO=21;RPL=1;RPP=3.0103;RPPR=3.94093;RPR=1;RUN=1;SAF=2;SAP=7.35324;SAR=0;SRF=11;SRP=3.1137;SRR=10;TYPE=snp\tGT:DP:AD:RO:QR:AO:QA:GL\t0/0:23:21,2:21:779:2:37:0,-3.4087,-66.9603",
+    "$ bcftools view -v indels -Oz -o /out/vcfeval/HG002_GRCh38_v5.0q_smvar.region.vcf.indels.vcf.gz /data/truth/HG002_GRCh38_v5.0q_smvar.region.vcf.gz",
+    "$ tabix -f -p vcf /out/vcfeval/HG002_GRCh38_v5.0q_smvar.region.vcf.indels.vcf.gz",
+    "$ bcftools view -H /out/vcfeval/HG002_GRCh38_v5.0q_smvar.region.vcf.indels.vcf.gz",
+    "chr20\t11893061\t.\tA\tAT\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11893814\t.\tC\tCTTTT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11897484\t.\tCA\tC\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11900706\t.\tCT\tC\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11906254\t.\tC\tCTTTTTTTTTTTTTT,CTTTTTTTTTTTTTTT\t30\t.\t.\tGT:AD\t1|2:0,1,1\nchr20\t11908321\t.\tG\tGTTTTTTT,GTTTTTTTT\t30\t.\t.\tGT:AD\t2|1:0,1,1\nchr20\t11909274\t.\tC\tCA\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11910225\t.\tG\tGA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11910520\t.\tCAT\tC\t30\t.\tTRF\tGT:AD\t1|1:0,2\nchr20\t11911145\t.\tGA\tG\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11913412\t.\tGC\tG\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11917698\t.\tA\tAT\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11920950\t.\tC\tCT\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11939038\t.\tA\tAT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11939960\t.\tC\tCA\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11943383\t.\tCT\tC\t30\t.\tTRF\tGT:AD\t0|1:1,1\nchr20\t11943741\t.\tCTTTCTTTTTCTG\tC\t30\t.\tTRF\tGT:AD\t1|1:0,2\nchr20\t11943939\t.\tGA\tG\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11944244\t.\tC\tCT\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11944507\t.\tTA\tT\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11945540\t.\tC\tCA,CAA\t30\t.\t.\tGT:AD\t2|1:0,1,1\nchr20\t11946284\t.\tT\tTACACAC,TACACACACACAC\t30\t.\tTRF\tGT:AD\t1|2:0,1,1\nchr20\t11971326\t.\tA\tAAT\t30\t.\tTRF\tGT:AD\t0|1:1,1\nchr20\t11975415\t.\tT\tTA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11976166\t.\tTAA\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11978528\t.\tGT\tG\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11980971\t.\tTTTG\tT\t30\t.\tTRF\tGT:AD\t1|0:1,1\nchr20\t11982714\t.\tGTGTGTGTGTA\tG\t30\t.\tTRF\tGT:AD\t0|1:1,1\nchr20\t11982770\t.\tATG\tA\t30\t.\tTRF\tGT:AD\t1|1:0,2\nchr20\t11984151\t.\tCTTTT\tC\t30\t.\tTRF\tGT:AD\t1|0:1,1\nchr20\t11984195\t.\tCTCTTTCTTTCTTTCTTTCTTTCTTTCTT\tC\t30\t.\tTRF;TRFdiff=-7;TRFrepeat=TTTC;TRFovl=1;TRFstart=11984138;TRFend=11984314;TRFperiod=4;TRFcopies=37.8;TRFscore=389;TRFentropy=0.86\tGT:AD\t0|1:1,1\nchr20\t11984205\t.\tC\tCT,*\t30\t.\tTRF\tGT:AD\t1|2:0,1,1\nchr20\t11984211\t.\tT\tTTTC,*\t30\t.\tTRF\tGT:AD\t1|2:0,1,1\nchr20\t11984612\t.\tGT\tG\t30\t.\t.\tGT:AD\t1|1:0,2\nchr20\t11987598\t.\tAT\tA\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11989641\t.\tGGTGTGT\tG,GGTGT\t30\t.\tTRF\tGT:AD\t1|2:0,1,1\nchr20\t11989839\t.\tTCA\tT\t30\t.\t.\tGT:AD\t1|0:1,1\nchr20\t11994635\t.\tTTGTAAA\tT\t30\t.\t.\tGT:AD\t0|1:1,1\nchr20\t11997670\t.\tCAA\tC,CA\t30\t.\tTRF\tGT:AD\t2|1:0,1,1",
+    "$ bcftools view -v indels -Oz -o /out/vcfeval/calls.vcf.indels.vcf.gz /out/calls.vcf.gz",
+    "$ tabix -f -p vcf /out/vcfeval/calls.vcf.indels.vcf.gz",
+    "$ bcftools view -H /out/vcfeval/calls.vcf.indels.vcf.gz",
+    "LEN=6;MEANALT=2;MQM=70;MQMR=0;NS=1;NUMALT=2;ODDS=32.6407;PAIRED=1;PAIREDR=0;PAO=0;PQA=0;PQR=0;PRO=0;QA=424;QR=0;RO=0;RPL=8;RPP=3.15506;RPPR=0;RPR=7;RUN=1;SAF=8;SAP=3.15506;SAR=7;SRF=0;SRP=0;SRR=0;TYPE=del\tGT:DP:AD:RO:QR:AO:QA:GL\t0/1:24:0,15:0:0:15:424:-57.4198,-23.8022,-19.2868\nchr20\t11989839\t.\tTCA\tT\t515.334\t.\tAB=0.636364;ABP=8.34028;AC=1;AF=0.5;AN=2;AO=21;CIGAR=1M2D1M;DP=33;DPB=22;DPRA=0;EPP=11.386;EPPR=3.87889;GTI=0;LEN=2;MEANALT=3;MQM=70;MQMR=70;NS=1;NUMALT=1;ODDS=45.1833;PAIRED=1;PAIREDR=1;PAO=0;PQA=0;PQR=0;PRO=0;QA=755;QR=385;RO=10;RPL=8;RPP=5.59539;RPPR=6.48466;RPR=13;RUN=1;SAF=13;SAP=5.59539;SAR=8;SRF=5;SRP=3.0103;SRR=5;TYPE=del\tGT:DP:AD:RO:QR:AO:QA:GL\t0/1:33:10,21:10:385:21:755:-58.8317,0,-25.536\nchr20\t11994635\t.\tTTGTAAA\tT\t204.671\t.\tAB=0.611111;ABP=4.9405;AC=1;AF=0.5;AN=2;AO=11;CIGAR=1M6D1M;DP=18;DPB=9.75;DPRA=0;EPP=4.78696;EPPR=18.2106;GTI=0;LEN=6;MEANALT=1;MQM=70;MQMR=70;NS=1;NUMALT=1;ODDS=31.2522;PAIRED=1;PAIREDR=1;PAO=0;PQA=0;PQR=0;PRO=0;QA=343;QR=275;RO=7;RPL=4;RPP=4.78696;RPPR=3.32051;RPR=7;RUN=1;SAF=7;SAP=4.78696;SAR=4;SRF=3;SRP=3.32051;SRR=4;TYPE=del\tGT:DP:AD:RO:QR:AO:QA:GL\t0/1:18:7,11:7:275:11:343:-25.7613,0,-19.7219\nchr20\t11997670\t.\tCAA\tC\t27.8241\t.\tAB=0;ABP=0;AC=2;AF=1;AN=2;AO=3;CIGAR=1M2D35M;DP=6;DPB=6.26316;DPRA=0;EPP=3.73412;EPPR=0;GTI=0;LEN=2;MEANALT=4;MQM=70;MQMR=0;NS=1;NUMALT=1;ODDS=2.31558;PAIRED=0.666667;PAIREDR=0;PAO=0.4;PQA=11.6;PQR=11.6;PRO=0.4;QA=45;QR=0;RO=0;RPL=1;RPP=3.73412;RPPR=0;RPR=2;RUN=1;SAF=1;SAP=3.73412;SAR=2;SRF=0;SRP=0;SRR=0;TYPE=del\tGT:DP:AD:RO:QR:AO:QA:GL\t1/1:6:0,3:0:0:3:45:-4.01053,-0.90309,0\nchr20\t11998049\t.\tTA\tT\t3.24628e-07\t.\tAB=0.0869565;ABP=37.093;AC=1;AF=0.5;AN=2;AO=2;CIGAR=1M1D3M;DP=23;DPB=22.6;DPRA=0;EPP=7.35324;EPPR=3.44459;GTI=0;LEN=1;MEANALT=2;MQM=70;MQMR=70;NS=1;NUMALT=1;ODDS=16.4091;PAIRED=1;PAIREDR=0.95;PAO=0;PQA=0;PQR=0;PRO=0;QA=77;QR=726;RO=20;RPL=1;RPP=3.0103;RPPR=3.44459;RPR=1;RUN=1;SAF=1;SAP=3.0103;SAR=1;SRF=10;SRP=3.0103;SRR=10;TYPE=del\tGT:DP:AD:RO:QR:AO:QA:GL\t0/1:23:20,2:20:726:2:77:-0.33677,0,-58.7343",
+    "$ rtg vcfeval --baseline /out/vcfeval/HG002_GRCh38_v5.0q_smvar.region.vcf.snps.vcf.gz --calls /out/vcfeval/calls.vcf.snps.vcf.gz --template /data/_work/chr20.sdf --output /out/vcfeval/eval_snps --bed-regions /data/truth/HG002_GRCh38_v5.0q_smvar.benchmark.region.bed",
+    "Threshold  True-pos-baseline  True-pos-call  False-pos  False-neg  Precision  Sensitivity  F-measure\n----------------------------------------------------------------------------------------------------\n     None               2512           2512        353        152     0.8768       0.9429     0.9087",
+    "$ rtg vcfeval --baseline /out/vcfeval/HG002_GRCh38_v5.0q_smvar.region.vcf.indels.vcf.gz --calls /out/vcfeval/calls.vcf.indels.vcf.gz --template /data/_work/chr20.sdf --output /out/vcfeval/eval_indels --bed-regions /data/truth/HG002_GRCh38_v5.0q_smvar.benchmark.region.bed",
+    "Threshold  True-pos-baseline  True-pos-call  False-pos  False-neg  Precision  Sensitivity  F-measure\n----------------------------------------------------------------------------------------------------\n     None                431            449         75        165     0.8569       0.7232     0.7844",
+    "$ rtg vcfeval --baseline /data/truth/HG002_GRCh38_v5.0q_smvar.region.vcf.gz --calls /out/calls.vcf.gz --template /data/_work/chr20.sdf --output /out/vcfeval/eval_all --bed-regions /data/truth/HG002_GRCh38_v5.0q_smvar.benchmark.region.bed",
+    "Threshold  True-pos-baseline  True-pos-call  False-pos  False-neg  Precision  Sensitivity  F-measure\n----------------------------------------------------------------------------------------------------\n     None               3086           3028        473        168     0.8649       0.9484     0.9047"
+  ]
+}
+ALL_DONE

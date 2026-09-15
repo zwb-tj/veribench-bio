@@ -1,0 +1,467 @@
+[
+  {
+    "source_ref": "PMC11900000",
+    "human_hits": 10,
+    "animal_hits": 122,
+    "secondary_hits": 0,
+    "suggested": false,
+    "reason": "非人模型标记 122 > 人类标记 10",
+    "human_examples": [
+      "medical treatment to mitigate, or reverse, its course and improve the patient’s quality of life. Although CDD is primarily a genetic brain disorder",
+      "ence of a redox imbalance in the plasma and skin fibroblasts from CDD patients and in the cardiac myocytes of a mouse model of CDD. In order to shed",
+      "in line with evidence that redox imbalance occurs in plasma from CDD patients [23,24,25,26].  Oxidative stress is a combination of biochemical even"
+    ],
+    "animal_examples": [
+      "ctional and structural abnormalities in heterozygous Cdkl5 +/− female mice [19]. Cdkl5 +/− mice exhibited QTc prolongation and increased heart r",
+      "l abnormalities in heterozygous Cdkl5 +/− female mice [19]. Cdkl5 +/− mice exhibited QTc prolongation and increased heart rate accompanied by ty",
+      "reatment with UBQ Decreases ROS Production in the Hearts of Cdkl5 +/− Mice  Previously, we showed that heterozygous Cdkl5 KO (Cdkl5 +/−) female"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900001",
+    "human_hits": 8,
+    "animal_hits": 6,
+    "secondary_hits": 0,
+    "suggested": true,
+    "reason": "人类标记 8 > 非人标记 6",
+    "human_examples": [
+      "inflammation and promote joint regeneration is crucial for long-term patient benefit. This study investigates the potential of exosome-like nano-v",
+      "fits. Clinical translation of GEV therapy holds promise for improving patient outcomes and reducing the burden on healthcare systems.  1. Introduct",
+      "s more than 8 million people in the UK and 240 million worldwide [1]. Patients with OA suffer from joint pain, stiffness, reduced mobility, and dimi"
+    ],
+    "animal_examples": [
+      "nd increased anti-inflammatory cytokines (IL-10 and IL-22) in colitis mice models [23]. A similar effect was seen in EVs isolated from grapefrui",
+      "Juice to Reverse Diet-Induced Gut Modifications in Diet-Induced Obese Mice Mol. Ther.-Methods Clin. Dev. 2020 18 880 892 10.1016/j.omtm.2020.08.",
+      "e Exosome-like Nanoparticles Induce Intestinal Stem Cells and Protect Mice from DSS-Induced Colitis Mol. Ther. 2013 21 1345 1357 10.1038/mt.2013"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900002",
+    "human_hits": 2,
+    "animal_hits": 4,
+    "secondary_hits": 2,
+    "suggested": false,
+    "reason": "非人模型标记 4 > 人类标记 2",
+    "human_examples": [
+      "5971 131. Hudson T. Saw palmetto for men and women Townsend Lett. Dr. Patients 2003 238 40 42 132. Srinivasan M. Sudheer A.R. Menon V.P. Ferulic Aci",
+      "OI: 10.3390/ijms26052328 Article ID: ijms-26-02328 Article version: 1 Subjects: Review  Use of Natural Biomolecules in Animal Feed to Enhance Livest"
+    ],
+    "animal_examples": [
+      "rginine Peptides Promote Spermatogenesis Recovery in Busulfan Treated Mice Front. Cell Dev. Biol. 2021 9 791471 10.3389/fcell.2021.791471 349932",
+      "rtility enhancement by quercetin in a polycystic ovary syndrome model-rat Phytother. Res. 2014 28 982 986 101. Mannerås-Holm L. Marklund A. San",
+      "rnes J.L. Abboud H.E. Pergola P.E. Kidney involvement in a nongenetic rat model of type 2 diabetes Kidney Int. 2005 68 2562 2571 10.1111/j.1523"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900003",
+    "human_hits": 19,
+    "animal_hits": 17,
+    "secondary_hits": 1,
+    "suggested": true,
+    "reason": "人类标记 19 > 非人标记 17",
+    "human_examples": [
+      "study microglia activity. The use of iMGs provides a model closer to patient physiology, offering the potential to evaluate individual cellular re",
+      "ental in identifying personalized therapeutic strategies by assessing patient-specific microglial behavior in response to myelin debris. These find",
+      "been approved for MS treatment, dramatically changing the lives of MS patients [3]. However, most patients with RRMS eventually shift to Secondary P"
+    ],
+    "animal_examples": [
+      "er with a concentration of 0.83 M.  The next step was euthanizing six mice, extracting their brains, and submerging them in 30 mL of the 0.32 M",
+      "talized cell line derived from microglial cells obtained from C57/BL6 mice. This cell line, commercially obtained from AcceGen Biotech (Fairfiel",
+      "ientific, Waltham, MA, USA, Cat# 31460), at dilution 1:40,000 or anti-Mouse IgG (Merck, Darmstadt, Germany, Cat# NA931) at dilution 1:40,000. Aft"
+    ],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900004",
+    "human_hits": 12,
+    "animal_hits": 71,
+    "secondary_hits": 5,
+    "suggested": false,
+    "reason": "非人模型标记 71 > 人类标记 12",
+    "human_examples": [
+      "ety, and cognitive dysfunction [5,6,7]. A meta-analysis revealed that patients with IBD exhibit a prevalence rate of approximately 20% for anxiety a",
+      "(AD), and autism [10,11,12]. An observational study has revealed that patients with IBD exhibit changes in hippocampal neural activity, amygdala and",
+      "diate mediator in the impact of the colitis microbiome on the brain.  Patients with IBD have an increased risk of developing mood disorders, such as"
+    ],
+    "animal_examples": [
+      "l inflammation affects brain function and to verify these mechanisms. Mice were treated with multiple cycles of 1% w/v dextran sulfate sodium (D",
+      "treatment to induce the chronic colitis model (Figure 1A), where the mice in the UC group exhibited weight loss (Figure 1B), increased DAI scor",
+      "-1β, and TNF-α were significantly increased in the colonic tissues of mice from the UC group (Figure 1F). Metagenomic analysis of fecal samples"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900005",
+    "human_hits": 28,
+    "animal_hits": 1,
+    "secondary_hits": 2,
+    "suggested": true,
+    "reason": "人类标记 28 > 非人标记 1",
+    "human_examples": [
+      "of NESHIE. In five whole-exome sequencing studies on a total of 1922 patients with CP, pathogenic or likely pathogenic genetic variants across 248",
+      "precision medicine in a clinical setting, and improve the quality of patient care [23,24]. Integrating patients’ genomic data with their clinical",
+      "setting, and improve the quality of patient care [23,24]. Integrating patients’ genomic data with their clinical profiles is a powerful tool, facili"
+    ],
+    "animal_examples": [
+      "ADAMTS3 encodes a procollagen amino protease that has been shown in a mouse model to play a role in angiogenesis and lymphangiogenesis [67]. The"
+    ],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900006",
+    "human_hits": 15,
+    "animal_hits": 13,
+    "secondary_hits": 0,
+    "suggested": true,
+    "reason": "人类标记 15 > 非人标记 13",
+    "human_examples": [
+      "ated plasma levels of citrulline and arginine in diabetic retinopathy patients compared to diabetic controls. We tested our hypothesis that citrulli",
+      "laboratory found elevated plasma levels of citrulline and arginine in patients with DR compared to patients with diabetes and no retinopathy [5]. Me",
+      "sma levels of citrulline and arginine in patients with DR compared to patients with diabetes and no retinopathy [5]. Metabolic pathway analysis indi"
+    ],
+    "animal_examples": [
+      "emia/reperfusion (I/R) and oxygen-induced retinopathy (OIR) models in mice to protect against neurovascular degeneration and to limit vitreoreti",
+      "l glucose conditions.  It was recently shown that arginase-1 knockout mice subjected to the OIR model displayed increased pathologic retinal neo",
+      "d increased retinal citrulline and arginine compared to wild-type OIR mice [22]. The same study showed that cell-specific deletion of endothelia"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900007",
+    "human_hits": 36,
+    "animal_hits": 0,
+    "secondary_hits": 13,
+    "suggested": true,
+    "reason": "人类标记 36 > 非人标记 0",
+    "human_examples": [
+      "uloskeletal painful conditions. Results: Data from 7 articles and 303 patients with musculoskeletal painful conditions treated with CT were included",
+      "ogies studied. Nevertheless, all studies showed an improvement in the patients’ initial clinical conditions. Conclusions: This review highlights the",
+      "(1) study design, (2) musculoskeletal pathology, (3) sample size and patients’ features, (4) outcome measures, (5) therapeutic protocol and follow-"
+    ],
+    "animal_examples": [],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900008",
+    "human_hits": 3,
+    "animal_hits": 2,
+    "secondary_hits": 1,
+    "suggested": null,
+    "reason": "证据不足（人类 3 / 非人 2 / 二次文献 1）——需人工读原文",
+    "human_examples": [
+      "OI: 10.3390/ijms26051979 Article ID: ijms-26-01979 Article version: 1 Subjects: Review  Structural Features of 5′ Untranslated Region in Translation",
+      "tro [109], their presence and functionality in living cells remains a subject of debate, as the majority of studies have been conducted on syntheti",
+      "on in a cap- and 5′ UTR-independent manner. Viral IRESs have been the subject of significant research, and their structures in complex with the rib"
+    ],
+    "animal_examples": [
+      "J. Gorospe M. Seshadri V. miR-196b-Mediated Translation Regulation of Mouse Insulin2 via the 5′UTR PLoS ONE 2014 9 e101084 10.1371/journal.pone.0",
+      "n S.M. Bevilacqua P.C. A Stable RNA G-Quadruplex within the 5′-UTR of Arabidopsis Thaliana ATR mRNA Inhibits Translation Biochem. J. 2015 467 91 102 10"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900009",
+    "human_hits": 11,
+    "animal_hits": 50,
+    "secondary_hits": 4,
+    "suggested": false,
+    "reason": "非人模型标记 50 > 人类标记 11",
+    "human_examples": [
+      "ssue damage [6,7,8].  A recent study showed that neutrophils from ASH patients show impairment in antibacterial activities and display increased ROS",
+      "liver diseases [11]. Increased ecDNA concentrations were reported in patients with non-alcoholic steatosis and were linked to the disease’s severit",
+      "Based on previously published studies, plasma ecDNA concentrations of patients with ALD are higher compared with the control group [26]. As was show"
+    ],
+    "animal_examples": [
+      "erapeutic effect of DNase I in a murine model of ALD. Female C57BL/6J mice were fed a control diet (n = 13) or Lieber–DeCarli ethanol diet for 1",
+      "ol dose to mimic acute-on-chronic alcoholic liver injury. From day 5, mice fed ethanol were randomized into an ethanol diet group (n = 17) and e",
+      "analyzed with single radial enzyme dispersion assay. The ethanol-fed mice exhibited increased mortality, neutrophil infiltration and structural"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900010",
+    "human_hits": 81,
+    "animal_hits": 1,
+    "secondary_hits": 0,
+    "suggested": true,
+    "reason": "人类标记 81 > 非人标记 1",
+    "human_examples": [
+      "ogy and Obstetrics Clinic. A total of 210 first-time cesarean section patients were included. Vernix caseosa, collected from newborns, was applied t",
+      "Scar assessment was performed using the Manchester Scar Scale and the Patient and Observer Scar Assessment Scale (POSAS). Results: The vernix group",
+      "and difficulties in accepting the scar and oneself. In severe cases, patients may perceive the scar as an unsightly or foreign element that impairs"
+    ],
+    "animal_examples": [
+      "an Der Coelen D. Hennink W.E. Ponec M. Bouwstra J.A. Development of a murine model to evaluate the effect of vernix caseosa on skin barrier recove"
+    ],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900011",
+    "human_hits": 19,
+    "animal_hits": 0,
+    "secondary_hits": 0,
+    "suggested": true,
+    "reason": "人类标记 19 > 非人标记 0",
+    "human_examples": [
+      "who attended the Gynaecologic Endocrinology Unit at Siriraj Hospital. Patients underwent assessments for weight, height, waist circumference, modifi",
+      "c utility, the OGTT can be inconvenient and time-consuming, requiring patients to fast and undergo blood collection twice.  Haemoglobin A1c (HbA1c)",
+      "d information from nurses in the Gynaecologic Endocrinology Unit when patients were diagnosed with PCOS. One hundred and twenty-one PCOS women, aged"
+    ],
+    "animal_examples": [],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900012",
+    "human_hits": 17,
+    "animal_hits": 2,
+    "secondary_hits": 0,
+    "suggested": true,
+    "reason": "人类标记 17 > 非人标记 2",
+    "human_examples": [
+      "owever, it is associated with significant adverse effects that impact patients’ quality of life. Drug repurposing offers a promising strategy to ide",
+      "ses like sphingolipidoses poses significant challenges due to limited patient populations, high costs, and restricted treatment options. Despite si",
+      "debilitating diseases, providing benefits to an increasing number of patients [30]. Combinatorial therapeutic strategies are currently employed to"
+    ],
+    "animal_examples": [
+      "73 PMC4487606 47. Shukla G.S. Radin N.S. Glucosylceramide Synthase of Mouse Kidney: Further Characterization with an Improved Assay Method Arch.",
+      "Marks D.L. Watanabe R. Paul P. Rajan N. Pagano R.E. Histidine-193 of Rat Glucosylceramide Synthase Resides in a UDP-Glucose- and Inhibitor (D-"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900013",
+    "human_hits": 46,
+    "animal_hits": 0,
+    "secondary_hits": 3,
+    "suggested": true,
+    "reason": "人类标记 46 > 非人标记 0",
+    "human_examples": [
+      "as LSM served as an outcome measure to assess liver fibrosis in MASLD patients.  In addition to imaging tools, emerging biomarkers like fibroblast g",
+      "btained from participants and/or their legal guardians.  Selection of Patients and Criteria  A total of 195 adolescents aged 9-18 years were enrolle",
+      "y related to the severities in the outcome of liver function in MASLD patients, such as an increased risk for the degree of fibrosis. Recent studies"
+    ],
+    "animal_examples": [],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900014",
+    "human_hits": 1,
+    "animal_hits": 5,
+    "secondary_hits": 0,
+    "suggested": false,
+    "reason": "非人模型标记 5 > 人类标记 1",
+    "human_examples": [
+      "OI: 10.3390/ijms26051997 Article ID: ijms-26-01997 Article version: 1 Subjects: Correction  Correction: Chua et al. Intraperitoneally Delivered Umbi"
+    ],
+    "animal_examples": [
+      "ion, there was a mistake in Figure 2C as published [1]. The image for Mouse-1 in dPBS group was also used as the image for Mouse-2 in the dPBS gr",
+      "]. The image for Mouse-1 in dPBS group was also used as the image for Mouse-2 in the dPBS group. The corrected Figure 2C appears below. The autho",
+      "ing Mesenchymal Stromal Cells Improve Survival and Kidney Function in Murine Lupus via Myeloid Pathway Targeting. Int. J. Mol. Sci. 2023, 24, 365"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900015",
+    "human_hits": 83,
+    "animal_hits": 0,
+    "secondary_hits": 1,
+    "suggested": true,
+    "reason": "人类标记 83 > 非人标记 0",
+    "human_examples": [
+      "ts: Article  The Impact of Pleural Effusion on Long-Term Mortality in Patients Undergoing Transcatheter Aortic Valve Implantation  Esin Fatma Method",
+      "============ Background/Objectives: Pleural effusions may be seen in patients with severe AS complicated by hemodynamically significant heart failu",
+      "n the association between pleural effusion and long-term mortality in patients undergoing transcatheter aortic valve implantation (TAVI). This study"
+    ],
+    "animal_examples": [],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900016",
+    "human_hits": 27,
+    "animal_hits": 0,
+    "secondary_hits": 1,
+    "suggested": true,
+    "reason": "人类标记 27 > 非人标记 0",
+    "human_examples": [
+      "varied. The choice of treatment depends on many factors, such as the patient’s age and comorbidities, the location of the obstruction, and the lev",
+      "treated through an endoscopic approach, which was successful, and the patient was discharged to home without complications.  2. Case Description  A",
+      "n described a large gallstone impacted in the proximal duodenum.  The patient’s past medical history included hypertension and hypertrophic cardiom"
+    ],
+    "animal_examples": [],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900017",
+    "human_hits": 26,
+    "animal_hits": 18,
+    "secondary_hits": 9,
+    "suggested": true,
+    "reason": "人类标记 26 > 非人标记 18",
+    "human_examples": [
+      "ectiveness of diagnostic methods, and a lack of screening tests, most patients are diagnosed at an advanced stage [9]. Moreover, HSOC has a predilec",
+      "ection for an unfavorable course and recurrence. Approximately 70% of patients with ovarian cancer develop cancer recurrence or treatment resistance",
+      "expression of circulating adipokines, including leptin and apelin, in patients with obesity-related cancers such as breast cancer and prostate cance"
+    ],
+    "animal_examples": [
+      "ay also be present in ovarian cancer [37]. The authors of the obesity mouse model study observed that an increase in the chemerin/CMKLR1 axis was",
+      "and metastasis. It was also shown that the metastatic ovarian cancer cell line exhibited an enhanced chemerin expression compared to the normal ovar",
+      "enhanced chemerin expression compared to the normal ovarian carcinoma cell line. Moreover, the chemerin expression was significantly increased in asc"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900018",
+    "human_hits": 3,
+    "animal_hits": 5,
+    "secondary_hits": 0,
+    "suggested": false,
+    "reason": "非人模型标记 5 > 人类标记 3",
+    "human_examples": [
+      "OI: 10.3390/ijms26051865 Article ID: ijms-26-01865 Article version: 1 Subjects: Article  cDNA Cloning, Bioinformatics, and Expression Analysis of Ap",
+      "e manuscript.  Institutional Review Board Statement  Not applicable.  Informed Consent Statement  Not applicable.  Data Availability Statement  The sequence",
+      "ors have read and agreed to the published version of the manuscript.  Institutional Review Board Statement  Not applicable.  Informed Consent Statement  Not applicabl"
+    ],
+    "animal_examples": [
+      "ays mutant by using transposon tagging and subsequently isolated from Arabidopsis thaliana [9,10], Malus pumila [11], Vitis vinifera [12], Litchi chine",
+      "19]. It was reported that the anthocyanin and chlorophyll contents in Arabidopsis lines with the lowest ANS expression levels were lower [20]. It has b",
+      "Schofield C.J. Structure and mechanism of anthocyanidin synthase from Arabidopsis thaliana Structure 2002 10 93 103 10.1016/S0969-2126(01)00695-5 11796"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900019",
+    "human_hits": 2,
+    "animal_hits": 0,
+    "secondary_hits": 0,
+    "suggested": null,
+    "reason": "证据不足（人类 2 / 非人 0 / 二次文献 0）——需人工读原文",
+    "human_examples": [
+      "OI: 10.3390/ijms26052015 Article ID: ijms-26-02015 Article version: 1 Subjects: Correction  Correction: Du et al. Extraction Condition Optimization,",
+      "ould read: “The animal experiments in this study were approved by the Ethics Committee of the Sinoresearch Biotechnology Co., Ltd. (Beijing, China; ZYZC2024"
+    ],
+    "animal_examples": [],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900020",
+    "human_hits": 13,
+    "animal_hits": 44,
+    "secondary_hits": 0,
+    "suggested": false,
+    "reason": "非人模型标记 44 > 人类标记 13",
+    "human_examples": [
+      "damage [54].  Total antioxidant capacity (TAC) is often reduced in MI patients, making antioxidant therapy a potential strategy for coronary artery",
+      "rtery disease prevention [55]. Conversely, TOS levels are elevated in patients with chronic ischemic heart failure [56]. Thiols, which serve as cruc",
+      "dation caused by ROS [57]. A reduction in total thiols, as seen in MI patients, indicates their consumption in response to increased ROS production"
+    ],
+    "animal_examples": [
+      "esveratrol improves myocardial ischemia and ischemic heart failure in mice by antagonizing the detrimental effects of fractalkine Crit. Care Med",
+      "oups is presented in Figure 2 and data are presented in Table 2.  For rats treated with saline, ISO administration induced significant alteratio",
+      "_LIS in terms of the above-mentioned parameters (p < 0.05, Table 4).  Rats from the MI_WGP2 group presented the lowest levels of TOS in the seru"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900021",
+    "human_hits": 62,
+    "animal_hits": 0,
+    "secondary_hits": 2,
+    "suggested": true,
+    "reason": "人类标记 62 > 非人标记 0",
+    "human_examples": [
+      "l Article, Liver  Mean Platelet Volume Is a Poor Prognostic Factor in Patients Undergoing Liver Transplantation for Hepatocellular Carcinoma  Şentür",
+      "Üreyen O, et al. Mean platelet volume is a poor prognostic factor in patients undergoing liver transplantation for hepatocellular carcinoma. Turk J",
+      "this study, we wanted to investigate the effect of MPV on survival in patients undergoing liver transplantation (LT) for hepatocellular carcinoma (H"
+    ],
+    "animal_examples": [],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900022",
+    "human_hits": 102,
+    "animal_hits": 2,
+    "secondary_hits": 1,
+    "suggested": true,
+    "reason": "人类标记 102 > 非人标记 2",
+    "human_examples": [
+      "rrelations between these biomarkers and clinical ocular parameters in patients with HT. Methods: A total of 150 participants were divided into three",
+      "p (p < 0.001). Conclusions: Dry eye disease is common in euthyroid HT patients without signs of TAO. This study highlights the potential role of IL-",
+      "valuable diagnostic tools for assessing the ocular surface in DED HT patients.  1. Introduction  Hashimoto’s thyroiditis (HT) is an autoimmune thyr"
+    ],
+    "animal_examples": [
+      "be able to provide IL-10-mediated protection against autoimmunity in mice [65]. These findings align with various studies suggesting that IL-10",
+      "dman M. Van Den Berg W.B. Role of interleukin-4 and interleukin-10 in murine collagen-induced arthritis. Protective effect of interleukin-4 and in"
+    ],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900025",
+    "human_hits": 23,
+    "animal_hits": 0,
+    "secondary_hits": 2,
+    "suggested": true,
+    "reason": "人类标记 23 > 非人标记 0",
+    "human_examples": [
+      "le  Soluble Fibrin Monomer Complex and D-Dimer Concentrations Between Patients at Low and High Risk of Venous Thromboembolism Before Delivery Accord",
+      "luded the pregnant women delivered before collecting the blood sample patients, missing data, and pregnant women who refused to participate in the s",
+      "[22].  2.2. Study Tool  The blood sample was withdrawn following the patient’s consent. The blood was collected within 24 h of hospitalization and"
+    ],
+    "animal_examples": [],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900026",
+    "human_hits": 52,
+    "animal_hits": 0,
+    "secondary_hits": 8,
+    "suggested": true,
+    "reason": "人类标记 52 > 非人标记 0",
+    "human_examples": [
+      "tting the care they need. The taxi ride is also the “most ideal”– the patient gets into the taxi, reaches the destination/healthcare organisation,",
+      "ho et al. [26], several indicators supporting person-centred care for patients with anxiety and depression are listed, such as individualized, flexi",
+      "mic care planning, shared decision making, and adequately meeting the patient’s individual needs and preferences. Moreover, healthcare professional"
+    ],
+    "animal_examples": [],
+    "current_value": true
+  },
+  {
+    "source_ref": "PMC11900027",
+    "human_hits": 2,
+    "animal_hits": 118,
+    "secondary_hits": 2,
+    "suggested": false,
+    "reason": "非人模型标记 118 > 人类标记 2",
+    "human_examples": [
+      "7 DOI: 10.1186/s12915-025-02169-z Article ID: 2169 Article version: 1 Subjects: Research  Acute and chronic pesticide exposure trigger fundamentally",
+      "ports and imports in 2022 of chemicals listed in Annex I to the Prior Informed Consent (PIC) Regulation. Publications Office. https://data.europa.eu/doi/10."
+    ],
+    "animal_examples": [
+      "ntal impacts of cellular stress, as indicated by analogous changes in mice [80].  Acute and chronic clothianidin exposure schemes trigger mortal",
+      "metabolism disorders, lipid accumulation and oxidative stress in ICR mice Chemosphere 2020 246 125661 10.1016/j.chemosphere.2019.125661 3189184",
+      "metabolism disorders, lipid accumulation and oxidative stress in ICR mice. Chemosphere. 2020;246: 125661. 10.1016/j.chemosphere.2019.125661.318"
+    ],
+    "current_value": false
+  },
+  {
+    "source_ref": "PMC11900028",
+    "human_hits": 13,
+    "animal_hits": 7,
+    "secondary_hits": 5,
+    "suggested": true,
+    "reason": "人类标记 13 > 非人标记 7",
+    "human_examples": [
+      "ows toxicity to normal cells. The only adverse effects experienced by patients lacking LDHA are muscle rigidity and sudden myoglobinuria after treme",
+      "els, which suggests that this approach may also be safe for potential patients [53,54]. Inhibitors of HK2, such as lonidamine (LND), metformin, 2-de",
+      "cisplatin-based chemoradiotherapy (CRT) in combination with DCA in 21 patients, whereas 24 patients received placebo. All patients had locally advan"
+    ],
+    "animal_examples": [
+      "both the HPV16-derived skin carcinoma cell line and PDSC5 cells into mice with controlled fibroblasts and CAFs from HPV dysplastic skin. The re",
+      "and CAFs from HPV dysplastic skin. The results show that the tumor in mice injected with CAFs was more vascularized and grew faster than in mice",
+      "mice injected with CAFs was more vascularized and grew faster than in mice injected with PDSC5 cells alone. Moreover, one reason for increased v"
+    ],
+    "current_value": false
+  }
+]

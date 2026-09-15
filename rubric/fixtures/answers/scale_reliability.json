@@ -1,0 +1,32 @@
+{
+  "v1.0": {
+    "n": 303,
+    "three_level": {
+      "exact": 0.8746,
+      "kappa": 0.9494
+    },
+    "binary_engaged": {
+      "exact": 0.9538,
+      "kappa": 0.8268
+    },
+    "binary_complete": {
+      "exact": 0.9208,
+      "kappa": 0.84
+    }
+  },
+  "v1.1": {
+    "n": 303,
+    "three_level": {
+      "exact": 0.9109,
+      "kappa": 0.9636
+    },
+    "binary_engaged": {
+      "exact": 0.9604,
+      "kappa": 0.8374
+    },
+    "binary_complete": {
+      "exact": 0.9505,
+      "kappa": 0.8992
+    }
+  }
+}

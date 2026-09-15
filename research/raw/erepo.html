@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Evidence Repository - Clinical Genome Resources</title>
+
+  <meta name="description" content="Redmine" />
+  <meta name="keywords" content="issue,bug,tracker" />
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="x08KV4Y9rQ31ypBzrL40ldlzHu/9TsmG/BUue2+IcBI=" name="csrf-token" />
+  <link rel='shortcut icon' href='/redmine/favicon.ico?1562965945' />
+
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/jquery-1.12.min.js?1563285876" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/jquery-ujs-2.0.3.js?1563285876" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/bootstrap-fa-5.9.0.min.js?1567087390" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/bootstrap-slider-altSnapTo.js?1563285876" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/bootstrap-select.min.js?1563285876" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/validator.js?1563285876" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/helpers.js?1563285876" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/highcharts-7.1.2.js?1567087390" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/highcharts-sunburst-7.1.2.js?1567087390" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/highcharts-heatmap-7.1.2.js?1567087390" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/highcharts-exporting-7.1.2.js?1567087390" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/genboree_generic/javascripts/jquery-bootstrap-modal-steps.min.js?1563285876" type="text/javascript"></script>
+  <script src="/redmine/javascripts/application.js?1562965944" type="text/javascript"></script>
+  <script src="/redmine/plugin_assets/pcer/javascripts/common.js?1563286116" type="text/javascript"></script>
+  <link href="/redmine/plugin_assets/genboree_generic/stylesheets/font-awesome-5.9.0.css?1567087390" media="all" rel="stylesheet" type="text/css" />
+  <link href="/redmine/plugin_assets/genboree_generic/stylesheets/bootstrap-fa-5.9.0.min.css?1567087390" media="all" rel="stylesheet" type="text/css" />
+  <link href="/redmine/plugin_assets/genboree_generic/stylesheets/bootstrap-slider.css?1563285876" media="all" rel="stylesheet" type="text/css" />
+  <link href="/redmine/plugin_assets/genboree_generic/stylesheets/bootstrap-select.min.css?1563285876" media="all" rel="stylesheet" type="text/css" />
+  <link href="/redmine/plugin_assets/genboree_generic/stylesheets/bootstrap-grid-cell-height-fix.css?1563285876" media="all" rel="stylesheet" type="text/css" />
+  <link href="/redmine/plugin_assets/genboree_generic/stylesheets/font-awesome.custom.css?1563285876" media="all" rel="stylesheet" type="text/css" />
+  <link href="/redmine/plugin_assets/genboree_generic/stylesheets/spinning-modal.css?1563285876" media="all" rel="stylesheet" type="text/css" />
+  <link href="/redmine/plugin_assets/pcer/stylesheets/common.css?1773509839" media="all" rel="stylesheet" type="text/css" />
+    <link href="/redmine/plugin_assets/pcer/stylesheets/entry.css?1653997229" media="all" rel="stylesheet" type="text/css" />
+  <script src="/redmine/plugin_assets/pcer/javascripts/entry.js?1773509839" type="text/javascript"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4PY7Y3CEMG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4PY7Y3CEMG');
+</script>
+<!-- END: Google tag (gtag.js) -->
+  <script type="text/javascript">
+    var mount = '/evrepo/' ;
+    var nodeUiSrvcMount = '/evrepo/ui/summary/'
+    var nodeApiSrvcMount = '/evrepo/api/summary/'
+  </script>
+
+</head>
+<body class="bs-modal-fix">
+
+
+  
+<link href="/redmine/plugin_assets/genboree_generic/stylesheets/gb-alerts.css?1586354866" media="screen" rel="stylesheet" type="text/css" />
+<script src="/redmine/plugin_assets/genboree_generic/javascripts/gb-close-alerts.js?1595336586" type="text/javascript"></script>
+
+
+  <div class="projHeader header-menu">
+    <div class="header-row">
+      <div class="logo">
+        <a href="https://clinicalgenome.org"><img alt="Clingen_logo_180x138" src="/redmine/plugin_assets/genboree_generic/images/clingen_logo_180x138.png?1563285876" /></a>
+      </div>
+      <style type="text/css">
+  div.header-menu {
+    background : #5fa2dd ;
+    margin-top : 0px ;
+    width : 100% ;
+    display : table ;
+    overflow : hidden ;
+  }
+
+  div.header-row {
+    display: table-row ;
+  }
+
+  div.logo {
+    display: table-cell ;
+    height : 138px ;
+    max-height : 138px ;
+    width: 180px ;
+    padding-left : 120px ;
+  }
+
+  img.logo {
+    height : 138px ;
+    width : 180px ;
+  }
+
+  div.right-nav {
+    display : table-cell ;
+    height : 138px ;
+    max-height: 138px ;
+    line-height : 128px ; /* height - "font-size diff" */
+    text-align : right;
+    text-transform : uppercase ;
+    letter-spacing : 2px ;
+    color : #ffffff ;
+    font-family : 'Roboto Condensed', "Helvetica Neue", Helvetica, Arial, sans-serif ;
+    font-weight : 700 ;
+    font-size : 25px ;
+    padding-right: 120px ;
+  }
+
+  div.right-nav {
+    padding-left: 20px ;
+  }
+
+  div.right-nav span {
+    white-space: nowrap ;
+    color: #fff ;
+  }
+
+  div.right-nav a:hover{
+    text-decoration: none !important;
+  }
+
+
+</style>
+
+
+
+        <div class="right-nav">
+          <a href="/evrepo/"><span>Evidence Repository</span></a>
+        </div>
+    </div>
+  </div>
+
+
+<div id="content">
+  <!--    Remove this portion as it's now going to go on top-->
+  
+<script type="text/javascript">
+
+  var allSearchPropsJSON = '[\"assertion\",\"condition\",\"caid\",\"expertpanel\",\"gene\",\"hgvs\",\"variationId\"]' ;
+  var allSearchProps = JSON.parse(allSearchPropsJSON) ;
+  var mount = '/evrepo/' ;
+  var expertCurated = true ;
+  var globalEntryHeatMapType
+  $(document).ready(function() {
+    if(location.protocol == "http:"){
+      window.location = "https://"+location.hostname+location.pathname ;
+    }
+    else{
+      $(".tabbed-download").click(function() {
+        window.location = mount+'api/summary/classifications/download' ;
+      });
+      $(".comma-download").click(function() {
+        window.location = mount+'api/summary/classifications/download?type=csv' ;
+      });
+      $(".summary-comma-download").click(function() {
+        window.location = `${nodeApiSrvcMount}classifications/summary/download/${globalEntryHeatMapType}?format=csv` ;
+      });
+      $(".summary-tabbed-download").click(function() {
+        window.location = `${nodeApiSrvcMount}classifications/summary/download/${globalEntryHeatMapType}?format=tsv` ;
+      });
+      getSummaryDocs() ;
+      getNews();
+    }
+  }) ;
+</script>
+<div class="container-fluid beta-text">
+  <div class="fda-box">
+  <span class="content"> The ClinGen Evidence Repository is an <a class="external link" href="https://www.fda.gov/medical-devices/precision-medicine/fda-recognition-public-human-genetic-variant-databases">FDA-recognized human genetic variant database</a> containing expert-curated assertions regarding variants' pathogenicity and supporting evidence summaries.</span>
+  <span class="disclaimer link">
+    <a href="#disclaimer">[Disclaimer]</a>
+  </span>
+</div>
+</div>
+<div class="container">
+  <div class="div-with-top-margin"></div>
+  <h1></h1>
+  <div class="page-title">
+    <h3>
+    </h3>
+  </div>
+    <div class="summary">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div class="panel panel-success">
+            <div class="panel-body gene active classification-by" onclick="getTableData('gene')">
+              <div class="type">
+                Gene <i class="fas fa-dna"></i>
+              </div>
+              <div class="browse-text">
+                Browse Classifications by Gene
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="panel panel-warning">
+            <div class="panel-body expert-panel expertpanel classification-by"  onclick="getTableData('ep')">
+              <div class="type">
+                Expert Panel <i class="fas fa-user-tie"></i>
+              </div>
+              <div class="browse-text">
+                Browse Classifications by Expert Panel
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="panel panel-info">
+            <div class="panel-body condition classification-by"  onclick="getTableData('condition')">
+              <div class="type">
+                Condition <i class="fas fa-stethoscope"></i>
+              </div>
+              <div class="browse-text">
+                Browse Classifications by Condition
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <div class="row search">
+      <div class="col-xs-12 col-sm-12">
+        <div class="input-group">
+          <input type="text" id="basicSearchBox" class="form-control" placeholder="CA114360, PTEN, Phenylketonurea, c.581T&gt;C" data-provide="typeahead" oninput="clearNoInputAlert('basic');">
+          <span class="input-group-btn">
+              <button class="btn btn-primary" id="basicSearchBtn" type="button" onclick="basicSearch(this)">Search</button>
+            </span>
+        </div><!-- /input-group -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="no-input basic-search hide">
+  <div class="help-text alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    Please enter a search term before searching.
+  </div>
+</div>
+<div class="advanced-search-btn-container row">
+  <button class="btn btn-primary adv-search" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="toggleAdvancedSection(this);" type="button" style="">Advanced Search</button>
+  <a class="btn btn-primary browse-reg" href="/evrepo/ui/summary/classifications" >Browse Evidence Repository</a>
+  <a data-toggle="tooltip" title="Browse CSpec Registry" class="btn btn-primary browse-guidelines" href="https://cspec.genome.network/cspec/ui/svi" >Browse Criteria Specifications</a>
+  <a class="btn btn-primary view-api" href="https://erepo.genome.network/docs/cg-erepo">API Docs</a>
+  <div class="btn-group data-dump" role="group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Download
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="tabbed-download"><i class="fa fa-download"></i> Tab-delimited</a></li>
+      <li><a class="comma-download"><i class="fa fa-download"></i> Comma-delimited</a></li>
+    </ul>
+  </div>
+<!--  <div class="btn-group data-dump" role="group">-->
+<!--    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--      Download Summary Map-->
+<!--      <span class="caret"></span>-->
+<!--    </button>-->
+<!--    <ul class="dropdown-menu">-->
+<!--      <li><a class="summary-comma-download"><i class="fa fa-download"></i> Comma-delimited</a></li>-->
+<!--      <li><a class="summary-tabbed-download"><i class="fa fa-download"></i> Tabbed-delimited</a></li>-->
+<!--    </ul>-->
+<!--  </div>-->
+</div>
+<div class="panel panel-info advanced-search hide">
+  <div class="panel-body">
+    <div class="help-text alert alert-info alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      The advanced search enables the user to query using a specific field or combination of fields.
+    </div>
+    <form class="advanced-search-form">
+      <div class="form-group">
+        <label for="affiliationIdInput">Affiliation ID</label>
+        <input type="text" oninput="clearNoInputAlert('adv');" class="form-control" id="affiliationIdInput" placeholder="50041">
+      </div>
+      <div class="form-group">
+        <label for="caIdInput">CAID</label>
+        <input type="text" oninput="clearNoInputAlert('adv');" class="form-control" id="caIdInput" placeholder="CA114360">
+      </div>
+      <div class="form-group">
+        <label for="cvIdInput">ClinVar Variation ID</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="cvIdInput" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="conditionInput">Condition</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="conditionInput" placeholder="Phenylketonurea">
+      </div>
+      <div class="form-group">
+        <label for="geneInput">Gene</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="geneInput" placeholder="PTEN">
+      </div>
+      <div class="form-group">
+        <label for="hgvsInput">HGVS</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="hgvsInput" placeholder="c.581T&gt;C">
+      </div>
+      <div class="form-group">
+        <label for="classificationInput">Classification</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="classificationInput" placeholder="Pathogenic">
+      </div>
+        <div class="form-group">
+          <label for="epInput">Expert Panel</label>
+          <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="epInput" placeholder="PAH">
+        </div>
+<!--        <label for="showRetracted">Include Retracted Classifications</label>-->
+<!--        <input type="checkbox" oninput="clearNoInputAlert('adv');" class="form-control" id="retractedInput" style="width: 2%; height: 25px" >-->
+      <div class="no-input adv-search hide">
+        <div class="help-text alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Please enter a search term for at least one of the fields before searching.
+        </div>
+      </div>
+      <button class="btn btn-primary adv-search-submit" id="advancedSearchBtn" onclick="advSearch(this);" type="button">Search</button>
+    </form>
+  </div>
+</div>
+
+      <div class="div-with-top-margin"></div>
+    </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="table-title"></div>
+          <div id="heatmap-container" class="heatmap-container"></div>
+        </div>
+      </div>
+    </div>
+<!--    <div id="heatmap-container" class="heatmap-container"></div>-->
+<div class="container">
+  <div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <div class="row search">
+      <div class="col-xs-12 col-sm-12">
+        <div class="input-group">
+          <input type="text" id="basicSearchBox" class="form-control" placeholder="CA114360, PTEN, Phenylketonurea, c.581T&gt;C" data-provide="typeahead" oninput="clearNoInputAlert('basic');">
+          <span class="input-group-btn">
+              <button class="btn btn-primary" id="basicSearchBtn" type="button" onclick="basicSearch(this)">Search</button>
+            </span>
+        </div><!-- /input-group -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="no-input basic-search hide">
+  <div class="help-text alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    Please enter a search term before searching.
+  </div>
+</div>
+<div class="advanced-search-btn-container row">
+  <button class="btn btn-primary adv-search" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="toggleAdvancedSection(this);" type="button" style="">Advanced Search</button>
+  <a class="btn btn-primary browse-reg" href="/evrepo/ui/summary/classifications" >Browse Evidence Repository</a>
+  <a data-toggle="tooltip" title="Browse CSpec Registry" class="btn btn-primary browse-guidelines" href="https://cspec.genome.network/cspec/ui/svi" >Browse Criteria Specifications</a>
+  <a class="btn btn-primary view-api" href="https://erepo.genome.network/docs/cg-erepo">API Docs</a>
+  <div class="btn-group data-dump" role="group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Download
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="tabbed-download"><i class="fa fa-download"></i> Tab-delimited</a></li>
+      <li><a class="comma-download"><i class="fa fa-download"></i> Comma-delimited</a></li>
+    </ul>
+  </div>
+<!--  <div class="btn-group data-dump" role="group">-->
+<!--    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--      Download Summary Map-->
+<!--      <span class="caret"></span>-->
+<!--    </button>-->
+<!--    <ul class="dropdown-menu">-->
+<!--      <li><a class="summary-comma-download"><i class="fa fa-download"></i> Comma-delimited</a></li>-->
+<!--      <li><a class="summary-tabbed-download"><i class="fa fa-download"></i> Tabbed-delimited</a></li>-->
+<!--    </ul>-->
+<!--  </div>-->
+</div>
+<div class="panel panel-info advanced-search hide">
+  <div class="panel-body">
+    <div class="help-text alert alert-info alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      The advanced search enables the user to query using a specific field or combination of fields.
+    </div>
+    <form class="advanced-search-form">
+      <div class="form-group">
+        <label for="affiliationIdInput">Affiliation ID</label>
+        <input type="text" oninput="clearNoInputAlert('adv');" class="form-control" id="affiliationIdInput" placeholder="50041">
+      </div>
+      <div class="form-group">
+        <label for="caIdInput">CAID</label>
+        <input type="text" oninput="clearNoInputAlert('adv');" class="form-control" id="caIdInput" placeholder="CA114360">
+      </div>
+      <div class="form-group">
+        <label for="cvIdInput">ClinVar Variation ID</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="cvIdInput" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="conditionInput">Condition</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="conditionInput" placeholder="Phenylketonurea">
+      </div>
+      <div class="form-group">
+        <label for="geneInput">Gene</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="geneInput" placeholder="PTEN">
+      </div>
+      <div class="form-group">
+        <label for="hgvsInput">HGVS</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="hgvsInput" placeholder="c.581T&gt;C">
+      </div>
+      <div class="form-group">
+        <label for="classificationInput">Classification</label>
+        <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="classificationInput" placeholder="Pathogenic">
+      </div>
+        <div class="form-group">
+          <label for="epInput">Expert Panel</label>
+          <input type="text"  oninput="clearNoInputAlert('adv');" class="form-control" id="epInput" placeholder="PAH">
+        </div>
+<!--        <label for="showRetracted">Include Retracted Classifications</label>-->
+<!--        <input type="checkbox" oninput="clearNoInputAlert('adv');" class="form-control" id="retractedInput" style="width: 2%; height: 25px" >-->
+      <div class="no-input adv-search hide">
+        <div class="help-text alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Please enter a search term for at least one of the fields before searching.
+        </div>
+      </div>
+      <button class="btn btn-primary adv-search-submit" id="advancedSearchBtn" onclick="advSearch(this);" type="button">Search</button>
+    </form>
+  </div>
+</div>
+
+  <div class="row news">
+    <div class="col-xs-12 col-sm-7">
+
+    </div>
+    <div class="col-xs-12 col-sm-5 news-item-container">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4>
+            News
+            <a role="button" tabindex="0" class="btn btn-info btn-xs glyphicon glyphicon-info-sign" data-trigger="focus" data-toggle="tooltip" title="News is about the Website/UI updates only"></a>
+          </h4>
+        </div>
+        <div class="panel-body" id="news-body">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="spinningModal" class="modal fade " data-label="" data-body=""  tabindex="-1" role="dialog">
+  <div id="spinnerContainer" class="loading spinner-container">
+
+  </div>
+</div>
+
+  <link href="/redmine/plugin_assets/sidebar_hide/stylesheets/sidebar_hide.css?1563285878" media="screen" rel="stylesheet" type="text/css" />
+<script src="/redmine/plugin_assets/sidebar_hide/javascripts/sidebar_hide.js?1563285878" type="text/javascript"></script>
+
+
+  <div class="disclaimer bottom">
+  <a id="disclaimer"> </a>
+  The information on this website is not intended for direct diagnostic use or medical decision-making without review by a genetics professional. Individuals should not change their health behavior solely on the basis of information contained on this website. If you have questions about the information contained on this website, please see a health care professional.
+</div>
+  <div style="clear:both;"></div>
+</div>
+
+<div id="actionabilityFooterDiv" class="attribution" style="border-top: 1px solid #336699; padding: 10px 0px 0px 0px; margin: 20px 0px 20px 50px; text-align: right; font-family: Verdana,arial,helvetica; color: #5D9CEC; width: 92%;">
+  <div class="clingen-terms" bis_skin_checked="1">
+    <a href="https://www.clinicalgenome.org/docs/terms-of-use/">ClinGen Terms of Use</a>.
+  </div>
+  <span>&curren; Powered by BCM's <a href="http://genboree.org" target="_blank">Genboree</a>.</span>
+</div>
+
+
+<div class="modal fade docs-status-modal" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="errorModalLabel">Error</h4>
+      </div>
+      <div class="modal-body">
+        <div class="error-code">
+          <span class="name" >Error Code: </span>
+          <span class="value"></span>
+        </div>
+        <div class="error-msg">
+          <span class="name" >Error Msg: </span>
+          <span class="value"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade pubmed-abstract" id="pubmedAbstract" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="top-close-btn">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="content">
+
+          <h3 class="article-title">
+
+          </h3>
+          <div class="authors">
+
+          </div>
+          <div class="journal-title"></div>
+          <div class="published-date">
+
+          </div>
+          <h4>Abstract:</h4>
+          <div class="abstract">
+
+          </div>
+          <div class="pmid">
+
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-info pubmed-link" href="" target="_blank">Go to PubMed</a>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
+

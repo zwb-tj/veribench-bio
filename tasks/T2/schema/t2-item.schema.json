@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veribench-bio/schema/t2-item.schema.json",
+  "title": "T2 题面（去标识化证据包）—— 这是给被测系统看的东西",
+  "description": "T2 的核心防污染机制：题面里**绝不出现变异身份**（无 HGVS / rsID / 坐标 / ClinVar ID / 变异名 / 氨基酸改变）。只给可用于 ACMG 推理的证据事实。记忆的对象是「变异→标签」，题面里没有变异，就没有可背的东西。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "item_id",
+    "gene",
+    "disease",
+    "mode_of_inheritance",
+    "gene_disease_validity",
+    "consequence_category",
+    "population_frequency_band",
+    "canary"
+  ],
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "pattern": "^T2-[0-9]{5}[A-Z]?$",
+      "description": "题目 ID。单个题为 T2-00001；金丝雀配对题加后缀字母（如 T2-00001B），与母题共享除一个字段外的全部内容。"
+    },
+    "gene": {
+      "type": "string",
+      "description": "HGNC 基因符号。**这是必要的上下文，不是变异身份** —— 没有基因就无法做 ACMG 推理。"
+    },
+    "disease": {
+      "type": "string",
+      "description": "疾病/表型名称。用于判断基因-疾病关系与遗传方式是否匹配。"
+    },
+    "mode_of_inheritance": {
+      "type": "string",
+      "description": "遗传方式（如 Autosomal recessive / Autosomal dominant / X-linked）。来源为 ClinGen/EREPO 的策展字段，不是我们推断的。"
+    },
+    "gene_disease_validity": {
+      "type": "string",
+      "enum": ["Definitive", "Strong", "Moderate", "Limited", "Disputed", "Refuted", "No Known Disease Relationship", "unknown"],
+      "description": "ClinGen 基因-疾病有效性分级（CC0）。Definitive/Strong 是本题池的入池条件。"
+    },
+    "consequence_category": {
+      "type": "string",
+      "enum": ["nonsense", "frameshift", "splice_acceptor", "splice_donor", "splice_region", "start_lost", "stop_lost", "inframe_deletion", "inframe_insertion", "missense", "synonymous", "intronic", "utr", "copy_number_loss", "copy_number_gain", "other"],
+      "description": "**粗粒度**分子后果类别。刻意**不给**氨基酸改变或核苷酸改变（那会重新引入可识别性）。来源为 ClinVar 的 MC 注释字段。"
+    },
+    "population_frequency_band": {
+      "type": "string",
+      "enum": ["absent", "<0.00001", "0.00001-0.0001", "0.0001-0.001", "0.001-0.01", "0.01-0.05", ">=0.05", "unknown"],
+      "description": "gnomAD 等位基因频率**分档**（不给精确值）。分档边界刻意对齐 ACMG 阈值（PM2 罕见 / BS1 ≥1% / BA1 ≥5%），既保留推理所需信息，又降低「靠精确频率反查变异身份」的风险。"
+    },
+    "population_popmax_band": {
+      "type": "string",
+      "enum": ["absent", "<0.00001", "0.00001-0.0001", "0.0001-0.001", "0.001-0.01", "0.01-0.05", ">=0.05", "unknown"],
+      "description": "gnomAD 最大人群频率分档。ACMG 要求用 popmax 而非全局频率。"
+    },
+    "zygosity_context": {
+      "type": "string",
+      "enum": ["heterozygous", "homozygous", "hemizygous", "compound_heterozygous", "unknown"],
+      "description": "观察到的合子状态（若有）。与遗传方式联合可支撑 PM2/PP4/PM3/BP2 等判据。"
+    },
+    "phenotype_specificity": {
+      "type": "string",
+      "description": "表型与基因/疾病的匹配程度，以及是否有其他解释（如 alternative_strong_evidence 的存在）。**只描述事实，不得出现结论词**。"
+    },
+    "canary": {
+      "type": "boolean",
+      "description": "是否为金丝雀配对题。true 表示本题与另一道母题**只差一个字段**，且正确的分类结果应发生方向性变化。"
+    },
+    "canary_of": {
+      "type": "string",
+      "description": "若 canary=true，指向母题（或配对的另一题）的 item_id。"
+    },
+    "canary_changed_field": {
+      "type": "string",
+      "description": "若 canary=true，说明改动了哪个字段（用于人工审计与自动判分的配对一致性检查）。"
+    }
+  }
+}

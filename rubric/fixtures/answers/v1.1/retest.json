@@ -1,0 +1,445 @@
+{
+  "n_units": 303,
+  "_note": "⚠️ criteria_detail **只含**在任一轮被判为 saturated/inverted 的标准，healthy 的条目不在里面（所以它里面『两轮都 healthy』恒为 0，那是构造使然，不是结论）。要看全部 101 条的判定请用 discrimination.json 的 criteria 字段。",
+  "exact_agreement": 0.9109,
+  "adjacent_agreement": 1.0,
+  "mean_abs_diff": 0.0891,
+  "quadratic_weighted_kappa": 0.9636,
+  "po": 0.9777,
+  "pe": 0.3876,
+  "stable_defects": 16,
+  "unstable_candidates": 9,
+  "criteria_detail": [
+    {
+      "item_id": "R-0002",
+      "criterion_id": "c2",
+      "run1": [
+        0,
+        0,
+        0
+      ],
+      "run2": [
+        0,
+        0,
+        0
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "saturated",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0003",
+      "criterion_id": "c3",
+      "run1": [
+        1,
+        0,
+        0
+      ],
+      "run2": [
+        1,
+        0,
+        1
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "inverted",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0005",
+      "criterion_id": "c4",
+      "run1": [
+        2,
+        1,
+        1
+      ],
+      "run2": [
+        2,
+        1,
+        2
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "inverted",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0006",
+      "criterion_id": "c3",
+      "run1": [
+        1,
+        1,
+        1
+      ],
+      "run2": [
+        1,
+        1,
+        1
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "saturated",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0007",
+      "criterion_id": "c3",
+      "run1": [
+        1,
+        0,
+        1
+      ],
+      "run2": [
+        1,
+        0,
+        1
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "inverted",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0007",
+      "criterion_id": "c4",
+      "run1": [
+        1,
+        2,
+        1
+      ],
+      "run2": [
+        1,
+        2,
+        2
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "weak_signal",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0008",
+      "criterion_id": "c2",
+      "run1": [
+        1,
+        1,
+        1
+      ],
+      "run2": [
+        1,
+        1,
+        1
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "saturated",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0009",
+      "criterion_id": "c3",
+      "run1": [
+        1,
+        1,
+        1
+      ],
+      "run2": [
+        1,
+        1,
+        2
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "weak_signal",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0010",
+      "criterion_id": "c3",
+      "run1": [
+        2,
+        2,
+        2
+      ],
+      "run2": [
+        2,
+        2,
+        2
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "saturated",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c1",
+      "run1": [
+        1,
+        1,
+        2
+      ],
+      "run2": [
+        1,
+        0,
+        1
+      ],
+      "verdict_run1": "weak_signal",
+      "verdict_run2": "inverted",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0011",
+      "criterion_id": "c4",
+      "run1": [
+        1,
+        0,
+        1
+      ],
+      "run2": [
+        1,
+        0,
+        0
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "inverted",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c1",
+      "run1": [
+        1,
+        2,
+        2
+      ],
+      "run2": [
+        2,
+        2,
+        2
+      ],
+      "verdict_run1": "weak_signal",
+      "verdict_run2": "saturated",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0012",
+      "criterion_id": "c4",
+      "run1": [
+        2,
+        0,
+        0
+      ],
+      "run2": [
+        2,
+        0,
+        1
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "inverted",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0015",
+      "criterion_id": "c1",
+      "run1": [
+        2,
+        2,
+        2
+      ],
+      "run2": [
+        2,
+        2,
+        2
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "saturated",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c3",
+      "run1": [
+        1,
+        1,
+        0
+      ],
+      "run2": [
+        1,
+        1,
+        0
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "inverted",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0016",
+      "criterion_id": "c4",
+      "run1": [
+        1,
+        0,
+        1
+      ],
+      "run2": [
+        1,
+        1,
+        1
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "saturated",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0017",
+      "criterion_id": "c3",
+      "run1": [
+        1,
+        2,
+        1
+      ],
+      "run2": [
+        1,
+        2,
+        1
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "inverted",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0018",
+      "criterion_id": "c4",
+      "run1": [
+        1,
+        1,
+        1
+      ],
+      "run2": [
+        1,
+        0,
+        2
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "weak_signal",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0019",
+      "criterion_id": "c1",
+      "run1": [
+        1,
+        2,
+        2
+      ],
+      "run2": [
+        2,
+        2,
+        2
+      ],
+      "verdict_run1": "weak_signal",
+      "verdict_run2": "saturated",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c3",
+      "run1": [
+        0,
+        0,
+        0
+      ],
+      "run2": [
+        0,
+        0,
+        0
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "saturated",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0020",
+      "criterion_id": "c4",
+      "run1": [
+        1,
+        1,
+        1
+      ],
+      "run2": [
+        1,
+        1,
+        1
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "saturated",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0022",
+      "criterion_id": "c2",
+      "run1": [
+        1,
+        1,
+        1
+      ],
+      "run2": [
+        1,
+        1,
+        2
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "weak_signal",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0022",
+      "criterion_id": "c4",
+      "run1": [
+        1,
+        1,
+        1
+      ],
+      "run2": [
+        1,
+        1,
+        2
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "weak_signal",
+      "reproduced": false
+    },
+    {
+      "item_id": "R-0023",
+      "criterion_id": "c4",
+      "run1": [
+        1,
+        0,
+        1
+      ],
+      "run2": [
+        1,
+        0,
+        1
+      ],
+      "verdict_run1": "inverted",
+      "verdict_run2": "inverted",
+      "reproduced": true
+    },
+    {
+      "item_id": "R-0024",
+      "criterion_id": "c1",
+      "run1": [
+        1,
+        1,
+        1
+      ],
+      "run2": [
+        1,
+        1,
+        1
+      ],
+      "verdict_run1": "saturated",
+      "verdict_run2": "saturated",
+      "reproduced": true
+    }
+  ],
+  "interpretation": "重测信度是**同一裁判重复评同一输入**的稳定性上界。它不涉及对错，只回答『这份 rubric 能否被稳定地判读』。κ 低说明标准措辞本身有歧义，此时讨论『裁判与人类是否一致』为时过早。",
+  "limitations": [
+    "两轮都由同一模型家族评判，测的是自一致性，不是跨裁判间一致性",
+    "每个单元仍只有 2 次观测，置信区间宽",
+    "同一批输入顺序相同，未消除顺序效应"
+  ]
+}

@@ -1,0 +1,619 @@
+[
+  {
+    "item_id": "R-0001",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出该推断最薄弱的环节是「靶组织暴露/靶点结合未被证实」：即杂合小鼠血浆CoQ未见显著升高、心肌CoQ升高也未达显著，却仍把心肌终点的改善归因于CoQ10的抗氧化作用",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0001",
+    "criterion_id": "c2",
+    "criterion_text": "是否给出可区分「抗氧化机制」与「非抗氧化/非特异机制」的具体证据要求（如剂量-反应关系、疗效与个体CoQ水平的相关性、自由基清除或CoQ合成抑制的对照、心肌内氧化损伤标志的时程）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0001",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出在体实验的统计功效与设计局限，并且是具体局限（样本量/每组例数未报或偏小、仅用单一性别、仅两周单剂量、终点与体外不同）而非笼统称「有偏倚」",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0001",
+    "criterion_id": "c4",
+    "criterion_text": "若只能补做一项实验，所选实验是否直接检验最薄弱的「暴露不足」环节，且设计可执行（含组织CoQ水平与疗效的对照、剂量梯度及载体对照）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0002",
+    "criterion_id": "c1",
+    "criterion_text": "是否具体指出「迁移速率提升13.6%」这一数值的算法问题：它由5小时单一时间点的残余划痕面积之差得出，既未校正初始划痕面积的组间差异，也不等同于迁移速率（缺少时间序列或曲线拟合）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0002",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出基因表达结果的统计问题：多个基因同时检验而未说明多重比较校正，且未报告重复数、批次与效应量，仅以个别p值下结论",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0002",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出从二维细胞模型到关节内疗效的外推缺口（递送与在关节内停留、软骨基质屏障与滑液稀释、二维培养与软骨组织微环境的差异），因而「缓解骨关节炎」超出数据范围",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0002",
+    "criterion_id": "c4",
+    "criterion_text": "若只允许补做一项实验，所选实验是否直接针对最薄弱环节（如离体软骨外植体或在体关节模型，含剂量-反应与载体/无关囊泡对照，并以组织学或力学终点评估软骨）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0003",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出统计单元与伪重复问题：图像层面的观测（每孔10张图像的吞噬体量化结果）被当作独立样本，使自由度虚增、p值被人为压小，必须改以独立孔/独立生物学重复为分析单元并报告重复数",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0003",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出化学氧化方式带来的人为性与混杂：铜-过氧化物氧化产物（如褐色着色提示的非酶交联或聚集产物）不等于体内氧化损伤，且残留铜离子或过氧化物本身可能直接影响细胞，需要洗涤/透析对照与载体对照",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0003",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出细胞模型的外推局限：小鼠永生化BV-2细胞系与人原代小胶质细胞的差异，且人源部分只证明了髓鞘被摄取而没有功能终点，不足以支持「人小胶质细胞功能改变」",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0003",
+    "criterion_id": "c4",
+    "criterion_text": "若只能补做一项实验，所选实验是否真正针对最薄弱环节（如以独立生物学重复重新量化并加入铜/过氧化物载体对照，或改用来源于真实氧化损伤的髓鞘并以功能终点读出）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0004",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出全身灌胃CDCA使「外周结肠炎缓解」与「脑内直接作用」不可区分，脑内Scd1回升可能只是结肠炎改善的下游结果，因而需要能区分二者的设计（脑内给药、Scd1脑特异性敲低或回补、剂量-反应与中介分",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0004",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出菌群移植实验缺少「仅抗生素处理」对照，以及抗生素本身与供体菌群定植程度对行为与脑代谢的影响未被排除",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0004",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出行为学结果与结论方向不一致／解释边界：所报告的悬尾与强迫游泳不动时间缩短与「抑郁样行为」的方向相反（通常不动时间缩短提示不动性下降），需要核查原始数据并补充独立行为范式，同时排除运动能力与体重",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0004",
+    "criterion_id": "c4",
+    "criterion_text": "若只能补做一项实验，所选实验是否真正检验中介关系而非再增加一层相关性（如脑内CDCA给药或脑特异性Scd1操控后测行为与下游脂肪酸，并设载体与剂量对照）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0005",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出先按等位基因频率差异筛选变异、再对筛出的变异做关联检验会引入循环性/选择偏倚（组间频率差异部分由筛选规则本身决定），并指出需要对全基因组变异检验或对筛选后统计量作校正",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0005",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出病例与对照来自不同机构/不同检测与比对流程（覆盖度31×对28×）会通过差异检出、基因型缺失与比对偏倚在没有真实关联时也产生频率差异，需要同一流程重测或做批次混杂检验",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0005",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出阈值选择与多重检验问题：显著性阈值以目测曼哈顿图确定（存在阈值寻优），严重度分析在71个变异上采用未校正p < 0.05（期望假阳性数量与所报数量相当），且缺少QQ图、膨胀因子或FDR校正",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0005",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出群体分层与验证缺口：对照的族群构成与病例不匹配使残差分层未被排除，且样本量对低频变异的功效有限、缺少独立队列或功能验证，因而「候选通路」仅是待检验假设",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0006",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出L-NAME是药理学、非亚型特异的NOS抑制剂（存在脱靶与所有NOS亚型同时被抑制的问题），单靠它不能确立eNOS的特异性与必要性，需要eNOS特异性敲低/敲除或缺失细胞的证据",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0006",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出增殖效应不被L-NAME阻断与「eNOS/一氧化氮是共同机制」的说法不一致，提示至少部分终点经由一氧化氮非依赖途径，需要按终点分别检验所依赖的通路",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0006",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出浓度与体内外推问题：所用浓度与患者血浆中观察到的升高幅度之间的关系未被证明，且缺少剂量-反应、细胞内底物或一氧化氮定量与在体/离体视网膜证据，因此从血浆相关到因果的跳跃未被支持",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0006",
+    "criterion_id": "c4",
+    "criterion_text": "若只能补做一项实验，所选实验是否直接针对机制特异性（如eNOS特异性敲低/敲除后重复全套终点，或使用离体/在体视网膜血管模型并测一氧化氮与通透性）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0007",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出疗效判断依赖治疗前后的组内比较（或缺安慰剂/空白对照的组间比较），并说明这种比较为何会系统性高估效应",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0007",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出研究间的异质性使跨研究总体结论无法成立，并至少给出一个具体异质性维度",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0007",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出证据量与统计效能问题：部分试验例数极少、总例数有限，且多结局/多亚组比较未做多重性校正",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0007",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出至少一种具体偏倚来源并说明它如何影响效应估计，而不是只写「质量低」",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0007",
+    "criterion_id": "c5",
+    "criterion_text": "提出的额外证据是否可判定，且能直接排除前述替代解释",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0008",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出「只分析存活小鼠」造成的幸存者偏倚，并说明它如何破坏组间可比性",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0008",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出组间样本量极不平衡导致的效能不足",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0008",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出结局指标之间或指标与机制主张之间的矛盾，即缺少靶点参与证据",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0008",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出对照与给药设计的缺口（载体或失活酶对照、剂量-反应、给药时机）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0008",
+    "criterion_id": "c5",
+    "criterion_text": "补做的实验是否同时针对幸存者偏倚与机制缺口，且可判定",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0009",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出致盲可能失效的具体来源，并说明期望偏倚如何同时影响患者自评与他评",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0009",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出结局时点与瘢痕自然病程不匹配，限制了结论可外推的范围",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0009",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出缺少独立于主观评分的客观测量，且两个量表可能被同一偏倚驱动",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0009",
+    "criterion_id": "c4",
+    "criterion_text": "是否讨论效应量本身的异常大小及其含义",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0009",
+    "criterion_id": "c5",
+    "criterion_text": "补做的测量或设计是否直击致盲失败与测量偏倚，且可判定",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0010",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出参照标准与待评价指标之间存在成分重叠（incorporation bias），并说明它如何使比较不公平",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0010",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出结论方向与数据矛盾：按曲线下面积排序 G/I 比值并非最高，结论依赖单一阈值的准确率",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0010",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出阈值在同一数据集内选取与评价带来的乐观偏倚，以及病例数少造成的区间估计过宽",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0010",
+    "criterion_id": "c4",
+    "criterion_text": "所需的临床可用性证据是否可判定，并针对前述系统性问题",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0011",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出计算打分本身不是结合或抑制的实验证据，尤其在跨化学类型化合物间排序不可靠",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0011",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出缺少靶点参与与疾病相关功能终点的证据",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0011",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出「副作用更优」没有任何安全性数据支持，属于超出数据的结论",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0011",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出筛选流程层面的偏倚风险，而不只是「计算会有误差」",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0011",
+    "criterion_id": "c5",
+    "criterion_text": "补做的实验是否直击最关键的缺口，且可判定",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0012",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出至少一个具体混杂来源（肥胖、胰岛素抵抗、血脂），并说明它如何使关联无法归因于疾病本身",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0012",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出「严重程度」的度量与分组定义重叠，且组间无差异的结果与「反映严重程度」的主张矛盾",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0012",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出分布严重偏态而仍使用参数检验，使组间比较不可靠",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0012",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出横断面设计对因果方向与预测性结论的限制，并说明需要什么设计",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0012",
+    "criterion_id": "c5",
+    "criterion_text": "是否指出「非肥胖」组相对对照的残余混杂，并说明需要匹配或校正",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0013",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出“更正不影响科学结论”是作者的单方断言，而非该更正说明本身可以核查的结论",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0013",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出图片重复对证据链起作用的具体机制（独立样本数、组内变异、代表性）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0013",
+    "criterion_id": "c3",
+    "criterion_text": "是否列出可被独立核查的补充材料或数据",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0013",
+    "criterion_id": "c4",
+    "criterion_text": "是否保持校准，区分“代表性图像误用”与“系统性数据造假”",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0014",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出胸腔积液是心衰/容量负荷过重与全身淤血的下游标志物，因而校正后残留的关联可能反映疾病严重度而非积液的独立效应",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0014",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出该研究调整策略或未测量变量上的具体缺口",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0014",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出结论中的“可干预性”跳跃：观察性关联不足以支持“早期识别和处理可改善预后”",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0014",
+    "criterion_id": "c4",
+    "criterion_text": "是否给出可用于区分“标志物”与“致病因素”的具体额外证据方案",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0015",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出单例设计无法支持有效性、更无法支持相对有效性的普适结论",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0015",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出多种干预同时实施导致无法归因于激光碎石本身",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0015",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出结局判定与随访上的具体缺口（碎石后碎片下游移位与远端梗阻风险）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0015",
+    "criterion_id": "c4",
+    "criterion_text": "是否给出可执行的证据升级方案",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0016",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出从表达差异/相关性跳到功能因果这一具体推断步骤及其所需证据类型",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0016",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出具体的混杂来源或替代指标效度问题及其方向",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0016",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出综述内部证据不一致与其方法学（叙述性而非系统性）的关系",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0016",
+    "criterion_id": "c4",
+    "criterion_text": "是否区分“机制提示/同源证据”与“临床可干预性”",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0017",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出单株对比下遗传背景与环境全面混杂，表达-性状关联不能归因于该基因",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0017",
+    "criterion_id": "c2",
+    "criterion_text": "是否把计算预测与实验证据分开，并给出对应的验证手段",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0017",
+    "criterion_id": "c3",
+    "criterion_text": "是否发现题述内部不一致（定位结论在摘要与结果中相反）并解释其含义",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0017",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出序列同源与结构预测不能替代功能证据",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0018",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出“剂量依赖、高剂量最优”与组织病理学结果方向不一致",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0018",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出模型机制或给药时点的外推限制",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0018",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出统计推断问题（多重比较导致假阳性，或“超常”结果需方法学核查）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0018",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出干预物标准化与暴露剂量外推的具体问题",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0019",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出 MPV 截断值由该队列自身经 ROC 选出、又在同一队列中用于分组比较与建模（最优截断值的乐观偏倚与循环性），且未做外部验证",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0019",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出低 MPV 与肿瘤负荷（肿瘤更大、更常超出移植标准）以及血小板计数、炎症指标共变，使「独立预测」的解释取决于模型纳入的变量与共线性处理",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0019",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出从单次术前血常规的横断面关联直接推出「血小板脱颗粒」这类机制性因果解释，属于超出数据的推测，需要独立的时序或功能证据",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0019",
+    "criterion_id": "c4",
+    "criterion_text": "所提出的额外证据方案是否具体到能回答「MPV 是否具有独立、可外推的预测价值」（外部预设截断值验证、对肿瘤负荷的有效校正、校准与决策曲线等预测性能指标）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0020",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出 7 个标志物 × 多组比较再加亚组分析构成大量检验，而亚组仅约 27 人，文中 P 值在 0.01–0.06 之间的结果是否经多重比较校正仍稳健不明",
+    "ungrounded": [
+      {
+        "value": "0.01",
+        "kind": "小数",
+        "where": "正文"
+      },
+      {
+        "value": "0.06",
+        "kind": "小数",
+        "where": "正文"
+      }
+    ]
+  },
+  {
+    "item_id": "R-0020",
+    "criterion_id": "c2",
+    "criterion_text": "是否发现报告内部对同一标志物方向的表述互相矛盾（摘要称该组 IL-10 更低、正文称更高），并要求核对原始数据与预先设定的分析计划",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0020",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出泪液采集与定量的方法学因素（反射性流泪导致的采集量差异、采集条件与时间未标准化、未按泪液流率或总蛋白归一化）可能造成组间浓度差异",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0020",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出横断面单时点设计无法区分因果方向（甲状腺自身免疫炎症导致眼表改变，抑或反向路径），并给出可执行的证据方案",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0021",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出未做样本量估算、n=100 时阴性结果不能证明无差异，需要预设等效界值并用置信区间或等效性检验判定",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0021",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出分组依据是血栓风险评分这一替代指标、且全程零血栓事件，因此设计无法评价标志物对静脉血栓栓塞的判别或预测价值",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0021",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出两组在年龄、体重指数、孕周、胎儿体重上显著不同却未做校正，且受试者全在孕 28 周以后造成孕周变异被截断，使「与孕周无关」不可检验",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0021",
+    "criterion_id": "c4",
+    "criterion_text": "补做方案是否以血栓事件为结局、是否预设样本量与等效界值、是否对实验室与风险分组设盲，并触及厂商提供试剂盒的利益冲突",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0022",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出样本限定在「已经进入并持续使用校内医疗中心」的求助者，从未求助、中途退出或被劝退者缺席，构成选择/幸存者偏倚",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0022",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出四种隐喻是分析者跨个案合成的抽象（原文亦承认不对应单个受访者），缺少成员核验、审计轨迹或编码一致性数据，类型学与个案经验的对应关系无法被独立验证",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0022",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出以个体回溯性叙述为依据推断系统层面属性缺少组织层面数据（等待时间、转诊路径、机构记录、服务提供者视角），且「主要取决于个人能动性」的表述可能把结构性问题归因于个体",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0022",
+    "criterion_id": "c4",
+    "criterion_text": "补做工作是否针对最弱环节给出可执行方案（机构侧等待/转诊与利用数据、纳入未求助或中途退出者的取样、参与者核验与编码一致性报告）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0023",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出「暴露方式」同时改变了浓度、暴露时长、暴露起算时点与累积剂量，且三种农药未做等效毒性剂量匹配（仅部分农药报告累积剂量可比），因此不能把差异归因于暴露方式本身",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0023",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出短时组死亡率高、采样时存活个体已被选择，差异可能来自存活者选择与濒死/饥饿等非特异性应激，而非暴露方式特异反应，并提出配对存活分析或时间序列等检验方式",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0023",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出同一母源蜂群来源的多个人工小群并非独立重复（需以蜂群为随机效应或分层），且每样本为 3 只工蜂脑的混池整体转录组，无法区分细胞类型组成变化与细胞内调控变化",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0023",
+    "criterion_id": "c4",
+    "criterion_text": "是否指出转录本丰度不能直接推及蛋白活性、行为或适合度后果，并给出可执行的功能验证；「只补一项」的选择须与最弱环节对应",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0024",
+    "criterion_id": "c1",
+    "criterion_text": "是否指出综述未报告检索策略、纳入排除标准与偏倚评估，却用「已证明」式表述把细胞系与小鼠异种移植结果当作既定机制，结论强度超出证据等级",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0024",
+    "criterion_id": "c2",
+    "criterion_text": "是否指出「承认代谢异质性与可塑性/耐药」与「把单个糖酵解酶作为治疗靶点」之间的逻辑张力（旁路代谢与瘤间异质性可使单靶点抑制被绕过）",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0024",
+    "criterion_id": "c3",
+    "criterion_text": "是否指出未讨论正常增殖组织（骨髓、肠上皮、活化淋巴细胞）对同一酶的依赖与既往抑制剂的疗效/安全性证据，也未区分肿瘤细胞自发的糖酵解优势与基质细胞供能的假说",
+    "ungrounded": []
+  },
+  {
+    "item_id": "R-0024",
+    "criterion_id": "c4",
+    "criterion_text": "所提证据方案是否具体到能判定某酶是否为可成药靶点（患者来源或体内模型中的遗传/药物抑制、剂量-反应、正常组织与免疫细胞对照、药效标志物与患者分层、与现有疗法的联合及耐药评估）",
+    "ungrounded": []
+  }
+]

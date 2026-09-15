@@ -1,0 +1,2844 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="keywords" content="Expert Panels - ClinGen | Clinical Genome Resource">
+  <meta name="author" content="Clinical Genome Resource">
+
+  <title>Expert Panels - ClinGen | Clinical Genome Resource</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+
+  <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet"> 
+  <!-- Bootstrap core CSS -->
+  <!--    <link href="/site/templates/resources/packages/bootstrap/css/bootstrap.css" rel="stylesheet">-->
+  <link href="/site/templates/resources/packages/bootstrap-3-4-1/css/bootstrap.css" rel="stylesheet">
+  <!--    <link href="/site/templates/resources/packages/bootstrap-4-3-1/css/bootstrap.css" rel="stylesheet">-->
+
+  <!-- Custom styles for this template -->
+  <link href="/site/templates/resources/css/master.css?v2021-1" rel="stylesheet">
+
+  <link href="/site/templates/resources/packages/fontawesome/css/all.min.css" rel="stylesheet">
+
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-49947422-1', 'auto'); //7
+    ga('send', 'pageview');
+  </script>
+
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42X6JZ7PGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42X6JZ7PGF');
+</script>
+
+</head>
+
+<body>
+
+    
+  
+<div class="section-heading section-heading-groups">
+	<div class="container text-right small text-muted">
+		<div class="container">
+						<ul class="list-inline pull-right m-0 p-1">
+				<li class=''>
+					<a class=' text-white' href='https://clinicalgenome.org/share-your-data/'><span class="visible-inline-md visible-inline-lg visible-inline-xl">Data Sharing Resources</a>
+				</li>
+				<li class=''>
+					<a class=' text-white' href='https://clinicalgenome.org/genomeconnect/'>GenomeConnect</a>
+				</li>
+				<li class='visible-inline-md visible-inline-lg visible-inline-xl'>
+					<a class=' text-white' href='https://clinicalgenome.org/about/events/'>Events</a>
+				</li>
+                <li class='visible-inline-md visible-inline-lg visible-inline-xl'>
+                    <a class=' text-white' href='https://clinicalgenome.org/docs/terms-of-use/'>Citing ClinGen</a>
+                </li>
+				<li class='visible-inline-md visible-inline-lg visible-inline-xl'>
+					<a class=' text-white' href='https://clinicalgenome.org/about/contact-clingen/'>Contact</a>
+				</li>
+				<li class='visible-inline-md visible-inline-lg visible-inline-xl'>
+					<a class=' text-white' href='https://search.clinicalgenome.org/dashboard'>Dashboard</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+  <header>
+
+    <nav class="navbar navbar-light">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="btn btn-lg mt-4 btn-outline-primary navbar-toggle pull-right collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            Navigation <i class="fas fa-bars"></i>
+          </button>
+          <a class="navbar-brand" href="/"><img style="height:80px" src="/site/templates/resources/img/logo/logo-clinical-genome-logo-vector.svg" class="img-fluid p-0" alt="Responsive image"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right mt-4">
+
+            
+    <li class='nav-item   dropdown'>
+      <a class='nav-link nav-link-header dropdown-toggle'  href='https://clinicalgenome.org/start/'>Get Started</a>
+      
+    </li>
+  
+    <li class='nav-item   dropdown'>
+      <a class='nav-link nav-link-header dropdown-toggle'  href='https://clinicalgenome.org/about/'>About Us</a>
+      
+      <ul class=' row dropdown-menu dropdown-width-normal  dropdown-menu-right dropdown-menu-lg-left'>
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/about-clingen/'><span class=' d-inline-block text-truncate'>About ClinGen</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/clingen-clinvar-partnership/'><span class=' d-inline-block text-truncate'>ClinGen &amp; ClinVar Partnership</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/clingen-clinpgx-partnership/'><span class=' d-inline-block text-truncate'>ClinGen-ClinPGx Partnership</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/clingen-job-opportunities/'><span class=' d-inline-block text-truncate'>ClinGen Opportunities</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/terms-of-use/'><span class=' d-inline-block text-truncate'>Citing ClinGen &amp; Terms of Use</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/contact-clingen/'><span class=' d-inline-block text-truncate'>Contact ClinGen</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/events/'><span class=' d-inline-block text-truncate'>Events &amp; Conferences</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/fda-recognition/'><span class=' d-inline-block text-truncate'>FDA Recognition</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/clingen-leadership/'><span class=' d-inline-block text-truncate'>Leadership</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/nih-institutes-and-centers/'><span class=' d-inline-block text-truncate'>NIH Funded Expert Panels</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/people/'><span class=' d-inline-block text-truncate'>Member Directory</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/partnerships/'><span class=' d-inline-block text-truncate'>Partnerships</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/clingen-policies/'><span class=' d-inline-block text-truncate'>Policies</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/about/sitemap/'><span class=' d-inline-block text-truncate'>Website SiteMap</span></a>
+        </li>
+      </ul>
+    
+    </li>
+  
+    <li class='nav-item   dropdown'>
+      <a class='nav-link nav-link-header dropdown-toggle'  href='https://clinicalgenome.org/curation-activities/'>Curation Activities</a>
+      
+      <ul class=' row dropdown-menu dropdown-width-normal  dropdown-menu-right dropdown-menu-lg-left'>
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/about-curation-activities/'><span class=' d-inline-block text-truncate'> About ClinGen&#039;s Curation Activities</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/gene-disease-validity/'><span class=' d-inline-block text-truncate'> Gene-Disease Validity</span></a>
+        </li>
+      
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://clinicalgenome.org/curation-activities/gene-disease-validity/training-materials/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Training Materials</span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='http://search.clinicalgenome.org/kb/gene-validity'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Browse Curations</span></a>
+          </li>
+        
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/variant-pathogenicity/'><span class=' d-inline-block text-truncate'> Variant Pathogenicity</span></a>
+        </li>
+      
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://clinicalgenome.org/curation-activities/variant-pathogenicity/training-materials/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Training Materials</span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://erepo.clinicalgenome.org/evrepo/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Browse Curations</span></a>
+          </li>
+        
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/clinical-actionability/'><span class=' d-inline-block text-truncate'> Clinical Actionability</span></a>
+        </li>
+      
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://clinicalgenome.org/curation-activities/clinical-actionability/training-materials/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Training Materials</span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='/curation-activities/clinical-actionability/browse-curations/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Browse Curations</span></a>
+          </li>
+        
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/dosage-sensitivity/'><span class=' d-inline-block text-truncate'> Dosage Sensitivity</span></a>
+        </li>
+      
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://clinicalgenome.org/curation-activities/dosage-sensitivity/training-materials/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Training Materials</span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='http://search.clinicalgenome.org/kb/gene-dosage'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Browse Curations</span></a>
+          </li>
+        
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/somatic/'><span class=' d-inline-block text-truncate'> Somatic Cancer Variant</span></a>
+        </li>
+      
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://clinicalgenome.org/curation-activities/somatic/training-materials/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Training Materials</span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://civicdb.org/home'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Interface</span></a>
+          </li>
+        
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/baseline-annotation/'><span class=' d-inline-block text-truncate'> Baseline Annotation</span></a>
+        </li>
+      
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://clinicalgenome.org/curation-activities/baseline-annotation/baseline-annotation-training-materials/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Training Materials</span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-small pl-4' href='https://ccdb.clinicalgenome.org/'><span class=' d-inline-block text-truncate'><i class='fas fa-angle-double-right text-muted-more'></i> Community Curation Database</span></a>
+          </li>
+        
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/clingen-curation-of-clinvar/'><span class=' d-inline-block text-truncate'> ClinGen Curation of ClinVar</span></a>
+        </li>
+      
+          <li class='divider'></li>
+        
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/curation-activities/results/'><span class=' d-inline-block text-truncate'> Browse All ClinGen&#039;s Curated Genes</span></a>
+        </li>
+      </ul>
+    
+    </li>
+  
+    <li class='nav-item   dropdown'>
+      <a class='nav-link nav-link-header dropdown-toggle'  href='https://clinicalgenome.org/working-groups/'>Working Groups</a>
+      
+      <ul class=' row dropdown-menu dropdown-width-normal  dropdown-menu-right dropdown-menu-lg-left'>
+          <li class='nav-item  border-bottom-1 pb-1'>
+            <a class='nav-link nav-link-header' href='/working-groups'><span class=' d-inline-block text-truncate'><b>All Working Groups</b></span></a>
+            </li>
+        
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/actionability/'><span class=' d-inline-block text-truncate'>Actionability</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/ai-automation-working-group/'><span class=' d-inline-block text-truncate'>AI and Automation Working Group</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/biocurators/'><span class=' d-inline-block text-truncate'>Biocurator</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/cancer-variant-interpretation/'><span class=' d-inline-block text-truncate'>Cancer Variant Interpretation</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/clingen-community-curation-c3/'><span class=' d-inline-block text-truncate'>ClinGen Community Curation (C3)</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/clingen-curation-of-clinvar/'><span class=' d-inline-block text-truncate'>ClinGen Curation of ClinVar</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/clinical-domain/'><span class=' d-inline-block text-truncate'>Clinical Domain Working Groups</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/copy-number-variant-interpretation-guidelines/'><span class=' d-inline-block text-truncate'>Copy Number Variant Interpretation Guidelines</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/curated-disease-entity/'><span class=' d-inline-block text-truncate'>Curated Disease Entity</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/data-access-protection-and-confidentiality/'><span class=' d-inline-block text-truncate'>Data Access, Protection, and Confidentiality</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/data-platform/'><span class=' d-inline-block text-truncate'>Data Platform</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/dosage-sensitivity-curation/'><span class=' d-inline-block text-truncate'>Dosage Sensitivity Curation</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/ect/'><span class=' d-inline-block text-truncate'>Education, Coordination and Training</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/external-scientific-panel/'><span class=' d-inline-block text-truncate'>External Scientific Panel</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/gencc-mechanism-curation/'><span class=' d-inline-block text-truncate'>GenCC Mechanism Curation</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/gene-curation/'><span class=' d-inline-block text-truncate'>Gene Curation</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/germline-somatic-variant-curation/'><span class=' d-inline-block text-truncate'>Germline/Somatic Working Group</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/hla-working-group/'><span class=' d-inline-block text-truncate'>HLA Working Group</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/low-penetrance-risk-allele-working-group/'><span class=' d-inline-block text-truncate'>Low Penetrance / Risk Allele Working Group</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/partnership/'><span class=' d-inline-block text-truncate'>Partnership</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/pharmacogenomics/'><span class=' d-inline-block text-truncate'>Pharmacogenomics Interpretation Committee</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/phenotyping/'><span class=' d-inline-block text-truncate'>Phenotyping</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/pseudodeficiency-working-group/'><span class=' d-inline-block text-truncate'>Pseudodeficiency Working Group</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/reach-impact-sustainability-evaluation/'><span class=' d-inline-block text-truncate'>Reach, Impact, Sustainability, Evaluation</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/steering-committee/'><span class=' d-inline-block text-truncate'>Steering Committee</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/variant-classification/'><span class=' d-inline-block text-truncate'>Variant Classification Working Group</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/working-groups/variant-curation-workgroup/'><span class=' d-inline-block text-truncate'>VCEP Management</span></a>
+        </li>
+      </ul>
+    
+    </li>
+  
+    <li class='nav-item  active dropdown'>
+      <a class='nav-link nav-link-header dropdown-toggle'  href='https://clinicalgenome.org/affiliation/'>Expert Panels</a>
+      
+      <ul class=' row dropdown-menu dropdown-width-normal  dropdown-menu-right dropdown-menu-lg-left'>
+          <li class='nav-item  border-bottom-1 pb-1'>
+            <a class='nav-link nav-link-header' href='/affiliation/all'><span class=' d-inline-block text-truncate'><b>All Expert Panels</b></span></a>
+            </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-header' href='/affiliation/gcep/#ep_table_heading'><span class=' d-inline-block text-truncate'>Gene Curation Expert Panels</span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-header' href='/affiliation/vcep/#ep_table_heading'><span class=' d-inline-block text-truncate'>Variant Curation Expert Panels</span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-header' href=''><span class=' d-inline-block text-truncate'></span></a>
+          </li>
+        
+          <li class='nav-item '>
+            <a class='nav-link nav-link-header' href='/docs/guidelines-for-applying-for-variant-or-gene-curation-expert-panel-status/'><span class=' d-inline-block text-truncate'>Learn how to start an Expert Panel</span></a>
+          </li>
+        </ul>
+    
+    </li>
+  
+    <li class='nav-item   dropdown'>
+      <a class='nav-link nav-link-header dropdown-toggle'  href='https://clinicalgenome.org/docs/'>Documents <span class='visible-inline-lg hidden-md visible-inline-xl visible-inline-sm visible-inline-xs'> &amp; Announcements</span></a>
+      
+      <ul class=' row dropdown-menu dropdown-width-normal  dropdown-menu-right dropdown-menu-lg-left'>
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/'><span class=' d-inline-block text-truncate'> All Documents &amp; Announcements</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=clingen-exhibit-booth-materials#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/3393/002-file.svg" class='svg-h-text' alt="ClinGen Exhibit Booth Materials">ClinGen Exhibit Booth Materials</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=curation-activity-procedures#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/3395/002-file.svg" class='svg-h-text' alt="Curation Activity Procedures">Curation Activity Procedures</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=conflict-of-interest-coi#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2195/002-file.svg" class='svg-h-text' alt="Conflict Of Interest (COI)">Conflict Of Interest (COI)</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=data-sharing-resources#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/3052/002-file.svg" class='svg-h-text' alt="Data Sharing Resources">Data Sharing Resources</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=expert-panel-status-steps#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2196/002-file.svg" class='svg-h-text' alt="Expert Panel Applications">Expert Panel Applications</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=in-the-news#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2184/002-file.svg" class='svg-h-text' alt="News">News</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=moc-cme-forms#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2119/002-file.svg" class='svg-h-text' alt="MOC/CME Forms">MOC/CME Forms</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=patient-data-sharing#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2120/002-file.svg" class='svg-h-text' alt="Patient Data Sharing">Patient Data Sharing</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=policies-position-statements#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2115/002-file.svg" class='svg-h-text' alt="Policies/Position Statements">Policies/Position Statements</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=presentations#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2176/002-file.svg" class='svg-h-text' alt="Presentations">Presentations</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=publications#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/3394/002-file.svg" class='svg-h-text' alt="Publications">Publications</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=supporting-documents#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2122/002-file.svg" class='svg-h-text' alt="Supporting Documents">Supporting Documents</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=training-materials#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2116/002-file.svg" class='svg-h-text' alt="Training Materials">Training Materials</span></a>
+        </li>
+      
+        <li class='nav-item '>
+          <a class='nav-link nav-link-header' href='https://clinicalgenome.org/docs/?doc-type=website-updates#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/6235/002-file.svg" class='svg-h-text' alt="Website Updates">Website Updates</span></a>
+        </li>
+      </ul>
+    
+    </li>
+  
+    <li class='nav-item   '>
+      <a class='nav-link nav-link-header '  href='https://clinicalgenome.org/tools/'>Tools</a>
+      
+    </li>
+  
+
+      <li class='navbar-text navbar-text-hover' id='navSearchToggle'><i class='fas fa-search text-muted'></i></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+      <div id="navSearchBar" style='display: none'>
+        <div class="container">
+
+          
+  <div class=' search_bar' id='search-2021-release'>
+      <form id='navSearchBar2' class='navSearchBar' method='post' action='https://search.clinicalgenome.org/kb/genes'>
+            <div id='section_search_wrapper' class='mt-2 mb-2 input-group input-group-md'>
+           <input type='hidden' class='buildtype' name='type' value=''>
+	         <span class='input-group-addon' id=''><i class='fas fa-search'></i></span>
+	         <div class='input-group-btn'>
+	           <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><span class='typeQueryLabel'>Gene</span></button>
+	           <ul class='dropdown-menu dropdown-menu-left search-action-menu'>
+	             <li><a class='typeQueryGene pointer'>Gene Symbol</a></li>
+	             <li><a class='typeQueryGeneName pointer'>Gene Name</a></li>
+	             <li><a class='typeQueryDisease pointer'>Disease Name</a></li>
+	             <li><a class='typeQueryDrug pointer'>Drug Name</a></li>
+	             <li><a class='typeQueryRegionGRCh37 pointer'>Region (GRCh37)</a></li>
+	             <li><a class='typeQueryRegionGRCh38 pointer'>Region (GRCh38)</a></li>
+               <li role='separator' class='divider'></li>
+               <li><a class='' target='allele_reg' href='http://reg.clinicalgenome.org'>Variant <i class='fas fa-external-link-alt mt-1 text-muted'></i> </a></li>
+	             <li><a href='https://clinicalgenome.org/search/'> Website Content <i class='fas fa-external-link-alt mt-1 text-muted'></i></a></li>
+	           </ul>
+           </div><!-- /btn-group -->
+           <span class='inputQueryGene'>
+            <input type='text' class='form-control queryGene ' aria-label='...' value='' name='search[]' placeholder='Enter a gene symbol or HGNC ID (Examples: ADNP, HGNC:15766)'>
+           </span>
+           <span class='inputQueryDisease' style='display: none'>
+            <input type='text' class='form-control  queryDisease' aria-label='...' value='' name='search[]' placeholder='Enter a disease name or MONDO ID (Examples: Loeys Dietz, MONDO:0018954)' >
+           </span>
+           <span class='inputQueryDrug' style='display: none'>
+           <input type='text' class='form-control queryDrug' aria-label='...' value='' name='search[]' placeholder='Enter a drug name or RXNORM ID (Examples: aspirin, RXNORM:1191)'>
+           </span>
+           <span class='inputQueryRegion' style='display: none'>
+           <input type='text' class='form-control queryRegion' aria-label='...' value='' name='search[]' placeholder='Enter a full or partial region (Examples: chr7:75158048-76063176, chr, chr7:70008000)'>
+           </span>
+           <span class='inputQueryGeneName' style='display: none'>
+           <input type='text' class='form-control queryGeneName' aria-label='...' value='' name='search[]' placeholder='Enter a gene name (Example: Adenylate cyclase 1)'>
+           </span>
+            
+	         <span class='input-group-btn'>
+	                 <button class='btn btn-default btn-search-submit' type='submit'> Search</button>
+	               </span>
+         </div><!-- /input-group -->
+          </form>
+
+
+
+          <ul class='nav-tabs-search nav nav-tabs ml-0 mt-1 '>
+
+            <li class='nav-item dropdown '>
+              <a class='nav-link dropdown-toggle' href='https://search.clinicalgenome.org/kb/genes/curations' aria-haspopup='true' aria-expanded='false'>
+                Curated Genes
+              </a>
+                <ul class='dropdown-menu'>
+                  <li><a class='' href='https://search.clinicalgenome.org/kb/genes/curations'>All Curated Genes</a></li>
+                  <li><a class='' href='https://search.clinicalgenome.org/kb/genes/acmgsf'>ACMG SF v3.3 Curations</a></li>  <!--reset on 6/28/2025 -->
+                </ul>
+            </li>
+
+            <li class='nav-item dropdown  '>
+              <a class='nav-link  dropdown-toggle' href='https://search.clinicalgenome.org/kb/gene-validity' aria-haspopup='true' aria-expanded='false'>
+                Gene-Disease Validity
+              </a>
+                <ul class='dropdown-menu'>
+                  <li><a class='' href='https://search.clinicalgenome.org/kb/gene-validity'>All Curations</a></li>
+                  <li><a class='' href='https://search.clinicalgenome.org/kb/affiliate'>Curations by Expert Panel</a></li>
+                  <li class='divider'></li>
+                  <li><a href=https://search.clinicalgenome.org/kb/downloads/#section_gene-disease-validity'><i class='fas fa-download'></i> File Downloads</a></li>
+                </ul>
+              </li>
+            <li class='nav-item dropdown  '>
+              <a class='nav-link  dropdown-toggle' href='https://search.clinicalgenome.org/kb/gene-dosage' aria-haspopup='true' aria-expanded='false'>
+                Dosage Sensitivity
+              </a>
+              <ul class='dropdown-menu'>
+                <li><a class='' href='https://search.clinicalgenome.org/kb/gene-dosage'>All Curations</a></li>
+
+                <li><a class='' href='https://search.clinicalgenome.org/kb/gene-dosage/cnv'>Recurrent CNV</a></li>
+                <li class='divider'></li>
+                <li><a href=https://search.clinicalgenome.org/kb/downloads/#section_dosage'><i class='fas fa-download'></i> FTP File Downloads (CSV, BED, TSV)</a></li>
+              </ul>
+            </li>
+            <li class='nav-item dropdown  '>
+              <a class='nav-link  dropdown-toggle' target='external-actionability' href='https://search.clinicalgenome.org/kb/actionability' aria-haspopup='true' aria-expanded='false'>
+                Clinical Actionability
+              </a>
+              <ul class='dropdown-menu'>
+                <li><a class='' href='https://search.clinicalgenome.org/kb/actionability'>All Curations <i class='fas fa-external-link-alt small'></i></a></li>
+
+                <li><a class='' target='external-actionability' href='https://actionability.clinicalgenome.org/ac/Adult/ui/summ'>Curations in Adult Context <i class='fas fa-external-link-alt small'></i></a></li>
+                <li><a class='' target='external-actionability' href='https://actionability.clinicalgenome.org/ac/Pediatric/ui/summ'>Curations in Pediatric Context <i class='fas fa-external-link-alt small'></i></a></li>
+                <li><a class='' target='external-actionability' href='https://www.clinicalgenome.org/docs/semi-quantitative-scoring-metric/'>Scoring Metric <i class='fas fa-external-link-alt small'></i></a></li>
+                <li class='divider'></li>
+                <li><a href='https://search.clinicalgenome.org/kb/downloads/#section_actionability'><i class='fas fa-download'></i> File Downloads &amp; APIs</a></li>
+              </ul>
+            </li>
+            <li class='nav-item dropdown  '>
+              <a class='nav-link  dropdown-toggle' target='external-erepo' href='https://search.clinicalgenome.org/kb/variant-pathogenicity/all' aria-haspopup='true' aria-expanded='false'>
+                Curated Variants
+              </a>
+              <ul class='dropdown-menu'>
+                <li><a class='' href='https://search.clinicalgenome.org/kb/variant-pathogenicity/all'>All Curations <i class='fas fa-external-link-alt small'></i></a></li>
+                <li class='divider'></li><li>
+                </li><li><a href='https://search.clinicalgenome.org/kb/downloads#section_variant'><i class='fas fa-download'></i> File Downloads &amp; APIs</a></li>
+              </ul>
+            </li>
+            <li class='nav-item  '>
+              <a class='nav-link' href='https://search.clinicalgenome.org/kb/reports/stats'>
+                Statistics
+              </a>
+            </li>
+
+            <li class='nav-item dropdown '>
+                <a class='nav-link dropdown-toggle' href='#'>
+                 More
+                </a>
+                <ul class='dropdown-menu'>
+
+
+                  <li><a class='' href='https://search.clinicalgenome.org/kb/genes'>All Genes</a></li>
+                  <li><a class='' href='https://search.clinicalgenome.org/kb/conditions'>All Disease</a></li>
+                  <li><a class='' href='https://search.clinicalgenome.org/kb/drugs'>All Drugs &amp; Medications</a></li>
+                  <li role='separator' class='divider'></li>
+                <li><a href='https://search.clinicalgenome.org/kb/downloads'><i class='fas fa-download'></i> File Downloads &amp; APIs</a></li>
+
+                </ul>
+              </li>
+
+            <li role='presentation' class='nav-item dropdown'>
+                <a class='nav-link dropdown-toggle mr-0' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+                  <i class='fas fa-question-circle'></i>
+                </a>
+                <ul class='dropdown-menu'>
+                  <li><a href='/tools/clingen-website-faq/'>About ClinGen's Website</a></li>
+                  <li><a href='/docs/?doc-type=website-updates'>Learn About New Features</a></li>
+                  <li><a href='/tools/clingen-website-faq/how-to-cite/'>How To Cite ClinGen</a></li>
+                  <li><a href='/tools/clingen-website-faq/attribution/'>External Data Attribution</a></li>
+                  <li><a href='/about/contact-clingen/'>Contact Us</a></li>
+                </ul>
+              </li>
+
+
+
+
+          </ul>
+    </div>
+          </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id='section_main' role="main">
+
+    <section id="section_heading" class="section-heading section-heading-groups text-light pb-0">
+	<div class="container">
+		<div class="content">
+			<h1>About ClinGen Expert Panels</h1>
+
+<p>ClinGen's Expert Panels are implementing the standards developed by our <a href="http://clingen2019marketingsite.test/curation-activities/">curation activities</a> to improve genomics knowledge.</p>		</div>
+		<ul class="nav-tabs-affiliates nav nav-tabs nav-fill row text-center">
+			<li class="nav-item col-sm-6">
+				<a class="nav-link active" href="https://clinicalgenome.org/working-groups/clinical-domain/">
+					<div class="row">
+						<div class="col-12 strong">
+							Clinical Domain Working Groups
+						</div>
+						<div class="col-sm-6 small">
+							Gene Curation Expert Panels
+						</div>
+						<div class="col-sm-6 small">
+							Variant Curation Expert Panels
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="nav-item col-sm-2">
+				<a class="nav-link" href="https://clinicalgenome.org/working-groups/gene-curation/">
+					<div class="row">
+						<div class="col-12 strong">
+							Gene Curation Working Group
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="nav-item col-sm-2">
+				<a class="nav-link" href="https://clinicalgenome.org/working-groups/dosage-sensitivity-curation/">
+					<div class="row">
+						<div class="col-12 strong">
+							Dosage Sensitivity Working Group
+						</div>
+					</div>
+				</a>
+			</li>
+			<li class="nav-item col-sm-2">
+				<a class="nav-link" href="https://clinicalgenome.org/working-groups/actionability/">
+					<div class="row">
+						<div class="col-12 strong">
+							Clinical Actionability Working Group
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</section>
+    <div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>One specific goal of ClinGen is to develop teams of experts in different clinical domains to evaluate the clinical validity of gene-disease relationships and pathogenicity of individual genetic variants.</p>			</div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<p><strong>About Gene Curation Expert Panels</strong><br />
+Gene Curation Expert Panels implement an approved process of evaluating the strength of evidence supporting or refuting a claim that variation in a particular gene causes a particular disease.</p>
+
+<p><strong>Interested in volunteering to curate for ClinGen?</strong> Please take this brief <strong><a href="/tools/clingen-volunteer-survey/" target="_blank" rel="noreferrer noopener">survey</a></strong>?to tell us more about your interests, expertise, and desired level of involvement so we can pair you with an appropriate curation activity and/or Expert Panel.?</p>
+
+<p><strong>Interested in contributing your expert knowledge and/or data to a ClinGen GCEP? </strong>Please take this brief <strong><a href="/tools/expert-volunteer-survey/" target="_blank" rel="noreferrer noopener">survey</a></strong>?to tell us more about your interests and expertise so we can pair you with the approproate GCEP, if available.?</p>
+
+<p><strong>Interested in starting an Expert Panel??</strong>See our <a href="/docs/guidelines-for-applying-for-variant-or-gene-curation-expert-panel-status/">guidelines for?applying for Gene Curation Expert Panel Status</a>.</p>					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<p><strong>About Variant Curation Expert Panels</strong><br />
+Variant Curation Expert Panels evaluate evidence to classify a genomic variant on a spectrum from pathogenic to benign with respect to a particular disease and inheritance pattern.</p>
+
+<p><strong>Interested in volunteering to curate for ClinGen?</strong> Please take this brief <strong><a href="/tools/clingen-volunteer-survey/" target="_blank" rel="noreferrer noopener">survey</a></strong>?to tell us more about your interests, expertise, and desired level of involvement so we can pair you with an appropriate curation activity and/or Expert Panel.?</p>
+
+<p><strong>Interested in contributing your expert knowledge and/or data to a ClinGen VCEP? </strong>Please take this brief <strong><a href="/tools/expert-volunteer-survey/" target="_blank" rel="noreferrer noopener">survey</a></strong>?to tell us more about your interests and expertise so we can pair you with the approproate VCEP, if available.?</p>
+
+<p><strong>Interested in starting an Expert Panel??</strong>See our <a href="/docs/guidelines-for-applying-for-variant-or-gene-curation-expert-panel-status/">guidelines for?applying for Variant Curation Expert Panel Status</a>.</p>					</div>
+				</div>
+			</div>
+		</div>
+		<hr />
+	</div>
+</div><section id='section_content' class="container">
+    <div>
+
+	
+	<ul class="nav nav-tabs mb-3" id="ep_table_heading">
+		<li role="presentation" class="mt-2 pt-1 mr-2 text-muted small">Organize Expert Panels:</li>
+		<li role="presentation" class=""><a href="/affiliation/#ep_table_heading">By CDWG</a></li>
+		<li role="presentation" class=""><a href="/affiliation/gcep/#ep_table_heading">By GCEP</a></li>
+		<li role="presentation" class="active"><a href="/affiliation/vcep/#ep_table_heading">By VCEP</a></li>
+				<li role="presentation" class=""><a href="/affiliation/inactive/#ep_table_heading">By Inactive</a></li>
+				<li role="presentation" class=""><a href="/affiliation/all/#ep_table_heading">Show All</a></li>
+		
+	</ul>
+
+
+			<div>
+			<table id="ep_table" class="display" style="width:100%">
+				<thead>
+					<tr>
+						<th>Expert Panel Name</th>
+						<th>Type</th>
+						<th>CDWG</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+											
+              <tr>
+                <td><a class='' title='Cardiomyopathy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50002/'>Cardiomyopathy Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Congenital Heart Disease Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50130/'>Congenital Heart Disease Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Desmosomal Cardiomyopathy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50148/'>Desmosomal Cardiomyopathy Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Familial Hypercholesterolemia Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50004/'>Familial Hypercholesterolemia Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='FBN1 Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50046/'>FBN1 Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Potassium Channel Arrhythmia Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50108/'>Potassium Channel Arrhythmia Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Pulmonary Hypertension Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50071/'>Pulmonary Hypertension Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='RYR2 Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50169/'>RYR2 Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Sodium and Calcium Channel Arrhythmia Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50160/'>Sodium and Calcium Channel Arrhythmia Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Cardiovascular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/cardiovascular-cdwg/'>Cardiovascular CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Monogenic Diabetes Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50016/'>Monogenic Diabetes Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Endocrinology CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/endocrinology-cdwg/'>Endocrinology CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Hearing Loss Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50007/'>Hearing Loss Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hearing Loss CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hearing-loss-cdwg/'>Hearing Loss CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Coagulation Factor Deficiency Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50041/'>Coagulation Factor Deficiency Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hemostasis/Thrombosis CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hemostasis-thrombosis-cdwg/'>Hemostasis/Thrombosis CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Hereditary Hemorrhagic Telangiectasia Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50037/'>Hereditary Hemorrhagic Telangiectasia Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hemostasis/Thrombosis CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hemostasis-thrombosis-cdwg/'>Hemostasis/Thrombosis CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Platelet Disorders Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50040/'>Platelet Disorders Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hemostasis/Thrombosis CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hemostasis-thrombosis-cdwg/'>Hemostasis/Thrombosis CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Thrombosis Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50064/'>Thrombosis Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hemostasis/Thrombosis CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hemostasis-thrombosis-cdwg/'>Hemostasis/Thrombosis CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='von Willebrand Disease Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50051/'>von Willebrand Disease Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hemostasis/Thrombosis CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hemostasis-thrombosis-cdwg/'>Hemostasis/Thrombosis CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='DICER1 and miRNA-Processing Gene Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50050/'>DICER1 and miRNA-Processing Gene Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Endocrine Tumor Predisposition Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/51050/'>Endocrine Tumor Predisposition Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='ENIGMA BRCA1 and BRCA2 Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50087/'>ENIGMA BRCA1 and BRCA2 Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Gastric Cancer Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50014/'>Gastric Cancer Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Hereditary Breast, Ovarian and Pancreatic Cancer Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50039/'>Hereditary Breast, Ovarian and Pancreatic Cancer Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50099/'>InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Myeloid Malignancy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50034/'>Myeloid Malignancy Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Neurofibromatoses and schwannomatosis Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50114/'>Neurofibromatoses and schwannomatosis Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="80"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Pilot Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Ocular Oncology Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50163/'>Ocular Oncology Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='PTEN Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50012/'>PTEN Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='TP53 Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50013/'>TP53 Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='VHL Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50036/'>VHL Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Hereditary Cancer CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/hereditary-cancer-cdwg/'>Hereditary Cancer CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Hereditary Angioedema Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50128/'>Hereditary Angioedema Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Immunology CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/immunology-cdwg/'>Immunology CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Primary Immune Regulatory Disorders Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50095/'>Primary Immune Regulatory Disorders Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Immunology CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/immunology-cdwg/'>Immunology CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Severe Combined Immunodeficiency Disease Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50091/'>Severe Combined Immunodeficiency Disease Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Immunology CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/immunology-cdwg/'>Immunology CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='ACADVL Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50048/'>ACADVL Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Cerebral Creatine Deficiency Syndromes Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50047/'>Cerebral Creatine Deficiency Syndromes Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Dopa Decarboxylase (Aromatic L-Amino Acid Decarboxylase) Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50118/'>Dopa Decarboxylase (Aromatic L-Amino Acid Decarboxylase) Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="80"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Pilot Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Galactosemia Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50136/'>Galactosemia Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Glucose-6-phosphate dehydrogenase Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50147/'>Glucose-6-phosphate dehydrogenase Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Lysosomal Diseases Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50009/'>Lysosomal Diseases Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Mitochondrial Disease Nuclear and Mitochondrial Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50027/'>Mitochondrial Disease Nuclear and Mitochondrial Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Peroxisomal Disorders Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50049/'>Peroxisomal Disorders Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Phenylketonuria Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50015/'>Phenylketonuria Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Propionic Acidemia and Methylmalonic Acidemia Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50162/'>Propionic Acidemia and Methylmalonic Acidemia Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Urea Cycle Disorders Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50100/'>Urea Cycle Disorders Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Inborn Errors Metabolism CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/inborn-errors-metabolism-cdwg/'>Inborn Errors Metabolism CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Alport Syndrome Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50146/'>Alport Syndrome Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Kidney Disease CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/kidney-disease-cdwg/'>Kidney Disease CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Kidney Cystic and Ciliopathy Disorders Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50066/'>Kidney Cystic and Ciliopathy Disorders Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Kidney Disease CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/kidney-disease-cdwg/'>Kidney Disease CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Brain Malformations Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50020/'>Brain Malformations Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurodevelopmental Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurodevelopmental-disorders-cdwg/'>Neurodevelopmental Disorders CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Epilepsy Sodium Channel Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50105/'>Epilepsy Sodium Channel Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurodevelopmental Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurodevelopmental-disorders-cdwg/'>Neurodevelopmental Disorders CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='GRIN Disorders Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50078/'>GRIN Disorders Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurodevelopmental Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurodevelopmental-disorders-cdwg/'>Neurodevelopmental Disorders CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Leukodystrophy and Leukoencephalopathy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50107/'>Leukodystrophy and Leukoencephalopathy Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurodevelopmental Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurodevelopmental-disorders-cdwg/'>Neurodevelopmental Disorders CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Rett and Angelman-like Disorders Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50022/'>Rett and Angelman-like Disorders Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurodevelopmental Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurodevelopmental-disorders-cdwg/'>Neurodevelopmental Disorders CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Amyotrophic Lateral Sclerosis Spectrum Disorders Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50096/'>Amyotrophic Lateral Sclerosis Spectrum Disorders Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurological Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurological-disorders-cdwg/'>Neurological Disorders CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Charcot-Marie-Tooth Disease Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50063/'>Charcot-Marie-Tooth Disease Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurological Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurological-disorders-cdwg/'>Neurological Disorders CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Congenital Myopathies Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50031/'>Congenital Myopathies Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurological Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurological-disorders-cdwg/'>Neurological Disorders CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Limb Girdle Muscular Dystrophy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50061/'>Limb Girdle Muscular Dystrophy Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurological Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurological-disorders-cdwg/'>Neurological Disorders CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Parkinson&#039;s Disease Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50079/'>Parkinson&#039;s Disease Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Neurological Disorders CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/neurological-disorders-cdwg/'>Neurological Disorders CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='ABCA4 Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50140/'>ABCA4 Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Albinism Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50154/'>Albinism Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Glaucoma Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50053/'>Glaucoma Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Leber Congenital Amaurosis/early onset Retinal Dystrophy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50082/'>Leber Congenital Amaurosis/early onset Retinal Dystrophy Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Maculopathy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50158/'>Maculopathy Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Optic Nerve Atrophy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50090/'>Optic Nerve Atrophy Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Pediatric Cataract Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50166/'>Pediatric Cataract Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Rhodopsin Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50167/'>Rhodopsin Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='X-linked Inherited Retinal Disease Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50086/'>X-linked Inherited Retinal Disease Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Ocular CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/ocular-cdwg/'>Ocular CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Hemoglobinopathy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50052/'>Hemoglobinopathy Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Other CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/other-cdwg/'>Other CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Malignant Hyperthermia Susceptibility Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50038/'>Malignant Hyperthermia Susceptibility Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Other CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/other-cdwg/'>Other CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Motile Ciliopathy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50161/'>Motile Ciliopathy Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Pulmonary CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/pulmonary-cdwg/'>Pulmonary CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='RASopathy Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50021/'>RASopathy Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='RASopathy CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/rasopathy-cdwg/'>RASopathy CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='BCR::ABL1-like B-lymphoblastic Leukemia/Lymphoma SC- Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50129/'>BCR::ABL1-like B-lymphoblastic Leukemia/Lymphoma SC- Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Somatic CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/somatic-cdwg/'>Somatic CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='EGFR Somatic Cancer Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50168/'>EGFR Somatic Cancer Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Somatic CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/somatic-cdwg/'>Somatic CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Established Significance SC- Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50153/'>Established Significance SC- Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Somatic CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/somatic-cdwg/'>Somatic CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Fibroblast Growth Factor Receptor Mutations (SNVs) Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50098/'>Fibroblast Growth Factor Receptor Mutations (SNVs) Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Somatic CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/somatic-cdwg/'>Somatic CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='FLT3 (Fms Related Receptor Tyrosine Kinase 3) Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50111/'>FLT3 (Fms Related Receptor Tyrosine Kinase 3) Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Somatic CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/somatic-cdwg/'>Somatic CDWG</td>
+                <td data-sort="50"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Define Group" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='Histone H3 SC Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50115/'>Histone H3 SC Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Somatic CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/somatic-cdwg/'>Somatic CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='MAPK/ERK Pathway Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50152/'>MAPK/ERK Pathway Variant Curation Expert Panel</a><span class="badge badge-light badge-affiliate-status">In Process</span> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Somatic CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/somatic-cdwg/'>Somatic CDWG</td>
+                <td data-sort="75"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="In Process - Classification Rules" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td><a class='' title='NTRK Fusions Somatic Cancer Variant Curation Expert Panel' href='https://clinicalgenome.org/affiliation/50089/'>NTRK Fusions Somatic Cancer Variant Curation Expert Panel</a> </td>
+                <td>VCEP</td>
+                <td><a class='' title='Somatic CDWG' href='https://clinicalgenome.org/working-groups/clinical-domain/somatic-cdwg/'>Somatic CDWG</td>
+                <td data-sort="100"><div class="progress m-0" data-toggle="tooltip" data-placement="top" title="Expert Panel Approval" >
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ></div>
+                    </div>
+                </td>
+              </tr>
+              									</tbody>
+			</table>
+		</div>
+	
+
+
+
+</div></section>
+
+  </main>
+
+  <div class="" id="clingen_contact">
+    <a href="https://clinicalgenome.org/contact/share-feedback/?title=Expert%20Panels&page=https%3A%2F%2Fclinicalgenome.org%2Faffiliation%2F&ref=edwg">
+      <i class="far fa-envelope clingen_contact_icon"></i>
+      <div class="">Send Feedback</div>
+    </a>
+  </div>
+
+  <footer class="text-muted">
+    <div id='section_footer' class="container">
+      <div class="row small">
+  
+  <div class="col-12">
+    <hr />
+  The information on this website is not intended for direct diagnostic use or medical decision-making without review by a genetics professional. Individuals should not change their health behavior solely on the basis of information contained on this website. If you have questions about the information contained on this website, please see a health care professional.
+    <hr />
+  </div>
+  
+  <div class="col-sm-3">
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 col-xs-6 text-center line-height-normal">
+        <a href="https://twitter.com/ClinGenResource" target="_blank">
+          <i class="fab fa-twitter-square h1"></i><small class="clearfix">@ClinGenResource</small>
+        </a>
+      </div>
+      <div class="col-lg-6 col-sm-12 col-xs-6 text-center line-height-normal">
+        <a href="https://www.youtube.com/channel/UCsn4nEVUTpVQz70rClgMMsQ" class="text-danger" target="_blank">
+          <i class="fab fa-youtube-square h1"></i><small class="clearfix text-muted">youtube.com</small>
+        </a>
+      </div>
+    </div>
+    <hr />
+   
+      <a class='' href='https://clinicalgenome.org/start/'><h6>Get Started</h6></a>
+      
+      <hr />
+   
+      <a class='' href='https://clinicalgenome.org/curation-activities/'><h6>Curation Activities</h6></a>
+      
+      <ul class='list-unstyled row'>
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/about-curation-activities/'><span class='d-inline-block text-truncate'>About ClinGen&#039;s Curation Activities</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/gene-disease-validity/'><span class='d-inline-block text-truncate'>Gene-Disease Validity</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/variant-pathogenicity/'><span class='d-inline-block text-truncate'>Variant Pathogenicity</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/clinical-actionability/'><span class='d-inline-block text-truncate'>Clinical Actionability</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/dosage-sensitivity/'><span class='d-inline-block text-truncate'>Dosage Sensitivity</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/somatic/'><span class='d-inline-block text-truncate'>Somatic Cancer Variant</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/baseline-annotation/'><span class='d-inline-block text-truncate'>Baseline Annotation</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/clingen-curation-of-clinvar/'><span class='d-inline-block text-truncate'>ClinGen Curation of ClinVar</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/curation-activities/results/'><span class='d-inline-block text-truncate'>Browse All ClinGen&#039;s Curated Genes</span></a>
+        </li>
+      </ul>
+    
+      <hr />
+   
+      <a class='' href='https://clinicalgenome.org/tools/'><h6>Tools</h6></a>
+      
+      <hr />
+   
+      <a class='' href='https://clinicalgenome.org/about/'><h6>About Us</h6></a>
+      
+      <ul class='list-unstyled row'>
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/about-clingen/'><span class='d-inline-block text-truncate'>About ClinGen</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/clingen-clinvar-partnership/'><span class='d-inline-block text-truncate'>ClinGen &amp; ClinVar Partnership</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/clingen-clinpgx-partnership/'><span class='d-inline-block text-truncate'>ClinGen-ClinPGx Partnership</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/clingen-job-opportunities/'><span class='d-inline-block text-truncate'>ClinGen Opportunities</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/terms-of-use/'><span class='d-inline-block text-truncate'>Citing ClinGen &amp; Terms of Use</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/contact-clingen/'><span class='d-inline-block text-truncate'>Contact ClinGen</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/events/'><span class='d-inline-block text-truncate'>Events &amp; Conferences</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/fda-recognition/'><span class='d-inline-block text-truncate'>FDA Recognition</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/clingen-leadership/'><span class='d-inline-block text-truncate'>Leadership</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/nih-institutes-and-centers/'><span class='d-inline-block text-truncate'>NIH Funded Expert Panels</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/people/'><span class='d-inline-block text-truncate'>Member Directory</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/partnerships/'><span class='d-inline-block text-truncate'>Partnerships</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/clingen-policies/'><span class='d-inline-block text-truncate'>Policies</span></a>
+        </li>
+      
+        <li class='col-md-12 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/about/sitemap/'><span class='d-inline-block text-truncate'>Website SiteMap</span></a>
+        </li>
+      </ul>
+    
+    </div>
+  <div class="col-sm-9">
+    <div class="row">
+      <div class="col-12">
+       
+      <a class='' href='https://clinicalgenome.org/working-groups/'><h6>Working Groups</h6></a>
+      
+      <ul class='list-unstyled row'>
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/actionability/'><span class='d-inline-block text-truncate'>Actionability</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/ai-automation-working-group/'><span class='d-inline-block text-truncate'>AI and Automation Working Group</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/biocurators/'><span class='d-inline-block text-truncate'>Biocurator</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/cancer-variant-interpretation/'><span class='d-inline-block text-truncate'>Cancer Variant Interpretation</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/clingen-community-curation-c3/'><span class='d-inline-block text-truncate'>ClinGen Community Curation (C3)</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/clingen-curation-of-clinvar/'><span class='d-inline-block text-truncate'>ClinGen Curation of ClinVar</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/clinical-domain/'><span class='d-inline-block text-truncate'>Clinical Domain Working Groups</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/copy-number-variant-interpretation-guidelines/'><span class='d-inline-block text-truncate'>Copy Number Variant Interpretation Guidelines</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/curated-disease-entity/'><span class='d-inline-block text-truncate'>Curated Disease Entity</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/data-access-protection-and-confidentiality/'><span class='d-inline-block text-truncate'>Data Access, Protection, and Confidentiality</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/data-platform/'><span class='d-inline-block text-truncate'>Data Platform</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/dosage-sensitivity-curation/'><span class='d-inline-block text-truncate'>Dosage Sensitivity Curation</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/ect/'><span class='d-inline-block text-truncate'>Education, Coordination and Training</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/external-scientific-panel/'><span class='d-inline-block text-truncate'>External Scientific Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/gencc-mechanism-curation/'><span class='d-inline-block text-truncate'>GenCC Mechanism Curation</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/gene-curation/'><span class='d-inline-block text-truncate'>Gene Curation</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/germline-somatic-variant-curation/'><span class='d-inline-block text-truncate'>Germline/Somatic Working Group</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/hla-working-group/'><span class='d-inline-block text-truncate'>HLA Working Group</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/low-penetrance-risk-allele-working-group/'><span class='d-inline-block text-truncate'>Low Penetrance / Risk Allele Working Group</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/partnership/'><span class='d-inline-block text-truncate'>Partnership</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/pharmacogenomics/'><span class='d-inline-block text-truncate'>Pharmacogenomics Interpretation Committee</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/phenotyping/'><span class='d-inline-block text-truncate'>Phenotyping</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/pseudodeficiency-working-group/'><span class='d-inline-block text-truncate'>Pseudodeficiency Working Group</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/reach-impact-sustainability-evaluation/'><span class='d-inline-block text-truncate'>Reach, Impact, Sustainability, Evaluation</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/steering-committee/'><span class='d-inline-block text-truncate'>Steering Committee</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/variant-classification/'><span class='d-inline-block text-truncate'>Variant Classification Working Group</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/working-groups/variant-curation-workgroup/'><span class='d-inline-block text-truncate'>VCEP Management</span></a>
+        </li>
+      </ul>
+    
+        <hr />
+      </div>
+      <div class="col-12">
+       
+      <a class='' href='https://clinicalgenome.org/affiliation/'><h6>Expert Panels</h6></a>
+      
+      <ul class='list-unstyled row'>
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50140/'><span class=' d-inline-block '>ABCA4 Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50048/'><span class=' d-inline-block '>ACADVL Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50154/'><span class=' d-inline-block '>Albinism Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50146/'><span class=' d-inline-block '>Alport Syndrome Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40011/'><span class=' d-inline-block '>Aminoacidopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40096/'><span class=' d-inline-block '>Amyotrophic Lateral Sclerosis Spectrum Disorders Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50096/'><span class=' d-inline-block '>Amyotrophic Lateral Sclerosis Spectrum Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40080/'><span class=' d-inline-block '>Antibody Deficiencies Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40003/'><span class=' d-inline-block '>Arrhythmogenic Right Ventricular Cardiomyopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50129/'><span class=' d-inline-block '>BCR::ABL1-like B-lymphoblastic Leukemia/Lymphoma SC- Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40020/'><span class=' d-inline-block '>Brain Malformations Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50020/'><span class=' d-inline-block '>Brain Malformations Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40042/'><span class=' d-inline-block '>Breast/Ovarian Cancer Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40045/'><span class=' d-inline-block '>Brugada Syndrome Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50002/'><span class=' d-inline-block '>Cardiomyopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40074/'><span class=' d-inline-block '>Catecholaminergic Polymorphic Ventricular Tachycardia Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40155/'><span class=' d-inline-block '>Cerebellar Ataxia Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50047/'><span class=' d-inline-block '>Cerebral Creatine Deficiency Syndromes Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40113/'><span class=' d-inline-block '>Cerebral Palsy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40063/'><span class=' d-inline-block '>Charcot-Marie-Tooth Disease Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50063/'><span class=' d-inline-block '>Charcot-Marie-Tooth Disease Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40157/'><span class=' d-inline-block '>Childhood, Adolescent and Young Adult Cancer Predisposition Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50041/'><span class=' d-inline-block '>Coagulation Factor Deficiency Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40043/'><span class=' d-inline-block '>Colon Cancer Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40069/'><span class=' d-inline-block '>Complement-Mediated Kidney Diseases Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40070/'><span class=' d-inline-block '>Congenital Anomalies of the Kidney and Urinary Tract Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40135/'><span class=' d-inline-block '>Congenital Disorders of Glycosylation Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40130/'><span class=' d-inline-block '>Congenital Heart Disease Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50130/'><span class=' d-inline-block '>Congenital Heart Disease Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40031/'><span class=' d-inline-block '>Congenital Myopathies and Myasthenic Syndromes Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50031/'><span class=' d-inline-block '>Congenital Myopathies Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40059/'><span class=' d-inline-block '>Craniofacial Malformations Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50148/'><span class=' d-inline-block '>Desmosomal Cardiomyopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50050/'><span class=' d-inline-block '>DICER1 and miRNA-Processing Gene Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40035/'><span class=' d-inline-block '>Dilated Cardiomyopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50118/'><span class=' d-inline-block '>Dopa Decarboxylase (Aromatic L-Amino Acid Decarboxylase) Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50168/'><span class=' d-inline-block '>EGFR Somatic Cancer Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/51050/'><span class=' d-inline-block '>Endocrine Tumor Predisposition Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50087/'><span class=' d-inline-block '>ENIGMA BRCA1 and BRCA2 Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40005/'><span class=' d-inline-block '>Epilepsy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50105/'><span class=' d-inline-block '>Epilepsy Sodium Channel Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50153/'><span class=' d-inline-block '>Established Significance SC- Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50004/'><span class=' d-inline-block '>Familial Hypercholesterolemia Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40010/'><span class=' d-inline-block '>Fatty Acid Oxidation Disorders Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50046/'><span class=' d-inline-block '>FBN1 Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50098/'><span class=' d-inline-block '>Fibroblast Growth Factor Receptor Mutations (SNVs) Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50111/'><span class=' d-inline-block '>FLT3 (Fms Related Receptor Tyrosine Kinase 3) Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50136/'><span class=' d-inline-block '>Galactosemia Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50014/'><span class=' d-inline-block '>Gastric Cancer Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40026/'><span class=' d-inline-block '>General Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40097/'><span class=' d-inline-block '>General Inborn Errors of Metabolism Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40077/'><span class=' d-inline-block '>Glaucoma and Neuro-Ophthalmology Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50053/'><span class=' d-inline-block '>Glaucoma Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40068/'><span class=' d-inline-block '>Glomerulopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50147/'><span class=' d-inline-block '>Glucose-6-phosphate dehydrogenase Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50078/'><span class=' d-inline-block '>GRIN Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40007/'><span class=' d-inline-block '>Hearing Loss Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50007/'><span class=' d-inline-block '>Hearing Loss Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50052/'><span class=' d-inline-block '>Hemoglobinopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40028/'><span class=' d-inline-block '>Hemostasis/Thrombosis Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50128/'><span class=' d-inline-block '>Hereditary Angioedema Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50039/'><span class=' d-inline-block '>Hereditary Breast, Ovarian and Pancreatic Cancer Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40023/'><span class=' d-inline-block '>Hereditary Cancer Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40104/'><span class=' d-inline-block '>Hereditary Cardiovascular Disease Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50037/'><span class=' d-inline-block '>Hereditary Hemorrhagic Telangiectasia Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40044/'><span class=' d-inline-block '>Heritable Thoracic Aortic Aneurysm and Dissection Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50115/'><span class=' d-inline-block '>Histone H3 SC Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40008/'><span class=' d-inline-block '>Hypertrophic Cardiomyopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50099/'><span class=' d-inline-block '>InSiGHT Hereditary Colorectal Cancer/Polyposis Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40006/'><span class=' d-inline-block '>Intellectual Disability and Autism Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40138/'><span class=' d-inline-block '>Interstitial Lung Disease Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40066/'><span class=' d-inline-block '>Kidney Cystic and Ciliopathy Disorders Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50066/'><span class=' d-inline-block '>Kidney Cystic and Ciliopathy Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50082/'><span class=' d-inline-block '>Leber Congenital Amaurosis/early onset Retinal Dystrophy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40107/'><span class=' d-inline-block '>Leukodystrophy and Leukoencephalopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50107/'><span class=' d-inline-block '>Leukodystrophy and Leukoencephalopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50061/'><span class=' d-inline-block '>Limb Girdle Muscular Dystrophy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40025/'><span class=' d-inline-block '>Long QT syndrome Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40110/'><span class=' d-inline-block '>Lysosomal Diseases Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50009/'><span class=' d-inline-block '>Lysosomal Diseases Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50158/'><span class=' d-inline-block '>Maculopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40073/'><span class=' d-inline-block '>Male Infertility Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50038/'><span class=' d-inline-block '>Malignant Hyperthermia Susceptibility Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50152/'><span class=' d-inline-block '>MAPK/ERK Pathway Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50027/'><span class=' d-inline-block '>Mitochondrial Disease Nuclear and Mitochondrial Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40027/'><span class=' d-inline-block '>Mitochondrial Diseases Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40139/'><span class=' d-inline-block '>Monogenic Autoinflammatory Diseases Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40016/'><span class=' d-inline-block '>Monogenic Diabetes Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50016/'><span class=' d-inline-block '>Monogenic Diabetes Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40123/'><span class=' d-inline-block '>Monogenic Systemic and Incomplete Lupus Erythematosus Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40102/'><span class=' d-inline-block '>Motile Ciliopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50161/'><span class=' d-inline-block '>Motile Ciliopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40151/'><span class=' d-inline-block '>Muscular Dystrophies and Myopathies Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50034/'><span class=' d-inline-block '>Myeloid Malignancy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50114/'><span class=' d-inline-block '>Neurofibromatoses and schwannomatosis Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40156/'><span class=' d-inline-block '>Neurovascular Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50089/'><span class=' d-inline-block '>NTRK Fusions Somatic Cancer Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50132/'><span class=' d-inline-block '>Ocular Anterior Segment Disorder Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50163/'><span class=' d-inline-block '>Ocular Oncology Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50090/'><span class=' d-inline-block '>Optic Nerve Atrophy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40079/'><span class=' d-inline-block '>Parkinson&#039;s Disease Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50079/'><span class=' d-inline-block '>Parkinson&#039;s Disease Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50166/'><span class=' d-inline-block '>Pediatric Cataract Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40049/'><span class=' d-inline-block '>Peroxisomal Disorders Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50049/'><span class=' d-inline-block '>Peroxisomal Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50015/'><span class=' d-inline-block '>Phenylketonuria Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50040/'><span class=' d-inline-block '>Platelet Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50108/'><span class=' d-inline-block '>Potassium Channel Arrhythmia Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40106/'><span class=' d-inline-block '>Prenatal Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40145/'><span class=' d-inline-block '>Primary Immune Regulatory Disorders Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50095/'><span class=' d-inline-block '>Primary Immune Regulatory Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50162/'><span class=' d-inline-block '>Propionic Acidemia and Methylmalonic Acidemia Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50012/'><span class=' d-inline-block '>PTEN Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40071/'><span class=' d-inline-block '>Pulmonary Hypertension Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50071/'><span class=' d-inline-block '>Pulmonary Hypertension Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40021/'><span class=' d-inline-block '>RASopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50021/'><span class=' d-inline-block '>RASopathy Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40072/'><span class=' d-inline-block '>Retina Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50022/'><span class=' d-inline-block '>Rett and Angelman-like Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50167/'><span class=' d-inline-block '>Rhodopsin Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50169/'><span class=' d-inline-block '>RYR2 Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40081/'><span class=' d-inline-block '>SCID-CID Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50091/'><span class=' d-inline-block '>Severe Combined Immunodeficiency Disease Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40075/'><span class=' d-inline-block '>Short QT syndrome Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40065/'><span class=' d-inline-block '>Skeletal Disorders Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50175/'><span class=' d-inline-block '>Skeletal Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50160/'><span class=' d-inline-block '>Sodium and Calcium Channel Arrhythmia Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40164/'><span class=' d-inline-block '>Somatic Mosaicism of Vascular Anomalies Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40060/'><span class=' d-inline-block '>Syndromic Disorders Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50064/'><span class=' d-inline-block '>Thrombosis Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50013/'><span class=' d-inline-block '>TP53 Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50171/'><span class=' d-inline-block '>Tuberous Sclerosis Complex Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/40067/'><span class=' d-inline-block '>Tubulopathy Gene Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50100/'><span class=' d-inline-block '>Urea Cycle Disorders Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50036/'><span class=' d-inline-block '>VHL Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50051/'><span class=' d-inline-block '>von Willebrand Disease Variant Curation Expert Panel</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/affiliation/50086/'><span class=' d-inline-block '>X-linked Inherited Retinal Disease Variant Curation Expert Panel</span></a>
+        </li>
+      </ul>
+    
+        <hr />
+      </div>
+      <div class="col-12">
+       
+      <a class='' href='https://clinicalgenome.org/docs/'><h6>Documents &amp; Announcements</h6></a>
+      
+      <ul class='list-unstyled row'>
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=clingen-exhibit-booth-materials#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/3393/002-file.svg" class='svg-h-text' alt="ClinGen Exhibit Booth Materials">ClinGen Exhibit Booth Materials</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=curation-activity-procedures#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/3395/002-file.svg" class='svg-h-text' alt="Curation Activity Procedures">Curation Activity Procedures</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=conflict-of-interest-coi#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2195/002-file.svg" class='svg-h-text' alt="Conflict Of Interest (COI)">Conflict Of Interest (COI)</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=data-sharing-resources#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/3052/002-file.svg" class='svg-h-text' alt="Data Sharing Resources">Data Sharing Resources</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=expert-panel-status-steps#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2196/002-file.svg" class='svg-h-text' alt="Expert Panel Applications">Expert Panel Applications</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=in-the-news#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2184/002-file.svg" class='svg-h-text' alt="News">News</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=moc-cme-forms#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2119/002-file.svg" class='svg-h-text' alt="MOC/CME Forms">MOC/CME Forms</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=patient-data-sharing#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2120/002-file.svg" class='svg-h-text' alt="Patient Data Sharing">Patient Data Sharing</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=policies-position-statements#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2115/002-file.svg" class='svg-h-text' alt="Policies/Position Statements">Policies/Position Statements</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=presentations#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2176/002-file.svg" class='svg-h-text' alt="Presentations">Presentations</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=publications#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/3394/002-file.svg" class='svg-h-text' alt="Publications">Publications</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=supporting-documents#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2122/002-file.svg" class='svg-h-text' alt="Supporting Documents">Supporting Documents</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=training-materials#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/2116/002-file.svg" class='svg-h-text' alt="Training Materials">Training Materials</span></a>
+        </li>
+      
+        <li class='col-md-6 text-truncate'>
+          <a class='text-dark small' href='https://clinicalgenome.org/docs/?doc-type=website-updates#list_documentation_table'><span class=' d-inline-block text-truncate'><img src="/site/assets/files/6235/002-file.svg" class='svg-h-text' alt="Website Updates">Website Updates</span></a>
+        </li>
+      </ul>
+    
+        </div>
+    </div>
+  </div>
+</div>      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p> &copy; ClinGen</p>
+    </div>
+  </footer>
+
+  <div class="">
+
+</div>
+  <!-- Bootstrap core JavaScript
+      ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+
+  <script src="/site/templates/resources/packages/popper/popper.min.js"></script>
+  <!--    <script src="/site/templates/resources/packages/bootstrap/js/bootstrap.min.js"></script>-->
+  <script src="/site/templates/resources/packages/bootstrap-3-4-1/js/bootstrap.js"></script>
+  <!--    <script src="/site/templates/resources/packages/bootstrap-4-3-1/js/bootstrap.js"></script>-->
+  <script src="/site/templates/resources/packages/list/list.js"></script>
+  <script src="/site/templates/resources/js/master.js"></script>
+  <script src="/site/templates/resources/js/tooltips.js"></script>
+  <script src="/site/templates/resources/js/list-filters.js"></script>
+  <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+ 	<script>
+		$(document).ready(function() {
+				$("#ep_table").DataTable(
+					{
+						"paging": false,
+						"pageLength": 200,
+					}
+				);
+		} );
+	</script>
+	  <script>
+    $("#navSearchToggle").click(function() {
+      $("#navSearchBar").toggle();
+    });
+
+    // Allows Tabs to show on page load
+    $(function() {
+      var hash = window.location.hash;
+      hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+      $('.nav-tabs a').click(function(e) {
+        $(this).tab('show');
+        var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+        window.location.hash = this.hash;
+        $('html,body').scrollTop(scrollmem);
+      });
+    });
+
+    // Update Address bar on tab state change
+    $('.nav-url-state a').click(function() {
+      var location = "https://clinicalgenome.org/affiliation/";
+      var href = $(this).attr("href");
+      var update = location + href;
+      var stateObj = {
+        state: update
+      };
+      history.pushState(stateObj, "Expert Panels", update);
+    });
+    
+  </script>
+  <script src="/site/templates/resources/js/typeahead.js"></script>
+
+      <script>
+        console.log("search interface 2");
+        const savedTab = sessionStorage.getItem('activeTab') || 'gene';
+
+        if (savedTab === 'condition') {
+            enableConditionSearch()
+        } else if (savedTab  === 'gene-name') {
+            enableGeneNameSearch()
+        } else if (savedTab === 'region-37') {
+            enableRegion37Search()
+        } else if (savedTab === 'region-38') {
+            enableRegion38Search()
+        } else if (savedTab === 'drug') {
+            enableDrugSearch()
+        } else {
+            enableGeneSearch()
+        }
+
+        function enableGeneSearch()
+        {
+            $("#navSearchBar2").attr("action", "https://search.clinicalgenome.org/kb/genes");
+            $( ".inputQueryGene" ).show();
+            $( ".inputQueryGene .queryGene" ).show();
+            $( ".inputQueryDisease" ).hide();
+            $( ".inputQueryDisease .queryDisease" ).hide();
+            $( ".inputQueryDrug" ).hide();
+            $( ".inputQueryGeneName" ).hide();
+            $( ".inputQueryGene .queryGeneName" ).hide();
+            $( ".inputQueryDrug .queryDrug" ).hide();
+            $( ".inputQueryRegion" ).hide();
+            $( ".inputQueryRegion .queryRegion" ).hide();
+            $( ".typeQueryLabel").text("Gene Symbol ");
+            sessionStorage.setItem('activeTab', 'gene');
+        }
+
+        function enableGeneNameSearch()
+        {
+            $("#navSearchBar2").attr("action", "https://search.clinicalgenome.org/kb/genes/search-by-name");
+            $( ".inputQueryGeneName" ).show();
+            $( ".inputQueryGene .queryGeneName" ).show();
+            $( ".inputQueryGene" ).hide();
+            $( ".inputQueryGene .queryGene" ).hide();
+            $( ".inputQueryDisease" ).hide();
+            $( ".inputQueryDisease .queryDisease" ).hide();
+            $( ".inputQueryDrug" ).hide();
+            $( ".inputQueryDrug .queryDrug" ).hide();
+            $( ".inputQueryRegion" ).hide();
+            $( ".inputQueryRegion .queryRegion" ).hide();
+            $( ".typeQueryLabel").text("Gene Name ");
+            sessionStorage.setItem('activeTab', 'gene-name');
+        }
+
+        function enableConditionSearch()
+        {
+            $("#navSearchBar2").attr("action", "https://search.clinicalgenome.org/kb/conditions");
+            $( ".inputQueryGene" ).hide();
+            $( ".inputQueryGene .queryGene" ).hide();
+            $( ".inputQueryGeneName" ).hide();
+            $( ".inputQueryGene .queryGeneName" ).hide();
+            $( ".inputQueryDisease" ).show();
+            $( ".inputQueryDisease .queryDisease" ).show();
+            $( ".inputQueryDrug" ).hide();
+            $( ".inputQueryDrug .queryDrug" ).hide();
+            $( ".inputQueryRegion" ).hide();
+            $( ".inputQueryRegion .queryRegion" ).hide();
+            $( ".typeQueryLabel").text("Disease Name  ");
+            sessionStorage.setItem('activeTab', 'condition');
+        }
+
+        function enableDrugSearch()
+        {
+            $("#navSearchBar2").attr("action", "https://search.clinicalgenome.org/kb/drugs");
+            $( ".inputQueryGene" ).hide();
+            $( ".inputQueryGene .queryGene" ).hide();
+            $( ".inputQueryDisease" ).hide();
+            $( ".inputQueryDisease .queryDisease" ).hide();
+            $( ".inputQueryDrug" ).show();
+            $( ".inputQueryDrug .queryDrug" ).show();
+            $( ".inputQueryRegion" ).hide();
+            $( ".inputQueryRegion .queryRegion" ).hide();
+            $( ".typeQueryLabel").text("Drug Name  ");
+            $( ".inputQueryGeneName" ).hide();
+            $( ".inputQueryGene .queryGeneName" ).hide();
+            sessionStorage.setItem('activeTab', 'drug');
+        }
+
+        function enableRegion37Search()
+        {
+            $("#navSearchBar2").attr("action", "https://search.clinicalgenome.org/kb/regions");
+            $( ".inputQueryGene" ).hide();
+            $( ".inputQueryGene .queryGene" ).hide();
+            $( ".inputQueryDisease" ).hide();
+            $( ".inputQueryDisease .queryDisease" ).hide();
+            $( ".inputQueryDrug" ).hide();
+            $( ".inputQueryDrug .queryDrug" ).hide();
+            $( ".inputQueryRegion" ).show();
+            $( ".inputQueryRegion .queryRegion" ).show();
+            $( ".typeQueryLabel").text("GRCh37 Region  ");
+            $( ".buildtype").val("GRCh37");
+            $( ".inputQueryGeneName" ).hide();
+            $( ".inputQueryGene .queryGeneName" ).hide();
+            sessionStorage.setItem('activeTab', 'region-37');
+        }
+
+        function enableRegion38Search()
+        {
+            $("#navSearchBar2").attr("action", "https://search.clinicalgenome.org/kb/regions");
+            $( ".inputQueryGene" ).hide();
+            $( ".inputQueryGene .queryGene" ).hide();
+            $( ".inputQueryDisease" ).hide();
+            $( ".inputQueryDisease .queryDisease" ).hide();
+            $( ".inputQueryDrug" ).hide();
+            $( ".inputQueryDrug .queryDrug" ).hide();
+            $( ".inputQueryRegion" ).show();
+            $( ".inputQueryRegion .queryRegion" ).show();
+            $( ".typeQueryLabel").text("GRCh38 Region  ");
+            $( ".buildtype").val("GRCh38");
+            $( ".inputQueryGeneName" ).hide();
+            $( ".inputQueryGene .queryGeneName" ).hide();
+            sessionStorage.setItem('activeTab', 'region-38');
+        }
+
+        $( ".typeQueryGene" ).click(function() {
+            enableGeneSearch()
+        });
+
+        $( ".typeQueryGeneName" ).click(function() {
+            enableGeneNameSearch()
+        });
+
+        $( ".typeQueryDisease" ).click(function() {
+            enableConditionSearch()
+        });
+
+        $( ".typeQueryDrug" ).click(function() {
+            enableDrugSearch()
+        });
+
+        $( ".typeQueryRegionGRCh37" ).click(function() {
+            enableRegion37Search()
+        });
+
+        $( ".typeQueryRegionGRCh38" ).click(function() {
+            enableRegion38Search()
+        });
+
+        // Diagnostic: confirm the script reaches here and whether the form exists at bind time.
+        console.log("[searchbar] binding submit handler; #navSearchBar2 count =", $("#navSearchBar2").length);
+
+        // Set the form action from the active search type at submit time, so the
+        // endpoint can't be stale if a dropdown click handler didn't run.
+        // Delegated on document so it fires even if the form wasn't in the DOM at
+        // bind time or gets re-rendered.
+        $(document).on("submit", "#navSearchBar2", function () {
+            var base = "https://search.clinicalgenome.org";
+            var actions = {
+                "gene":      base + "/kb/genes",
+                "gene-name": base + "/kb/genes/search-by-name",
+                "condition": base + "/kb/conditions",
+                "drug":      base + "/kb/drugs",
+                "region-37": base + "/kb/regions",
+                "region-38": base + "/kb/regions"
+            };
+            var tab = sessionStorage.getItem("activeTab") || "gene";
+            $(this).attr("action", actions[tab] || actions["gene"]);
+            console.log("[searchbar] submitting to:", $(this).attr("action"), "| tab:", tab);
+        });
+
+
+
+      /*var term = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: 'https://search.clinicalgenome.org/kb/home.json?term=%QUERY',
+          wildcard: '%QUERY'
+        }
+      });*/
+
+      var term = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: 'https://search.clinicalgenome.org/api/genes/look/%QUERY',
+          wildcard: '%QUERY'
+        }
+      });
+
+        var termGeneName = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: 'https://search.clinicalgenome.org/api/genes/lookByName/%QUERY',
+                wildcard: '%QUERY'
+            }
+        });
+
+      var termGene = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: 'https://search.clinicalgenome.org/api/genes/look/%QUERY',
+          wildcard: '%QUERY'
+        }
+      });
+
+      var termDisease = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: 'https://search.clinicalgenome.org/api/conditions/look/%QUERY',
+          wildcard: '%QUERY'
+        }
+      });
+
+      var termDrug = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: 'https://search.clinicalgenome.org/api/drugs/look/%QUERY',
+          wildcard: '%QUERY'
+        }
+      });
+
+      $('.queryDisease').typeahead(null, {
+        name: 'termDisease',
+        display: 'label',
+        source: termDisease,
+        templates: {
+          //header: '<h3 class="league-name">Header</h3>',
+          //footer: '<div class=""><i class="fas fa-check-circle" style="color: green;"></i><span class="mr-2 ml-2">Disease has been curated by ClinGen</span></div>',
+          empty: [
+            '<div class="tt-suggestion tt-selectable"><div class="list-group-item">Nothing found.</div></div>'
+          ],
+          /*,
+                      header: [
+                          '<div class="list-group search-results-dropdown">'
+                      ],*/
+          suggestion: function(data) {
+            return '<div class="ml-1 mr-1 row pl-2 tt-ui-row ' + (data.curated ? 'tt-ui-curated-on' : '') + '" style=" border-bottom:1px solid #ccc"><span class="col-sm-7 col-xs-7 pl-0 tt-ui-label">' + data.label + '<span class="tt-ui-alias"> ' + data.alias + '</span></span><span class=" col-sm-3 col-xs-5 tt-ui-curie">  ' + data.hgnc + '</span>' + (data.curated ? '<span class="badge badge-success pull-right hidden-xs small mt-1 col-sm-2 tt-ui-curated">Curated </span>' : '') + '</div>'
+
+          }
+        },
+        limit: 20,
+        minLength: 3,
+        highlight: true,
+        hint: false,
+        autoselect: true,
+      }).bind('typeahead:selected', function(evt, item) {
+        window.location = item.url;
+      });
+
+      $('.queryGene').typeahead(null, {
+        name: 'termGene',
+        display: 'label',
+        source: termGene,
+        templates: {
+          //header: '<h3 class="league-name">Header</h3>',
+          //footer: '<div class="bg-light text-right text-dark"><i class="fas fa-check-circle" style="color: green;"></i><span class="mr-2 ml-2">Gene has been curated by ClinGen</span></div>',
+          empty: [
+            '<div class="tt-suggestion tt-selectable"><div class="list-group-item">Nothing found.</div></div>'
+          ],
+          /*,
+                      header: [
+                          '<div class="list-group search-results-dropdown">'
+                      ],*/
+          suggestion: function(data) {
+            return '<div class="ml-1 mr-1 row pl-2 tt-ui-row ' + (data.curated ? 'tt-ui-curated-on' : '') + '" style=" border-bottom:1px solid #ccc"><span class="col-sm-7 col-xs-7 pl-0 tt-ui-label">' + data.label + '<span class="tt-ui-alias"> ' + data.alias + '</span></span><span class=" col-sm-3 col-xs-5 tt-ui-curie">  ' + data.hgnc + '</span>' + (data.curated ? '<span class="badge badge-success pull-right hidden-xs small mt-1 col-sm-2 tt-ui-curated">Curated </span>' : '') + '</div>'
+          }
+        },
+        limit: 20,
+        minLength: 3,
+        highlight: true,
+        hint: false,
+        autoselect: true,
+      }).bind('typeahead:selected', function(evt, item) {
+        window.location = item.url;
+      });
+
+      $('.queryGeneName').typeahead(null, {
+            name: 'termGene',
+            display: 'label',
+            source: termGeneName,
+            templates: {
+                //header: '<h3 class="league-name">Header</h3>',
+                //footer: '<div class="bg-light text-right text-dark"><i class="fas fa-check-circle" style="color: green;"></i><span class="mr-2 ml-2">Gene has been curated by ClinGen</span></div>',
+                empty: [
+                    '<div class="tt-suggestion tt-selectable"><div class="list-group-item">Nothing found.</div></div>'
+                ],
+                /*,
+                            header: [
+                                '<div class="list-group search-results-dropdown">'
+                            ],*/
+                suggestion: function(data) {
+                    return '<div class="ml-1 mr-1 row pl-2 tt-ui-row ' + (data.curated ? 'tt-ui-curated-on' : '') + '" style=" border-bottom:1px solid #ccc"><span class="col-sm-7 col-xs-7 pl-0 tt-ui-label">' + data.label + '<span class="tt-ui-alias"> ' + data.alias + '</span></span><span class=" col-sm-3 col-xs-5 tt-ui-curie">  ' + data.hgnc + '</span>' + (data.curated ? '<span class="badge badge-success pull-right hidden-xs small mt-1 col-sm-2 tt-ui-curated">Curated </span>' : '') + '</div>'
+                }
+            },
+            limit: 20,
+            minLength: 3,
+            highlight: true,
+            hint: false,
+            autoselect: true,
+        }).bind('typeahead:selected', function(evt, item) {
+            window.location = item.url;
+        });
+
+      $('.queryDrug').typeahead(null, {
+        name: 'termDrug',
+        display: 'label',
+        source: termDrug,
+        templates: {
+          //header: '<h3 class="league-name">Header</h3>',
+          //footer: '<div class=""><i class="fas fa-check-circle" style="color: green;"><i><span class="mr-2 ml-2">Drug has been curated by ClinGen</span></div>',
+          empty: [
+            '<div class="tt-suggestion tt-selectable"><div class="list-group-item">Nothing found.</div></div>'
+          ],
+          /*,
+                      header: [
+                          '<div class="list-group search-results-dropdown">'
+                      ],*/
+          suggestion: function(data) {
+            return '<div class="ml-1 mr-1 row pl-2 tt-ui-row ' + (data.curated ? 'tt-ui-curated-on' : '') + '" style=" border-bottom:1px solid #ccc"><span class="col-sm-7 col-xs-7 pl-0 tt-ui-label">' + data.label + '<span class="tt-ui-alias"> ' + data.alias + '</span></span><span class=" col-sm-3 col-xs-5 tt-ui-curie">  ' + data.hgnc + '</span>' + (data.curated ? '<span class="badge badge-success pull-right hidden-xs small mt-1 col-sm-2 tt-ui-curated">Curated </span>' : '') + '</div>'
+
+          }
+        },
+        limit: 20,
+        minLength: 3,
+        highlight: true,
+        hint: false,
+        autoselect: true,
+      }).bind('typeahead:selected', function(evt, item) {
+        window.location = item.url;
+      });
+    </script>
+
+  
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    // Used to toggle the documents
+    $(document).ready(function() {
+      $('#filter_list :checkbox').click(function() {
+
+        // First, clear all
+        $('.list-group-item-document').hide();
+        // Make sure the show all at bottom is hidden
+        $('.btn_list_all_documents_bottom').hide();
+
+        // Now do the smart stuff
+        if ($('input:checkbox:checked').length) {
+          $('#list_documentation_table li').hide();
+          $('input:checkbox:checked').each(function() {
+            $('li[data-' + $(this).prop('name') + '*="' + $(this).val() + '"]').show();
+          });
+        } else {
+          $("#list_documentation_table li").show();
+        }
+      });
+
+      // Used to show all of the documents
+      $('.btn_list_all_documents').click(function() {
+        // Make all checked filters unchecked
+        $('#filter_list :checkbox').prop("checked", false);
+        // Show all the documents
+        $('.list-group-item-document').hide();
+        $('.list-group-item-document').show();
+        // Hide buttom button
+        $('.btn_list_all_documents_bottom').hide();
+      });
+
+
+    });
+  </script>
+
+</body>
+
+</html>

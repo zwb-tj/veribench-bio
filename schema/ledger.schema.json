@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veribench-bio/schema/ledger.schema.json",
+  "title": "VeriBench-Bio provenance ledger entry",
+  "description": "题级溯源台账。每一道进入评测集的题目必须在 ledger/items.jsonl 中有一条记录；缺字段即拒收。字段的区分度（而非数量）是本题集的核心卖点之一。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "item_id",
+    "task",
+    "truth_type",
+    "source_type",
+    "source_ref",
+    "source_license_code",
+    "license_url",
+    "retrieval_date",
+    "license_spdx",
+    "redistribution_ok",
+    "commercial_ok",
+    "contains_human_data",
+    "contains_restricted_data",
+    "visibility",
+    "derivation",
+    "review_status",
+    "created_at"
+  ],
+  "properties": {
+    "item_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,63}$",
+      "description": "稳定 ID，一旦发布不得复用。建议形如 T1-0007 或 R-0132。"
+    },
+    "task": {
+      "type": "string",
+      "description": "所属任务或分组，例如 T1 变异检出 / T3 差异表达 / R rubric 开放题。"
+    },
+    "truth_type": {
+      "type": "string",
+      "enum": ["authoritative", "reference-implementation", "consensus", "none"],
+      "description": "真值的权威性。authoritative = 真值来自权威公开资源；reference-implementation = 该任务不存在官方真值，仅以某个锁定版本的参考实现输出作对照（T7/T8 属此类，必须进入独立的『可复现性』分区，绝不与准确率榜混排）；consensus = 多来源共识；none = 无真值（该题不得计分，亦不得公开）。"
+    },
+    "truth_note": {
+      "type": "string",
+      "description": "当 truth_type 不是 authoritative 时必填（审计器 R10 强制）：说明真值来源、为何不权威、以及锁定的参考实现及其精确版本。"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": ["public_dataset", "derived_from_paper", "synthetic"],
+      "description": "题目内容的来源类型。derived_from_paper 意味着内容由论文改写/抽取而来，受 ND 限制约束。"
+    },
+    "source_platform": {
+      "type": "string",
+      "description": "来源平台，例如 arxiv / pmc-oa / geo / ena / clinvar / giab / self-generated。用于施加平台特有规则（如 arXiv 默认许可并非开放许可）。"
+    },
+    "source_ref": {
+      "type": "string",
+      "description": "DOI / accession / PMC ID / 数据集版本号。必须可由第三方独立定位。"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "可点击来源链接。"
+    },
+    "source_license_code": {
+      "type": "string",
+      "description": "来源平台自己声明的许可码原文，必须逐字保留、不得改写。PMC 的实测取值为 \"CC BY\" / \"CC BY-NC-ND\" / \"CC0\" / null（null 表示来源未提供，按不可用处理）。保留原文是为了将来可回溯平台声明与实际许可的差异。"
+    },
+    "license_url": {
+      "type": "string",
+      "description": "许可条款的可点击链接（例如 XML 中解析出的 creativecommons.org/licenses/by/4.0/）。用于把平台许可码升级为可核验的精确版本。"
+    },
+    "retrieval_date": {
+      "type": "string",
+      "format": "date",
+      "description": "取数日期（YYYY-MM-DD）。上游内容与许可都会变，必须能回答『我们是哪天看到这个状态的』。"
+    },
+    "license_spdx": {
+      "type": "string",
+      "description": "SPDX 标识（如 CC0-1.0 / CC-BY-4.0 / CC-BY-NC-4.0 / CC-BY-ND-4.0 / PUBLIC-DOMAIN）。无法确定必须写 unknown —— 审计器会因此拒绝该题的公开分发。"
+    },
+    "redistribution_ok": {
+      "type": "boolean",
+      "description": "能否把原始内容随本仓库一起公开分发。"
+    },
+    "commercial_ok": {
+      "type": "boolean",
+      "description": "许可是否允许商用。若为 true 而 SPDX 含 -NC-，审计器直接判失败。"
+    },
+    "contains_human_data": {
+      "type": "boolean",
+      "description": "是否涉及人类个体数据。判据：true ⟺ 该来源报告了采集自人类受试者或人类生物样本的数据。二次文献（综述转述他人数据）、动物/植物/昆虫模型、无供者来源的商品化细胞系、纯计算研究，一律 false。"
+    },
+    "human_data_basis": {
+      "type": "string",
+      "enum": ["human_subjects_primary", "human_biospecimen", "human_secondary_review", "human_aggregate_only", "non_human_only", "unknown"],
+      "description": "contains_human_data 的判定依据（审计器 R12 强制）。禁止只给裸布尔：裸布尔无法审计，也无法被发现填错——本项目就曾把 27 篇（含蜜蜂转录组、大鼠模型、叙述性综述）一律标成 true 而长期无人察觉。human_subjects_primary / human_biospecimen → contains_human_data 必须为 true；human_secondary_review / human_aggregate_only / non_human_only → 必须为 false；unknown 不得公开。human_aggregate_only = 仅人类来源的**聚合**统计（如等位基因频率、汇总计数），不含个体记录 —— 这个取值是 2026-09 把本 schema 用于真实数据（gnomAD v4 频率）时才补上的：此前四个取值没有一个能安放『来自人类但已完全聚合』的数据。"
+    },
+    "contains_restricted_data": {
+      "type": "boolean",
+      "description": "是否涉及受控访问数据（dbGaP / 需 IRB / 需 DUA）。为 true 时该题不得出现在公开目录。"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "internal"],
+      "description": "public = 随开源仓库分发；internal = 许可受限，仅本地保留（对应 BioProBench 的困境：523,784 条中仅 350,565 条可发布）。"
+    },
+    "derivation": {
+      "type": "string",
+      "enum": ["none", "extracted", "rewritten", "translated", "programmatic"],
+      "description": "相对来源所做的加工。任何非 none 的取值都是衍生作品，因此 ND 许可在此一律不可用。"
+    },
+    "derivation_note": {
+      "type": "string",
+      "description": "加工方式的具体说明（改写了什么、截取了哪一段、程序化生成参数为何）。"
+    },
+    "evidence_quote": {
+      "type": "string",
+      "description": "若题目有原文依据，附上引文与位置（章节/行号）。"
+    },
+    "safety_review": {
+      "type": "string",
+      "enum": ["not-applicable", "passed", "abstraction-applied", "gated", "rejected"],
+      "description": "生物安全审阅结果。abstraction-applied = 已做去参数化抽象；gated = 需门控发布。"
+    },
+    "reviewer": {
+      "type": "string",
+      "description": "核实该条目的责任人。"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["pending", "reviewed", "rejected"],
+      "description": "pending 的条目不得进入公开榜单计分。"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "条目创建时间（ISO 8601）。"
+    }
+  }
+}
