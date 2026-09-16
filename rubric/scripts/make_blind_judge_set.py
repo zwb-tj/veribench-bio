@@ -87,7 +87,7 @@ def main(argv: list[str] | None = None) -> int:
 
     mapping = [{k: v for k, v in e.items() if k != "src"} for e in entries]
     (outdir / "_mapping.json").write_text(
-        json.dumps(mapping, ensure_ascii=False, indent=2), encoding="utf-8")
+        json.dumps(mapping, ensure_ascii=False, indent=2), encoding="utf-8", newline="")
 
     # 泄漏检查：文件名里不能出现 item_id 或任何档位字样
     leaked = [p.name for p in outdir.glob("*.txt")

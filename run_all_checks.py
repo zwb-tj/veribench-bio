@@ -31,10 +31,25 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE          # bio-eval/
 
 
+#: 每条检查的超时（秒）。**所有检查都必须带超时。**
+#:
+#: ⚠️ 起因（2026-09）：`docker run ... bash -lc "<probe>"` 在 T1 镜像上
+#: **间歇性挂死** —— 实测 15 次里挂 1 次（`rtg version` 从 2 秒变成
+#: 20 秒无输出，容器状态 "Up N 分钟" 而 `docker top` 显示没有任何进程）。
+#: 没有超时的话，整个套件会**永久卡住**，而 CI 只会显示"一直在跑"。
+#: 这类缺陷最阴险的地方：**它看起来像"慢"，不像"坏"**。
+DEFAULT_TIMEOUT = 600
+
+
 def run(cmd: list[str], expect_zero: bool = True) -> bool:
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
-    p = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8",
-                       errors="replace", env=env)
+    try:
+        p = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8",
+                           errors="replace", env=env, timeout=DEFAULT_TIMEOUT)
+    except subprocess.TimeoutExpired:
+        print(f"  ❌ {' '.join(Path(c).name for c in cmd)}  → "
+              f"**超时 {DEFAULT_TIMEOUT}s**（挂死，不是慢）")
+        return False
     lines = [l for l in ((p.stdout or "") + (p.stderr or "")).strip().splitlines() if l.strip()]
     last = lines[-1] if lines else "(无输出)"
     ok = (p.returncode == 0) if expect_zero else True
@@ -296,7 +311,7 @@ def main() -> int:
         if shutil.which("docker") is None:
             print("  ⏭ 无 docker，跳过（**不算通过**）")
         elif subprocess.run(["docker", "image", "inspect", "veribench-bio/t1:dev"],
-                            capture_output=True).returncode != 0:
+                            capture_output=True, timeout=60).returncode != 0:
             print("  ⏭ 镜像 veribench-bio/t1:dev 不存在，跳过（先构建）")
         else:
             results.append(run(["docker", "run", "--rm",
@@ -338,7 +353,7 @@ def main() -> int:
     elif shutil.which("docker") is None:
         print("  ⏭ 无 docker，跳过 T3 端到端（**不算通过**）")
     elif subprocess.run(["docker", "image", "inspect", "veribench-bio/t3:dev"],
-                        capture_output=True).returncode != 0:
+                        capture_output=True, timeout=60).returncode != 0:
         print("  ⏭ 镜像 veribench-bio/t3:dev 不存在，跳过（先构建）")
     else:
         # oracle 作答由真值直出 → 必须得 1.0。这验的是"判分器与数据自洽"。
@@ -353,7 +368,8 @@ def main() -> int:
                     ["docker", "run", "--rm",
                      "-v", f"{t3data / 'truth.jsonl'}:/data/truth.jsonl:ro",
                      "-v", f"{td}:/out", "veribench-bio/t3:dev"],
-                    capture_output=True, text=True, encoding="utf-8", errors="replace")
+                    capture_output=True, text=True, encoding="utf-8",
+                    errors="replace", timeout=DEFAULT_TIMEOUT)
                 rj = Path(td) / "result.json"
                 got = None
                 if rj.is_file():
@@ -389,7 +405,7 @@ def main() -> int:
     elif shutil.which("docker") is None:
         print("  ⏭ 无 docker，跳过 T4 端到端（**不算通过**）")
     elif subprocess.run(["docker", "image", "inspect", "veribench-bio/t4:dev"],
-                        capture_output=True).returncode != 0:
+                        capture_output=True, timeout=60).returncode != 0:
         print("  ⏭ 镜像 veribench-bio/t4:dev 不存在，跳过（先构建）")
     else:
         oracle4 = ROOT / "tasks" / "T4" / "_runs" / "answers_oracle.jsonl"
@@ -403,7 +419,8 @@ def main() -> int:
                     ["docker", "run", "--rm",
                      "-v", f"{t4data / 'truth.jsonl'}:/data/truth.jsonl:ro",
                      "-v", f"{td4}:/out", "veribench-bio/t4:dev"],
-                    capture_output=True, text=True, encoding="utf-8", errors="replace")
+                    capture_output=True, text=True, encoding="utf-8",
+                    errors="replace", timeout=DEFAULT_TIMEOUT)
                 rj4 = Path(td4) / "result.json"
                 got4 = None
                 if rj4.is_file():

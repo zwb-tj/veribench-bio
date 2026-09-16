@@ -163,7 +163,7 @@ def main(argv: list[str] | None = None) -> int:
 
     outp = Path(args.out)
     outp.parent.mkdir(parents=True, exist_ok=True)
-    outp.write_text(json.dumps(out_rows, ensure_ascii=False, indent=2), encoding="utf-8")
+    outp.write_text(json.dumps(out_rows, ensure_ascii=False, indent=2), encoding="utf-8", newline="")
     conflicts = [r for r in out_rows if r["current_value"] is True and r["suggested"] is False]
     unresolved = [r for r in out_rows if r["suggested"] is None]
     print(f"合计 {len(out_rows)} 篇：与现有 true 冲突 {len(conflicts)} 篇，证据不足待人工判定 {len(unresolved)} 篇")

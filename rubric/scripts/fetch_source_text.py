@@ -132,7 +132,7 @@ def main(argv: list[str] | None = None) -> int:
             chars_total = len(full)
             text = full[: args.max_chars] if args.max_chars > 0 else full
             truncated = chars_total > len(text)
-            dest.write_text(text, encoding="utf-8")
+            dest.write_text(text, encoding="utf-8", newline="")
             if truncated:
                 print(f"  ⚠️ {pmcid}: 截断 {chars_total} → {len(text)} 字符")
             manifest.append({
@@ -161,7 +161,7 @@ def main(argv: list[str] | None = None) -> int:
         time.sleep(args.sleep)
 
     mpath = outdir / "manifest.jsonl"
-    with mpath.open("w", encoding="utf-8") as fh:
+    with mpath.open("w", encoding="utf-8", newline="") as fh:
         for m in manifest:
             fh.write(json.dumps(m, ensure_ascii=False) + "\n")
 

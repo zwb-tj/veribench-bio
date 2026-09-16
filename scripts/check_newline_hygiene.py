@@ -58,6 +58,13 @@ RETURNS_HASHED: dict[str, str] = {
         "写 judge 输入；跨机器复现时要比对",
     "rubric/scripts/build_manip_inputs.py":
         "写操纵检验输入；跨机器复现时要比对",
+    "rubric/scripts/make_annotation_sheets.py":
+        "写 ann_*.jsonl / _blind_mapping.json / ann_*_sheet.md —— "
+        "**都是已提交文件**。实测：不加 newline 时一条 make_pilot.py 调用链"
+        "污染 7 个文件，累积后全仓 31 个文件变成工作区 CRLF（而 git status 看不见）",
+    "rubric/scripts/make_pilot.py":
+        "写 annotation/pilot/items.jsonl 与 answers.jsonl（**已提交文件**）；"
+        "它还会调用 make_annotation_sheets.py，两者都曾造成污染",
 }
 
 #: 允许的写法（任一命中即算合规）。

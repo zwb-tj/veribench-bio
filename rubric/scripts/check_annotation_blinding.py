@@ -156,11 +156,11 @@ def self_test() -> int:
         leak = t / "leak.jsonl"
         leak.write_text(json.dumps({"item_id": "R-1", "answer_id": "BLIND-strong",
                                     "criterion_id": "c1", "score": None}) + "\n",
-                        encoding="utf-8")
+                        encoding="utf-8", newline="")
         clean = t / "clean.jsonl"
         clean.write_text(json.dumps({"item_id": "R-1", "answer_id": "7512fd311247",
                                      "criterion_id": "c1", "score": None}) + "\n",
-                         encoding="utf-8")
+                         encoding="utf-8", newline="")
         got_leak = bool(audit(leak))
         got_clean = bool(audit(clean))
         for label, cond in (("泄露文件被抓到", got_leak), ("干净文件不误报", not got_clean)):

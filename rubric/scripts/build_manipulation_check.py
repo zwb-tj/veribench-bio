@@ -117,7 +117,7 @@ def main(argv: list[str] | None = None) -> int:
 
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
-    op.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
+    op.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8", newline="")
 
     print(f"操纵检验计划：{len(plan)} 条标准")
     print(f"  目标组（确认缺陷）: {sum(1 for p in plan if p['group'] == 'defect')} 条")

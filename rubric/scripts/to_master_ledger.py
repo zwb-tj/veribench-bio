@@ -101,7 +101,7 @@ def main(argv: list[str] | None = None) -> int:
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    with out.open("w", encoding="utf-8") as fh:
+    with out.open("w", encoding="utf-8", newline="") as fh:
         for r in out_rows:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
 

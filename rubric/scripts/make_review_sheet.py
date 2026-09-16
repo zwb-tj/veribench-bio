@@ -108,12 +108,12 @@ def main(argv: list[str] | None = None) -> int:
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text("\n".join(lines), encoding="utf-8")
+    out.write_text("\n".join(lines), encoding="utf-8", newline="")
     print(f"复核表 → {out}（{len(items)} 题）")
 
     if args.template:
         t = Path(args.template)
-        with t.open("w", encoding="utf-8") as fh:
+        with t.open("w", encoding="utf-8", newline="") as fh:
             for it in items:
                 fh.write(json.dumps({
                     "item_id": it["item_id"],

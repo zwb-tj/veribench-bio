@@ -65,7 +65,7 @@ def main(argv: list[str] | None = None) -> int:
 
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
-    op.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    op.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8", newline="")
 
     by_item: dict[str, int] = {}
     for r in rows:

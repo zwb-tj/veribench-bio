@@ -40,7 +40,7 @@ def load(p: Path) -> list[dict]:
 
 
 def dump(rows: list[dict], p: Path) -> None:
-    p.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    p.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8", newline="")
 
 
 def main(argv: list[str] | None = None) -> int:

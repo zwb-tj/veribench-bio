@@ -78,7 +78,7 @@ def main(argv: list[str] | None = None) -> int:
         })
 
     def dump(path: Path, data: list[dict]) -> None:
-        with path.open("w", encoding="utf-8") as fh:
+        with path.open("w", encoding="utf-8", newline="") as fh:
             for d in data:
                 fh.write(json.dumps(d, ensure_ascii=False) + "\n")
 

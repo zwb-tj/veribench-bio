@@ -82,7 +82,7 @@ def main() -> int:
                    ("item_id", "question", "context", "criteria", "provenance", "safety_review")}
         out_lines.append(json.dumps(ordered, ensure_ascii=False))
 
-    Path(args.out).write_text("\n".join(out_lines) + "\n", encoding="utf-8")
+    Path(args.out).write_text("\n".join(out_lines) + "\n", encoding="utf-8", newline="")
     print(f"已写出 {len(out_lines)} 题 → {args.out}")
     return 0
 

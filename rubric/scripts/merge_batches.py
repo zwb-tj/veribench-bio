@@ -107,7 +107,7 @@ def main(argv: list[str] | None = None) -> int:
 
     merged.sort(key=lambda r: r["item_id"])
     out = Path(args.out)
-    with out.open("w", encoding="utf-8") as fh:
+    with out.open("w", encoding="utf-8", newline="") as fh:
         for r in merged:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
 

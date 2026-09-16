@@ -155,7 +155,7 @@ def main(argv: list[str] | None = None) -> int:
 
     outp = Path(args.out)
     outp.parent.mkdir(parents=True, exist_ok=True)
-    outp.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    outp.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8", newline="")
 
     print(f"\n合计：核对 {total} 个数字，未在原文找到 {missing} 个（{missing / total * 100:.1f}%）"
           if total else "\n没有可核对的数字")

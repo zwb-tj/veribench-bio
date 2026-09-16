@@ -145,7 +145,7 @@ def main(argv: list[str] | None = None) -> int:
 
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
-    op.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    op.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8", newline="")
     print(f"\n结果 → {op}")
     return 0
 

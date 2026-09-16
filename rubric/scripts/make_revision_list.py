@@ -241,7 +241,7 @@ def main(argv: list[str] | None = None) -> int:
 
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
-    op.write_text("\n".join(L), encoding="utf-8")
+    op.write_text("\n".join(L), encoding="utf-8", newline="")
 
     print(f"真缺陷 {len(real)} 条（饱和 {len(sat)} + 反向 {len(inv)}），噪声 {len(noisy)} 条")
     print(f"结构缺陷模式 {len(PATTERNS)} 类")

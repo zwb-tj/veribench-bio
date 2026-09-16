@@ -227,7 +227,12 @@ def generate(items: list[dict], outdir: Path, annotator: str,
 
     # 程序读的模板。**标注单位是 (题, 回答, 标准)**，不是 (题, 标准)。
     tpl = outdir / f"ann_{annotator}.jsonl"
-    with tpl.open("w", encoding="utf-8") as fh:
+    # ⚠️ `newline=""` —— 这些是**已提交文件**（`.gitattributes` 要求 LF）。
+    #    不加的话，Windows 上每次重跑都会把它们写成 CRLF，
+    #    而 `core.autocrlf=true` 让 `git status` **看不见**这个污染。
+    #    实测（2026-09）：一条 `make_pilot.py` 调用链污染了 7 个已提交文件；
+    #    多次累积后全仓有 31 个文件处于"工作区 CRLF / HEAD LF"状态。
+    with tpl.open("w", encoding="utf-8", newline="") as fh:
         for it in items:
             for a in answers.get(it["item_id"], []):
                 for c in it.get("criteria") or []:
@@ -251,7 +256,7 @@ def generate(items: list[dict], outdir: Path, annotator: str,
         rows_out = [{"item_id": iid, "level": lvl, "blind_id": bid}
                     for (iid, lvl), bid in sorted(bmap.items())]
         map_p.write_text(json.dumps(rows_out, ensure_ascii=False, indent=2) + "\n",
-                         encoding="utf-8")
+                         encoding="utf-8", newline="")
         print(f"  盲 id 映射 → {map_p}（**不要给标注者看**）")
 
     # 人读的表。
@@ -324,7 +329,7 @@ def generate(items: list[dict], outdir: Path, annotator: str,
             lines.append("")
         lines.append("---")
         lines.append("")
-    md.write_text("\n".join(lines), encoding="utf-8")
+    md.write_text("\n".join(lines), encoding="utf-8", newline="")
 
     print(f"已生成（{n_units} 个评分点）：")
     print(f"  {tpl}")

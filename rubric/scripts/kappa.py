@@ -378,7 +378,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.out:
         Path(args.out).write_text(json.dumps(res, ensure_ascii=False, indent=2) + "\n",
-                                  encoding="utf-8")
+                                  encoding="utf-8", newline="")
         print(f"结果写入 {args.out}")
     return 0
 

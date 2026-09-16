@@ -169,7 +169,7 @@ def main(argv: list[str] | None = None) -> int:
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
     op.write_text(json.dumps({"rows": rows, "by_group": {k: dict(v) for k, v in by_group.items()}},
-                             ensure_ascii=False, indent=2), encoding="utf-8")
+                             ensure_ascii=False, indent=2), encoding="utf-8", newline="")
     print(f"\n结果 → {op}")
 
     # ---- 长度偏差诊断 ----------------------------------------------------

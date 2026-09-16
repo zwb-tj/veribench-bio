@@ -123,7 +123,7 @@ def main() -> int:
         return 1
 
     out = ROOT / "items" / "items_v1.1.jsonl"
-    out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8", newline="")
     print(f"\n✅ 校验通过 → {out}")
     return 0
 

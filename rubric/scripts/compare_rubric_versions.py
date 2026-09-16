@@ -150,7 +150,7 @@ def main(argv: list[str] | None = None) -> int:
 
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
-    op.write_text("\n".join(L), encoding="utf-8")
+    op.write_text("\n".join(L), encoding="utf-8", newline="")
     print(f"确认缺陷：v1.0 {n10} 条 → v1.1 {n11} 条")
     print(f"  修好 {len(fixed)} · 仍在 {len(still)} · 新增 {len(new)}")
     print(f"→ {op}")

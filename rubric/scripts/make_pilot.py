@@ -56,13 +56,17 @@ def main() -> int:
     keep = {r["item_id"] for r in pilot}
 
     PILOT_DIR.mkdir(parents=True, exist_ok=True)
+    # ⚠️ `newline=""` —— 这两个都是**已提交文件**，不加会让 Windows 写出 CRLF，
+    #    而 `git status` 因 autocrlf 归一化**看不见**（实测污染会累积）。
     pit = PILOT_DIR / "items.jsonl"
-    pit.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in pilot), encoding="utf-8")
+    pit.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in pilot),
+                   encoding="utf-8", newline="")
 
     ans = [json.loads(l) for l in answers_path.read_text(encoding="utf-8").splitlines() if l.strip()]
     pans = [a for a in ans if a["item_id"] in keep]
     pat = PILOT_DIR / "answers.jsonl"
-    pat.write_text("".join(json.dumps(a, ensure_ascii=False) + "\n" for a in pans), encoding="utf-8")
+    pat.write_text("".join(json.dumps(a, ensure_ascii=False) + "\n" for a in pans),
+                   encoding="utf-8", newline="")
 
     n_crit = sum(len(r["criteria"]) for r in pilot)
     # ⚠️ 不能写成长度相乘（`总标准数 × 总回答数`）—— 每份回答只跟**它自己那题**的标准配对。

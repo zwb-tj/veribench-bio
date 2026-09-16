@@ -351,11 +351,11 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.out:
         Path(args.out).write_text(json.dumps(res, ensure_ascii=False, indent=2) + "\n",
-                                  encoding="utf-8")
+                                  encoding="utf-8", newline="")
         print(f"结果写入 {args.out}")
     if args.failure_out:
         Path(args.failure_out).write_text(
-            "".join(json.dumps(f, ensure_ascii=False) + "\n" for f in fails), encoding="utf-8")
+            "".join(json.dumps(f, ensure_ascii=False) + "\n" for f in fails), encoding="utf-8", newline="")
         print(f"失效案例写入 {args.failure_out}（{len(fails)} 条）")
     return 0
 

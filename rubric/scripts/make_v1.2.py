@@ -95,7 +95,7 @@ def main(argv: list[str] | None = None) -> int:
         it.setdefault("rubric_version", "1.2")
 
     op = Path(args.out)
-    op.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    op.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8", newline="")
     print(f"✅ v1.2 生成：{len(rows)} 题 / "
           f"{sum(len(r['criteria']) for r in rows)} 条标准 → {op}")
     print(f"   改动 {applied} 处（每一处都有可核验依据）：")

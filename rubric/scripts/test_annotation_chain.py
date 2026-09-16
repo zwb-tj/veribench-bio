@@ -156,7 +156,7 @@ def main(argv: list[str] | None = None) -> int:
             r["score"] = v
             n_filled += 1
         a_p.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows_a),
-                       encoding="utf-8")
+                       encoding="utf-8", newline="")
 
         rows_b = []
         n_pert = 0
@@ -169,7 +169,7 @@ def main(argv: list[str] | None = None) -> int:
             r2["annotator"] = "B"
             rows_b.append(r2)
         b_p.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows_b),
-                       encoding="utf-8")
+                       encoding="utf-8", newline="")
         print(f"  A 填了 {n_filled}/{len(rows_a)} 条；B 在 A 基础上扰动 {n_pert} 条")
         if n_filled == 0:
             print("  ❌ 一条都没填上 —— 说明生成的模板与裁判产出对不上（链路断了）")
@@ -187,7 +187,7 @@ def main(argv: list[str] | None = None) -> int:
         rows_a2[0]["score"] = None
         hole = tmp / "ann_A_hole.jsonl"
         hole.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows_a2),
-                        encoding="utf-8")
+                        encoding="utf-8", newline="")
         rc, out = sh([sys.executable, str(HERE / "make_annotation_sheets.py"), "--validate", str(hole)])
         caught = rc != 0 and "未填" in out
         print(f"  {'✅' if caught else '❌'} 故意留 1 条空 → 校验{'抓到了' if caught else '**没抓到**'}")
@@ -210,7 +210,7 @@ def main(argv: list[str] | None = None) -> int:
         print("\n=== 5) judge_eval.py（裁判 vs 人类）===")
         arb = tmp / "arb.jsonl"
         # 拿 A 当金标准（仅演示链路，不代表真实仲裁）
-        arb.write_text(a_p.read_text(encoding="utf-8"), encoding="utf-8")
+        arb.write_text(a_p.read_text(encoding="utf-8"), encoding="utf-8", newline="")
         rc, out = sh([sys.executable, str(HERE / "judge_eval.py"),
                       "--items", str(items_p), "--ann-a", str(a_p), "--ann-b", str(b_p),
                       "--judge", str(b_p), "--arb", str(arb), "--out", str(tmp / "je.json")])

@@ -97,7 +97,7 @@ def main(argv: list[str] | None = None) -> int:
 
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
-    op.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    op.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8", newline="")
     n_futile = sum(1 for o in out if "多半无效" in o["verdict"])
     print(f"共 {len(out)} 条；其中 {n_futile} 条的 evidence 显示改措辞多半无效")
     print(f"→ {op}")

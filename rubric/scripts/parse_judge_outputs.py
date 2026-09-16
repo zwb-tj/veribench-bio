@@ -101,7 +101,11 @@ def main(argv: list[str] | None = None) -> int:
                          "annotator": args.annotator})
         n_ok += 1
 
-    with outpath.open("w", encoding="utf-8") as fh:
+    # ⚠️ `newline=""` —— 写出的 `ann_judge.jsonl` 是**已提交文件**；
+    #    不加会让 Windows 写出 CRLF，而 `git status` 因 autocrlf 归一化看不见。
+    #    （这类 `X.open("w", ...)` 的**方法**写法曾被我的 AST 批处理漏掉 ——
+    #     它只匹配了内建 `open()`。所以检查器要按调用形态而不是按名字找。）
+    with outpath.open("w", encoding="utf-8", newline="") as fh:
         for r in rows:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
 

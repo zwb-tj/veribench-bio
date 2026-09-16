@@ -50,7 +50,7 @@ def main(argv: list[str] | None = None) -> int:
 
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
-    op.write_text("".join(json.dumps(o, ensure_ascii=False) + "\n" for o in out), encoding="utf-8")
+    op.write_text("".join(json.dumps(o, ensure_ascii=False) + "\n" for o in out), encoding="utf-8", newline="")
 
     blob = op.read_text(encoding="utf-8")
     leaked = [k for k in ("criteria", "criterion_id", "anchors", "provenance", "source_ref") if k in blob]

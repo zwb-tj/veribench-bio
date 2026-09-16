@@ -210,7 +210,7 @@ def main(argv: list[str] | None = None) -> int:
     }
     outp = Path(args.out)
     outp.parent.mkdir(parents=True, exist_ok=True)
-    outp.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    outp.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8", newline="")
     print(f"\n结果 → {outp}")
     return 0
 
