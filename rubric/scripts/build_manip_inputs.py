@@ -99,7 +99,8 @@ def main(argv: list[str] | None = None) -> int:
             fname = f"{iid}_{cid}_{tag}.txt"
             from judge_prompt import build_prompt as _bp
             body = _bp(it.get("question", ""), ans, crits, iid)
-            (outdir / fname).write_text(body, encoding="utf-8")
+            # ⚠️ `newline=""` —— 操纵检验输入会被跨机器比对；不加会让两平台字节不同
+            (outdir / fname).write_text(body, encoding="utf-8", newline="")
             index.append({
                 "item_id": iid, "criterion_id": cid, "variant": tag,
                 "group": spec.get("group"),
@@ -108,7 +109,8 @@ def main(argv: list[str] | None = None) -> int:
                 "prompt_version": PROMPT_VERSION,
             })
 
-    with (outdir / "index.jsonl").open("w", encoding="utf-8") as fh:
+    # ⚠️ `newline=""`：同上
+    with (outdir / "index.jsonl").open("w", encoding="utf-8", newline="") as fh:
         for r in index:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
 

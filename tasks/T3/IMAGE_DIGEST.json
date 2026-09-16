@@ -1,8 +1,8 @@
 {
   "_comment": "镜像 digest 与构建源码的对应凭据。由 scripts/record_image_digest.py 写入，由 verify_*_claims.py / run_all_checks.py 核对。改动任何构建输入都必须重建镜像、重跑、再重记。",
   "task": "T3",
-  "image_id": "sha256:50200a2f16847628360214271dc60e1ddfb56ae8563c76210d8a396e206bbc62",
-  "source_sha256": "08a2710a357569ce815a797a2dd089f44f6d47a630bb44813bfe5acf26fab5d0",
+  "image_id": "sha256:f6be5d127c5eab4cf9910cc6ebf7ab4463c28408d2517ea33b8d2d427b08d9db",
+  "source_sha256": "6417a7108ce20eeaa0c2464d3589db545f5a162eaf942a0c70396b6fd3f4ca9a",
   "files": [
     "Dockerfile",
     "data/fetch_mmcif.py",
@@ -31,7 +31,7 @@
     "grade.py",
     "run.sh"
   ],
-  "recorded_at": "2026-09-15T19:14:54+00:00",
+  "recorded_at": "2026-09-16T05:43:04+00:00",
   "run_evidence": {
     "score": "1.0",
     "variants": "20"

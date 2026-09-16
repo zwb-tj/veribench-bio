@@ -83,7 +83,9 @@ def main(argv: list[str] | None = None) -> int:
         crits = it.get("criteria") or []
         from judge_prompt import build_prompt as _bp
         body = _bp(it.get("question", ""), ans, crits, iid)
-        (outdir / f"{iid}.txt").write_text(body, encoding="utf-8")
+        # ⚠️ `newline=""` —— judge 输入会被跨机器比对（本项目已有"重新生成
+        #    已提交产物、发现只有 CRLF/LF 不同"的实测记录）。不加会让两平台字节不同。
+        (outdir / f"{iid}.txt").write_text(body, encoding="utf-8", newline="")
         index.append({
             "item_id": iid,
             "prompt_file": f"{iid}.txt",
@@ -91,7 +93,8 @@ def main(argv: list[str] | None = None) -> int:
             "prompt_version": PROMPT_VERSION,
         })
 
-    with (outdir / "index.jsonl").open("w", encoding="utf-8") as fh:
+    # ⚠️ `newline=""`：同上，跨机器比对需要逐字节一致
+    with (outdir / "index.jsonl").open("w", encoding="utf-8", newline="") as fh:
         for r in index:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
 

@@ -212,7 +212,10 @@ def main(argv: list[str] | None = None) -> int:
 
     op = Path(args.out)
     op.parent.mkdir(parents=True, exist_ok=True)
-    op.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
+    # ⚠️ `newline=""` —— 台账会被 `audit_licenses` 与 CI 逐字节比较，
+    #    不加会让 Windows 写 CRLF、Linux 写 LF，两平台产物不同字节。
+    op.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows),
+                  encoding="utf-8", newline="")
     print(f"主台账 → {op}（{len(rows)} 条）")
     for r in rows:
         print(f"   {r['item_id']:<38} {r['task']:<3} {r.get('license_spdx')}")

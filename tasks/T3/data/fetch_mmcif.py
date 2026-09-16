@@ -74,6 +74,19 @@ def sha256(b: bytes) -> str:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """取数并生成 items/truth。
+
+    ⚠️ **两个产物都用 `newline=""` 写** —— 否则换行符随平台而变。
+
+    实测（2026-09）：不加 `newline=""` 时 Python 在 Windows 把 `\\n` 翻成
+    `\\r\\n`、在 Linux 不翻，于是同一份数据在两平台**字节不同**。
+    而 `items.jsonl` 是 `record_image_digest.py` 的**构建输入** ——
+    字节变了 `source_sha256` 就变，**同一条 pin 在 Windows 报 ✅、Linux 报 ❌**
+    （实测：CRLF 版 `08a2710a…` vs LF 版 `b0da7107…`）。
+
+    更麻烦的是 **CI 抓不到**：生成物在 clone 里不存在，`--check-all` 会 SKIP。
+    只有真正按 README 跑一遍取数+构建的人才会撞上 —— 而那正是任务要求的操作。
+    """
     for s in (sys.stdout, sys.stderr):
         try:
             s.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union-attr]
@@ -152,9 +165,11 @@ def main(argv: list[str] | None = None) -> int:
         truths.append({"item_id": f"T3-{pid}", "pdb_id": pid, **m})
 
     (out / "items.jsonl").write_text(
-        "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in items), encoding="utf-8")
+        "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in items),
+        encoding="utf-8", newline="")
     (out / "truth.jsonl").write_text(
-        "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in truths), encoding="utf-8")
+        "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in truths),
+        encoding="utf-8", newline="")
 
     total = sum(i["mmcif_bytes"] for i in items)
     print(f"{'核对' if args.check else '取数'}完成：{len(items)} 条题"

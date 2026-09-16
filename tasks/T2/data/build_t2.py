@@ -332,7 +332,8 @@ def main(argv: list[str] | None = None) -> int:
     # 导出 variant_id 列表，供 enrich_gnomad.py 富集频率（gnomAD 能明确区分
     # "真缺席" 与 "查不到"，而 ClinVar 的 AF_* 不能）
     vlist = cache / "variants.jsonl"
-    with vlist.open("w", encoding="utf-8") as fh:
+    # ⚠️ `newline=""`：见 write_jsonl 的说明 —— 不加会让产物随平台变字节
+    with vlist.open("w", encoding="utf-8", newline="") as fh:
         for uid, v in sorted(cv.items()):
             fh.write(json.dumps({
                 "uid": uid,
@@ -585,7 +586,20 @@ def report_normalization(truth: list[dict]) -> dict[str, int]:
 
 
 def write_jsonl(path: Path, rows: list[dict]) -> None:
-    with path.open("w", encoding="utf-8") as fh:
+    """写 JSONL。⚠️ **必须 `newline=""`** —— 否则换行符随平台而变。
+
+    实测（2026-09）：不加 `newline=""` 时，Python 在 Windows 上把 `\\n`
+    翻译成 `\\r\\n`、在 Linux 上不翻译，于是**同一份数据在两平台产出不同字节**。
+    而 `items.jsonl` 是 `record_image_digest.py` 的**构建输入** ——
+    它的字节变了，`source_sha256` 就变了，**同一条 pin 记录在 Windows 报 ✅、
+    在 Linux 报 ❌**（实测：CRLF 版 `400fe720…` vs LF 版 `be5da56d…`）。
+
+    更麻烦的是 **CI 抓不到**：生成物在 clone 里不存在，`--check-all` 会 SKIP。
+    只有真正按 README 跑一遍取数+构建的人才会撞上。
+
+    `newline=""` 让 `\\n` 原样写入，两个平台得到**逐字节相同**的文件。
+    """
+    with path.open("w", encoding="utf-8", newline="") as fh:
         for r in rows:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
 

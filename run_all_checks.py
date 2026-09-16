@@ -164,6 +164,13 @@ def main() -> int:
     results.append(run([py, f"{S}/publishable_files.py", "--self-test"]))
     # 三个消费方现在必须报同一数量（`scan_secrets` 少 1 个是因为它排掉自己 —— 已说明）
     results.append(run([py, f"{S}/check_publishable_agree.py"]))
+    # 第十七个：**写文本文件必须指定 `newline=""`**。
+    # 起因：实测发现 T2/T3 的 `items.jsonl` 都是 CRLF（本机 Windows 生成），
+    # 而它们是镜像 pin 的**构建输入** —— CRLF 版算 `400fe720…`、LF 版算 `be5da56d…`，
+    # 于是**同一条 pin 在 Windows 报 ✅、在 Linux 报 ❌**。
+    # 更麻烦的是 CI 抓不到：生成物在 clone 里不存在，`--check-all` 会 SKIP。
+    results.append(run([py, f"{S}/check_newline_hygiene.py", "--self-test"]))
+    results.append(run([py, f"{S}/check_newline_hygiene.py"]))
     # 第十四个：**内容级**答案泄露审计。
     # 上面那些验的是"仓库状态"与"上传集"，但**"答案会不会藏在代码/文档里"**
     # 此前从未被验过 —— 而这是最容易被忽略的一条路：`.py` 里的自测夹具、

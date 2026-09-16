@@ -131,6 +131,13 @@ def main() -> int:
         #    而它的结论会被用来为真实判分背书。
         run([py, f"{S}/check_prompt_agree.py", "--self-test"]),
         run([py, f"{S}/check_prompt_agree.py"]),
+        # ⚠️ **已提交的 judge 输入是否与当前 items 标准文本一致。**
+        #    2026-09 发现 R-0020 的 c1 描述句被改写，而三档 judge 输入
+        #    **从未重新生成** —— 产物含旧文本，配对的 judge_out 也是按旧标准打的。
+        #    ⚠️ 检查会**报告但不阻塞**这类已登记的历史脱节（禁止覆盖历史），
+        #    只有**未登记**的新脱节才失败。
+        run([py, f"{S}/check_judge_inputs_fresh.py", "--self-test"]),
+        run([py, f"{S}/check_judge_inputs_fresh.py"]),
     ]
 
     print("\n=== 2b) 人工标注链路端到端演练 ===")
