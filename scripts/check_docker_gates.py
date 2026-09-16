@@ -48,10 +48,33 @@ def stages(dockerfile: str) -> list[tuple[int, str | None]]:
     return out
 
 
+def instructions(text: str) -> str:
+    """只保留**真实的 Dockerfile 指令**，去掉注释。
+
+    ⚠️ 这是本检查器的**关键修正**。第一版直接在整个文件文本上正则搜索
+    `--from=<stage>` —— 于是它匹配到了 **说明文字里** 的 `--from=gate`
+    （我在这份文件的 docstring 与提示串里反复提到它）。
+
+    后果实测：把 `COPY --from=gate ...` **删掉之后检查器仍然报 ✅**，
+    因为注释和提示文字里那串还在。**一个连自己都在骗自己的检查器** ——
+    这恰好是它本该防的那类缺陷（"检查在，但没在守它该守的东西"）。
+
+    修法：逐行剥掉 `#` 之后的部分，再只对指令行做判断。
+    """
+    out = []
+    for line in text.splitlines():
+        # 去掉行内注释（不入引号，Dockerfile 的 # 就是注释起始）
+        code = line.split("#", 1)[0]
+        if code.strip():
+            out.append(code)
+    return "\n".join(out)
+
+
 def audit() -> list[str]:
     probs: list[str] = []
     for p in sorted(ROOT.glob("tasks/*/Dockerfile")):
-        text = p.read_text(encoding="utf-8", errors="replace")
+        raw = p.read_text(encoding="utf-8", errors="replace")
+        text = instructions(raw)          # ← 只看指令，不看注释
         st = stages(text)
         if len(st) < 2:
             continue                                  # 单阶段，无此问题
@@ -60,7 +83,7 @@ def audit() -> list[str]:
             continue
         rel = p.relative_to(ROOT).as_posix()
         for ln, name in named:
-            # 被 --from=<name> 引用？
+            # 被 --from=<name> 引用？（**只看指令行**）
             if re.search(rf"--from={re.escape(name)}\b", text, re.I):
                 continue
             # 或被 `FROM <name>` 继承？
@@ -90,9 +113,26 @@ def self_test() -> int:
     )
     st = fake(bad)
     named = [(ln, n) for ln, n in st[:-1] if n]
-    caught = bool(named) and not re.search(r"--from=gate", bad, re.I)
+    caught = bool(named) and not re.search(r"--from=gate", instructions(bad), re.I)
     ok = ok and caught
     print(f"  {'✅' if caught else '❌'} 负向：声明 `AS gate` 但不引用 → 会被抓")
+
+    # ①b **只在注释里提到 `--from=gate`，不算引用**
+    #     这条来自真实漏洞：第一版在整个文件文本上正则，于是**注释里的
+    #     `--from=gate` 让检查器认为"已引用"** —— 删掉真实的引用行后它仍报 ✅。
+    #     一个防"装饰性门禁"的检查器**自己就是装饰性的**。
+    comment_only = (
+        "FROM python:3.12-slim AS gate\n"
+        "RUN echo check\n"
+        "\n"
+        "FROM python:3.12-slim\n"
+        "# 注意：这里**没有** COPY --from=gate —— 只在注释里提到它\n"
+        "RUN echo final\n"
+    )
+    inst = instructions(comment_only)
+    c2 = not re.search(r"--from=gate", inst, re.I)
+    ok = ok and c2
+    print(f"  {'✅' if c2 else '❌'} 负向：只在**注释**里提到 `--from=gate` → 不算引用")
 
     # ② 有 --from → 不算问题
     good = (
@@ -102,7 +142,7 @@ def self_test() -> int:
         "FROM python:3.12-slim\n"
         "COPY --from=gate /x /y\n"
     )
-    clean = bool(re.search(r"--from=gate", good, re.I))
+    clean = bool(re.search(r"--from=gate", instructions(good), re.I))
     ok = ok and clean
     print(f"  {'✅' if clean else '❌'} 正向：`COPY --from=gate` → 视为可执行")
 
