@@ -180,6 +180,14 @@ def main() -> int:
     # **同一条 pin 一台机器报 ✅、另一台报 ❌**。
     results.append(run([py, f"{S}/check_worktree_lf.py", "--self-test"]))
     results.append(run([py, f"{S}/check_worktree_lf.py"]))
+    # 第十九个：**Dockerfile 的门禁阶段是否真的会被构建**。
+    # 起因（本轮最严重的一类）：实测 Docker **不构建未被引用的中间阶段** ——
+    # `FROM ... AS gate` 后面写再多 RUN，只要最终阶段没 `COPY --from=gate`，
+    # Docker 就整个跳过它，所有检查静默不执行，**而构建照样成功**。
+    # 证据：往 truth.jsonl 注入错误值后构建仍 exit 0；加上引用后立刻 exit 1。
+    # T3 与 T4 都中招（文档里却写着"构建期执行门禁"），T2 因为恰好引用了而幸免。
+    results.append(run([py, f"{S}/check_docker_gates.py", "--self-test"]))
+    results.append(run([py, f"{S}/check_docker_gates.py"]))
     # 第十四个：**内容级**答案泄露审计。
     # 上面那些验的是"仓库状态"与"上传集"，但**"答案会不会藏在代码/文档里"**
     # 此前从未被验过 —— 而这是最容易被忽略的一条路：`.py` 里的自测夹具、
@@ -357,6 +365,56 @@ def main() -> int:
                 print(f"  {'✅' if ok else '❌'} T3 容器内端到端（oracle）"
                       f" → score={got} exit={p.returncode}")
                 results.append(ok)
+
+    print("\n=== 6i) T4（GO 本体）解析器与判分器 ===")
+    # T4 的正确性关键在"**排除 obsolete**"。实测：不过滤时"无 is_a"的项
+    # 有 10,251 个（其中 10,248 是 obsolete），而真实根只有 3 个 ——
+    # 假根会让 depth_to_root 全部算错。解析器的自检含这条负向用例。
+    t4parse = ROOT / "tasks" / "T4" / "data" / "obo_parse.py"
+    if t4parse.is_file():
+        results.append(run([py, str(t4parse), "--self-test"]))
+    else:
+        print("  ⏭ 尚无 tasks/T4/data/obo_parse.py")
+
+    t4g = ROOT / "tasks" / "T4" / "grade.py"
+    if t4g.is_file():
+        results.append(run([py, str(t4g), "--self-test"]))
+    else:
+        print("  ⏭ 尚无 tasks/T4/grade.py")
+
+    # T4 端到端（需 docker + 镜像 + 生成物）。生成物不发布 → 新 clone 里 SKIP。
+    t4data = ROOT / "tasks" / "T4" / "data"
+    if not (t4data / "truth.jsonl").is_file() or not (t4data / "items.jsonl").is_file():
+        print("  ⏭ T4 数据未生成（跑 fetch_go.py）—— 跳过端到端，**不算通过**")
+    elif shutil.which("docker") is None:
+        print("  ⏭ 无 docker，跳过 T4 端到端（**不算通过**）")
+    elif subprocess.run(["docker", "image", "inspect", "veribench-bio/t4:dev"],
+                        capture_output=True).returncode != 0:
+        print("  ⏭ 镜像 veribench-bio/t4:dev 不存在，跳过（先构建）")
+    else:
+        oracle4 = ROOT / "tasks" / "T4" / "_runs" / "answers_oracle.jsonl"
+        if not oracle4.is_file():
+            print("  ⏭ 缺 _runs/answers_oracle.jsonl（先跑 oracle 生成）")
+        else:
+            import tempfile as _tf4
+            with _tf4.TemporaryDirectory(prefix="t4-e2e-") as td4:
+                shutil.copyfile(oracle4, Path(td4) / "answers.jsonl")
+                p4 = subprocess.run(
+                    ["docker", "run", "--rm",
+                     "-v", f"{t4data / 'truth.jsonl'}:/data/truth.jsonl:ro",
+                     "-v", f"{td4}:/out", "veribench-bio/t4:dev"],
+                    capture_output=True, text=True, encoding="utf-8", errors="replace")
+                rj4 = Path(td4) / "result.json"
+                got4 = None
+                if rj4.is_file():
+                    try:
+                        got4 = json.loads(rj4.read_text(encoding="utf-8"))["score"]
+                    except (ValueError, KeyError):
+                        got4 = None
+                ok4 = p4.returncode == 0 and got4 == 1.0
+                print(f"  {'✅' if ok4 else '❌'} T4 容器内端到端（oracle）"
+                      f" → score={got4} exit={p4.returncode}")
+                results.append(ok4)
 
 
     if args.clean_room:

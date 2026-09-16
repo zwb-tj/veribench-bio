@@ -1,6 +1,11 @@
 {
   "_comment": "**刻意不发布**的路径的唯一真源。两个工具都必须读这一份，否则它们对『什么算不该存在』的判断会不一致——本轮就出现过：clean_room_check 把它们排除了，verify_doc_links 却把文档里对它们的引用报成死亡链接。",
   "_why": "每条都要写理由。理由为空或写成『不想看』的，等于把检查关掉。",
+  "_note_keys": "⚠️ 说明文字一律放在顶层 `_notes` 里，**不要放进 `dirs`** —— 消费方只读 dirs/suffixes/names，放进 dirs 会生成垃圾忽略项（实测：`_T4_obo_NOTE` 曾产出 `/ _T4_obo_NOTE/`）。",
+  "_notes": {
+    "T3_mmcif_NOTE": "⚠️ **`tasks/T3/data/mmcif/` 刻意不在这里登记** —— 不是遗漏。mmCIF 原文是题面素材，许可 CC0-1.0（可再分发、无需署名，见 research/T3_SOURCES.md §1），**必须**随仓库发布，否则别人拿不到题面就无法复现。写这条说明是为了防止将来有人误把它加进来。（JSON 没有注释，所以用 `_` 前缀的键承载说明；读取方只用 dirs/suffixes/names 三个键，不受影响。）",
+    "T4_obo_NOTE": "⚠️ **`tasks/T4/data/go-basic.obo` 刻意不在这里登记** —— 不是遗漏。GO 本体原文是题面素材，许可 **CC BY 4.0**（可再分发，但**必须署名**，见 research/T4_SOURCES.md §1），**必须**随仓库发布，否则别人拿不到题面。⚠️ 与 T3 的 CC0 **不同**：T4 有署名义务，所以它的许可信息同时登记在 `NOTICE` 的 [A] 块。"
+  },
   "dirs": {
     "research/_artifacts": "上游 jar 拆包产物（~1.1 GB），用于许可审计；结论已写进文档，原件不必分发",
     "research/_scratch": "调研过程的临时文件",
@@ -22,7 +27,9 @@
     "tasks/T3/_runs": "T3 运行产物（判分结果、oracle 作答、日志）。与 T1/T2 的 _runs 同理：**不随仓库发布**。",
     "tasks/T3/data/truth.jsonl": "⚠️ **T3 的答案**（20 条：原子计数 / 链数 / 元素直方图 / CA 距离）。真值由 mmCIF 原文**确定性重算**得到（见 tasks/T3/DESIGN.md §4），因此**理论上任何人都能自己算出来** —— 但它是判分基准，仍按 T1/T2 的一致做法不发布：题面在仓库里，答案由取数脚本生成。这样「发布集不含答案」这条规则对所有任务**一视同仁**，不因「反正能算出来」而开口子。",
     "tasks/T3/data/items.jsonl": "T3 的题面（20 条），由 fetch_mmcif.py 生成。⚠️ 它是**生成物**：新 clone 里不存在，需要先跑取数脚本。与 T2 的 data/items.jsonl 同理登记为不发布（生成物不属于「源码」）。",
-    "_T3_mmcif_NOTE": "⚠️ **`tasks/T3/data/mmcif/` 刻意不在这里登记** —— 不是遗漏。mmCIF 原文是题面素材，许可 CC0-1.0（可再分发、无需署名，见 research/T3_SOURCES.md §1），**必须**随仓库发布，否则别人拿不到题面就无法复现。写这条说明是为了防止将来有人误把它加进来。（JSON 没有注释，所以用 `_` 前缀的键承载说明；读取方只用 dirs/suffixes/names 三个键，不受影响。）",
+    "tasks/T4/_runs": "T4 运行产物（判分结果、oracle 作答、日志）。与 T1/T2/T3 的 _runs 同理：**不随仓库发布**。",
+    "tasks/T4/data/truth.jsonl": "⚠️ **T4 的答案**（30 条：name / namespace / 父节点数 / depth_to_root）。真值由 GO 本体原文**确定性重算**得到（见 tasks/T4/DESIGN.md §3），因此**理论上任何人都能自己算出来** —— 但它是判分基准，按 T1/T2/T3 的一致做法不发布：题面在仓库里，答案由取数脚本生成。这样「发布集不含答案」对所有任务**一视同仁**。",
+    "tasks/T4/data/items.jsonl": "T4 的题面（30 条），由 fetch_go.py 生成。⚠️ **生成物**：新 clone 里不存在，需先跑取数脚本。与 T2/T3 的 items.jsonl 同理登记为不发布。",
     "rubric/items/sources": "**别人的论文全文**。公开的是改写后的题目，不是原文。由 fetch_source_text.py 重新取",
     "rubric/items/sources_trunc20000": "截断版备份，仅供对照，无用例发布",
     "rubric/items/alternate": "被淘汰的 22 题并行方案，仅作审计痕迹",
@@ -39,6 +46,13 @@
     "tasks/T2/data/rotation": "由 T2 构建脚本生成的轮换池（**从未发布过**）",
     "tasks/T2/baseline": "由 T2 构建脚本生成的基线结果"
   },
-  "suffixes": [".pyc", ".pyo"],
-  "names": ["__pycache__", ".pytest_cache", ".DS_Store"]
+  "suffixes": [
+    ".pyc",
+    ".pyo"
+  ],
+  "names": [
+    "__pycache__",
+    ".pytest_cache",
+    ".DS_Store"
+  ]
 }

@@ -100,6 +100,14 @@ def build() -> str:
     suffixes: list[str] = man.get("suffixes") or []
     names: list[str] = man.get("names") or []
 
+    # ⚠️ **跳过 `_` 前缀的键。** `dirs` 里除了真实路径，还放了**说明性条目**
+    #    （如 `_T4_obo_NOTE`，用来解释"某个路径刻意**不**登记"）——
+    #    因为 JSON 没有注释，只能用键承载说明。
+    #    实测：不过滤时它们会生成 `/ _T3_mmcif_NOTE/` 这样的垃圾忽略项。
+    #    `_comment` / `_why` 在顶层所以不受影响；这条防的是**将来有人把说明
+    #    写进 dirs**（我自己就这么做过）。
+    dirs = {k: v for k, v in dirs.items() if not k.startswith("_")}
+
     parts = [HEADER]
     for d in sorted(dirs):
         # ⚠️ **尾斜杠只加在真目录上。** `not_published.json` 的 `dirs` 里

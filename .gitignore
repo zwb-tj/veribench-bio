@@ -18,9 +18,6 @@
 
 # --- 由 not_published.json 的 dirs 生成（每条都附上了理由）-------------------
 
-# ⚠️ **`tasks/T3/data/mmcif/` 刻意不在这里登记** —— 不是遗漏。mmCIF 原文是题面素材，许可 CC0-1.0（可再分发、无需署名，见 research/T3_SOURCES.md §1），**必须**随仓库发布，否则别人拿不到题面就无法复现。写这条说明是为了防止将来有人误把它加进来。（JSON 没有注释，所以用 `_` 前缀的键承载说明；读取方只用 dirs/suffixes/names 三个键，不受影响。）
-/_T3_mmcif_NOTE/
-
 # 上游 jar 拆包产物（~1.1 GB），用于许可审计；结论已写进文档，原件不必分发
 /research/_artifacts/
 
@@ -125,6 +122,15 @@
 
 # ⚠️ **T3 的答案**（20 条：原子计数 / 链数 / 元素直方图 / CA 距离）。真值由 mmCIF 原文**确定性重算**得到（见 tasks/T3/DESIGN.md §4），因此**理论上任何人都能自己算出来** —— 但它是判分基准，仍按 T1/T2 的一致做法不发布：题面在仓库里，答案由取数脚本生成。这样「发布集不含答案」这条规则对所有任务**一视同仁**，不因「反正能算出来」而开口子。
 /tasks/T3/data/truth.jsonl
+
+# T4 运行产物（判分结果、oracle 作答、日志）。与 T1/T2/T3 的 _runs 同理：**不随仓库发布**。
+/tasks/T4/_runs/
+
+# T4 的题面（30 条），由 fetch_go.py 生成。⚠️ **生成物**：新 clone 里不存在，需先跑取数脚本。与 T2/T3 的 items.jsonl 同理登记为不发布。
+/tasks/T4/data/items.jsonl
+
+# ⚠️ **T4 的答案**（30 条：name / namespace / 父节点数 / depth_to_root）。真值由 GO 本体原文**确定性重算**得到（见 tasks/T4/DESIGN.md §3），因此**理论上任何人都能自己算出来** —— 但它是判分基准，按 T1/T2/T3 的一致做法不发布：题面在仓库里，答案由取数脚本生成。这样「发布集不含答案」对所有任务**一视同仁**。
+/tasks/T4/data/truth.jsonl
 
 # --- 由 not_published.json 的 suffixes / names 生成 -------------------------
 *.pyc

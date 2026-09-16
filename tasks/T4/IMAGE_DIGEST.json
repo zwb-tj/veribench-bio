@@ -1,0 +1,20 @@
+{
+  "_comment": "镜像 digest 与构建源码的对应凭据。由 scripts/record_image_digest.py 写入，由 verify_*_claims.py / run_all_checks.py 核对。改动任何构建输入都必须重建镜像、重跑、再重记。",
+  "task": "T4",
+  "image_id": "sha256:48e02eb3c48073a2d097f4204d374ec012ad3647f7a01ed931b7c50b58c872a3",
+  "source_sha256": "037e1a2eabdd49a99aaad8b98687d33eb1b8c575be970227a6b2c668098bf153",
+  "files": [
+    "Dockerfile",
+    "data/fetch_go.py",
+    "data/go-basic.obo",
+    "data/items.jsonl",
+    "data/obo_parse.py",
+    "grade.py",
+    "run.sh"
+  ],
+  "recorded_at": "2026-09-16T07:51:46+00:00",
+  "run_evidence": {
+    "score": "1.0",
+    "variants": "30"
+  }
+}

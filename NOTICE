@@ -87,6 +87,29 @@ samtools 1.16.1 / bcftools 1.16 / tabix·htslib 1.16
   once reverted. Do not "simplify" it back to a bare `ldd | grep libgsl` —
   that version has three blind spots (static linking, plugins, and behavior).
 
+Gene Ontology (GO) — used by T4
+  License: **CC BY 4.0**  (⚠️ **attribution is REQUIRED** — unlike PDB below)
+  Upstream: https://geneontology.org/
+  Source read (2026-09): https://geneontology.org/docs/go-citation-policy/
+    "According to the terms of GO's CC BY 4.0 license, those using our data
+     publicly or redistributing it must provide: identification of the
+     creator(s) of the Licensed Material ..."
+  The licence is also embedded in the data file itself:
+    $ grep terms:license go-basic.obo
+    property_value: terms:license http://creativecommons.org/licenses/by/4.0/
+  Data used: go-basic.obo, release **releases/2026-07-26**
+    sha256 b08d45b268b8cbb1... (recorded per item in tasks/T4/data/items.jsonl)
+
+  Attribution for this distribution (as CC BY 4.0 requires):
+    Gene Ontology Consortium data, release releases/2026-07-26, is made
+    available under the terms of the CC BY 4.0 license
+    (https://creativecommons.org/licenses/by/4.0/legalcode).
+    Source: https://geneontology.org/
+
+  ⚠️ Not obligation-free. T3's PDB data is CC0 (no attribution needed);
+  GO is **not**. Removing this block would breach the licence — the
+  difference is deliberate and checked by scripts/check_notice.py.
+
 ================================================================================
 [B] NOT INDIVIDUALLY VERIFIED (license from package metadata)
 ================================================================================

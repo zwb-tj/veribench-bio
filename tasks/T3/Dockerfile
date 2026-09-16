@@ -104,6 +104,16 @@ if probs:
         print("  ·", p)
     sys.exit(1)
 print(f"✅ 门禁通过：{len(items)} 条真值全部可由 mmCIF 原文重算得到")
+
+# ⚠️ **写一个标记文件**：最终阶段会 COPY 它，从而**强制 Docker 构建本阶段**。
+#    实测（2026-09）：Docker **不构建未被引用的中间阶段** ——
+#    没有这一行（也没有最终阶段的 COPY --from=gate）时，
+#    整个 gate 阶段的 RUN **全都不会执行**，而构建照样成功。
+#    证据：往 truth.jsonl 注入一个错误值后，构建仍然 exit 0。
+#    也就是说：在加上这一行之前，本文件里那些"构建期门禁"从未真正跑过 ——
+#    而 README / DATACARD / 验证报告都声称它们跑了。
+pathlib.Path("/gate/.gate-passed").write_text(
+    f"门禁通过：{len(items)} 条题\n", encoding="utf-8", newline="")
 PY
 
 # ==============================================================================
@@ -122,6 +132,10 @@ COPY data/mmcif_parse.py data/fetch_mmcif.py /work/
 COPY grade.py run.sh /work/
 COPY data/items.jsonl /work/items.jsonl
 COPY data/mmcif /work/data/mmcif
+
+# ⚠️ **这一行是门禁真正生效的关键** —— 最终阶段必须**依赖** gate 阶段，
+#    否则 Docker 会跳过整个 gate，里面的 RUN 一个都不执行（见 gate 里的说明）。
+COPY --from=gate /gate/.gate-passed /work/.gate-passed
 
 # ⚠️ **没有** COPY truth.jsonl —— 镜像里不留答案。
 # 判分时把真值以只读方式挂载进来（见 run.sh 的 TRUTH 变量）。

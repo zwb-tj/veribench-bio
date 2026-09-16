@@ -105,6 +105,20 @@ TASKS: dict[str, dict] = {
         #   但它缺席与否不该影响 source_sha256，所以不列在 files 里。）
         "generated": ["data/items.jsonl", "data/truth.jsonl"],
     },
+    "T4": {
+        "dir": "tasks/T4",
+        "files": [
+            "Dockerfile", "run.sh", "grade.py",
+            "data/items.jsonl", "data/obo_parse.py", "data/fetch_go.py",
+        ],
+        # GO 本体原文（32 MB）是 COPY 进镜像的**题面素材**。
+        # 许可 **CC BY 4.0（必须署名）** —— 与 T3 的 CC0 不同，
+        # 所以它的许可信息同时登记在 NOTICE 的 [A] 块。
+        "globs": ["data/go-basic.obo"],
+        # items.jsonl 与 truth.jsonl 都是**生成物且不发布**：
+        # 新 clone 里跑 `fetch_go.py` 才有。缺席时 SKIP，不报假警报。
+        "generated": ["data/items.jsonl", "data/truth.jsonl"],
+    },
 }
 
 

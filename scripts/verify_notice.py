@@ -53,6 +53,29 @@ REQUIRED_COMPONENTS = {
 #: [A] 块里的条目必须带一个上游 LICENSE 链接（"读过了"要有出处）
 RE_UPSTREAM_URL = re.compile(r"https?://\S+", re.I)
 
+#: **有署名义务**的数据来源：条目里必须出现这些字样，否则**检查失败**。
+#:
+#: 为什么要单独列：T3 用的 PDB 是 **CC0**（无需署名），
+#: 而 T4 用的 GO 是 **CC BY 4.0**（**必须署名**）。
+#: 两者的差别很容易被"统一处理"抹掉 —— 而抹掉的后果是**许可违规**，
+#: 且不会有任何东西报警（构建照样成功、CI 照样绿）。
+#:
+#: ⚠️ **判据必须锚定到"本项目的署名声明"，不能只找许可名。**
+#:    第一版用 `CC BY 4\.0 license` 作正则 —— 它在 NOTICE 里命中 **2 处**：
+#:    一处是**引用的上游政策原文**，一处才是我们自己的署名句。
+#:    于是删掉我们的署名句后检查**仍然通过**（命中了引用那处）。
+#:    这是"判据太宽"的典型：**检查在，但没在守它该守的东西**。
+#:    现在锚定到署名句的**主语**（"Gene Ontology Consortium data"），
+#:    它只可能出现在我们自己的声明里。
+ATTRIBUTION_REQUIRED = {
+    "Gene Ontology": {
+        "license": r"CC BY 4\.0",
+        #: 必须同时出现：主语 + 许可 + 指向 legalcode 的链接
+        "attribution": r"Gene Ontology Consortium data[\s\S]{0,400}?CC BY 4\.0",
+        "why": "GO 是 CC BY 4.0，署名是许可条件（与 PDB 的 CC0 不同）",
+    },
+}
+
 
 def split_blocks(text: str) -> tuple[str, str, list[str]]:
     """返回 (A 段, B 段, 问题)。
@@ -141,6 +164,23 @@ def check(text: str, dockerfile: str) -> tuple[list[str], list[str]]:
             problems.append(f"Dockerfile 装了 {name}，但 NOTICE 里完全没提到（装了却不声明）")
         else:
             notes.append(f"{name}: 已声明")
+
+    # 4b) **有署名义务的具体来源**必须在 [A] 段里真正署名
+    #     （只要求"提到"是不够的 —— 许可要的是署名句）
+    for name, spec in ATTRIBUTION_REQUIRED.items():
+        if not re.search(re.escape(name), a_block, re.I):
+            problems.append(
+                f"{name} 在 [A] 段里没有条目 —— "
+                f"{spec['why']}（**署名是许可条件，不是可选项**）")
+            continue
+        if not re.search(spec["license"], a_block, re.I):
+            problems.append(f"{name} 的 [A] 条目没写明许可名（期望匹配 {spec['license']!r}）")
+        elif not re.search(spec["attribution"], a_block, re.I):
+            problems.append(
+                f"{name} 的 [A] 条目缺**署名句** —— "
+                f"{spec['why']}；仅写许可名不够，CC BY 4.0 要求可复制的署名声明")
+        else:
+            notes.append(f"{name}: [A] 里已署名（CC BY 4.0 义务已履行）")
 
     # 反向：NOTICE 声称 [B] 的组件，不该同时被说成 [A]（上面 both 已覆盖）
     # 额外一条：Dockerfile 的 apt 列表真的装了这些吗（防止 REQUIRE 清单过期）
