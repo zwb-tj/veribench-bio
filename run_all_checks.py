@@ -171,6 +171,15 @@ def main() -> int:
     # 更麻烦的是 CI 抓不到：生成物在 clone 里不存在，`--check-all` 会 SKIP。
     results.append(run([py, f"{S}/check_newline_hygiene.py", "--self-test"]))
     results.append(run([py, f"{S}/check_newline_hygiene.py"]))
+    # 第十八个：**工作区是否被写成 CRLF**（而 HEAD 是 LF）。
+    # 起因：`.gitattributes` 要求 LF、HEAD 里也是 LF，但**工作区**被某段代码
+    # 写成了 CRLF 而 **`git status` 看不见** —— `core.autocrlf=true` 会在比较前
+    # 归一化。实测全仓有 45 个已跟踪文件处于这种状态。
+    # 而 `record_image_digest.py` 是在**工作区字节**上算 source_sha256 的：
+    # 污染的工作区算出的 pin 与干净检出（CI/Linux）不一致 →
+    # **同一条 pin 一台机器报 ✅、另一台报 ❌**。
+    results.append(run([py, f"{S}/check_worktree_lf.py", "--self-test"]))
+    results.append(run([py, f"{S}/check_worktree_lf.py"]))
     # 第十四个：**内容级**答案泄露审计。
     # 上面那些验的是"仓库状态"与"上传集"，但**"答案会不会藏在代码/文档里"**
     # 此前从未被验过 —— 而这是最容易被忽略的一条路：`.py` 里的自测夹具、

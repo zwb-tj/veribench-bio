@@ -375,7 +375,15 @@ def main(argv: list[str] | None = None) -> int:
             "variants": args.run_variants,
         }
     rec_p = record_path(args.task)
-    rec_p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # ⚠️ `newline=""` —— `IMAGE_DIGEST.json` 是**已提交文件**（`.gitattributes` 要求 LF）。
+    #    不加的话，Windows 上每次 `--task X --image-id ...` 都会把它写成 CRLF，
+    #    于是：**本脚本每次运行都会污染工作区**。
+    #    实测（2026-09）：我第一次修好全仓 45 个 CRLF 文件后，重新 pin T3
+    #    又把它变回 CRLF —— **污染源就是这个写入点**。
+    #    而 `autocrlf=true` 让 `git status` 看不见它（归一化后比较），
+    #    所以这个污染可以一直累积而不报警。
+    rec_p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+                     encoding="utf-8", newline="")
     print(f"已写入 {rec_p.relative_to(ROOT).as_posix()}")
     print(f"   task          = {args.task}")
     print(f"   image_id      = {args.image_id}")

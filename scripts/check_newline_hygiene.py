@@ -50,6 +50,10 @@ RETURNS_HASHED: dict[str, str] = {
         "写 T3 的 items/truth；items.jsonl 是镜像 pin 的构建输入",
     "scripts/build_master_ledger.py":
         "写 ledger/items.jsonl；台账被 audit_licenses 与 CI 逐字节比较",
+    "scripts/record_image_digest.py":
+        "写 IMAGE_DIGEST.json（**已提交文件**，.gitattributes 要求 LF）；"
+        "实测：不加 newline 时它每次运行都会把工作区污染成 CRLF，"
+        "而 autocrlf 让 git status 看不见",
     "rubric/scripts/build_judge_inputs.py":
         "写 judge 输入；跨机器复现时要比对",
     "rubric/scripts/build_manip_inputs.py":
