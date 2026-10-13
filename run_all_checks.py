@@ -261,6 +261,17 @@ def main() -> int:
     print("\n=== 6) 环境依赖清单（从 import 扫出来，不凭记忆）===")
     results.append(run([py, f"{S}/check_env_deps.py"]))
 
+    print("\n=== 6a) Python 3.10 语法兼容 ===")
+    # 加这一步的直接原因（2026-10-13）：`c9351f4` 推送后 CI 变红而**本地 52 步全绿**。
+    # `rubric/scripts/textio.py` 写了 `f"{rawj.count(b'\r\n')} 个 CRLF"` ——
+    # f-string 表达式里含反斜杠（PEP 701）只在 3.12+ 合法；本机 3.12.0 的第 4 步
+    # `compile()` 用的是当前解释器，于是给了假绿，CI 的 3.10 那一格才炸。
+    # **"声明了下限"不等于"有东西守着下限"。** 本检查器不需要装 3.10：
+    #   · tokenize：f-string 替换字段内部的反斜杠（feature_version 抓不到这个）
+    #   · ast.parse(feature_version=(3,10))：兜住 PEP 695 / except* 等语法级用例
+    results.append(run([py, f"{S}/check_py310_compat.py", "--self-test"]))
+    results.append(run([py, f"{S}/check_py310_compat.py"]))
+
     print("\n=== 6b) 全仓脚本冒烟测试（每个 .py 都点一遍）===")    # 加这一步的直接原因：`rubric/scripts/make_annotation_sheets.py` 曾经
     # **根本不接受作答输入**，生成的标注表没有可评的对象 —— 而它能坏那么久，
     # 正是因为**没有任何东西在跑它**。本环节对每个脚本跑 `--help`：

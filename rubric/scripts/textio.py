@@ -95,8 +95,12 @@ def self_test() -> int:
         pj = Path(td) / "b.jsonl"
         write_jsonl(pj, [{"a": 1}, {"b": "中"}])
         rawj = pj.read_bytes()
-        check("write_jsonl 写出纯 LF", rawj.count(b"\r\n") == 0,
-              f"{rawj.count(b'\r\n')} 个 CRLF")
+        # ⚠️ 这里**不能**把 rawj.count(b"\r\n") 直接写进 f-string 里：
+        #    f-string 表达式内出现反斜杠是 PEP 701（Python 3.12+）才合法的，
+        #    在 3.10 上会 SyntaxError: f-string expression part cannot include a backslash。
+        #    本文件在 3.12 上跑得好好的，直到 CI 的 3.10 那一格才炸。
+        n_crlf = rawj.count(b"\r\n")
+        check("write_jsonl 写出纯 LF", n_crlf == 0, f"{n_crlf} 个 CRLF")
         check("write_jsonl 可被逐行解析",
               len([l for l in rawj.decode().splitlines() if l.strip()]) == 2)
 
