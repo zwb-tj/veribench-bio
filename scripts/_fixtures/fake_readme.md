@@ -10,3 +10,15 @@
 以及一条已经被修好的旧话：代码：Apache-2.0（LICENSE 待补）。
 
 榜单：`leaderboard/` 存在。
+
+## 目录结构
+
+```text
+bio-eval/
+├── SPEC.md
+├── README.md
+├── docs/
+├── tasks/
+│   ├── T1/
+│   └── T9/
+```

@@ -51,11 +51,99 @@ ALLOW_MISSING = {
 LOCAL_TOP = {"docs", "scripts", "rubric", "tasks", "schema", "ledger", "tools",
              "src", "tests", "data", "judge", "annotation", "review"}
 
+# ---- 目录树（README 的 "## 目录结构" 小节）---------------------------------
+# ⚠️ 为什么必须单独检查这一段：README 第 100 行写着「**与真实文件一致**，
+#    由 `scripts/verify_readme.py` 强制」—— 但那时**没有任何东西在查它**。
+#    实测（2026-10）：树里只有 `T1/` `T2/`，而 `T3/` `T4/` 早已存在；
+#    顶层的 `.github/` `leaderboard/` `research/` `tools/` 也一个都没列。
+#    这是本项目自己的缺陷类：**声明了守卫，但守卫不存在**。
+#    注意旧检查为什么抓不到：`TOKEN_RE` 只匹配反引号与 markdown 链接，
+#    而目录树在 ``` 代码块里 —— 它的每一行都**没有被任何检查看过**。
+TREE_HEADING_RE = re.compile(
+    r"^##\s*目录结构[^\n]*\n+```[a-zA-Z]*\n(.*?)^```", re.S | re.M)
+
+# 顶层条目：行首就是 ├── 或 └──（缩进过的属于子级，见下）
+TREE_TOP_RE = re.compile(r"^([├└])──\s+([^\s#]+)")
+# 子级条目：4 列前缀（`│   ` 或 4 个空格）后才是 ├── / └──
+TREE_CHILD_RE = re.compile(r"^[│ ]{4}([├└])──\s+([^\s#]+)")
+
+# 不要因为"存在但没列进树"就判红的目录：
+#   · `.git` / `__pycache__` 是版本控制与解释器元数据，不是项目结构
+#   · `_` 开头的是本地产物（如 `_artifacts`），本来就不该对外描述
+TREE_SKIP_DIRS = {".git", "__pycache__"}
+
 results: list[tuple[str, bool | None, str]] = []
 
 
 def add(claim: str, ok: bool | None, ev: str) -> None:
     results.append((claim, ok, ev))
+
+
+def parse_tree(text: str) -> tuple[set[str], set[str]] | None:
+    """从 README 的目录树代码块里取出 (顶层条目, tasks/ 下的子条目)。
+
+    返回 None 表示**找不到这个小节** —— 调用方必须把它当失败，而不是静默跳过
+    （"查不到就说通过"正是本项目反复踩的坑）。
+    """
+    m = TREE_HEADING_RE.search(text)
+    if not m:
+        return None
+    top: set[str] = set()
+    tasks: set[str] = set()
+    in_tasks = False
+    for line in m.group(1).splitlines():
+        tm = TREE_TOP_RE.match(line)
+        if tm:
+            # 树里可能写成 `ledger/items.jsonl` —— 顶层条目仍是 `ledger`
+            name = tm.group(2).rstrip("/").split("/")[0]
+            top.add(name)
+            in_tasks = name == "tasks"
+            continue
+        cm = TREE_CHILD_RE.match(line)
+        if cm and in_tasks:
+            tasks.add(cm.group(2).rstrip("/"))
+    return top, tasks
+
+
+def real_top_dirs() -> set[str]:
+    return {d.name for d in ROOT.iterdir()
+            if d.is_dir() and d.name not in TREE_SKIP_DIRS and not d.name.startswith("_")}
+
+
+def real_tasks() -> set[str]:
+    t = ROOT / "tasks"
+    if not t.is_dir():
+        return set()
+    return {d.name for d in t.iterdir() if d.is_dir() and not d.name.startswith("_")}
+
+
+def check_tree(text: str) -> None:
+    """三个方向：树里的条目真实存在 / 顶层目录都列了 / 题目都列了。"""
+    parsed = parse_tree(text)
+    if parsed is None:
+        add("README 有『## 目录结构』代码块（否则本段无从检查）", False,
+            "找不到该小节或代码块")
+        return
+    top, tasks = parsed
+
+    # 1) 正向：树里写了的，必须真的存在（文件或目录都算）
+    ghost = sorted(n for n in top if not (ROOT / n).exists())
+    add("目录树里的每个顶层条目都真实存在", not ghost,
+        f"树里有但仓库没有：{ghost or '无'}")
+
+    ghost_tasks = sorted(t for t in tasks if not (ROOT / "tasks" / t).exists())
+    add("目录树里的每个题目目录都真实存在", not ghost_tasks,
+        f"树里有但仓库没有：{ghost_tasks or '无'}")
+
+    # 2) 反向：真实顶层目录必须在树里出现（**这条才是抓到本次漏洞的那条**）
+    missing_top = sorted(real_top_dirs() - top)
+    add("目录树列全了真实的顶层目录", not missing_top,
+        f"真实存在但树里没列：{missing_top or '无'}")
+
+    # 3) 反向：tasks/ 下每个题目都必须在树里出现
+    missing_tasks = sorted(real_tasks() - tasks)
+    add("目录树列全了 tasks/ 下的题目（T1…TN）", not missing_tasks,
+        f"真实存在但树里没列：{missing_tasks or '无'}")
 
 
 def looks_like_path(tok: str) -> bool:
@@ -160,6 +248,9 @@ def main() -> int:
     add("README 不再声称 LICENSE 待补",
         "LICENSE 待补" not in text,
         f"LICENSE {'存在' if (ROOT / 'LICENSE').is_file() else '不存在'}")
+
+    # ---- 3) 目录树与实际结构一致 ------------------------------------------
+    check_tree(text)
 
     # v1 四件套的勾选必须与事实一致
     saf = (ROOT / "docs" / "SAFETY.md").is_file() and (ROOT / "docs" / "DATACARD.md").is_file()

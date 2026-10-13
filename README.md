@@ -101,6 +101,8 @@ bash tasks/T1/run.sh
 
 ```
 bio-eval/
+├── .github/
+│   └── workflows/            # CI（3.10 / 3.12 矩阵，不装第三方包、不用 Docker）
 ├── SPEC.md                    # 设计文档（范围、题目、契约、风险、纠错记录）
 ├── README.md                  # 本文件
 ├── LICENSE / NOTICE           # 代码 Apache-2.0；第三方组件逐项（分"已核验/未逐项核验"）
@@ -111,14 +113,21 @@ bio-eval/
 │   ├── PLAIN_LANGUAGE.md      # 给湿实验背景的人的通俗说明
 │   ├── HF_UPLOAD.md           # T1 上传流程
 │   ├── HF_UPLOAD_T2.md        # T2 上传流程（⚠️ 发布集不对称，务必先读第 0 步）
-│   └── GITHUB_PUBLISH.md      # 推到 GitHub 的流程（⚠️ 历史不可撤销，先读第 0 步）
+│   ├── GITHUB_PUBLISH.md      # 推到 GitHub 的流程（⚠️ 历史不可撤销，先读第 0 步）
+│   ├── T3_VERIFICATION.md     # T3 的实测记录
+│   └── T3_REVIEW.md           # T3 的自我评审（结论 needs_revision，问题已记档）
 ├── schema/
 │   └── ledger.schema.json     # 台账契约（17 必填字段）
 ├── ledger/items.jsonl         # 题级 provenance ledger（唯一真源）
+├── leaderboard/               # 榜单提交校验器（**尚无真实提交**，见 §v1 四件套）
+├── research/                  # 竞品尽调、数据许可取证、各题来源（T3/T4_SOURCES.md）
 ├── scripts/                   # 审计器 / 台账构建 / 各类校验
+├── tools/                     # 通用小工具（compare_results.py / verify_manifest.py）
 ├── tasks/
 │   ├── T1/                    # 变异检出：Dockerfile / run.sh / grade.py / licenses / baseline
-│   └── T2/                    # 变异解读：同上 + 三层防污染
+│   ├── T2/                    # 变异解读：同上 + 三层防污染
+│   ├── T3/                    # 蛋白结构：mmCIF 原文确定性重算
+│   └── T4/                    # GO 本体：OBO 原文确定性重算（CC BY 4.0，必须署名）
 └── rubric/                    # 第三支柱
     ├── README.md
     ├── run_all_checks.py      # 10 环节
