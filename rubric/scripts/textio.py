@@ -114,6 +114,11 @@ def self_test() -> int:
 
 if __name__ == "__main__":
     import sys
+    for _s in (sys.stdout, sys.stderr):
+        try:
+            _s.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union-attr]
+        except (AttributeError, OSError):
+            pass
     if "--self-test" in sys.argv:
         raise SystemExit(self_test())
     print(__doc__)

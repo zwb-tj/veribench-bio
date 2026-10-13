@@ -60,7 +60,7 @@
 ## 快速开始
 
 ```bash
-# 项目级检查（现在 24 步）：台账 + 许可门禁 + 卡片一致性 + LICENSE 正文比对
+# 项目级检查（现在 52 步）：台账 + 许可门禁 + 卡片一致性 + LICENSE 正文比对
 #   + schema 校验 + 环境依赖 + 全仓 JSON 解析 + 每个任务的镜像 pin 核对 …
 python run_all_checks.py
 

@@ -203,6 +203,13 @@ def main() -> int:
     # T3 与 T4 都中招（文档里却写着"构建期执行门禁"），T2 因为恰好引用了而幸免。
     results.append(run([py, f"{S}/check_docker_gates.py", "--self-test"]))
     results.append(run([py, f"{S}/check_docker_gates.py"]))
+    # 第二十个：**文档里的"上表最后 N 条"式位置引用**。
+    # 起因：往 SPEC §3.1 表末追加一条时，警觉上面的推论标题可能指向错行 ——
+    # 一查发现它们**从第一版起就错**，而且是"写的时候对、表变长后静默腐烂"。
+    # 判据刻意很窄（只抓"上表/下表 + 最后 N 条"），因为**误报比漏报更糟**：
+    # 一个会误报的检查很快就被关掉，那就什么也守不住。
+    results.append(run([py, f"{S}/check_positional_refs.py", "--self-test"]))
+    results.append(run([py, f"{S}/check_positional_refs.py"]))
     # 第十四个：**内容级**答案泄露审计。
     # 上面那些验的是"仓库状态"与"上传集"，但**"答案会不会藏在代码/文档里"**
     # 此前从未被验过 —— 而这是最容易被忽略的一条路：`.py` 里的自测夹具、

@@ -51,6 +51,40 @@ def publishable() -> list[tuple[str, int]]:
     return [(p.relative_to(ROOT).as_posix(), p.stat().st_size) for p in _pub()]
 
 
+def count_spec_silent_failures(text: str | None = None) -> int:
+    """数 `SPEC.md` §3.1「静默失败清单」的**数据行**有多少条。
+
+    为什么要单独算这个：这个数字（曾经靠人数出来是 52）**只被写进仓库外的
+    简历/GitHub 主页 README**，仓库里从来没有出处，也没有任何守卫 ——
+    正是本项目自己列在 §3.1 里的那类缺陷（"数字写下来之后没人再算过"）。
+    加一条清单条目，外部文档的数字就悄悄变假。
+
+    判据刻意**不依赖行号**（行号会漂移），而是按小节标题 + 表头定位，
+    再从表头往下逐行收 `|` 开头的行，遇到第一条不以 `|` 开头的就停。
+
+    `text` 参数只为自检注入夹具用（默认读真实 `SPEC.md`）。
+    """
+    if text is None:
+        text = (ROOT / "SPEC.md").read_text(encoding="utf-8")
+    lines = text.splitlines()
+    try:
+        idx = next(i for i, l in enumerate(lines) if l.startswith("### 3.1 "))
+    except StopIteration:
+        return -1  # 找不到小节 → 由 self_test 报错，而不是静默返回 0
+    # 表头行：第一行以 "| 现象" 开头的
+    try:
+        head = next(i for i in range(idx, len(lines)) if lines[i].startswith("| 现象"))
+    except StopIteration:
+        return -1
+    n = 0
+    for l in lines[head + 2:]:          # +1 跳表头，+1 跳 |---| 分隔行
+        if not l.startswith("|"):
+            break
+        if l.strip():
+            n += 1
+    return n
+
+
 def count_self_tests() -> tuple[int, int]:
     """返回 (带 argparse 的脚本数, 带 --self-test 的脚本数)。"""
     n_arg = n_self = 0
@@ -82,6 +116,7 @@ def collect() -> dict:
     suite = (ROOT / "run_all_checks.py").read_text(encoding="utf-8")
     st["check_steps"] = len(re.findall(r"results\.append\(run\(", suite))
     st["argparse_scripts"], st["self_test_scripts"] = count_self_tests()
+    st["spec_silent_failures"] = count_spec_silent_failures()
 
     # --- 台账 / rubric ---
     st["ledger_entries"] = sum(
@@ -173,6 +208,9 @@ def self_test() -> int:
         ("ledger_entries >= 30", st["ledger_entries"] >= 30, st["ledger_entries"]),
         ("rubric 24 题", st["rubric_items"] == 24, st["rubric_items"]),
         ("rubric 101 条", st["rubric_criteria"] == 101, st["rubric_criteria"]),
+        # §3.1 清单条数：这个数字过去只写在仓库外的简历/GitHub 主页里，
+        # 仓库无出处也无守卫（正是 §3.1 自己列的缺陷类）。现在由这里复算。
+        ("§3.1 清单条数已复算", st["spec_silent_failures"] > 0, st["spec_silent_failures"]),
     ]
 
     #: 生成物在不在？（clone 里通常不在）
@@ -223,6 +261,26 @@ def self_test() -> int:
         print(f"  {'✅' if cond else '❌'} {label}"
               + (f"  → 泄漏样例 {leaked[:3]}" if leaked else f"  → {len(pub)} 个文件"))
 
+    # ⚠️ 新计数器的负向测试（扫描类检查器必须有）。
+    #    这个函数要守的是"清单条数被复算"，所以必须证明它**真的在读表格**：
+    #      (a) 找不到 §3.1 时返回 -1，而不是静默返回 0（0 会被误读成"清单是空的"）；
+    #      (b) 往夹具里加一行，数出来的条数必须 +1（证明不是写死的常量）。
+    fixture = (
+        "### 3.1 夹具\n\n"
+        "| 现象 | 真实情况 | 是谁发现的 |\n|---|---|---|\n"
+        "| 甲 | 甲 | 甲 |\n| 乙 | 乙 | 乙 |\n"
+    )
+    neg = [
+        ("§3.1 缺失 → -1（不是静默 0）", count_spec_silent_failures("# 没有这一节\n") == -1),
+        ("夹具 2 行 → 2", count_spec_silent_failures(fixture) == 2),
+        ("加一行 → 3（证明是复算不是常量）",
+         count_spec_silent_failures(fixture + "| 丙 | 丙 | 丙 |\n") == 3),
+    ]
+    for label, cond in neg:
+        if not cond:
+            ok = False
+        print(f"  {'✅' if cond else '❌'} {label}")
+
     print("负向测试 " + ("全部通过" if ok else "**有失败**"))
     return 0 if ok else 1
 
@@ -254,6 +312,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  run_all_checks : {st['check_steps']} 步")
     print(f"  带 argparse    : {st['argparse_scripts']} 个脚本")
     print(f"  带 --self-test : {st['self_test_scripts']} 个（能证明自己会失败）")
+    print(f"  §3.1 清单      : {st['spec_silent_failures']} 条（复算，供外部文档引用）")
     print()
     print("=== 数据规模 ===")
     print(f"  台账           : {st['ledger_entries']} 条")
