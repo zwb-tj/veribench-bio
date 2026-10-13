@@ -93,6 +93,11 @@ bash tasks/T1/run.sh
 `verify_notice` / `verify_json_files` / `record_image_digest` 都带 `--self-test`，
 跑 `python scripts/smoke_test_scripts.py` 能看到哪些有、哪些还没有。
 
+> 🙋 **不确定"检查真的会失败"是什么意思？** 见
+> [`docs/DRILL_SEEN_A_CHECK_FAIL.md`](docs/DRILL_SEEN_A_CHECK_FAIL.md) ——
+> 一份**不需要编程基础**的分步演练：你先看它绿，再亲手制造一个只有你知道的错误，
+> 确认它变红且理由正确，最后修回绿。约 10 分钟，全程零风险。
+
 **环境要求**：Python ≥ 3.10；**Python 第三方依赖为零**（全部只用标准库，
 见 `scripts/check_env_deps.py`；`jsonschema` 装了则多做一步 schema 校验，
 没装会**明说本次未校验**而不是静默跳过）。Docker 只在 T1/T2 的**工具链**里需要。
@@ -115,7 +120,8 @@ bio-eval/
 │   ├── HF_UPLOAD_T2.md        # T2 上传流程（⚠️ 发布集不对称，务必先读第 0 步）
 │   ├── GITHUB_PUBLISH.md      # 推到 GitHub 的流程（⚠️ 历史不可撤销，先读第 0 步）
 │   ├── T3_VERIFICATION.md     # T3 的实测记录
-│   └── T3_REVIEW.md           # T3 的自我评审（结论 needs_revision，问题已记档）
+│   ├── T3_REVIEW.md           # T3 的自我评审（结论 needs_revision，问题已记档）
+│   └── DRILL_SEEN_A_CHECK_FAIL.md  # 亲手做一次失败演练（给非程序员，一步步）
 ├── schema/
 │   └── ledger.schema.json     # 台账契约（17 必填字段）
 ├── ledger/items.jsonl         # 题级 provenance ledger（唯一真源）

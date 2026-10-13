@@ -79,30 +79,49 @@ def add(claim: str, ok: bool | None, ev: str) -> None:
     results.append((claim, ok, ev))
 
 
-def parse_tree(text: str) -> tuple[set[str], set[str]] | None:
-    """从 README 的目录树代码块里取出 (顶层条目, tasks/ 下的子条目)。
+def parse_tree(text: str) -> tuple[set[str], dict[str, set[str]], set[str]] | None:
+    """从 README 的目录树代码块里取出：
+         (1) 顶层条目集合
+         (2) 每个"列出了子项"的顶层目录 → 它列出的子项集合
+         (3) 其中**明确省略**了子项的目录（如写 `...` 或一行塞多个名字）
 
     返回 None 表示**找不到这个小节** —— 调用方必须把它当失败，而不是静默跳过
     （"查不到就说通过"正是本项目反复踩的坑）。
+
+    ⚠️ 为什么要有 (2)(3) 这层而不是硬编码只查 `tasks/`：
+    第一版只查顶层 + `tasks/`，于是**下一个层级完全没被看过** —— 我新加一个
+    `docs/DRILL_SEEN_A_CHECK_FAIL.md` 之后，树里那句「与真实文件一致」当场变假
+    而检查全绿。同一个缺陷类在同一份文件里连着出现两次，说明判据的形状不对：
+    正确的判据不是"查两个地方"，而是"**只要树列举了某目录的子项，且没有写省略号，
+    这个列举就必须是完整的**"。
     """
     m = TREE_HEADING_RE.search(text)
     if not m:
         return None
     top: set[str] = set()
-    tasks: set[str] = set()
-    in_tasks = False
+    children: dict[str, set[str]] = {}
+    elided: set[str] = set()
+    cur: str | None = None
     for line in m.group(1).splitlines():
         tm = TREE_TOP_RE.match(line)
         if tm:
             # 树里可能写成 `ledger/items.jsonl` —— 顶层条目仍是 `ledger`
             name = tm.group(2).rstrip("/").split("/")[0]
             top.add(name)
-            in_tasks = name == "tasks"
+            cur = name if line.rstrip().endswith("/") else None
+            if cur:
+                children.setdefault(cur, set())
             continue
         cm = TREE_CHILD_RE.match(line)
-        if cm and in_tasks:
-            tasks.add(cm.group(2).rstrip("/"))
-    return top, tasks
+        if cm and cur:
+            raw = cm.group(2).rstrip("/")
+            # 一行里塞了多个名字（`schema/ judge/ ledger/ ...`）说明是概括写法，
+            # 不是完整列举 —— 该目录标为"已省略"，不参与完整性比对。
+            if len(raw.split()) > 1 or raw in ("...", "…"):
+                elided.add(cur)
+            else:
+                children[cur].add(raw.split("/")[0] if "/" in raw and raw.endswith(".jsonl") else raw)
+    return top, children, elided
 
 
 def real_top_dirs() -> set[str]:
@@ -110,40 +129,55 @@ def real_top_dirs() -> set[str]:
             if d.is_dir() and d.name not in TREE_SKIP_DIRS and not d.name.startswith("_")}
 
 
-def real_tasks() -> set[str]:
-    t = ROOT / "tasks"
-    if not t.is_dir():
-        return set()
-    return {d.name for d in t.iterdir() if d.is_dir() and not d.name.startswith("_")}
-
-
 def check_tree(text: str) -> None:
-    """三个方向：树里的条目真实存在 / 顶层目录都列了 / 题目都列了。"""
+    """三个方向：树里的条目真实存在 / 列举是完整的 / 顶层目录都列了。"""
     parsed = parse_tree(text)
     if parsed is None:
         add("README 有『## 目录结构』代码块（否则本段无从检查）", False,
             "找不到该小节或代码块")
         return
-    top, tasks = parsed
+    top, children, elided = parsed
 
     # 1) 正向：树里写了的，必须真的存在（文件或目录都算）
     ghost = sorted(n for n in top if not (ROOT / n).exists())
     add("目录树里的每个顶层条目都真实存在", not ghost,
         f"树里有但仓库没有：{ghost or '无'}")
 
-    ghost_tasks = sorted(t for t in tasks if not (ROOT / "tasks" / t).exists())
-    add("目录树里的每个题目目录都真实存在", not ghost_tasks,
-        f"树里有但仓库没有：{ghost_tasks or '无'}")
+    # 2) 正向：树里列出的每个子项也必须真的存在（不限层级）
+    ghost_children: list[str] = []
+    for parent, kids in children.items():
+        for kid in sorted(kids):
+            if not (ROOT / parent / kid).exists():
+                ghost_children.append(f"{parent}/{kid}")
+    add("目录树里列出的子项都真实存在", not ghost_children,
+        f"树里有但仓库没有：{sorted(ghost_children) or '无'}")
 
-    # 2) 反向：真实顶层目录必须在树里出现（**这条才是抓到本次漏洞的那条**）
+    # 3) 反向：**只要树列举了某目录的子项、又没写省略号，就必须列全**。
+    #    这是把原来的"只查 tasks/"推广成一般规则 —— 否则加一个新文档就能让
+    #    「与真实文件一致」这句话变假而检查全绿（本轮第二次犯）。
+    incomplete: list[str] = []
+    for parent, kids in sorted(children.items()):
+        if parent in elided:
+            continue                        # 写法是概括（`...` 或一行多个）
+        d = ROOT / parent
+        if not d.is_dir():
+            continue
+        real = {p.name for p in d.iterdir()
+                if p.name not in TREE_SKIP_DIRS and not p.name.startswith("_")}
+        miss = sorted(real - kids)
+        if miss:
+            incomplete.append(f"{parent}/ 缺 {miss}")
+    # tasks/ 下面还有一层（题目目录），单独报，便于定位
+    bad_tasks = [x for x in incomplete if x.startswith("tasks/")]
+    add("目录树列出的子项是完整的（没写省略号的目录）", not incomplete,
+        "；".join(incomplete) or "全部完整")
+    add("目录树列全了 tasks/ 下的题目（T1…TN）", not bad_tasks,
+        "；".join(bad_tasks) or "无")
+
+    # 4) 反向：真实顶层目录必须在树里出现（**这条才是抓到头一个漏洞的那条**）
     missing_top = sorted(real_top_dirs() - top)
     add("目录树列全了真实的顶层目录", not missing_top,
         f"真实存在但树里没列：{missing_top or '无'}")
-
-    # 3) 反向：tasks/ 下每个题目都必须在树里出现
-    missing_tasks = sorted(real_tasks() - tasks)
-    add("目录树列全了 tasks/ 下的题目（T1…TN）", not missing_tasks,
-        f"真实存在但树里没列：{missing_tasks or '无'}")
 
 
 def looks_like_path(tok: str) -> bool:
